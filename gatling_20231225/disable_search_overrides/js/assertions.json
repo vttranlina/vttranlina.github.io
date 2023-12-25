@@ -1,0 +1,10 @@
+{
+  "simulation": "org.apache.james.gatling.simulation.imap.PlatformValidationSimulation",
+  "simulationId": "platformvalidationsimulation-20231225085800683",
+  "start": 1703494680730,
+  "description": "",
+  "scenarios": ["ImapPlatformValidation"],
+  "assertions": [
+
+  ]
+}
