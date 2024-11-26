@@ -1,0 +1,9 @@
+# HELP postgres_execution Generated from Dropwizard metric import (metric=postgres-execution, type=com.codahale.metrics.Timer)
+# TYPE postgres_execution summary
+postgres_execution{quantile="0.5",} 0.001622015
+postgres_execution{quantile="0.75",} 0.0028016630000000002
+postgres_execution{quantile="0.95",} 0.021495807000000002
+postgres_execution{quantile="0.98",} 0.07864319900000001
+postgres_execution{quantile="0.99",} 0.149946367
+postgres_execution{quantile="0.999",} 0.599785471
+postgres_execution_count 3355670.0

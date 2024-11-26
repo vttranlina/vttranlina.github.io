@@ -1,0 +1,2729 @@
+"query","mean_exec_time","total_exec_time","calls"
+"select
+  count(*) as ""total_count"",
+  count(*) filter (where is_seen = $1) as ""unseen_count""
+from message_mailbox
+where mailbox_id = cast($2 as uuid)","0.5042442671645301","233151.45576300356","462378"
+"select
+  thread_id,
+  hash_base_subject
+from thread
+where (
+  username = $1
+  and hash_mime_message_id in (
+    $2, $3
+  )
+)","2.116512156890791","232452.2971670008","109828"
+"insert into thread (
+  username,
+  hash_mime_message_id,
+  message_id,
+  thread_id,
+  hash_base_subject
+)
+values (
+  $1, 
+  $2, 
+  cast($3 as uuid), 
+  cast($4 as uuid), 
+  $5
+)","0.6269677760498316","137717.2338160026","219656"
+"insert into email_query_view (
+  mailbox_id,
+  message_id,
+  sent_at,
+  received_at
+)
+values (
+  cast($1 as uuid), 
+  cast($2 as uuid), 
+  cast($3 as timestamp with time zone), 
+  cast($4 as timestamp with time zone)
+)
+on conflict on constraint ""email_query_view_pkey""
+do nothing","1.2408789678589005","136206.32078600067","109766"
+"insert into message_mailbox (
+  mailbox_id,
+  message_uid,
+  mod_seq,
+  message_id,
+  thread_id,
+  internal_date,
+  size,
+  is_deleted,
+  is_answered,
+  is_draft,
+  is_flagged,
+  is_recent,
+  is_seen,
+  user_flags,
+  save_date
+)
+values (
+  cast($1 as uuid), 
+  $2, 
+  $3, 
+  cast($4 as uuid), 
+  cast($5 as uuid), 
+  cast($6 as timestamp(6)), 
+  $7, 
+  $8, 
+  $9, 
+  $10, 
+  $11, 
+  $12, 
+  $13, 
+  cast($14 as varchar[]), 
+  cast($15 as timestamp(6))
+)","0.8448521735553683","92738.57823900145","109769"
+"select
+  message.message_id as message_id,
+  message.internal_date as internal_date,
+  message.size as size,
+  body_blob_id,
+  mime_type,
+  mime_subtype,
+  body_start_octet,
+  textual_line_count,
+  attachment_metadata,
+  mailbox_id,
+  message_uid,
+  mod_seq,
+  thread_id,
+  is_deleted,
+  is_answered,
+  is_draft,
+  is_flagged,
+  is_recent,
+  is_seen,
+  user_flags,
+  save_date,
+  header_content,
+  textual_line_count,
+  content_description,
+  content_location,
+  content_transfer_encoding,
+  content_disposition_type,
+  content_id,
+  content_md5,
+  content_language,
+  content_type_parameters,
+  content_disposition_parameters
+from message_mailbox
+  join message
+    on message_mailbox.message_id = message.message_id
+where (
+  mailbox_id = cast($1 as uuid)
+  and message_uid = $2
+)","0.18959534135287237","67851.62238199986","357876"
+"select distinct unnest(user_flags)
+from message_mailbox
+where mailbox_id = cast($1 as uuid)","2.6153024801289764","62450.80792299935","23879"
+"select *
+from mailbox
+where (
+  mailbox_name = $1
+  and user_name = $2
+  and mailbox_namespace = $3
+)","0.05228662021631311","37412.69765000169","715531"
+"select *
+from mailbox
+where mailbox_id = cast($1 as uuid)","0.03508540248578797","36533.69281499924","1041279"
+"<insufficient privilege>","78.95914920383687","32925.965218","417"
+"select message_uid
+from message_mailbox
+where mailbox_id = cast($1 as uuid)
+order by message_uid asc","1.299109711252573","31021.440795000042","23879"
+"select message_uid
+from message_mailbox
+where (
+  mailbox_id = cast($1 as uuid)
+  and is_recent = $2
+)
+order by message_uid asc","0.06556699716957781","26964.165317999737","411246"
+"select
+  type,
+  ""quota_current_value"".""current_value""
+from quota_current_value
+where (
+  identifier = $1
+  and component = $2
+)","0.07393893197925959","25340.27682899923","342719"
+"select
+  message_uid,
+  is_deleted
+from message_mailbox
+where (
+  mailbox_id = cast($1 as uuid)
+  and message_uid >= $2
+  and message_uid <= $3
+)
+order by message_uid asc","0.8829055615615654","24402.62681599998","27639"
+"insert into quota_current_value (
+  identifier,
+  component,
+  type,
+  ""current_value""
+)
+values (
+  $1, 
+  $2, 
+  $3, 
+  $4
+)
+on conflict on constraint ""quota_current_value_primary_key""
+do update
+set
+  ""current_value"" = (""quota_current_value"".""current_value"" + $5)","0.09620462592697257","21119.993938999978","219532"
+"select *
+from message_mailbox
+where (
+  mailbox_id = cast($1 as uuid)
+  and is_recent = $2
+)
+order by message_uid asc","0.36819846626378827","18826.72397700015","51132"
+"update message_mailbox
+set
+  is_deleted = $1,
+  is_draft = $2,
+  is_flagged = $3,
+  is_answered = $4,
+  is_recent = $5,
+  is_seen = $6,
+  user_flags = cast($7 as varchar[]),
+  mod_seq = $8
+where (
+  mailbox_id = cast($9 as uuid)
+  and message_uid = $10
+)
+returning 
+  message_uid,
+  mod_seq,
+  size,
+  internal_date,
+  save_date,
+  message_id,
+  thread_id,
+  is_answered,
+  is_deleted,
+  is_draft,
+  is_flagged,
+  is_recent,
+  is_seen,
+  user_flags","0.8899842903581281","11307.250408999962","12705"
+"select *
+from quota_limit
+where (
+  quota_component = $1
+  and quota_scope = $2
+  and identifier = $3
+)","0.010825353559816233","11130.16304000004","1028157"
+"<insufficient privilege>","11058.752449","11058.752449","1"
+"insert into message (
+  message_id,
+  body_blob_id,
+  mime_type,
+  mime_subtype,
+  internal_date,
+  size,
+  body_start_octet,
+  textual_line_count,
+  content_description,
+  content_disposition_type,
+  content_id,
+  content_md5,
+  content_language,
+  content_location,
+  content_transfer_encoding,
+  content_type_parameters,
+  content_disposition_parameters,
+  attachment_metadata,
+  header_content
+)
+values (
+  cast($1 as uuid), 
+  $2, 
+  $3, 
+  $4, 
+  cast($5 as timestamp(6)), 
+  $6, 
+  $7, 
+  $8, 
+  $9, 
+  $10, 
+  $11, 
+  $12, 
+  cast($13 as varchar[]), 
+  $14, 
+  $15, 
+  cast($16 as hstore), 
+  cast($17 as hstore), 
+  $18, 
+  $19
+)","0.09418092212808613","10338.23982199994","109770"
+"select message_uid
+from message_mailbox
+where (
+  mailbox_id = cast($1 as uuid)
+  and is_seen = $2
+  and message_uid >= $3
+  and message_uid <= $4
+)
+order by message_uid asc","0.3734653737624665","10222.867675999987","27373"
+"select
+  message.message_id as message_id,
+  message.internal_date as internal_date,
+  message.size as size,
+  body_blob_id,
+  mime_type,
+  mime_subtype,
+  body_start_octet,
+  textual_line_count,
+  attachment_metadata,
+  mailbox_id,
+  message_uid,
+  mod_seq,
+  thread_id,
+  is_deleted,
+  is_answered,
+  is_draft,
+  is_flagged,
+  is_recent,
+  is_seen,
+  user_flags,
+  save_date,
+  header_content,
+  textual_line_count,
+  content_description,
+  content_location,
+  content_transfer_encoding,
+  content_disposition_type,
+  content_id,
+  content_md5,
+  content_language,
+  content_type_parameters,
+  content_disposition_parameters
+from message_mailbox
+  join message
+    on message_mailbox.message_id = message.message_id
+where message_mailbox.message_id in (cast($1 as uuid))","0.08837704386604284","9700.794596999962","109766"
+"select *
+from mailbox
+where (
+  mailbox_name like $1
+  and user_name = $2
+  and mailbox_namespace = $3
+)","0.3662941669812497","8732.819235000008","23841"
+"update mailbox
+set
+  mailbox_last_uid = (coalesce(
+    mailbox_last_uid,
+    $1
+  ) + $2),
+  mailbox_highest_modseq = (coalesce(
+    mailbox_highest_modseq,
+    $3
+  ) + $4)
+where mailbox_id = cast($5 as uuid)
+returning 
+  mailbox_last_uid,
+  mailbox_highest_modseq","0.07370021203289755","8092.2095809999855","109799"
+"update message_mailbox
+set
+  is_draft = $1,
+  is_flagged = $2,
+  is_answered = $3,
+  is_recent = $4,
+  is_seen = $5,
+  is_deleted = $6,
+  user_flags = cast($7 as varchar[]),
+  mod_seq = $8
+where (
+  mailbox_id = cast($9 as uuid)
+  and message_uid = $10
+)
+returning 
+  message_uid,
+  mod_seq,
+  size,
+  internal_date,
+  save_date,
+  message_id,
+  thread_id,
+  is_answered,
+  is_deleted,
+  is_draft,
+  is_flagged,
+  is_recent,
+  is_seen,
+  user_flags","0.8143554115431492","7351.186299999988","9027"
+"update mailbox
+set
+  mailbox_highest_modseq = (coalesce(
+    mailbox_highest_modseq,
+    $1
+  ) + $2)
+where mailbox_id = cast($3 as uuid)
+returning mailbox_highest_modseq","0.06985702301268534","5479.235600000001","78435"
+"<insufficient privilege>","32.1480786392405","5079.396425","158"
+"select exists (
+  select $2 as ""one""
+  from blob_id_list
+  where blob_id = $1
+)","0.033532543125751484","3680.9343239999794","109772"
+"select message_uid
+from message_mailbox
+where (
+  mailbox_id = cast($1 as uuid)
+  and is_deleted = $2
+)
+order by message_uid asc","0.16276607599235832","3067.1639360000104","18844"
+"select *
+from message_mailbox
+where (
+  mailbox_id = cast($1 as uuid)
+  and message_uid >= $2
+  and message_uid <= $3
+)
+order by message_uid asc","0.08792518239753881","2400.621255000017","27303"
+"select message_uid
+from message_mailbox
+where (
+  mailbox_id = cast($1 as uuid)
+  and is_seen = $2
+)
+order by message_uid asc
+fetch next $3 rows only","0.03560470136118297","1820.539589999976","51132"
+"<insufficient privilege>","10.51702210759494","1661.689493","158"
+"SELECT
+			 checkpoints_timed
+			 ,checkpoints_req
+			 ,checkpoint_write_time
+			 ,checkpoint_sync_time
+			 ,buffers_checkpoint
+			 ,buffers_clean
+			 ,maxwritten_clean
+			 ,buffers_backend
+			 ,buffers_backend_fsync
+			 ,buffers_alloc
+			 ,stats_reset
+		 FROM pg_stat_bgwriter","9.516844455696205","1503.6614240000004","158"
+"select *
+from subscription
+where user_name = $1","0.14620845940594074","1476.7054399999952","10100"
+"SELECT name, setting, COALESCE(unit, $1), short_desc, vartype FROM pg_settings WHERE vartype IN ($2, $3, $4) AND name != $5","3.2073591708860762","506.76274900000004","158"
+"WITH RECURSIVE sgs(state_group) AS (
+                    VALUES($1::bigint)
+                    UNION ALL
+                    SELECT prev_state_group FROM state_group_edges e, sgs s
+                    WHERE s.state_group = e.state_group
+                )
+                
+                        (
+                            SELECT DISTINCT ON (type, state_key)
+                                type, state_key, event_id
+                            FROM state_groups_state
+                            INNER JOIN sgs USING (state_group)
+                            WHERE (type = $2 AND state_key = $3)
+                            ORDER BY type, state_key, state_group DESC
+                        )
+                         UNION 
+                        (
+                            SELECT DISTINCT ON (type, state_key)
+                                type, state_key, event_id
+                            FROM state_groups_state
+                            INNER JOIN sgs USING (state_group)
+                            WHERE (type = $4 AND state_key = $5)
+                            ORDER BY type, state_key, state_group DESC
+                        )","0.4708431939655171","436.94248399999924","928"
+"WITH
+  metrics AS (
+    SELECT
+      application_name,
+      SUM(EXTRACT($1 FROM (CURRENT_TIMESTAMP - state_change))::bigint)::float AS process_seconds_sum,
+      COUNT(*) AS process_seconds_count
+    FROM pg_stat_activity
+    WHERE state = $2
+    GROUP BY application_name
+  ),
+  buckets AS (
+    SELECT
+      application_name,
+      le,
+      SUM(
+        CASE WHEN EXTRACT($3 FROM (CURRENT_TIMESTAMP - state_change)) <= le
+          THEN $4
+          ELSE $5
+        END
+      )::bigint AS bucket
+    FROM
+      pg_stat_activity,
+      UNNEST(ARRAY[$6, $7, $8, $9, $10, $11, $12, $13, $14]) AS le
+    GROUP BY application_name, le
+    ORDER BY application_name, le
+  )
+SELECT
+  application_name,
+  process_seconds_sum,
+  process_seconds_count,
+  ARRAY_AGG(le) AS process_seconds,
+  ARRAY_AGG(bucket) AS process_seconds_bucket
+FROM metrics JOIN buckets USING (application_name)
+GROUP BY 1, 2, 3","2.4912125632911413","393.611585","158"
+"select
+  mailbox_id,
+  mailbox_name,
+  mailbox_uid_validity,
+  user_name,
+  mailbox_namespace,
+  mailbox_last_uid,
+  mailbox_highest_modseq,
+  slice(
+    mailbox_acl,
+    array[$1]
+  ) as mailbox_acl
+from mailbox
+where (mailbox_acl ? $2)","0.015877086279937943","378.52561400000013","23841"
+"DELETE FROM presence_stream WHERE stream_id < $1 AND user_id = ANY(ARRAY[$2])","0.14132789661873288","363.6366779999993","2573"
+"SELECT
+  current_database() datname,
+  schemaname,
+  relname,
+  seq_scan,
+  seq_tup_read,
+  idx_scan,
+  idx_tup_fetch,
+  n_tup_ins,
+  n_tup_upd,
+  n_tup_del,
+  n_tup_hot_upd,
+  n_live_tup,
+  n_dead_tup,
+  n_mod_since_analyze,
+  COALESCE(last_vacuum, $1) as last_vacuum,
+  COALESCE(last_autovacuum, $2) as last_autovacuum,
+  COALESCE(last_analyze, $3) as last_analyze,
+  COALESCE(last_autoanalyze, $4) as last_autoanalyze,
+  vacuum_count,
+  autovacuum_count,
+  analyze_count,
+  autoanalyze_count
+FROM
+  pg_stat_user_tables","2.1416921708860777","338.38736300000016","158"
+"INSERT INTO ""sessions"" (""session_id"", ""persistent"", ""data"", ""created_at"", ""updated_at"") VALUES ($1, $2, $3, $4, $5) RETURNING ""id""","0.3147850327004218","298.41621100000043","948"
+"SELECT stream_id FROM cache_invalidation_stream_by_instance
+                WHERE stream_id <= $1 AND invalidation_ts <= $2
+                ORDER BY stream_id DESC
+                LIMIT $3","284.019818","284.019818","1"
+"SELECT current_database() datname, schemaname, relname, heap_blks_read, heap_blks_hit, idx_blks_read, idx_blks_hit, toast_blks_read, toast_blks_hit, tidx_blks_read, tidx_blks_hit FROM pg_statio_user_tables","1.7826910379746839","281.66518399999984","158"
+"BEGIN ISOLATION LEVEL REPEATABLE READ","0.01791133834938468","267.8103310000002","14952"
+"SELECT t.oid, t.typname, t.typelem, t.typdelim, t.typinput, r.rngsubtype, t.typtype, t.typbasetype
+FROM pg_type as t
+LEFT JOIN pg_range as r ON oid = rngtypid
+WHERE
+  t.typname IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40)","36.131942428571435","252.923597","7"
+"INSERT INTO stream_positions (stream_name, instance_name, stream_id)
+            VALUES ($1, $2, $3)
+            ON CONFLICT (stream_name, instance_name)
+            DO UPDATE SET
+                stream_id = GREATEST(stream_positions.stream_id, EXCLUDED.stream_id)","0.09332080113636368","246.3669149999999","2640"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)","0.09629705119999991","240.74262800000008","2500"
+"SELECT
+                event.event_id, event.instance_name,
+                event.topological_ordering, event.stream_ordering
+            FROM events AS event
+            
+            WHERE event.outlier = $1 AND event.room_id = $2 AND ($3 >= event.stream_ordering)
+            ORDER BY event.topological_ordering DESC,
+            event.stream_ordering DESC LIMIT $4","1.9517955470085473","228.36007899999996","117"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6,$7])
+                ) AS b using (room_id)","27.291715","218.33372","8"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6])
+                ) AS b using (room_id)","3.635706210526317","207.23525399999994","57"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99,$100,$101,$102,$103,$104,$105])","191.879156","191.879156","1"
+"<insufficient privilege>","0.013991464200298998","187.20579099999912","13380"
+"<insufficient privilege>","0.013095035052316868","175.2115690000001","13380"
+"<insufficient privilege>","0.012600297982062822","168.59198700000016","13380"
+"WITH RECURSIVE sgs(state_group) AS (
+                    VALUES($1::bigint)
+                    UNION ALL
+                    SELECT prev_state_group FROM state_group_edges e, sgs s
+                    WHERE s.state_group = e.state_group
+                )
+                
+                    SELECT DISTINCT ON (type, state_key)
+                        type, state_key, event_id
+                    FROM state_groups_state
+                    WHERE state_group IN (
+                        SELECT state_group FROM sgs
+                    ) 
+                    ORDER BY type, state_key, state_group DESC","1.068362724358974","166.66458499999996","156"
+"<insufficient privilege>","1.0113607531645565","159.79499899999988","158"
+"SELECT received_ts FROM events
+            WHERE stream_ordering <= $1
+            ORDER BY stream_ordering DESC
+            LIMIT $2","0.12680270598006643","152.67045799999983","1204"
+"<insufficient privilege>","144.78677000000002","144.78677000000002","1"
+"SELECT * FROM pg_stat_database","0.8394319240506325","132.63024400000006","158"
+"SELECT nextval($1) FROM generate_series($2, $3)","0.04974685028355381","131.5804189999999","2645"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6,$7,$8])
+                ) AS b using (room_id)","18.347121285714284","128.429849","7"
+"UPDATE room_forgetter_stream_pos SET stream_id = $1","0.091494293128655","125.16419300000003","1368"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20])","5.114498499999999","122.74796399999998","24"
+"INSERT INTO received_transactions (transaction_id, origin, response_code, response_json, ts) VALUES ($1, $2, $3, $4::bytea, $5) ON CONFLICT (transaction_id, origin) DO NOTHING","1.0465184324324321","116.163546","111"
+"<insufficient privilege>","115.269442","115.269442","1"
+"SELECT ""settings"".""updated_at"" FROM ""settings"" ORDER BY ""settings"".""updated_at"" DESC LIMIT $1","0.23742602972399152","111.82766","471"
+"SELECT ""permissions"".""name"" FROM ""permissions"" INNER JOIN ""permissions_roles"" ON ""permissions"".""id"" = ""permissions_roles"".""permission_id"" INNER JOIN ""roles"" ON ""permissions_roles"".""role_id"" = ""roles"".""id"" INNER JOIN ""roles_users"" ON ""roles"".""id"" = ""roles_users"".""role_id"" WHERE ""roles_users"".""user_id"" = $1 AND ""roles"".""active"" = $2 AND ""permissions"".""active"" = $3","0.11629040569020023","110.359595","949"
+"SELECT t1.c, t2.c
+                FROM (
+                    SELECT room_id, COUNT(*) c FROM event_forward_extremities
+                    GROUP BY room_id
+                ) t1 LEFT JOIN (
+                    SELECT room_id, COUNT(*) c FROM current_state_events
+                    GROUP BY room_id
+                ) t2 ON t1.room_id = t2.room_id","109.430964","109.430964","1"
+"SET default_transaction_isolation TO DEFAULT","0.009583615412347889","106.33021299999997","11095"
+"SELECT media_id FROM local_media_repository_url_cache WHERE expires_ts < $1 ORDER BY expires_ts ASC LIMIT $2","0.04341823509513739","102.68412599999992","2365"
+"SELECT *,
+				extract($1 from now() - last_archived_time) AS last_archive_age
+			FROM pg_stat_archiver","0.6250465569620257","98.75735599999997","158"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6,$7,$8,$9,$10,$11])
+                ) AS b using (room_id)","98.45474999999999","98.45474999999999","1"
+"<insufficient privilege>","0.6177890063291146","97.610663","158"
+"<insufficient privilege>","0.6140274873417721","97.016343","158"
+"SELECT pg_database.datname,tmp.mode,COALESCE(count,$1) as count
+			FROM
+				(
+				  VALUES ($2),
+				         ($3),
+				         ($4),
+				         ($5),
+				         ($6),
+				         ($7),
+				         ($8),
+				         ($9),
+					 ($10)
+				) AS tmp(mode) CROSS JOIN pg_database
+			LEFT JOIN
+			  (SELECT database, lower(mode) AS mode,count(*) AS count
+			  FROM pg_locks WHERE database IS NOT NULL
+			  GROUP BY database, lower(mode)
+			) AS tmp2
+			ON tmp.mode=tmp2.mode and pg_database.oid = tmp2.database ORDER BY 1","0.6073102911392405","95.95502599999993","158"
+"SELECT * FROM (
+                    SELECT instance_name, stream_ordering, topological_ordering, event_id
+                    FROM events
+                    LEFT JOIN rejections USING (event_id)
+                    WHERE room_id = $1
+                        
+                        AND $2 < stream_ordering AND stream_ordering <= $3
+                        AND NOT outlier
+                        AND rejections.event_id IS NULL
+                    ORDER BY stream_ordering DESC
+                ) AS a
+                UNION ALL
+                SELECT * FROM (
+                    SELECT instance_name, stream_ordering, topological_ordering, event_id
+                    FROM events
+                    LEFT JOIN rejections USING (event_id)
+                    WHERE room_id = $4
+                        
+                        AND stream_ordering <= $5
+                        AND NOT outlier
+                        AND rejections.event_id IS NULL
+                    ORDER BY stream_ordering DESC
+                    LIMIT $6
+                ) AS b
+                ORDER BY stream_ordering DESC","0.7685066416666668","92.22079700000003","120"
+"SELECT stream_id, user_id, state, last_active_ts,
+                    last_federation_update_ts, last_user_sync_ts,
+                    status_msg, currently_active
+                FROM presence_stream
+                WHERE $1 < stream_id AND stream_id <= $2
+                ORDER BY stream_id ASC
+                LIMIT $3","0.03468704604261788","91.15755699999987","2628"
+"SELECT e.event_id, e.room_id, e.type, se.state_key, r.reason
+                FROM events AS e
+                LEFT JOIN state_events se USING (event_id)
+                LEFT JOIN rejections r USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1])","0.7460177606837605","87.28407800000004","117"
+"<insufficient privilege>","0.5441991835443037","85.983471","158"
+"SELECT
+				pg_database.datname,
+				tmp.state,
+				COALESCE(count,$1) as count,
+				COALESCE(max_tx_duration,$2) as max_tx_duration
+			FROM
+				(
+				  VALUES ($3),
+				  		 ($4),
+				  		 ($5),
+				  		 ($6),
+				  		 ($7),
+				  		 ($8)
+				) AS tmp(state) CROSS JOIN pg_database
+			LEFT JOIN
+			(
+				SELECT
+					datname,
+					state,
+					count(*) AS count,
+					MAX(EXTRACT($9 FROM now() - xact_start))::float AS max_tx_duration
+				FROM pg_stat_activity GROUP BY datname,state) AS tmp2
+				ON tmp.state = tmp2.state AND pg_database.datname = tmp2.datname","0.5433820189873416","85.85435900000004","158"
+"SELECT ""users"".* FROM ""users"" INNER JOIN ""roles_users"" ON ""roles_users"".""user_id"" = ""users"".""id"" INNER JOIN ""roles"" ON ""roles"".""id"" = ""roles_users"".""role_id"" INNER JOIN ""permissions_roles"" ON ""permissions_roles"".""role_id"" = ""roles"".""id"" INNER JOIN ""permissions"" ON ""permissions"".""id"" = ""permissions_roles"".""permission_id"" INNER JOIN ""groups_users"" ON ""groups_users"".""user_id"" = ""users"".""id"" WHERE ""roles"".""active"" = $1 AND ""permissions"".""name"" IN ($2, $3) AND ""permissions"".""active"" = $4 AND ""groups_users"".""group_id"" = $5 AND ""groups_users"".""access"" = $6 AND ""users"".""active"" = $7","5.422933466666667","81.34400199999999","15"
+"SELECT * FROM pg_stat_database_conflicts","0.48868153164556954","77.21168199999997","158"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36])","76.91615","76.91615","1"
+"SELECT ""schedulers"".* FROM ""schedulers"" WHERE ""schedulers"".""active"" = $1 ORDER BY ""schedulers"".""prio"" ASC","0.16069061324786338","75.20320700000002","468"
+"<insufficient privilege>","0.47478370886075943","75.015826","158"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99,$100,$101,$102,$103,$104,$105,$106,$107,$108,$109,$110,$111,$112,$113])","74.67258100000001","74.67258100000001","1"
+"<insufficient privilege>","0.46596439873417766","73.622375","158"
+"SELECT ""settings"".""name"", ""settings"".""state_current"" FROM ""settings"" WHERE (updated_at >= $1) ORDER BY ""settings"".""id"" ASC","0.15025675159235685","70.77092999999999","471"
+"INSERT INTO user_ips (user_id, access_token, ip, user_agent, device_id, last_seen) VALUES ($1,$2,$3,$4,$5,$6) ON CONFLICT (user_id, access_token, ip) DO UPDATE SET user_agent=EXCLUDED.user_agent, device_id=EXCLUDED.device_id, last_seen=EXCLUDED.last_seen","0.4956365915492956","70.38039600000003","142"
+"INSERT INTO user_daily_visits (user_id, device_id, timestamp, user_agent)
+                    SELECT u.user_id, u.device_id, $1, MAX(u.user_agent)
+                    FROM user_ips AS u
+                    LEFT JOIN (
+                      SELECT user_id, device_id, timestamp FROM user_daily_visits
+                      WHERE timestamp = $2
+                    ) udv
+                    ON u.user_id = udv.user_id AND u.device_id=udv.device_id
+                    INNER JOIN users ON users.name=u.user_id
+                    WHERE $3 <= last_seen AND last_seen < $4
+                    AND udv.timestamp IS NULL AND users.is_guest=$5
+                    AND users.appservice_id IS NULL
+                    GROUP BY u.user_id, u.device_id","4.2868","68.5888","16"
+"DELETE FROM stream_ordering_to_exterm
+                WHERE stream_ordering < $1","66.715202","66.715202","1"
+"<insufficient privilege>","0.41469983544303807","65.52257400000002","158"
+"<insufficient privilege>","0.4104394367088608","64.84943100000002","158"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17])","9.151172714285714","64.058209","7"
+"<insufficient privilege>","0.38591684810126575","60.974861999999995","158"
+"SELECT COUNT(*) FROM (
+                SELECT user_id FROM user_ips
+                WHERE last_seen > $1
+                GROUP BY user_id
+            ) u","3.728547875","59.656766","16"
+"SELECT media_id FROM local_media_repository WHERE created_ts < $1 AND url_cache IS NOT NULL ORDER BY created_ts ASC LIMIT $2","0.025000700634249463","59.12665700000003","2365"
+"SELECT *,
+				(case pg_is_in_recovery() when $1 then $2 else pg_current_wal_lsn() end) AS pg_current_wal_lsn,
+				(case pg_is_in_recovery() when $3 then $4 else pg_wal_lsn_diff(pg_current_wal_lsn(), pg_lsn($5))::float end) AS pg_current_wal_lsn_bytes,
+				(case pg_is_in_recovery() when $6 then $7 else pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn)::float end) AS pg_wal_lsn_diff
+			FROM pg_stat_replication","0.3729863860759493","58.931848999999985","158"
+"SELECT room_id FROM current_state_events WHERE type = $1 AND membership = $2 AND state_key = $3","1.5695297567567568","58.072601","37"
+"<insufficient privilege>","0.35867502531645556","56.67065399999998","158"
+"SELECT value,active FROM hashes","9.226791333333335","55.360748","6"
+"WITH pdu_destinations AS (
+            SELECT DISTINCT destination FROM destination_rooms
+            LEFT JOIN destinations USING (destination)
+            WHERE
+                destination > $1
+                AND destination_rooms.stream_ordering > COALESCE(destinations.last_successful_stream_ordering, $2)
+                AND (
+                    destinations.retry_last_ts IS NULL OR
+                    destinations.retry_last_ts + destinations.retry_interval < $3
+                )
+            ORDER BY destination
+            LIMIT $4
+        ), to_device_destinations AS (
+            SELECT DISTINCT destination FROM device_federation_outbox
+            LEFT JOIN destinations USING (destination)
+            WHERE
+               destination > $5
+               AND (
+                    destinations.retry_last_ts IS NULL OR
+                    destinations.retry_last_ts + destinations.retry_interval < $6
+               )
+            ORDER BY destination
+            LIMIT $7
+        )
+
+        SELECT destination FROM pdu_destinations
+        UNION SELECT destination FROM to_device_destinations
+            ORDER BY destination
+            LIMIT $8","0.3353579554140127","52.65119899999999","157"
+"SELECT ""settings"".* FROM ""settings"" WHERE ""settings"".""area"" = $1 ORDER BY ""settings"".""name"" ASC","0.052400188992731044","50.46138199999999","963"
+"WITH RECURSIVE sgs(state_group) AS (
+                    VALUES($1::bigint)
+                    UNION ALL
+                    SELECT prev_state_group FROM state_group_edges e, sgs s
+                    WHERE s.state_group = e.state_group
+                )
+                
+                        (
+                            SELECT DISTINCT ON (type, state_key)
+                                type, state_key, event_id
+                            FROM state_groups_state
+                            INNER JOIN sgs USING (state_group)
+                            WHERE (type = $2 AND state_key = $3)
+                            ORDER BY type, state_key, state_group DESC
+                        )
+                         UNION 
+                        (
+                            SELECT DISTINCT ON (type, state_key)
+                                type, state_key, event_id
+                            FROM state_groups_state
+                            INNER JOIN sgs USING (state_group)
+                            WHERE (type = $4 AND state_key = $5)
+                            ORDER BY type, state_key, state_group DESC
+                        )
+                         UNION 
+                        (
+                            SELECT DISTINCT ON (type, state_key)
+                                type, state_key, event_id
+                            FROM state_groups_state
+                            INNER JOIN sgs USING (state_group)
+                            WHERE (type = $6 AND state_key = $7)
+                            ORDER BY type, state_key, state_group DESC
+                        )","24.6337105","49.267421","2"
+"SELECT room_id, e.sender, c.membership, event_id, e.instance_name, e.stream_ordering, r.room_version
+            FROM local_current_membership AS c
+            INNER JOIN events AS e USING (room_id, event_id)
+            INNER JOIN rooms AS r USING (room_id)
+            WHERE
+                user_id = $1
+                AND c.membership = ANY(ARRAY[$2,$3,$4,$5,$6])","8.1831205","49.098723","6"
+"BEGIN ISOLATION LEVEL READ COMMITTED","0.017188709505703424","45.20630600000006","2630"
+"<insufficient privilege>","0.10645942243436753","44.606498","419"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24])","44.185726","44.185726","1"
+"SELECT MAX(stream_ordering) FROM events","0.5151840124999999","41.214721","80"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11])","6.847705833333334","41.086235","6"
+"DELETE FROM worker_read_write_locks
+                WHERE last_renewed_ts < $1","0.020416665314401613","40.26166400000001","1972"
+"<insufficient privilege>","0.25054980379746844","39.586869","158"
+"INSERT INTO syncv3_events (event_id, event, event_type, state_key, room_id, membership, prev_batch, is_state, missing_previous)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        ON CONFLICT (event_id) DO NOTHING
+        RETURNING event_id, event_nid","19.442183","38.884366","2"
+"SELECT user_id, device_id, stream_id, opentracing_context FROM device_lists_outbound_pokes
+            WHERE destination = $1 AND $2 < stream_id AND stream_id <= $3
+            ORDER BY stream_id
+            LIMIT $4","0.048984742385786866","38.59997700000003","788"
+"SELECT ""channels"".* FROM ""channels"" WHERE (active = $1 AND area LIKE $2)","0.23942603821656036","37.58988800000001","157"
+"INSERT INTO worker_read_write_locks (lock_name, lock_key, write_lock, instance_name, token, last_renewed_ts) VALUES($1, $2, $3, $4, $5, $6)","9.3847285","37.538914000000005","4"
+"<insufficient privilege>","0.2374672151898734","37.51982","158"
+"<insufficient privilege>","0.0883544652278177","36.84381200000001","417"
+"DELETE FROM event_push_actions_staging WHERE event_id IN (
+                SELECT event_id FROM event_push_actions_staging WHERE
+                inserted_ts < $1 OR inserted_ts IS NULL
+                LIMIT $2
+            )","12.004969","36.014907","3"
+"SELECT room_id FROM event_forward_extremities
+                WHERE $1=$2
+                GROUP BY room_id
+                HAVING count(*) > $3
+                ORDER BY count(*) DESC
+                LIMIT $4","2.2343232499999996","35.749172","16"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15])","5.950653666666668","35.703922","6"
+"SELECT ""tickets"".* FROM ""tickets"" WHERE (escalation_at <= $2) ORDER BY ""tickets"".""id"" ASC LIMIT $1","2.3606064000000004","35.409096","15"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17])","1.9641475","35.35465500000001","18"
+"<insufficient privilege>","0.22188750632911391","35.05822599999998","158"
+"SELECT stream_id, instance_name, room_id, receipt_type,
+                        user_id, event_id, thread_id, data
+                    FROM receipts_linearized WHERE
+                    stream_id > $1 AND stream_id <= $2 AND
+                room_id = ANY(ARRAY[$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15])","5.635813499999999","33.81488100000001","6"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31])","33.639103","33.639103","1"
+"COMMIT","0.0018784620634740051","33.02712000000004","17582"
+"SELECT ""users"".* FROM ""users"" WHERE ""users"".""id"" = $1 LIMIT $2","0.034176934647302926","32.946564999999964","964"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16])","5.267924833333334","31.607549000000002","6"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14])","31.288552999999997","31.288552999999997","1"
+"<insufficient privilege>","0.19648825316455693","31.045144","158"
+"<insufficient privilege>","0.19608335443037975","30.98117","158"
+"UPDATE devices SET user_agent = $1, last_seen = $2, ip = $3 WHERE user_id = $4 AND device_id = $5","0.19968127922077938","30.75091700000001","154"
+"<insufficient privilege>","0.19014173417721508","30.042394000000026","158"
+"SELECT coalesce(max(stream_id), $1) as stream_id
+                FROM device_lists_outbound_last_success
+                WHERE destination = $2 AND user_id = $3 AND stream_id <= $4","0.03791444416243659","29.87658199999998","788"
+"SELECT response_code, response_json FROM received_transactions WHERE transaction_id = $1 AND origin = $2","0.2634130000000001","29.238842999999996","111"
+"<insufficient privilege>","0.18409105696202535","29.086387","158"
+"<insufficient privilege>","0.181447911392405","28.668770000000006","158"
+"WITH RECURSIVE sgs(state_group) AS (
+                    VALUES($1::bigint)
+                    UNION ALL
+                    SELECT prev_state_group FROM state_group_edges e, sgs s
+                    WHERE s.state_group = e.state_group
+                )
+                
+                        (
+                            SELECT DISTINCT ON (type, state_key)
+                                type, state_key, event_id
+                            FROM state_groups_state
+                            INNER JOIN sgs USING (state_group)
+                            WHERE (type = $2 AND state_key = $3)
+                            ORDER BY type, state_key, state_group DESC
+                        )","9.063944666666666","27.191834","3"
+"SELECT stream_id, messages_json FROM device_federation_outbox WHERE destination = $1 AND $2 < stream_id AND stream_id <= $3 ORDER BY stream_id ASC LIMIT $4","0.03776064315937939","26.772295999999987","709"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19])","4.420869499999999","26.525217","6"
+"WITH RECURSIVE links(chain_id) AS (
+                SELECT
+                    DISTINCT origin_chain_id
+                FROM event_auth_chain_links WHERE origin_chain_id = ANY(ARRAY[$1,$2,$3,$4])
+                UNION
+                SELECT
+                    target_chain_id
+                FROM event_auth_chain_links
+                INNER JOIN links ON (chain_id = origin_chain_id)
+            )
+            SELECT
+                origin_chain_id, origin_sequence_number,
+                target_chain_id, target_sequence_number
+            FROM links
+            INNER JOIN event_auth_chain_links ON (chain_id = origin_chain_id)","26.175089","26.175089","1"
+"SELECT event_id, event_stream_ordering
+            FROM receipts_linearized
+            WHERE receipt_type = ANY(ARRAY[$1,$2])
+            AND user_id = $3
+            AND room_id = $4
+            AND thread_id IS NULL
+            ORDER BY event_stream_ordering DESC
+            LIMIT $5","0.3010770714285714","25.290474000000007","84"
+"SELECT session_id FROM ui_auth_sessions WHERE creation_time <= $1","1.5721761874999995","25.154819","16"
+"SELECT data from lmConfig WHERE cfgNum=$1","3.081969375000001","24.655755000000003","8"
+"<insufficient privilege>","0.15498220886075942","24.487189","158"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20])","6.038280250000001","24.153121000000002","4"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11])","2.6637351111111114","23.973616000000003","9"
+"INSERT INTO device_lists_changes_in_room (user_id, device_id, room_id, stream_id, instance_name, converted_to_destinations, opentracing_context) VALUES ($1,$2,$3,$4,$5,$6,$7),($8,$9,$10,$11,$12,$13,$14),($15,$16,$17,$18,$19,$20,$21),($22,$23,$24,$25,$26,$27,$28),($29,$30,$31,$32,$33,$34,$35)","4.7424992","23.712496","5"
+"<insufficient privilege>","0.005348870689655185","23.577822","4408"
+"SELECT notif_count, COALESCE(unread_count, $1), thread_id
+                FROM event_push_summary
+                LEFT JOIN (
+                    SELECT thread_id, MAX(event_stream_ordering) AS threaded_receipt_stream_ordering
+                    FROM receipts_linearized
+                    WHERE
+                        user_id = $2
+                        AND room_id = $3
+                        AND event_stream_ordering > $4
+                        AND receipt_type = ANY(ARRAY[$5,$6])
+                    GROUP BY thread_id
+                ) AS receipts USING (thread_id)
+                WHERE room_id = $7 AND user_id = $8
+                AND (
+                    (last_receipt_stream_ordering IS NULL AND stream_ordering > COALESCE(threaded_receipt_stream_ordering, $9))
+                    OR last_receipt_stream_ordering = COALESCE(threaded_receipt_stream_ordering, $10)
+                ) AND (notif_count != $11 OR COALESCE(unread_count, $12) != $13)","0.2768989642857143","23.259513","84"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9])","23.232198","23.232198","1"
+"SELECT count(*) FROM federation_inbound_events_staging","0.029144257287705946","22.994819000000003","789"
+"delete from OFFLINE_CLIENT_SESSION where USER_SESSION_ID in (select puse1_0.USER_SESSION_ID from OFFLINE_USER_SESSION puse1_0 where puse1_0.REALM_ID=$1 and puse1_0.OFFLINE_FLAG=$2 and puse1_0.LAST_SESSION_REFRESH<$3)","2.2950998","22.950997999999995","10"
+"SELECT t.oid, t.typname, t.typelem, t.typdelim, t.typinput, r.rngsubtype, t.typtype, t.typbasetype
+FROM pg_type as t
+LEFT JOIN pg_range as r ON oid = rngtypid
+WHERE
+  t.typelem IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48)","3.253648","22.775536","7"
+"SELECT t.oid, t.typname, t.typelem, t.typdelim, t.typinput, r.rngsubtype, t.typtype, t.typbasetype
+FROM pg_type as t
+LEFT JOIN pg_range as r ON oid = rngtypid
+WHERE
+  t.typtype IN ($1, $2, $3)","3.243042571428571","22.701298","7"
+"DELETE FROM ""sessions"" WHERE ""sessions"".""id"" = $1","0.031160741666666616","22.435734000000032","720"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9])","3.731706","22.390236","6"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9])","1.236599611111111","22.258793","18"
+"SELECT user_id FROM device_lists_remote_resync WHERE user_id = ANY(ARRAY[$1])","0.023478789862724374","22.234414000000015","947"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12])","1.803573416666667","21.642881000000006","12"
+"select exists (
+  select $1 as ""one""
+  from event_dead_letters
+)","0.13588329559748435","21.605444000000006","159"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14])","3.512831333333333","21.076988","6"
+"UPDATE ""delayed_jobs"" SET locked_at = $1, locked_by = $2 WHERE id IN (SELECT ""delayed_jobs"".""id"" FROM ""delayed_jobs"" WHERE (((run_at <= $3 AND (locked_at IS NULL OR locked_at < $4)) OR locked_by = $5) AND failed_at IS NULL) ORDER BY priority ASC, run_at ASC LIMIT $6 FOR UPDATE) RETURNING *","0.017363719729043197","20.506552999999986","1181"
+"UPDATE ""schedulers"" SET ""last_run"" = $1, ""updated_at"" = $2 WHERE ""schedulers"".""id"" = $3","0.10893626063829784","20.48001700000002","188"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1])","0.7947959600000002","19.869899","25"
+"SELECT user_id, device_id, d.display_name, k.key_json
+                    FROM devices d
+                    LEFT JOIN e2e_device_keys_json k USING (user_id, device_id)
+                    WHERE (user_id,device_id) IN (VALUES ($1,$2)) AND NOT d.hidden","0.027312878702397778","19.364830999999995","709"
+"SELECT MAX(stream_id) FROM (
+                    SELECT stream_id FROM device_inbox
+                    WHERE user_id = $1 AND device_id = $2
+                        AND $3 < stream_id AND stream_id <= $4
+                    ORDER BY stream_id
+                    LIMIT $5
+                ) AS d","0.656816357142857","18.390858","28"
+"SELECT DISTINCT room_id FROM federation_inbound_events_staging","0.057395648734177254","18.13702499999999","316"
+"SELECT * FROM scheduled_tasks WHERE status = ANY(ARRAY[$1]) ORDER BY timestamp LIMIT $2","0.2296511025641026","17.912786000000008","78"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13])","1.967079888888889","17.703718999999996","9"
+"SELECT DISTINCT ON (parent.event_id) parent.event_id, child.event_id FROM events AS child
+                    INNER JOIN event_relations USING (event_id)
+                    INNER JOIN events AS parent ON
+                        parent.event_id = relates_to_id
+                        AND parent.room_id = child.room_id
+                    WHERE
+                        relates_to_id = ANY(ARRAY[$1,$2])
+                        AND relation_type = $3
+                    ORDER BY parent.event_id, child.topological_ordering DESC, child.stream_ordering DESC","0.7269941249999999","17.447858999999998","24"
+"SELECT redactions.event_id, redacts FROM redactions
+            LEFT JOIN events AS original_event ON (
+                redacts = original_event.event_id
+            )
+            WHERE NOT have_censored
+            AND redactions.received_ts <= $1
+            ORDER BY redactions.received_ts ASC
+            LIMIT $2","1.0710303749999999","17.136485999999998","16"
+"DELETE FROM received_transactions WHERE ts < $1","5.701102333333333","17.103307","3"
+"SELECT ""users"".* FROM ""users"" WHERE ""users"".""id"" IS NULL LIMIT $1","0.01784899578503687","16.938697000000005","949"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8])","0.9391767222222221","16.905181000000002","18"
+"SELECT oid, * FROM pg_catalog.pg_type WHERE typname IN ($1,$2,$3)","0.5597759333333333","16.793278","30"
+"SELECT ""email_addresses"".* FROM ""email_addresses""","0.10598778343949047","16.640081999999992","157"
+"INSERT INTO events (instance_name, stream_ordering, topological_ordering, depth, event_id, room_id, type, processed, outlier, origin_server_ts, received_ts, sender, contains_url, state_key, rejection_reason) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)","8.154198","16.308396","2"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15])","1.8041026666666666","16.236924","9"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17])","2.681261333333333","16.087568","6"
+"UPDATE ""schedulers"" SET ""last_run"" = $1, ""pid"" = $2, ""updated_at"" = $3 WHERE ""schedulers"".""id"" = $4","0.44308036111111115","15.950893000000002","36"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4])","3.914777000000001","15.659108000000002","4"
+"select *
+from mail_repository_url","0.09793371698113208","15.571461000000005","159"
+"DELETE FROM user_ips
+            WHERE last_seen IN (
+                SELECT last_seen FROM user_ips
+                WHERE last_seen <= $1
+                ORDER BY last_seen ASC
+                LIMIT $2
+            )","0.015914038014783558","15.070594000000014","947"
+"SELECT ""groups"".* FROM ""groups"" WHERE ""groups"".""active"" = $1 AND (assignment_timeout IS NOT NULL AND groups.assignment_timeout != $2)","1.882365","15.058919999999999","8"
+"SELECT event_nid, room_id, event FROM syncv3_events
+		WHERE event_nid > $1 AND event_nid <= $2 AND event_type = $3 AND state_key = $4
+		ORDER BY event_nid ASC","7.26572","14.53144","2"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3])","7.2612575","14.522515","2"
+"SELECT user_id, room_id, thread_id,
+                coalesce(old.unread_count, $1) + upd.cnt,
+                upd.stream_ordering
+            FROM (
+                SELECT user_id, room_id, thread_id, count(*) as cnt,
+                    max(ea.stream_ordering) as stream_ordering
+                FROM event_push_actions AS ea
+                LEFT JOIN event_push_summary AS old USING (user_id, room_id, thread_id)
+                WHERE $2 < ea.stream_ordering AND ea.stream_ordering <= $3
+                    AND (
+                        old.last_receipt_stream_ordering IS NULL
+                        OR old.last_receipt_stream_ordering < ea.stream_ordering
+                    )
+                    AND unread = $4
+                GROUP BY user_id, room_id, thread_id
+            ) AS upd
+            LEFT JOIN event_push_summary AS old USING (user_id, room_id, thread_id)","0.09109391082802548","14.301744000000003","157"
+"INSERT INTO event_edges (event_id, prev_event_id) VALUES ($1,$2)","7.033248500000001","14.066497000000002","2"
+"UPDATE ""channels"" SET ""preferences"" = $1, ""updated_at"" = $2 WHERE ""channels"".""id"" = $3","0.0886126624203821","13.912187999999993","157"
+"<insufficient privilege>","0.03326206954436448","13.87028299999999","417"
+"SELECT event_id FROM local_current_membership WHERE room_id = $1 AND user_id = $2","0.22286136666666667","13.371682000000007","60"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12])","1.9069207142857143","13.348444999999998","7"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2])","1.899167142857143","13.29417","7"
+"INSERT INTO cache_invalidation_stream_by_instance (stream_id, instance_name, cache_func, keys, invalidation_ts) VALUES($1, $2, $3, $4, $5)","6.5351925","13.070385","2"
+"SELECT $5 AS one FROM ""histories"" WHERE ""histories"".""history_type_id"" = $1 AND ""histories"".""history_object_id"" = $2 AND ""histories"".""o_id"" = $3 AND (created_at > $6) AND (value_to LIKE $7) LIMIT $4","0.42848466666666657","12.85454","30"
+"SELECT ""tickets"".* FROM ""tickets"" WHERE ""tickets"".""id"" = $1 LIMIT $2","0.42815710000000007","12.844713000000004","30"
+"SELECT ""ticket_articles"".* FROM ""ticket_articles"" WHERE (ticket_id = $2 AND sender_id NOT IN ($3)) ORDER BY ""ticket_articles"".""created_at"" DESC LIMIT $1","0.4203203000000001","12.609608999999999","30"
+"SELECT device_id, content FROM device_lists_remote_cache WHERE user_id = $1","1.5489547500000003","12.391638","8"
+"SELECT min(received_ts) FROM federation_inbound_events_staging","0.015650930291508217","12.348584000000011","789"
+"SELECT account_data_type, content FROM account_data
+                WHERE user_id = $1","2.0570236666666664","12.342142","6"
+"UPDATE event_push_summary_stream_ordering SET stream_ordering = $1","0.07774819108280254","12.206465999999999","157"
+"UPDATE event_push_summary_last_receipt_stream_id SET stream_id = $1","0.07659649681528659","12.025649999999999","157"
+"UPDATE syncv3_sync2_devices SET since = $1 WHERE user_id = $2 AND device_id = $3","0.07433648717948717","11.596492","156"
+"SELECT user_id, device_id, d.display_name, k.key_json
+                    FROM devices d
+                    LEFT JOIN e2e_device_keys_json k USING (user_id, device_id)
+                    WHERE (user_id,device_id) IN (VALUES ($1,$2),($3,$4),($5,$6),($7,$8)) AND NOT d.hidden","0.14406084810126585","11.380807","79"
+"SELECT DISTINCT ON (parent.event_id) parent.event_id, child.event_id FROM events AS child
+                    INNER JOIN event_relations USING (event_id)
+                    INNER JOIN events AS parent ON
+                        parent.event_id = relates_to_id
+                        AND parent.room_id = child.room_id
+                    WHERE
+                        relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7])
+                        AND relation_type = $8
+                    ORDER BY parent.event_id, child.topological_ordering DESC, child.stream_ordering DESC","1.8567303333333331","11.140381999999999","6"
+"INSERT INTO stream_ordering_to_exterm (room_id, event_id, stream_ordering) VALUES ($1,$2,$3)","5.518807000000001","11.037614000000001","2"
+"<insufficient privilege>","0.013200436450839334","11.009164","834"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30])","3.543236666666667","10.62971","3"
+"SELECT ""ticket_article_senders"".* FROM ""ticket_article_senders"" WHERE ""ticket_article_senders"".""id"" = $1 LIMIT $2","0.6850775333333333","10.276162999999999","15"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1])","0.4097786799999999","10.244466999999998","25"
+"SELECT stream_ordering FROM event_push_summary_stream_ordering","0.018250052252252243","10.128779","555"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19])","1.1247744444444443","10.12297","9"
+"INSERT INTO device_lists_changes_in_room (user_id, device_id, room_id, stream_id, instance_name, converted_to_destinations, opentracing_context) VALUES ($1,$2,$3,$4,$5,$6,$7),($8,$9,$10,$11,$12,$13,$14),($15,$16,$17,$18,$19,$20,$21),($22,$23,$24,$25,$26,$27,$28),($29,$30,$31,$32,$33,$34,$35),($36,$37,$38,$39,$40,$41,$42),($43,$44,$45,$46,$47,$48,$49),($50,$51,$52,$53,$54,$55,$56),($57,$58,$59,$60,$61,$62,$63),($64,$65,$66,$67,$68,$69,$70),($71,$72,$73,$74,$75,$76,$77),($78,$79,$80,$81,$82,$83,$84),($85,$86,$87,$88,$89,$90,$91),($92,$93,$94,$95,$96,$97,$98),($99,$100,$101,$102,$103,$104,$105),($106,$107,$108,$109,$110,$111,$112),($113,$114,$115,$116,$117,$118,$119),($120,$121,$122,$123,$124,$125,$126),($127,$128,$129,$130,$131,$132,$133),($134,$135,$136,$137,$138,$139,$140),($141,$142,$143,$144,$145,$146,$147),($148,$149,$150,$151,$152,$153,$154),($155,$156,$157,$158,$159,$160,$161),($162,$163,$164,$165,$166,$167,$168),($169,$170,$171,$172,$173,$174,$175),($176,$177,$178,$179,$180,$181,$182),($183,$184,$185,$186,$187,$188,$189),($190,$191,$192,$193,$194,$195,$196),($197,$198,$199,$200,$201,$202,$203),($204,$205,$206,$207,$208,$209,$210),($211,$212,$213,$214,$215,$216,$217),($218,$219,$220,$221,$222,$223,$224),($225,$226,$227,$228,$229,$230,$231),($232,$233,$234,$235,$236,$237,$238),($239,$240,$241,$242,$243,$244,$245),($246,$247,$248,$249,$250,$251,$252),($253,$254,$255,$256,$257,$258,$259),($260,$261,$262,$263,$264,$265,$266),($267,$268,$269,$270,$271,$272,$273),($274,$275,$276,$277,$278,$279,$280),($281,$282,$283,$284,$285,$286,$287),($288,$289,$290,$291,$292,$293,$294),($295,$296,$297,$298,$299,$300,$301),($302,$303,$304,$305,$306,$307,$308),($309,$310,$311,$312,$313,$314,$315),($316,$317,$318,$319,$320,$321,$322),($323,$324,$325,$326,$327,$328,$329),($330,$331,$332,$333,$334,$335,$336),($337,$338,$339,$340,$341,$342,$343),($344,$345,$346,$347,$348,$349,$350),($351,$352,$353,$354,$355,$356,$357),($358,$359,$360,$361,$362,$363,$364),($365,$366,$367,$368,$369,$370,$371),($372,$373,$374,$375,$376,$377,$378),($379,$380,$381,$382,$383,$384,$385)","10.035017999999999","10.035017999999999","1"
+"select distinct re1_0.EVENTS_EXPIRATION from REALM re1_0 where re1_0.EVENTS_EXPIRATION>$1","2.0069986","10.034992999999998","5"
+"SELECT ""history_objects"".* FROM ""history_objects"" WHERE ""history_objects"".""name"" = $1 LIMIT $2","0.6636902","9.955353000000004","15"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14])","1.1048657777777777","9.943792000000002","9"
+"SELECT event_id, events.type, se.state_key, chain_id, sequence_number
+                FROM events
+                INNER JOIN state_events AS se USING (event_id)
+                LEFT JOIN event_auth_chains USING (event_id)
+                WHERE
+            event_id = ANY(ARRAY[$1,$2,$3])","9.797702000000001","9.797702000000001","1"
+"SELECT event_nid, event_id, event_type, state_key, room_id, before_state_snapshot_id FROM syncv3_events
+	WHERE event_nid = ANY ($1) ORDER BY event_nid ASC","9.764816000000001","9.764816000000001","1"
+"INSERT INTO syncv3_snapshots(room_id, events, membership_events) VALUES($1, $2, $3) RETURNING snapshot_id","9.565252","9.565252","1"
+"SELECT id FROM state_groups WHERE id = $1","9.531258000000001","9.531258000000001","1"
+"SELECT thumbnail_width, thumbnail_height, thumbnail_method, thumbnail_type, thumbnail_length FROM remote_media_cache_thumbnails WHERE media_origin = $1 AND media_id = $2","4.7207740000000005","9.441548000000001","2"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99])","9.430055999999999","9.430055999999999","1"
+"SELECT slot_name, database, active, pg_wal_lsn_diff(pg_current_wal_lsn(), restart_lsn)
+			FROM pg_replication_slots","0.05901283544303798","9.324028","158"
+"SELECT
+                    event_id, prev_event_id, internal_metadata,
+                    rejections.event_id IS NOT NULL
+                FROM event_edges
+                    INNER JOIN events USING (event_id)
+                    LEFT JOIN rejections USING (event_id)
+                    LEFT JOIN event_json USING (event_id)
+                WHERE
+                    NOT events.outlier
+                    AND
+                event_id = ANY(ARRAY[$1])","4.403812","8.807624","2"
+"<insufficient privilege>","0.01831029535864977","8.679080000000004","474"
+"SELECT COUNT(*), thread_id FROM event_push_actions
+            LEFT JOIN (
+                SELECT thread_id, MAX(event_stream_ordering) AS threaded_receipt_stream_ordering
+                FROM receipts_linearized
+                WHERE
+                    user_id = $1
+                    AND room_id = $2
+                    AND event_stream_ordering > $3
+                    AND receipt_type = ANY(ARRAY[$4,$5])
+                GROUP BY thread_id
+            ) AS receipts USING (thread_id)
+            WHERE user_id = $6
+                AND room_id = $7
+                AND stream_ordering > COALESCE(threaded_receipt_stream_ordering, $8)
+                AND highlight = $9
+            GROUP BY thread_id","0.10316510714285711","8.665869","84"
+"SELECT $5 AS one FROM ""mentions"" WHERE ""mentions"".""mentionable_id"" = $1 AND ""mentions"".""mentionable_type"" = $2 AND ""mentions"".""user_id"" = $3 LIMIT $4","0.014218038333333337","8.530823000000003","600"
+"SELECT ""triggers"".* FROM ""triggers"" WHERE ""triggers"".""active"" = $1 AND ""triggers"".""activator"" = $2 ORDER BY LOWER(name)","0.5674138","8.511207","15"
+"SELECT t.oid, t.typname
+FROM pg_type as t
+WHERE t.typname IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)","1.1420174285714286","7.994122","7"
+"INSERT INTO device_lists_remote_cache (user_id, device_id, content) VALUES ($1, $2, $3) ON CONFLICT (user_id, device_id) DO UPDATE SET content=EXCLUDED.content","1.5950592","7.975295999999999","5"
+"SELECT e.stream_ordering, e.event_id, e.room_id, e.type, se.state_key, redacts, relates_to_id, membership, rejections.reason IS NOT NULL, e.outlier FROM events AS e LEFT JOIN redactions USING (event_id) LEFT JOIN state_events AS se USING (event_id) LEFT JOIN event_relations USING (event_id) LEFT JOIN room_memberships USING (event_id) LEFT JOIN rejections USING (event_id) WHERE $1 < stream_ordering AND stream_ordering <= $2 AND instance_name = $3 ORDER BY stream_ordering ASC LIMIT $4","3.9220625","7.844125","2"
+"SELECT ""schedulers"".* FROM ""schedulers"" WHERE ""schedulers"".""id"" = $1 LIMIT $2","0.04147169680851067","7.796678999999999","188"
+"INSERT INTO event_push_actions (
+                room_id, event_id, user_id, actions, stream_ordering,
+                topological_ordering, notif, highlight, unread, thread_id
+            )
+            SELECT $1, event_id, user_id, actions, $3, $4, notif, highlight, unread, thread_id
+            FROM event_push_actions_staging
+            WHERE event_id = $5","3.800133","7.600266","2"
+"SELECT name FROM users","1.261795","7.5707699999999996","6"
+"SELECT room_id, account_data_type, content FROM room_account_data
+                WHERE user_id = $1","1.2593614999999998","7.556168999999999","6"
+"<insufficient privilege>","0.047585651898734156","7.518532999999996","158"
+"INSERT INTO worker_locks (lock_name, lock_key, instance_name, token, last_renewed_ts)
+               VALUES ($1, $2, $3, $4, $5)
+               ON CONFLICT (lock_name, lock_key)
+               DO UPDATE
+                   SET
+                       token = EXCLUDED.token,
+                       instance_name = EXCLUDED.instance_name,
+                       last_renewed_ts = EXCLUDED.last_renewed_ts
+                   WHERE
+                       worker_locks.last_renewed_ts < $6
+                       OR worker_locks.instance_name = EXCLUDED.instance_name","3.689929","7.379858","2"
+"<insufficient privilege>","0.046385424050632916","7.328897","158"
+"<insufficient privilege>","0.04441689024390244","7.284369999999998","164"
+"<insufficient privilege>","0.015059189873417707","7.138055999999999","474"
+"WITH all_receipts AS (
+                SELECT room_id, thread_id, MAX(event_stream_ordering) AS max_receipt_stream_ordering
+                FROM receipts_linearized
+                WHERE
+                    receipt_type = ANY(ARRAY[$1,$2])
+                    AND user_id = $3
+                GROUP BY room_id, thread_id
+            )
+        
+            SELECT eps.room_id, eps.thread_id, notif_count
+            FROM event_push_summary AS eps
+            
+            LEFT JOIN (
+                SELECT room_id, thread_id,
+                max_receipt_stream_ordering AS threaded_receipt_stream_ordering
+                FROM all_receipts
+                WHERE thread_id IS NOT NULL
+            ) AS threaded_receipts USING (room_id, thread_id)
+            LEFT JOIN (
+                SELECT room_id, thread_id,
+                max_receipt_stream_ordering AS unthreaded_receipt_stream_ordering
+                FROM all_receipts
+                WHERE thread_id IS NULL
+            ) AS unthreaded_receipts USING (room_id)
+        
+            WHERE user_id = $4
+                AND notif_count != $5
+                AND (
+                    (last_receipt_stream_ordering IS NULL AND stream_ordering > GREATEST(
+                threaded_receipt_stream_ordering,
+                unthreaded_receipt_stream_ordering
+            ))
+                    OR last_receipt_stream_ordering = GREATEST(
+                threaded_receipt_stream_ordering,
+                unthreaded_receipt_stream_ordering
+            )
+                )","7.11315","7.11315","1"
+"SELECT event_nid, event, missing_previous FROM syncv3_events WHERE event_nid > $1 AND event_nid <= $2 AND room_id = $3 AND is_state=$5 ORDER BY event_nid DESC LIMIT $4","7.103375000000001","7.103375000000001","1"
+"INSERT INTO event_forward_extremities (event_id, room_id) VALUES ($1,$2)","3.5188395000000003","7.037679000000001","2"
+"INSERT INTO syncv3_device_list_updates(user_id, device_id, target_user_id, target_state, bucket)
+						VALUES($1, $2, $3, $4, $5)
+						ON CONFLICT (user_id, device_id, target_user_id, bucket) DO UPDATE SET target_state = EXCLUDED.target_state","0.5379686923076923","6.993593000000001","13"
+"SELECT event_id FROM event_auth_chains WHERE event_id = ANY(ARRAY[$1])","6.9805209999999995","6.9805209999999995","1"
+"INSERT INTO current_state_delta_stream
+                    (stream_id, instance_name, room_id, type, state_key, event_id, prev_event_id)
+                    SELECT $1, $2, $4, $6, $8, $10, (
+                        SELECT event_id FROM current_state_events
+                        WHERE room_id = $12 AND type = $13 AND state_key = $14
+                    )","6.957366","6.957366","1"
+"SELECT instance_name, stream_ordering
+            FROM timeline_gaps
+            WHERE room_id = $1 AND $2 < stream_ordering AND stream_ordering <= $3
+            ORDER BY stream_ordering","0.056084782258064535","6.954513000000001","124"
+"INSERT INTO current_state_events
+                        (room_id, type, state_key, event_id, membership, event_stream_ordering)
+                    VALUES (
+                        $1, $2, $3, $4,
+                        (SELECT membership FROM room_memberships WHERE event_id = $5),
+                        (SELECT stream_ordering FROM events WHERE event_id = $6)
+                    )","6.932691","6.932691","1"
+"SELECT stream_ordering FROM events WHERE event_id = $1","0.1148574166666667","6.891444999999999","60"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99,$100,$101,$102,$103,$104,$105,$106,$107,$108,$109])","6.888240000000001","6.888240000000001","1"
+"<insufficient privilege>","0.04322026582278478","6.828802","158"
+"INSERT INTO cache_invalidation_stream_by_instance (stream_id, instance_name, cache_func, keys, invalidation_ts) VALUES($1, $2, $3, ARRAY[$4], $5)","6.699486","6.699486","1"
+"SELECT min_depth FROM room_depth WHERE room_id = $1","1.670968","6.683871999999999","4"
+"DELETE FROM worker_read_write_locks WHERE lock_name = $1 AND lock_key = $2 AND token = $3","1.6626340000000002","6.650536000000001","4"
+"SELECT max(cfgNum) from lmConfig","0.825982","6.607855999999999","8"
+"SELECT ""ticket_states"".* FROM ""ticket_states"" WHERE ""ticket_states"".""state_type_id"" = $1 AND ""ticket_states"".""next_state_id"" IS NOT NULL","1.3094886000000003","6.547443","5"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)","0.08926990410958904","6.5167030000000015","73"
+"<insufficient privilege>","0.03935167721518987","6.2175650000000005","158"
+"DELETE FROM device_lists_stream
+            WHERE user_id = $1 AND stream_id < $2 AND device_id = ANY(ARRAY[$3])","1.2389476","6.194737999999999","5"
+"SELECT prev_event_id, internal_metadata
+            FROM event_edges
+                INNER JOIN events USING (event_id)
+                LEFT JOIN rejections USING (event_id)
+                LEFT JOIN event_json USING (event_id)
+            WHERE
+                NOT events.outlier
+                AND rejections.event_id IS NULL
+                AND
+            prev_event_id = ANY(ARRAY[$1])","3.0770160000000004","6.154032000000001","2"
+"SELECT ""history_types"".* FROM ""history_types"" WHERE ""history_types"".""name"" = $1 LIMIT $2","0.4094586666666666","6.1418800000000005","15"
+"SELECT filter_json FROM user_filters WHERE full_user_id = $1 AND filter_id = $2","0.7653377499999999","6.122702000000001","8"
+"INSERT INTO federation_inbound_events_staging (origin, event_id, room_id, received_ts, event_json, internal_metadata) VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT (origin, event_id) DO NOTHING","3.0581965","6.116393","2"
+"SELECT ""roles_groups"".""role_id"" FROM ""roles_groups"" LEFT OUTER JOIN ""roles"" ON ""roles"".""id"" = ""roles_groups"".""role_id"" WHERE ""roles_groups"".""group_id"" = $1 AND ""roles_groups"".""access"" = $2 AND ""roles"".""active"" = $3","0.40499826666666666","6.074973999999999","15"
+"SELECT user_id, room_id, thread_id,
+                coalesce(old.notif_count, $1) + upd.cnt,
+                upd.stream_ordering
+            FROM (
+                SELECT user_id, room_id, thread_id, count(*) as cnt,
+                    max(ea.stream_ordering) as stream_ordering
+                FROM event_push_actions AS ea
+                LEFT JOIN event_push_summary AS old USING (user_id, room_id, thread_id)
+                WHERE $2 < ea.stream_ordering AND ea.stream_ordering <= $3
+                    AND (
+                        old.last_receipt_stream_ordering IS NULL
+                        OR old.last_receipt_stream_ordering < ea.stream_ordering
+                    )
+                    AND notif = $4
+                GROUP BY user_id, room_id, thread_id
+            ) AS upd
+            LEFT JOIN event_push_summary AS old USING (user_id, room_id, thread_id)","0.0384065796178344","6.029832999999997","157"
+"SELECT thumbnail_width, thumbnail_height, thumbnail_method, thumbnail_type, thumbnail_length FROM local_media_repository_thumbnails WHERE media_id = $1","6.010898","6.010898","1"
+"<insufficient privilege>","0.03691881645569621","5.833172999999995","158"
+"SET SESSION timezone TO 'UTC'","0.4132297142857143","5.785215999999999","14"
+"SELECT DISTINCT ON (user_id, keytype) user_id, keytype, keydata, stream_id
+                        FROM e2e_cross_signing_keys
+                        WHERE user_id = ANY(ARRAY[$1])
+                        ORDER BY user_id, keytype, stream_id DESC","1.4056804999999999","5.6227219999999996","4"
+"SELECT user_id, key_id, target_device_id, signature
+            FROM e2e_cross_signing_signatures WHERE (target_user_id = $1 AND target_device_id = $2 AND user_id = $3)","0.06791365432098763","5.501006000000003","81"
+"SELECT state_key FROM current_state_events WHERE type = $1 AND room_id = $2 AND membership = $3","0.0698659871794872","5.449546999999998","78"
+"SELECT ""ticket_articles"".* FROM ""ticket_articles"" WHERE ""ticket_articles"".""id"" = $1 LIMIT $2","0.18145836666666662","5.443751","30"
+"INSERT INTO event_to_state_groups (event_id, state_group) VALUES ($1,$2) ON CONFLICT (event_id) DO UPDATE SET state_group=EXCLUDED.state_group","2.628386","5.256772","2"
+"WITH ranked_snapshots AS (
+		SELECT
+		  snapshot_id,
+		  room_id,
+		  ROW_NUMBER() OVER (PARTITION BY room_id ORDER BY snapshot_id DESC) AS row_num
+		FROM
+		  syncv3_snapshots
+	  )
+	  DELETE FROM syncv3_snapshots USING ranked_snapshots
+	  WHERE syncv3_snapshots.snapshot_id = ranked_snapshots.snapshot_id
+	  AND ranked_snapshots.row_num > $1","5.22818","5.22818","1"
+"WITH all_receipts AS (
+                SELECT room_id, thread_id, MAX(event_stream_ordering) AS max_receipt_stream_ordering
+                FROM receipts_linearized
+                WHERE
+                    receipt_type = ANY(ARRAY[$1,$2])
+                    AND user_id = $3
+                GROUP BY room_id, thread_id
+            )
+        
+            SELECT epa.room_id, COUNT(CASE WHEN epa.notif = $4 THEN $5 END) AS notif_count
+            FROM event_push_actions AS epa
+            
+            LEFT JOIN (
+                SELECT room_id, thread_id,
+                max_receipt_stream_ordering AS threaded_receipt_stream_ordering
+                FROM all_receipts
+                WHERE thread_id IS NOT NULL
+            ) AS threaded_receipts USING (room_id, thread_id)
+            LEFT JOIN (
+                SELECT room_id, thread_id,
+                max_receipt_stream_ordering AS unthreaded_receipt_stream_ordering
+                FROM all_receipts
+                WHERE thread_id IS NULL
+            ) AS unthreaded_receipts USING (room_id)
+        
+            WHERE user_id = $6
+            AND NOT epa.thread_id = ANY($7)
+            AND epa.notif = $8
+            AND (threaded_receipt_stream_ordering IS NULL OR stream_ordering > threaded_receipt_stream_ordering)
+            AND (unthreaded_receipt_stream_ordering IS NULL OR stream_ordering > unthreaded_receipt_stream_ordering)
+            GROUP BY epa.room_id","5.166028","5.166028","1"
+"SELECT $3 AS one FROM ""channels"" WHERE ""channels"".""id"" = $1 LIMIT $2","0.03223702547770701","5.061213","157"
+"SELECT ""ticket_states"".""id"" FROM ""ticket_states"" INNER JOIN ""ticket_state_types"" ON ""ticket_state_types"".""id"" = ""ticket_states"".""state_type_id"" WHERE ""ticket_state_types"".""name"" IN ($1, $2)","0.6325713749999999","5.060571","8"
+"SELECT media_type, media_length, upload_name, created_ts, filesystem_id, last_access_ts, quarantined_by, authenticated FROM remote_media_cache WHERE media_origin = $1 AND media_id = $2","2.492901","4.985802","2"
+"SELECT completed_delta_stream_id FROM room_stats_current WHERE room_id = $1","4.945255","4.945255","1"
+"INSERT INTO device_lists_remote_cache (user_id, device_id, content) VALUES ($1,$2,$3),($4,$5,$6),($7,$8,$9),($10,$11,$12),($13,$14,$15),($16,$17,$18),($19,$20,$21),($22,$23,$24),($25,$26,$27),($28,$29,$30),($31,$32,$33)","4.932422","4.932422","1"
+"SELECT DISTINCT ON (original.event_id) original.event_id, edit.event_id FROM events AS edit
+                INNER JOIN event_relations USING (event_id)
+                INNER JOIN events AS original ON
+                    original.event_id = relates_to_id
+                    AND edit.type = original.type
+                    AND edit.sender = original.sender
+                    AND edit.room_id = original.room_id
+                WHERE
+                    relates_to_id = ANY(ARRAY[$1,$2])
+                    AND relation_type = $3
+                ORDER by original.event_id DESC, edit.origin_server_ts DESC, edit.event_id DESC","0.20428804166666667","4.902913","24"
+"SELECT stream_id FROM account_data
+                WHERE user_id = $1 AND account_data_type = $2
+                ORDER BY stream_id DESC
+                LIMIT $3","0.5443945555555556","4.899551","9"
+"SELECT DISTINCT room_id FROM device_lists_changes_in_room
+            WHERE stream_id > $1 AND stream_id <= $2","0.04350287500000002","4.872321999999997","112"
+"BEGIN","0.0022772302914476844","4.766242999999993","2093"
+"INSERT INTO device_lists_remote_cache (user_id, device_id, content) VALUES ($1,$2,$3),($4,$5,$6),($7,$8,$9),($10,$11,$12),($13,$14,$15),($16,$17,$18),($19,$20,$21),($22,$23,$24),($25,$26,$27),($28,$29,$30),($31,$32,$33),($34,$35,$36)","4.75749","4.75749","1"
+"<insufficient privilege>","0.0300723670886076","4.751434","158"
+"WITH claims(user_id, device_id, algorithm, claim_count) AS (
+                VALUES ($1,$2,$3,$4)
+            ), ranked_keys AS (
+                SELECT
+                    user_id, device_id, algorithm, key_id, claim_count,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY (user_id, device_id, algorithm)
+                        ORDER BY ts_added_ms
+                    ) AS r
+                FROM e2e_one_time_keys_json
+                    JOIN claims USING (user_id, device_id, algorithm)
+            )
+            DELETE FROM e2e_one_time_keys_json k
+            WHERE (user_id, device_id, algorithm, key_id) IN (
+                SELECT user_id, device_id, algorithm, key_id
+                FROM ranked_keys
+                WHERE r <= claim_count
+            )
+            RETURNING user_id, device_id, algorithm, key_id, key_json","4.687258","4.687258","1"
+"SELECT event_id FROM partial_state_events WHERE event_id = ANY(ARRAY[$1])","0.029389740506329108","4.643579","158"
+"<insufficient privilege>","0.029288531645569618","4.627588","158"
+"SELECT room_id, e.sender, c.membership, event_id, e.instance_name, e.stream_ordering, r.room_version
+            FROM local_current_membership AS c
+            INNER JOIN events AS e USING (room_id, event_id)
+            INNER JOIN rooms AS r USING (room_id)
+            WHERE
+                user_id = $1
+                AND c.membership = ANY(ARRAY[$2])","4.596684","4.596684","1"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79])","4.504522000000001","4.504522000000001","1"
+"INSERT INTO room_stats_state (room_id, avatar) VALUES ($1, $2) ON CONFLICT (room_id) DO UPDATE SET avatar=EXCLUDED.avatar","4.501118999999999","4.501118999999999","1"
+"<insufficient privilege>","0.0277338924050633","4.381955000000001","158"
+"<insufficient privilege>","0.009131196202531647","4.328186999999997","474"
+"<insufficient privilege>","2.16236","4.32472","2"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49])","4.313275999999999","4.313275999999999","1"
+"<insufficient privilege>","0.054761820512820525","4.271421999999999","78"
+"SELECT stream_id FROM event_push_summary_last_receipt_stream_id","0.027076222929936302","4.250966999999999","157"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2])","0.47210077777777787","4.248907","9"
+"SELECT ""mentions"".* FROM ""mentions"" WHERE ""mentions"".""mentionable_type"" = $1 AND ""mentions"".""mentionable_id"" = $2","0.1416278","4.248834000000001","30"
+"SELECT displayname FROM profiles WHERE full_user_id = $1","2.1136735000000004","4.227347000000001","2"
+"<insufficient privilege>","0.027091910256410254","4.226337999999999","156"
+"SELECT room_id FROM partial_state_rooms WHERE room_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13])","0.6997939999999999","4.198764","6"
+"SELECT user_id FROM device_lists_remote_resync","0.026679299363057317","4.18865","157"
+"<insufficient privilege>","0.026377873417721527","4.1677040000000005","158"
+"SELECT algorithm, COUNT(key_id) FROM e2e_one_time_keys_json WHERE user_id = $1 AND device_id = $2 GROUP BY algorithm","0.51960975","4.156878","8"
+"INSERT INTO event_auth (event_id, room_id, auth_id) VALUES ($1,$2,$3),($4,$5,$6),($7,$8,$9)","4.029994","4.029994","1"
+"INSERT INTO device_lists_stream (instance_name, stream_id, user_id, device_id) VALUES ($1,$2,$3,$4)","0.80365","4.01825","5"
+"INSERT INTO event_auth_chains (event_id, chain_id, sequence_number) VALUES ($1,$2,$3)","4.005535999999999","4.005535999999999","1"
+"WITH nids AS (
+    				SELECT array_cat(events, membership_events) AS allNids FROM syncv3_snapshots WHERE syncv3_snapshots.snapshot_id = ANY($1)
+				)
+				SELECT syncv3_events.event_nid, syncv3_events.room_id, syncv3_events.event_type, syncv3_events.state_key, syncv3_events.event 
+				FROM syncv3_events, nids
+				WHERE ((syncv3_events.event_type = $2 AND syncv3_events.state_key = $3) OR (syncv3_events.event_type = $4 AND syncv3_events.state_key = $5) OR (syncv3_events.event_type = $6 AND syncv3_events.state_key = $7) OR (syncv3_events.event_type = $8 AND syncv3_events.state_key = $9) OR (syncv3_events.event_type = $10 AND syncv3_events.state_key = $11) OR syncv3_events.event_type = $12) AND syncv3_events.event_nid = ANY(nids.allNids)
+				ORDER BY syncv3_events.event_nid ASC","1.9911425000000003","3.9822850000000005","2"
+"SELECT room_id, (
+                    SELECT count(*) FROM room_memberships
+                    WHERE room_id = m.room_id AND user_id = m.user_id AND forgotten = $1
+                ) AS count
+                FROM room_memberships AS m
+                WHERE user_id = $2 AND forgotten = $3
+                GROUP BY room_id, user_id","0.6472228333333333","3.883337","6"
+"COMMIT","0.001832751552795032","3.835949000000001","2093"
+"SELECT key, pg_catalog.set_config(key, val, $1) as val
+            FROM (VALUES ($2, ($3)::text),($4, ($5)::text)) as v(key, val)","0.04843555696202532","3.8264090000000013","79"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35])","1.900116","3.800232","2"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.891499","3.782998","2"
+"INSERT INTO state_groups (id, room_id, event_id) VALUES($1, $2, $3)","3.7797490000000002","3.7797490000000002","1"
+"SELECT ""sessions"".* FROM ""sessions"" ORDER BY ""sessions"".""updated_at"" DESC LIMIT $1","3.741247","3.741247","1"
+"SELECT room_id FROM sliding_sync_joined_rooms WHERE room_id = $1","3.7245","3.7245","1"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19])","3.6917579999999997","3.6917579999999997","1"
+"<insufficient privilege>","0.022775139240506344","3.5984720000000006","158"
+"SELECT DISTINCT substring(state_key FROM $1)
+                FROM current_state_events
+                WHERE
+                    type = $2
+                    AND membership = $3
+                    AND room_id = $4","0.22197981249999996","3.5516770000000006","16"
+"SELECT stream_id FROM device_lists_remote_extremeties WHERE user_id = $1","0.5024078571428572","3.5168550000000005","7"
+"INSERT INTO device_lists_changes_in_room (user_id, device_id, room_id, stream_id, instance_name, converted_to_destinations, opentracing_context) VALUES ($1,$2,$3,$4,$5,$6,$7),($8,$9,$10,$11,$12,$13,$14),($15,$16,$17,$18,$19,$20,$21),($22,$23,$24,$25,$26,$27,$28),($29,$30,$31,$32,$33,$34,$35),($36,$37,$38,$39,$40,$41,$42),($43,$44,$45,$46,$47,$48,$49),($50,$51,$52,$53,$54,$55,$56),($57,$58,$59,$60,$61,$62,$63),($64,$65,$66,$67,$68,$69,$70),($71,$72,$73,$74,$75,$76,$77),($78,$79,$80,$81,$82,$83,$84),($85,$86,$87,$88,$89,$90,$91),($92,$93,$94,$95,$96,$97,$98),($99,$100,$101,$102,$103,$104,$105),($106,$107,$108,$109,$110,$111,$112),($113,$114,$115,$116,$117,$118,$119),($120,$121,$122,$123,$124,$125,$126),($127,$128,$129,$130,$131,$132,$133),($134,$135,$136,$137,$138,$139,$140),($141,$142,$143,$144,$145,$146,$147),($148,$149,$150,$151,$152,$153,$154),($155,$156,$157,$158,$159,$160,$161),($162,$163,$164,$165,$166,$167,$168),($169,$170,$171,$172,$173,$174,$175),($176,$177,$178,$179,$180,$181,$182),($183,$184,$185,$186,$187,$188,$189),($190,$191,$192,$193,$194,$195,$196),($197,$198,$199,$200,$201,$202,$203),($204,$205,$206,$207,$208,$209,$210),($211,$212,$213,$214,$215,$216,$217),($218,$219,$220,$221,$222,$223,$224),($225,$226,$227,$228,$229,$230,$231),($232,$233,$234,$235,$236,$237,$238),($239,$240,$241,$242,$243,$244,$245),($246,$247,$248,$249,$250,$251,$252),($253,$254,$255,$256,$257,$258,$259),($260,$261,$262,$263,$264,$265,$266),($267,$268,$269,$270,$271,$272,$273),($274,$275,$276,$277,$278,$279,$280),($281,$282,$283,$284,$285,$286,$287),($288,$289,$290,$291,$292,$293,$294),($295,$296,$297,$298,$299,$300,$301),($302,$303,$304,$305,$306,$307,$308),($309,$310,$311,$312,$313,$314,$315),($316,$317,$318,$319,$320,$321,$322),($323,$324,$325,$326,$327,$328,$329),($330,$331,$332,$333,$334,$335,$336),($337,$338,$339,$340,$341,$342,$343),($344,$345,$346,$347,$348,$349,$350),($351,$352,$353,$354,$355,$356,$357),($358,$359,$360,$361,$362,$363,$364),($365,$366,$367,$368,$369,$370,$371),($372,$373,$374,$375,$376,$377,$378),($379,$380,$381,$382,$383,$384,$385),($386,$387,$388,$389,$390,$391,$392),($393,$394,$395,$396,$397,$398,$399),($400,$401,$402,$403,$404,$405,$406),($407,$408,$409,$410,$411,$412,$413),($414,$415,$416,$417,$418,$419,$420)","3.511688","3.511688","1"
+"<insufficient privilege>","0.022181791139240507","3.5047230000000016","158"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18),($19,$20,$21,$22,$23,$24,$25,$26,$27)","0.13873276","3.468319","25"
+"SELECT state_key, display_name, avatar_url FROM room_memberships as m
+                INNER JOIN current_state_events as c
+                ON m.event_id = c.event_id
+                AND m.room_id = c.room_id
+                AND m.user_id = c.state_key
+                WHERE c.type = $1 AND c.room_id = $2 AND m.membership = $3 AND c.state_key = ANY(ARRAY[$4])","1.7291940000000001","3.4583880000000002","2"
+"UPDATE ""schedulers"" SET ""pid"" = $1, ""updated_at"" = $2 WHERE ""schedulers"".""id"" = $3","0.09582619444444444","3.4497429999999993","36"
+"SELECT data FROM syncv3_device_data WHERE user_id=$1 AND device_id=$2 FOR UPDATE","0.215214125","3.443426","16"
+"SELECT DISTINCT user_id FROM device_lists_changes_in_room
+            WHERE room_id = ANY(ARRAY[$1,$2,$3,$4]) AND stream_id > $5 AND stream_id <= $6","0.22864286666666667","3.4296429999999996","15"
+"DELETE FROM event_backward_extremities WHERE event_id = $1 AND room_id = $2","1.6899825000000002","3.3799650000000003","2"
+"INSERT INTO device_federation_inbox (origin, message_id, received_ts) VALUES($1, $2, $3)","3.352083","3.352083","1"
+"SELECT event_id FROM event_forward_extremities WHERE room_id = $1","0.832619","3.3304759999999995","4"
+"SELECT type, state_key, event_id FROM state_groups_state WHERE state_group = $1","1.6631135000000001","3.3262270000000003","2"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12])","0.3695155555555556","3.32564","9"
+"UPDATE delayed_events_stream_pos SET stream_id = $1","1.649427","3.298854","2"
+"UPDATE user_directory_stream_pos SET stream_id = $1","1.606988","3.213976","2"
+"UPDATE sliding_sync_joined_rooms
+            SET
+                event_stream_ordering = CASE
+                    WHEN event_stream_ordering IS NULL OR event_stream_ordering < $1
+                        THEN $2
+                    ELSE event_stream_ordering
+                END,
+                bump_stamp = CASE
+                    WHEN bump_stamp IS NULL OR bump_stamp < $3
+                        THEN $4
+                    ELSE bump_stamp
+                END
+            WHERE room_id = $5","3.182901","3.182901","1"
+"SELECT current_snapshot_id FROM syncv3_rooms WHERE room_id=$1","1.5859645","3.171929","2"
+"SELECT DISTINCT ON (parent.event_id) parent.event_id, child.event_id FROM events AS child
+                    INNER JOIN event_relations USING (event_id)
+                    INNER JOIN events AS parent ON
+                        parent.event_id = relates_to_id
+                        AND parent.room_id = child.room_id
+                    WHERE
+                        relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9])
+                        AND relation_type = $10
+                    ORDER BY parent.event_id, child.topological_ordering DESC, child.stream_ordering DESC","0.5176735","3.106041","6"
+"SET LOCAL enable_seqscan=off","0.007745955000000001","3.098382000000002","400"
+"<insufficient privilege>","0.019530189873417717","3.0857699999999983","158"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9])","3.063531","3.063531","1"
+"select count(*)
+from mail_repository_content
+where url = $1","0.01923548427672955","3.058442","159"
+"SELECT
+                id, user_name, access_token, profile_tag, kind, app_id,
+                app_display_name, device_display_name, pushkey, ts, lang, data,
+                last_stream_ordering, last_success, failing_since,
+                COALESCE(enabled, $1) AS enabled, device_id
+            FROM pushers
+            WHERE user_name = $2","3.043053","3.043053","1"
+"SELECT MAX(version) FROM e2e_room_keys_versions WHERE user_id=$1 AND deleted=$2","3.00724","3.00724","1"
+"<insufficient privilege>","0.01892186075949367","2.9896540000000007","158"
+"<insufficient privilege>","0.018806139240506326","2.9713700000000007","158"
+"SELECT COUNT(*) FROM e2e_room_keys WHERE user_id = $1 AND version = $2","2.944986","2.944986","1"
+"SELECT target_user_id, target_device_id, key_id, signature
+                  FROM e2e_cross_signing_signatures
+                 WHERE user_id = $1
+                   AND ((target_user_id = $2 AND target_device_id = $3) OR (target_user_id = $4 AND target_device_id = $5) OR (target_user_id = $6 AND target_device_id = $7) OR (target_user_id = $8 AND target_device_id = $9) OR (target_user_id = $10 AND target_device_id = $11))","1.469174","2.938348","2"
+"select indexname
+from pg_indexes
+where schemaname = current_schema","1.4409999999999998","2.8819999999999997","2"
+"SELECT r.stream_id, r.room_id, r.user_id, r.thread_id, r.event_stream_ordering
+            FROM receipts_linearized AS r
+            WHERE $1 < r.stream_id AND r.stream_id <= $2 AND user_id LIKE $3
+            ORDER BY r.stream_id ASC
+            LIMIT $4","0.018293726114649668","2.8721150000000013","157"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53])","2.863876","2.863876","1"
+"select current_timestamp","0.017852981132075466","2.838624000000001","159"
+"<insufficient privilege>","0.017909284810126574","2.829667","158"
+"<insufficient privilege>","0.01783800632911392","2.8184050000000016","158"
+"SELECT tag, content FROM room_tags WHERE user_id = $1 AND room_id = $2","0.03602744871794872","2.8101410000000007","78"
+"<insufficient privilege>","0.017467816455696197","2.7599150000000012","158"
+"SELECT target_user_id, target_state FROM syncv3_device_list_updates WHERE user_id=$1 AND device_id=$2 AND bucket=$3","2.715842","2.715842","1"
+"SELECT stream_ordering FROM event_push_actions
+                WHERE stream_ordering <= $1 AND highlight = $2
+                ORDER BY stream_ordering ASC LIMIT $3 OFFSET $4","0.01723958598726115","2.706614999999999","157"
+"SELECT event_nid, room_id, event FROM syncv3_events
+		WHERE event_nid > $1 AND event_nid <= $2 AND event_type = $3 AND state_key = $4 AND room_id IN ($5, $6)
+		ORDER BY event_nid ASC","2.699694","2.699694","1"
+"SELECT media_type, media_length, upload_name, created_ts, quarantined_by, url_cache, last_access_ts, safe_from_quarantine, user_id, authenticated FROM local_media_repository WHERE media_id = $1","2.696921","2.696921","1"
+"DELETE FROM presence_stream WHERE stream_id < $1 AND user_id = ANY(ARRAY[$2,$3,$4])","0.09496839285714287","2.659115","28"
+"<insufficient privilege>","0.016615822784810122","2.625300000000001","158"
+"<insufficient privilege>","0.016593044303797468","2.6217010000000016","158"
+"UPDATE stats_incremental_position SET stream_id = $1","1.3069815","2.613963","2"
+"<insufficient privilege>","0.016502803797468362","2.6074430000000013","158"
+"SELECT
+                COUNT(CASE WHEN notif = $1 THEN $2 END),
+                COUNT(CASE WHEN unread = $3 THEN $4 END),
+                thread_id
+            FROM event_push_actions
+            LEFT JOIN (
+                SELECT thread_id, MAX(event_stream_ordering) AS threaded_receipt_stream_ordering
+                FROM receipts_linearized
+                WHERE
+                    user_id = $5
+                    AND room_id = $6
+                    AND event_stream_ordering > $7
+                    AND receipt_type = ANY(ARRAY[$8,$9])
+                GROUP BY thread_id
+            ) AS receipts USING (thread_id)
+            WHERE user_id = $10
+                AND room_id = $11
+                AND stream_ordering > COALESCE(threaded_receipt_stream_ordering, $12)
+                AND NOT thread_id = ANY($13)
+            GROUP BY thread_id","0.0331130641025641","2.582819","78"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2])","0.36302742857142856","2.5411920000000006","7"
+"SELECT rule_id, priority_class, priority, conditions, actions FROM push_rules WHERE user_name = $1","0.42204783333333334","2.532287","6"
+"INSERT INTO state_group_edges (state_group, prev_state_group) VALUES($1, $2)","2.527169","2.527169","1"
+"<insufficient privilege>","0.015909930379746834","2.513768999999998","158"
+"<insufficient privilege>","0.015873132911392394","2.5079550000000013","158"
+"SELECT address FROM userHistory","0.4162378333333334","2.497427","6"
+"<insufficient privilege>","0.015673360759493663","2.4763909999999987","158"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.2235535","2.447107","2"
+"<insufficient privilege>","0.015473601265822782","2.444829","158"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.2196635","2.439327","2"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.2109269999999999","2.4218539999999997","2"
+"SELECT stream_id FROM cache_invalidation_stream_by_instance
+                ORDER BY stream_id ASC
+                LIMIT $1","2.375027","2.375027","1"
+"<insufficient privilege>","0.015013740506329113","2.3721709999999985","158"
+"<insufficient privilege>","0.01484463924050633","2.345452999999999","158"
+"INSERT INTO syncv3_unread(room_id, user_id, notification_count, highlight_count) VALUES($1, $2, $3, $4)
+		ON CONFLICT (room_id, user_id) DO UPDATE SET notification_count = $3, highlight_count = $4","2.3297719999999997","2.3297719999999997","1"
+"<insufficient privilege>","0.014688791139240508","2.320828999999999","158"
+"INSERT INTO syncv3_to_device_ack_pos(user_id, device_id, unack_pos) VALUES($1,$2,$3) ON CONFLICT (user_id, device_id)
+	DO UPDATE SET unack_pos=excluded.unack_pos","1.1509825","2.301965","2"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.140352","2.280704","2"
+"SELECT event_id FROM events WHERE event_id = ANY(ARRAY[$1]) AND outlier = $2","0.56819525","2.272781","4"
+"select *
+from attachment
+where id in (cast($1 as uuid))","0.3769151666666667","2.2614910000000004","6"
+"<insufficient privilege>","0.014251088607594933","2.251672000000002","158"
+"SELECT id, user_id, room_id, type, data FROM syncv3_account_data
+		WHERE user_id=$1 AND room_id = $2","2.243999","2.243999","1"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.115097","2.230194","2"
+"INSERT INTO event_json (event_id, room_id, internal_metadata, json, format_version) VALUES ($1,$2,$3,$4,$5)","1.1141424999999998","2.2282849999999996","2"
+"<insufficient privilege>","0.01385744936708861","2.1894769999999992","158"
+"DELETE FROM device_lists_stream
+            WHERE user_id = $1 AND stream_id < $2 AND device_id = ANY(ARRAY[$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13])","2.168372","2.168372","1"
+"DELETE FROM login_tokens WHERE expiry_ts <= $1","0.7221323333333334","2.166397","3"
+"SELECT stream_ordering FROM event_push_actions
+            WHERE stream_ordering > $1
+            ORDER BY stream_ordering ASC LIMIT $2 OFFSET $3","0.013670044585987263","2.1461969999999995","157"
+"SELECT COUNT(*) FROM current_state_events WHERE room_id = $1 AND membership = $2","1.0616285","2.123257","2"
+"SELECT stream_id FROM federation_stream_position WHERE type = $1 AND instance_name = $2","0.5268207500000001","2.1072830000000002","4"
+"DELETE FROM event_push_actions
+                WHERE stream_ordering <= $1 AND highlight = $2","0.013389363057324834","2.1021300000000003","157"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.035721","2.071442","2"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.0324355","2.064871","2"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.021005","2.04201","2"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","1.0092075","2.018415","2"
+"<insufficient privilege>","0.012658088607594944","1.9999779999999998","158"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","0.9958855000000001","1.9917710000000002","2"
+"SELECT ""ticket_state_types"".* FROM ""ticket_state_types"" WHERE ""ticket_state_types"".""name"" = $1 LIMIT $2","0.1975587","1.975587","10"
+"insert into mail_repository_url (url)
+values ($1)
+on conflict (url)
+do nothing","0.14086199999999996","1.9720679999999993","14"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","0.9786855000000001","1.9573710000000002","2"
+"SELECT target_user_id, target_device_id, key_id, signature
+                  FROM e2e_cross_signing_signatures
+                 WHERE user_id = $1
+                   AND ((target_user_id = $2 AND target_device_id = $3) OR (target_user_id = $4 AND target_device_id = $5))","0.6412473333333333","1.923742","3"
+"<insufficient privilege>","0.0121392911392405","1.9180080000000004","158"
+"SELECT * FROM scheduled_tasks WHERE status = ANY(ARRAY[$1]) AND timestamp <= $2 ORDER BY timestamp LIMIT $3","0.024587589743589745","1.9178320000000009","78"
+"<insufficient privilege>","0.012128670886075943","1.9163299999999999","158"
+"<insufficient privilege>","0.012123797468354429","1.9155600000000006","158"
+"<insufficient privilege>","0.01210008227848102","1.911813","158"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26])","1.899544","1.899544","1"
+"<insufficient privilege>","0.012007297468354432","1.8971529999999992","158"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","0.948562","1.897124","2"
+"<insufficient privilege>","0.011962518987341776","1.8900779999999993","158"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","0.9440554999999999","1.8881109999999999","2"
+"INSERT INTO state_events (event_id, room_id, type, state_key) VALUES ($1,$2,$3,$4)","1.883413","1.883413","1"
+"INSERT INTO user_ips (user_id, access_token, ip, user_agent, device_id, last_seen) VALUES ($1,$2,$3,$4,$5,$6),($7,$8,$9,$10,$11,$12) ON CONFLICT (user_id, access_token, ip) DO UPDATE SET user_agent=EXCLUDED.user_agent, device_id=EXCLUDED.device_id, last_seen=EXCLUDED.last_seen","0.311376","1.868256","6"
+"SELECT room_id, tag, content FROM room_tags WHERE user_id = $1","0.3012218333333333","1.807331","6"
+"DELETE FROM event_auth_chain_to_calculate WHERE event_id = ANY(ARRAY[$1])","1.803973","1.803973","1"
+"DELETE FROM presence_stream WHERE stream_id < $1 AND user_id = ANY(ARRAY[$2,$3])","0.07640665217391304","1.7573530000000002","23"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18)","0.10145170588235294","1.724679","17"
+"SELECT COUNT(*) AS ""size"", MAX(""ssl_certificates"".""updated_at"") AS timestamp FROM ""ssl_certificates""","0.010900726114649675","1.7114139999999993","157"
+"SELECT id, user_id, room_id, type, data FROM syncv3_account_data
+	WHERE user_id=$1 AND room_id=ANY($2)","1.6862380000000001","1.6862380000000001","1"
+"SELECT pg_catalog.quote_ident(n.nspname) AS nspname
+                        FROM pg_catalog.pg_extension e
+                            JOIN pg_catalog.pg_namespace n ON e.extnamespace = n.oid
+                        WHERE extname = $1","0.8393795","1.678759","2"
+"SELECT ep.event_id, ep.room_id, ep.thread_id, ep.stream_ordering,
+                    ep.actions, ep.highlight
+                FROM event_push_actions AS ep
+                WHERE
+                    ep.user_id = $1
+                    AND ep.stream_ordering > $2
+                    AND ep.stream_ordering <= $3
+                    AND ep.notif = $4
+                ORDER BY ep.stream_ordering ASC LIMIT $5","0.8287209999999999","1.6574419999999999","2"
+"SELECT DISTINCT ON (original.event_id) original.event_id, edit.event_id FROM events AS edit
+                INNER JOIN event_relations USING (event_id)
+                INNER JOIN events AS original ON
+                    original.event_id = relates_to_id
+                    AND edit.type = original.type
+                    AND edit.sender = original.sender
+                    AND edit.room_id = original.room_id
+                WHERE
+                    relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7])
+                    AND relation_type = $8
+                ORDER by original.event_id DESC, edit.origin_server_ts DESC, edit.event_id DESC","0.2677205000000001","1.606323","6"
+"INSERT INTO device_lists_stream (instance_name, stream_id, user_id, device_id) VALUES ($1,$2,$3,$4),($5,$6,$7,$8),($9,$10,$11,$12),($13,$14,$15,$16),($17,$18,$19,$20),($21,$22,$23,$24),($25,$26,$27,$28),($29,$30,$31,$32),($33,$34,$35,$36),($37,$38,$39,$40),($41,$42,$43,$44)","1.6059329999999998","1.6059329999999998","1"
+"SELECT ""ticket_article_senders"".* FROM ""ticket_article_senders"" WHERE ""ticket_article_senders"".""name"" = $1 LIMIT $2","0.10692200000000002","1.60383","15"
+"<insufficient privilege>","0.010053405063291141","1.5884379999999996","158"
+"SELECT pg_postmaster_start_time as start_time_seconds from pg_postmaster_start_time()","0.009768006329113926","1.5433450000000002","158"
+"SELECT room_id, server_name FROM partial_state_rooms_servers","0.22020285714285714","1.54142","7"
+"<insufficient privilege>","0.009663322784810132","1.5268049999999993","158"
+"SELECT message_id FROM device_federation_inbox WHERE origin = $1 AND message_id = $2","1.51149","1.51149","1"
+"<insufficient privilege>","0.009534000000000003","1.5063719999999998","158"
+"SELECT
+                  e.event_id,
+                  e.stream_ordering,
+                  e.instance_name,
+                  ej.internal_metadata,
+                  ej.json,
+                  ej.format_version,
+                  r.room_version,
+                  rej.reason,
+                  e.outlier
+                FROM events AS e
+                  JOIN event_json AS ej USING (event_id)
+                  LEFT JOIN rooms r ON r.room_id = e.room_id
+                  LEFT JOIN rejections as rej USING (event_id)
+                WHERE e.event_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16])","0.7475445000000001","1.4950890000000001","2"
+"SELECT DISTINCT ON (user_id, keytype) user_id, keytype, keydata, stream_id
+                        FROM e2e_cross_signing_keys
+                        WHERE user_id = ANY(ARRAY[$1,$2,$3])
+                        ORDER BY user_id, keytype, stream_id DESC","1.456078","1.456078","1"
+"SELECT type, state_key, event_id FROM current_state_events
+                WHERE room_id = $1
+             AND ((type = $2 AND state_key = $3))","0.36173774999999997","1.4469509999999999","4"
+"SELECT rule_id, enabled FROM push_rules_enable WHERE user_name = $1","0.24111516666666666","1.446691","6"
+"UPDATE sliding_sync_joined_rooms
+            SET
+                event_stream_ordering = CASE
+                    WHEN event_stream_ordering IS NULL OR event_stream_ordering < $1
+                        THEN $2
+                    ELSE event_stream_ordering
+                END,
+                bump_stamp = CASE
+                    WHEN bump_stamp IS NULL OR bump_stamp < $3
+                        THEN $4
+                    ELSE bump_stamp
+                END
+            WHERE room_id = $5","1.434634","1.434634","1"
+"<insufficient privilege>","0.009061354430379752","1.431694","158"
+"SELECT DISTINCT ON (parent.event_id) parent.event_id, child.event_id FROM events AS child
+                    INNER JOIN event_relations USING (event_id)
+                    INNER JOIN events AS parent ON
+                        parent.event_id = relates_to_id
+                        AND parent.room_id = child.room_id
+                    WHERE
+                        relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5])
+                        AND relation_type = $6
+                    ORDER BY parent.event_id, child.topological_ordering DESC, child.stream_ordering DESC","0.23748083333333336","1.424885","6"
+"<insufficient privilege>","0.009004430379746835","1.4227","158"
+"SELECT user_id, device_id
+		FROM syncv3_sync2_devices JOIN syncv3_sync2_tokens USING(user_id, device_id)
+		GROUP BY (user_id, device_id)
+		HAVING MAX(last_seen) < $1","1.395508","1.395508","1"
+"<insufficient privilege>","0.008759398734177219","1.3839849999999998","158"
+"INSERT INTO event_push_actions_staging (event_id, user_id, actions, notif, highlight, unread, thread_id, inserted_ts) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)","1.3454700000000002","1.3454700000000002","1"
+"SELECT nextval($1)","1.334376","1.334376","1"
+"SELECT MAX(event_nid) as e FROM syncv3_events","0.6664795","1.332959","2"
+"select rae1_0.NAME,rae1_0.REALM_ID,rae1_0.VALUE from REALM_ATTRIBUTE rae1_0 where rae1_0.NAME=$1 and character_length(rae1_0.VALUE)>$2","0.26643300000000003","1.3321649999999998","5"
+"<insufficient privilege>","0.008387911392405061","1.3252899999999996","158"
+"<insufficient privilege>","0.00824078481012658","1.3020440000000006","158"
+"select *
+from domains
+where domain = $1","0.32532374999999997","1.301295","4"
+"INSERT INTO event_auth_chain_links (origin_chain_id, origin_sequence_number, target_chain_id, target_sequence_number) VALUES ($1,$2,$3,$4)","1.283812","1.283812","1"
+"SELECT user_id, device_id, d.display_name, k.key_json
+                    FROM e2e_device_keys_json k
+                    INNER JOIN devices d USING (user_id, device_id)
+                    WHERE user_id = ANY(ARRAY[$1]) AND NOT d.hidden","0.6417550000000001","1.2835100000000002","2"
+"SELECT user_id FROM local_current_membership WHERE room_id = $1 AND membership = $2","0.57877","1.15754","2"
+"SELECT version()","0.0071765443037974655","1.1338940000000002","158"
+"<insufficient privilege>","0.007144563291139242","1.1288409999999993","158"
+"SET default_transaction_isolation = 'read committed'","0.014070025316455697","1.1115320000000002","79"
+"DELETE FROM syncv3_txns WHERE ts <= $1","1.094918","1.094918","1"
+"<insufficient privilege>","0.006731613924050636","1.0635949999999996","158"
+"BEGIN READ WRITE","0.04030230769230769","1.04786","26"
+"<insufficient privilege>","0.006586329113924049","1.0406400000000007","158"
+"SELECT user_id, stream_id FROM device_lists_remote_extremeties WHERE user_id = ANY(ARRAY[$1,$2])","1.00752","1.00752","1"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18),($19,$20,$21,$22,$23,$24,$25,$26,$27),($28,$29,$30,$31,$32,$33,$34,$35,$36)","0.1937876","0.968938","5"
+"SELECT event_id, type, state_key FROM event_auth_chain_to_calculate WHERE room_id = ANY(ARRAY[$1])","0.9432470000000001","0.9432470000000001","1"
+"select snapshot
+from event_store
+where aggregate_id = $1
+fetch next $2 rows only","0.46339549999999996","0.9267909999999999","2"
+"select tablename
+from pg_tables
+where schemaname = current_schema","0.45698700000000003","0.9139740000000001","2"
+"SELECT CASE WHEN NOT pg_is_in_recovery() THEN $1 ELSE GREATEST ($2, EXTRACT($3 FROM (now() - pg_last_xact_replay_timestamp()))) END AS lag","0.005581158227848102","0.8818229999999992","158"
+"SHOW TRANSACTION ISOLATION LEVEL","0.029018233333333334","0.870547","30"
+"SELECT * FROM scheduled_tasks WHERE status = ANY(ARRAY[$1,$2]) AND timestamp <= $3 ORDER BY timestamp","0.010605487179487175","0.8272279999999999","78"
+"UPDATE access_tokens SET used = $1 WHERE id = $2","0.13748233333333332","0.824894","6"
+"select pg_stat_statements_reset()","0.811832","0.811832","1"
+"SELECT relates_to_id, ref.event_id, ref.sender
+            FROM events AS ref
+            INNER JOIN event_relations USING (event_id)
+            INNER JOIN events AS parent ON
+                parent.event_id = relates_to_id
+                AND parent.room_id = ref.room_id
+            WHERE
+                relates_to_id = ANY(ARRAY[$1,$2])
+                AND relation_type = $3
+            ORDER BY ref.topological_ordering, ref.stream_ordering","0.03358116666666667","0.805948","24"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18)","0.1296815","0.7780890000000001","6"
+"SELECT event_id, state_group FROM event_to_state_groups WHERE event_id = ANY(ARRAY[$1])","0.149848","0.74924","5"
+"INSERT INTO syncv3_device_data(user_id, device_id, data) VALUES($1,$2,$3)
+			ON CONFLICT (user_id, device_id) DO UPDATE SET data=$3","0.05059092857142858","0.7082730000000002","14"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6,$7,$8,$9,$10])
+                ) AS b using (room_id)","0.696197","0.696197","1"
+"SELECT users.name as user_id,
+                users.is_guest,
+                users.shadow_banned,
+                access_tokens.id as token_id,
+                access_tokens.device_id,
+                access_tokens.valid_until_ms,
+                access_tokens.user_id as token_owner,
+                access_tokens.used as token_used
+            FROM users
+            INNER JOIN access_tokens on users.name = COALESCE(puppets_user_id, access_tokens.user_id)
+            WHERE token = $1","0.1149165","0.689499","6"
+"SELECT DISTINCT att.attname as name, att.attnum as OID, pg_catalog.format_type(ty.oid,$1) AS datatype,
+att.attnotnull as not_null, att.atthasdef as has_default_val, des.description, seq.seqtypid
+FROM pg_catalog.pg_attribute att
+    JOIN pg_catalog.pg_type ty ON ty.oid=atttypid
+    JOIN pg_catalog.pg_namespace tn ON tn.oid=ty.typnamespace
+    JOIN pg_catalog.pg_class cl ON cl.oid=att.attrelid
+    JOIN pg_catalog.pg_namespace na ON na.oid=cl.relnamespace
+    LEFT OUTER JOIN pg_catalog.pg_type et ON et.oid=ty.typelem
+    LEFT OUTER JOIN pg_catalog.pg_attrdef def ON adrelid=att.attrelid AND adnum=att.attnum
+    LEFT OUTER JOIN (pg_catalog.pg_depend JOIN pg_catalog.pg_class cs ON classid=$2::regclass AND objid=cs.oid AND cs.relkind=$3) ON refobjid=att.attrelid AND refobjsubid=att.attnum
+    LEFT OUTER JOIN pg_catalog.pg_namespace ns ON ns.oid=cs.relnamespace
+    LEFT OUTER JOIN pg_catalog.pg_index pi ON pi.indrelid=att.attrelid AND indisprimary
+    LEFT OUTER JOIN pg_catalog.pg_description des ON (des.objoid=att.attrelid AND des.objsubid=att.attnum AND des.classoid=$4::regclass)
+    LEFT OUTER JOIN pg_catalog.pg_sequence seq ON cs.oid=seq.seqrelid
+WHERE
+
+    att.attrelid = $5::oid
+    AND att.attnum > $6
+    AND att.attisdropped IS FALSE
+ORDER BY att.attnum","0.687187","0.687187","1"
+"SELECT pg_catalog.pg_current_wal_lsn()","0.00841987341772152","0.66517","79"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12])","0.08960871428571428","0.627261","7"
+"SELECT relates_to_id, ref.event_id, ref.sender
+            FROM events AS ref
+            INNER JOIN event_relations USING (event_id)
+            INNER JOIN events AS parent ON
+                parent.event_id = relates_to_id
+                AND parent.room_id = ref.room_id
+            WHERE
+                relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7])
+                AND relation_type = $8
+            ORDER BY ref.topological_ordering, ref.stream_ordering","0.0977965","0.586779","6"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17])","0.08130457142857142","0.569132","7"
+"delete from OFFLINE_USER_SESSION where REALM_ID=$1 and OFFLINE_FLAG=$2 and LAST_SESSION_REFRESH<$3","0.05613620000000001","0.561362","10"
+"SELECT state_key FROM current_state_events
+            WHERE
+                type = $1
+                AND membership = $2
+                AND state_key = ANY(ARRAY[$3,$4])
+            GROUP BY state_key","0.274893","0.549786","2"
+"DELETE FROM presence_stream WHERE stream_id < $1 AND user_id = ANY(ARRAY[$2,$3,$4,$5])","0.08461183333333333","0.507671","6"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20])","0.12070775000000002","0.48283100000000007","4"
+"DELETE FROM device_lists_remote_cache WHERE user_id = $1","0.240709","0.481418","2"
+"<insufficient privilege>","0.0009998902953586492","0.4739479999999999","474"
+"INSERT INTO device_lists_remote_extremeties (user_id, stream_id) VALUES ($1, $2) ON CONFLICT (user_id) DO UPDATE SET stream_id=EXCLUDED.stream_id","0.0941212","0.47060599999999997","5"
+"SELECT locked FROM users WHERE name = $1","0.07570283333333333","0.45421700000000004","6"
+"<insufficient privilege>","0.0027955886075949374","0.44170299999999985","158"
+"WITH RECURSIVE state(state_group) AS (
+                    VALUES($1::bigint)
+                    UNION ALL
+                    SELECT prev_state_group FROM state_group_edges e, state s
+                    WHERE s.state_group = e.state_group
+                )
+                SELECT count(*) FROM state","0.4387","0.4387","1"
+"SELECT ""active_job_locks"".* FROM ""active_job_locks"" WHERE ""active_job_locks"".""lock_key"" = $1 LIMIT $2 FOR UPDATE","0.052849625","0.422797","8"
+"SELECT ""data_privacy_tasks"".* FROM ""data_privacy_tasks"" WHERE ""data_privacy_tasks"".""state"" = $1 ORDER BY ""data_privacy_tasks"".""id"" ASC LIMIT $2","0.052814124999999996","0.422513","8"
+"SELECT stream_id, user_id, hosts FROM (
+                    SELECT stream_id, user_id, $1 AS hosts FROM device_lists_stream
+                    UNION ALL
+                    SELECT DISTINCT stream_id, user_id, $2 AS hosts FROM device_lists_outbound_pokes
+                ) AS e
+                WHERE $3 < stream_id AND stream_id <= $4
+                ORDER BY stream_id ASC
+                LIMIT $5","0.06015942857142857","0.42111599999999993","7"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20])
+                ) AS b using (room_id)","0.419282","0.419282","1"
+"SELECT stream_id, count(*)
+                FROM current_state_delta_stream
+                WHERE stream_id > $1 AND stream_id <= $2
+                GROUP BY stream_id
+                ORDER BY stream_id ASC
+                LIMIT $3","0.10228075","0.409123","4"
+"select query, mean_exec_time, total_exec_time, calls from pg_stat_statements order by total_exec_time desc","0.36532","0.36532","1"
+"SELECT state_key FROM current_state_events
+            WHERE
+                type = $1
+                AND membership = $2
+                AND state_key = ANY(ARRAY[$3])
+            GROUP BY state_key","0.12070399999999999","0.362112","3"
+"SELECT algorithm FROM e2e_fallback_keys_json WHERE user_id = $1 AND device_id = $2 AND used = $3","0.08891075","0.35564300000000004","4"
+"INSERT INTO cache_invalidation_stream_by_instance (stream_id, instance_name, cache_func, keys, invalidation_ts) VALUES ($1,$2,$3,ARRAY[$4,$5],$6)","0.34358099999999997","0.34358099999999997","1"
+"SELECT DISTINCT ON (original.event_id) original.event_id, edit.event_id FROM events AS edit
+                INNER JOIN event_relations USING (event_id)
+                INNER JOIN events AS original ON
+                    original.event_id = relates_to_id
+                    AND edit.type = original.type
+                    AND edit.sender = original.sender
+                    AND edit.room_id = original.room_id
+                WHERE
+                    relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5])
+                    AND relation_type = $6
+                ORDER by original.event_id DESC, edit.origin_server_ts DESC, edit.event_id DESC","0.0569505","0.34170300000000003","6"
+"SELECT room_id, latest_nid FROM syncv3_rooms WHERE room_id = ANY($1)","0.0844135","0.337654","4"
+"SELECT DISTINCT ON (original.event_id) original.event_id, edit.event_id FROM events AS edit
+                INNER JOIN event_relations USING (event_id)
+                INNER JOIN events AS original ON
+                    original.event_id = relates_to_id
+                    AND edit.type = original.type
+                    AND edit.sender = original.sender
+                    AND edit.room_id = original.room_id
+                WHERE
+                    relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9])
+                    AND relation_type = $10
+                ORDER by original.event_id DESC, edit.origin_server_ts DESC, edit.event_id DESC","0.056127166666666665","0.336763","6"
+"SELECT DISTINCT ON (original.event_id) original.event_id, edit.event_id FROM events AS edit
+                INNER JOIN event_relations USING (event_id)
+                INNER JOIN events AS original ON
+                    original.event_id = relates_to_id
+                    AND edit.type = original.type
+                    AND edit.sender = original.sender
+                    AND edit.room_id = original.room_id
+                WHERE
+                    relates_to_id = ANY(ARRAY[$1,$2,$3,$4])
+                    AND relation_type = $5
+                ORDER by original.event_id DESC, edit.origin_server_ts DESC, edit.event_id DESC","0.05425583333333332","0.325535","6"
+"SELECT stream_id, message_json FROM device_inbox
+                WHERE user_id = $1 AND device_id = $2
+                AND $3 < stream_id AND stream_id <= $4
+                ORDER BY stream_id ASC
+                LIMIT $5","0.03572388888888889","0.321515","9"
+"SELECT relates_to_id, ref.event_id, ref.sender
+            FROM events AS ref
+            INNER JOIN event_relations USING (event_id)
+            INNER JOIN events AS parent ON
+                parent.event_id = relates_to_id
+                AND parent.room_id = ref.room_id
+            WHERE
+                relates_to_id = ANY(ARRAY[$1,$2,$3,$4])
+                AND relation_type = $5
+            ORDER BY ref.topological_ordering, ref.stream_ordering","0.05214833333333333","0.31289","6"
+"SELECT relates_to_id, ref.event_id, ref.sender
+            FROM events AS ref
+            INNER JOIN event_relations USING (event_id)
+            INNER JOIN events AS parent ON
+                parent.event_id = relates_to_id
+                AND parent.room_id = ref.room_id
+            WHERE
+                relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9])
+                AND relation_type = $10
+            ORDER BY ref.topological_ordering, ref.stream_ordering","0.05198716666666667","0.31192300000000006","6"
+"SELECT DISTINCT ON (parent.event_id) parent.event_id, child.event_id FROM events AS child
+                    INNER JOIN event_relations USING (event_id)
+                    INNER JOIN events AS parent ON
+                        parent.event_id = relates_to_id
+                        AND parent.room_id = child.room_id
+                    WHERE
+                        relates_to_id = ANY(ARRAY[$1,$2,$3,$4])
+                        AND relation_type = $5
+                    ORDER BY parent.event_id, child.topological_ordering DESC, child.stream_ordering DESC","0.0507805","0.30468300000000004","6"
+"SELECT user_type FROM users WHERE name = $1","0.0755805","0.302322","4"
+"SELECT relates_to_id, ref.event_id, ref.sender
+            FROM events AS ref
+            INNER JOIN event_relations USING (event_id)
+            INNER JOIN events AS parent ON
+                parent.event_id = relates_to_id
+                AND parent.room_id = ref.room_id
+            WHERE
+                relates_to_id = ANY(ARRAY[$1,$2,$3,$4,$5])
+                AND relation_type = $6
+            ORDER BY ref.topological_ordering, ref.stream_ordering","0.049489000000000005","0.29693400000000003","6"
+"SELECT token_encrypted, user_id, device_id, last_seen FROM syncv3_sync2_tokens WHERE token_hash=$1","0.09738533333333332","0.29215599999999997","3"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3])","0.14155099999999998","0.28310199999999996","2"
+"<insufficient privilege>","0.0017171392405063292","0.2713080000000001","158"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30])","0.08849466666666667","0.265484","3"
+"SELECT state_key FROM current_state_events
+            WHERE membership = $1
+                AND type = $2
+                AND room_id = $3
+                AND state_key LIKE $4
+            LIMIT $5","0.08806733333333333","0.264202","3"
+"<insufficient privilege>","0.0016163354430379752","0.25538099999999997","158"
+"SET client_min_messages TO 'warning'","0.01778007142857143","0.248921","14"
+"SELECT ""tickets"".* FROM ""tickets"" WHERE ""tickets"".""state_id"" = $1 AND (pending_time <= $3) ORDER BY ""tickets"".""id"" ASC LIMIT $2","0.024541900000000002","0.245419","10"
+"SELECT user_id, stream_id FROM device_lists_remote_extremeties WHERE user_id = ANY(ARRAY[$1])","0.06107325","0.244293","4"
+"DELETE FROM worker_locks WHERE lock_name = $1 AND lock_key = $2 AND token = $3","0.11949700000000002","0.238994","2"
+"DISCARD ALL","0.119426","0.238852","2"
+"SELECT
+                COUNT(CASE WHEN notif = $1 THEN $2 END),
+                COUNT(CASE WHEN unread = $3 THEN $4 END),
+                thread_id
+            FROM event_push_actions
+            LEFT JOIN (
+                SELECT thread_id, MAX(event_stream_ordering) AS threaded_receipt_stream_ordering
+                FROM receipts_linearized
+                WHERE
+                    user_id = $5
+                    AND room_id = $6
+                    AND event_stream_ordering > $7
+                    AND receipt_type = ANY(ARRAY[$8,$9])
+                GROUP BY thread_id
+            ) AS receipts USING (thread_id)
+            WHERE user_id = $10
+                AND room_id = $11
+                AND stream_ordering > COALESCE(threaded_receipt_stream_ordering, $12)
+                AND NOT thread_id = ANY(ARRAY[$13])
+            GROUP BY thread_id","0.039751999999999996","0.238512","6"
+"<insufficient privilege>","0.1178015","0.235603","2"
+"INSERT INTO device_lists_remote_resync (user_id, added_ts) VALUES ($1, $2) ON CONFLICT (user_id) DO NOTHING","0.1158415","0.231683","2"
+"SELECT room_version FROM rooms WHERE room_id = $1 FOR SHARE","0.112809","0.225618","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4])","0.054959749999999995","0.219839","4"
+"SELECT at.attname, ty.typname, at.attnum
+    FROM pg_catalog.pg_attribute at
+    LEFT JOIN pg_catalog.pg_type ty ON (ty.oid = at.atttypid)
+    JOIN pg_catalog.pg_class as cl ON cl.oid=at.attrelid
+    JOIN pg_catalog.pg_namespace as nsp ON nsp.oid=cl.relnamespace
+WHERE
+    attrelid=$1::oid AND
+at.attnum > $2
+AND at.attisdropped = $3","0.218945","0.218945","1"
+"UPDATE syncv3_device_list_updates SET bucket=$1 WHERE user_id=$2 AND device_id=$3 AND bucket=$4 RETURNING target_user_id, target_state","0.21735400000000002","0.21735400000000002","1"
+"SELECT ignored_user_id FROM ignored_users WHERE ignorer_user_id = $1","0.019658181818181818","0.21624","11"
+"<insufficient privilege>","0.03473183333333333","0.208391","6"
+"WITH all_receipts AS (
+                SELECT room_id, thread_id, MAX(event_stream_ordering) AS max_receipt_stream_ordering
+                FROM receipts_linearized
+                WHERE
+                    receipt_type = ANY(ARRAY[$1,$2])
+                    AND user_id = $3
+                GROUP BY room_id, thread_id
+            )
+        
+            SELECT epa.room_id, epa.thread_id, COUNT(CASE WHEN epa.notif = $4 THEN $5 END) AS notif_count
+            FROM event_push_actions AS epa
+            
+            LEFT JOIN (
+                SELECT room_id, thread_id,
+                max_receipt_stream_ordering AS threaded_receipt_stream_ordering
+                FROM all_receipts
+                WHERE thread_id IS NOT NULL
+            ) AS threaded_receipts USING (room_id, thread_id)
+            LEFT JOIN (
+                SELECT room_id, thread_id,
+                max_receipt_stream_ordering AS unthreaded_receipt_stream_ordering
+                FROM all_receipts
+                WHERE thread_id IS NULL
+            ) AS unthreaded_receipts USING (room_id)
+        
+            WHERE user_id = $6
+                AND epa.notif = $7
+                AND stream_ordering > (SELECT stream_ordering FROM event_push_summary_stream_ordering)
+                AND (threaded_receipt_stream_ordering IS NULL OR stream_ordering > threaded_receipt_stream_ordering)
+                AND (unthreaded_receipt_stream_ordering IS NULL OR stream_ordering > unthreaded_receipt_stream_ordering)
+            GROUP BY epa.room_id, epa.thread_id","0.20712199999999997","0.20712199999999997","1"
+"<insufficient privilege>","0.034485499999999995","0.206913","6"
+"SELECT room_id, joined_via FROM partial_state_rooms","0.029289","0.205023","7"
+"SELECT room_version FROM rooms WHERE room_id = $1","0.1011145","0.202229","2"
+"SELECT $1","0.0056962285714285705","0.199368","35"
+"SELECT ""jobs"".* FROM ""jobs"" WHERE ""jobs"".""active"" = $1","0.012429062500000001","0.19886500000000001","16"
+"SELECT user_id FROM erased_users WHERE user_id = ANY(ARRAY[$1])","0.0065614666666666665","0.196844","30"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18),($19,$20,$21,$22,$23,$24,$25,$26,$27),($28,$29,$30,$31,$32,$33,$34,$35,$36)","0.19469999999999998","0.19469999999999998","1"
+"SET extra_float_digits = 3","0.0383794","0.19189699999999998","5"
+"select this_.id as id1_0_1_, this_.ls_uuid as ls_uuid3_0_1_, this_.creation_date as creation4_0_1_, this_.mail as mail5_0_1_, this_.modification_date as modifica6_0_1_, this_.role_id as role_id7_0_1_, this_.mail_locale as mail_loc8_0_1_, this_.external_mail_locale as external9_0_1_, this_.cmis_locale as cmis_lo10_0_1_, this_.enable as enable11_0_1_, this_.password as passwor12_0_1_, this_.destroyed as destroy13_0_1_, this_.purge_step as purge_s14_0_1_, this_.second_fa_secret as second_15_0_1_, this_.second_fa_creation_date as second_16_0_1_, this_.authentication_failure_last_date as authent17_0_1_, this_.authentication_success_last_date as authent18_0_1_, this_.authentication_failure_count as authent19_0_1_, this_.domain_id as domain_20_0_1_, this_.technical_account_permission_id as technic21_0_1_, abstractdo2_.id as id1_14_0_, abstractdo2_.uuid as uuid3_14_0_, abstractdo2_.label as label4_14_0_, abstractdo2_.enable as enable5_14_0_, abstractdo2_.template as template6_14_0_, abstractdo2_.description as descript7_14_0_, abstractdo2_.default_role as default_8_14_0_, abstractdo2_.default_locale as default_9_14_0_, abstractdo2_.default_mail_locale as default10_14_0_, abstractdo2_.auth_show_order as auth_sh11_14_0_, abstractdo2_.purge_step as purge_s12_14_0_, abstractdo2_.creation_date as creatio13_14_0_, abstractdo2_.modification_date as modific14_14_0_, abstractdo2_.domain_policy_id as domain_15_14_0_, abstractdo2_.parent_id as parent_16_14_0_, abstractdo2_.mailconfig_id as mailcon17_14_0_, abstractdo2_.mime_policy_id as mime_po18_14_0_, abstractdo2_.user_provider_id as user_pr19_14_0_, abstractdo2_.group_provider_id as group_p20_14_0_, abstractdo2_.work_space_provider_id as work_sp21_14_0_, abstractdo2_.welcome_messages_id as welcome22_14_0_, abstractdo2_.type as type2_14_0_ from account this_ inner join domain_abstract abstractdo2_ on this_.domain_id=abstractdo2_.id where this_.account_type=$2 and this_.ls_uuid=$1","0.04676849999999999","0.18707399999999996","4"
+"SELECT membership, event_id FROM local_current_membership WHERE room_id = $1 AND user_id = $2","0.092569","0.185138","2"
+"SELECT
+               COUNT(CASE WHEN notif = $1 THEN $2 END),
+               COUNT(CASE WHEN unread = $3 THEN $4 END),
+               thread_id
+            FROM event_push_actions ea
+            WHERE user_id = $5
+               AND room_id = $6
+               AND ea.stream_ordering > $7
+               
+               
+            GROUP BY thread_id","0.04615375","0.184615","4"
+"<insufficient privilege>","0.001148164556962025","0.18140999999999996","158"
+"SELECT stream_id, cache_func, keys, invalidation_ts
+                FROM cache_invalidation_stream_by_instance
+                WHERE stream_id > $1 AND instance_name = $2
+                ORDER BY stream_id ASC
+                LIMIT $3","0.05998933333333333","0.17996800000000002","3"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99])","0.176183","0.176183","1"
+"UPDATE syncv3_sync2_tokens SET last_seen = $1 WHERE token_hash = $2","0.173249","0.173249","1"
+"SELECT event_nid, event_id, event, event_type, state_key, room_id, before_state_snapshot_id, membership, event_replaces_nid, missing_previous FROM syncv3_events
+	WHERE event_nid = ANY ($1) ORDER BY event_nid ASC","0.04289375000000001","0.171575","4"
+"SELECT  e.event_id as event_id,  r.redacts as redacts, rej.event_id as rejects  FROM events as e LEFT JOIN rejections as rej USING (event_id) LEFT JOIN redactions as r ON e.event_id = r.redacts WHERE e.event_id = ANY(ARRAY[$1])","0.0824915","0.164983","2"
+"<insufficient privilege>","0.02659116666666667","0.15954700000000002","6"
+"UPDATE syncv3_events SET before_state_snapshot_id=$1, event_replaces_nid=$2 WHERE event_nid = $3","0.079683","0.159366","2"
+"<insufficient privilege>","0.000997727848101266","0.15764099999999995","158"
+"SELECT room_id, thread_id, MAX(event_stream_ordering)
+            FROM receipts_linearized
+            WHERE receipt_type = ANY(ARRAY[$1,$2])
+                AND thread_id = ANY(ARRAY[$3])
+                AND room_id = ANY(ARRAY[$4])
+            AND user_id = $5
+            GROUP BY room_id, thread_id
+
+        UNION ALL
+
+            SELECT room_id, thread_id, MAX(stream_ordering)
+            FROM receipts_linearized
+            INNER JOIN events USING (room_id, event_id)
+            WHERE receipt_type = ANY(ARRAY[$6,$7])
+                AND room_id = ANY(ARRAY[$8])
+                AND thread_id IS NULL
+            AND user_id = $9
+            GROUP BY room_id, thread_id","0.153971","0.153971","1"
+"<insufficient privilege>","0.0009737151898734178","0.153847","158"
+"SET TimeZone='Etc/UTC'","0.15234","0.15234","1"
+"<insufficient privilege>","0.0009611772151898737","0.151866","158"
+"<insufficient privilege>","0.0009483164556962024","0.1498340000000001","158"
+"<insufficient privilege>","0.0009454873417721521","0.14938699999999996","158"
+"<insufficient privilege>","0.0009110063291139241","0.14393899999999993","158"
+"SELECT DISTINCT ON (user_id, keytype) user_id, keytype, keydata, stream_id
+                        FROM e2e_cross_signing_keys
+                        WHERE user_id = ANY(ARRAY[$1,$2])
+                        ORDER BY user_id, keytype, stream_id DESC","0.14385799999999999","0.14385799999999999","1"
+"SET TRANSACTION ISOLATION LEVEL SERIALIZABLE","0.01785225","0.142818","8"
+"select *
+from event_store
+where (
+  aggregate_id = $1
+  and event_id >= $2
+)
+order by event_id","0.07129200000000001","0.14258400000000002","2"
+"SELECT avatar_url FROM profiles WHERE full_user_id = $1","0.0711445","0.142289","2"
+"UPDATE pushers SET last_stream_ordering = $1, last_success = $2 WHERE app_id = $3 AND pushkey = $4 AND user_name = $5","0.142205","0.142205","1"
+"<insufficient privilege>","0.0008917468354430382","0.14089600000000002","158"
+"<insufficient privilege>","0.0008844430379746836","0.139742","158"
+"INSERT INTO device_lists_remote_extremeties (user_id, stream_id) VALUES ($1, $2) ON CONFLICT (user_id) DO UPDATE SET stream_id=EXCLUDED.stream_id","0.0698635","0.139727","2"
+"<insufficient privilege>","0.0008824683544303798","0.13942999999999997","158"
+"SELECT user_name, rule_id, enabled FROM push_rules_enable WHERE user_name = ANY(ARRAY[$1])","0.0696255","0.139251","2"
+"SELECT prev_state_group FROM state_group_edges WHERE state_group = $1","0.06908","0.13816","2"
+"DELETE FROM device_lists_stream
+            WHERE user_id = $1 AND stream_id < $2 AND device_id = ANY(ARRAY[$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14])","0.1374","0.1374","1"
+"INSERT INTO syncv3_rooms(room_id, current_snapshot_id, latest_nid) VALUES($1, $2, $3) ON CONFLICT (room_id) DO UPDATE SET current_snapshot_id = $2, latest_nid = $3","0.0685295","0.137059","2"
+"<insufficient privilege>","0.02257083333333333","0.13542500000000002","6"
+"<insufficient privilege>","0.022270166666666664","0.133621","6"
+"<insufficient privilege>","0.0008428481012658224","0.13317000000000007","158"
+"<insufficient privilege>","0.0008397088607594937","0.13267400000000004","158"
+"<insufficient privilege>","0.0008265063291139239","0.13058799999999995","158"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35])","0.064788","0.129576","2"
+"SELECT value,active FROM hashes","0.01617475","0.129398","8"
+"<insufficient privilege>","0.021455833333333334","0.128735","6"
+"SET ROLE 'avnadmin'","0.063997","0.127994","2"
+"<insufficient privilege>","0.0213305","0.12798299999999999","6"
+"SET ROLE 'avnadmin'","0.06364500000000001","0.12729","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16])","0.063301","0.126602","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99,$100,$101,$102,$103,$104,$105,$106,$107,$108,$109,$110,$111,$112,$113])","0.125782","0.125782","1"
+"SET ROLE 'avnadmin'","0.0621185","0.124237","2"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6,$7,$8,$9])
+                ) AS b using (room_id)","0.124023","0.124023","1"
+"INSERT INTO room_stats_current (room_id, completed_delta_stream_id, current_state_events, joined_members, invited_members, knocked_members, left_members, banned_members, local_users_in_room)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            ON CONFLICT (room_id) DO UPDATE SET completed_delta_stream_id = EXCLUDED.completed_delta_stream_id, current_state_events = EXCLUDED.current_state_events + COALESCE(room_stats_current.current_state_events, $10), joined_members = EXCLUDED.joined_members + COALESCE(room_stats_current.joined_members, $11), invited_members = EXCLUDED.invited_members + COALESCE(room_stats_current.invited_members, $12), knocked_members = EXCLUDED.knocked_members + COALESCE(room_stats_current.knocked_members, $13), left_members = EXCLUDED.left_members + COALESCE(room_stats_current.left_members, $14), banned_members = EXCLUDED.banned_members + COALESCE(room_stats_current.banned_members, $15), local_users_in_room = EXCLUDED.local_users_in_room + COALESCE(room_stats_current.local_users_in_room, $16)","0.121895","0.121895","1"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31])","0.119575","0.119575","1"
+"<insufficient privilege>","0.019859166666666667","0.11915500000000001","6"
+"SELECT event_nid, room_id, event FROM syncv3_events
+		WHERE event_nid > $1 AND event_nid <= $2 AND event_type = $3 AND state_key = $4 AND room_id IN ($5)
+		ORDER BY event_nid ASC","0.11611400000000001","0.11611400000000001","1"
+"<insufficient privilege>","0.019254666666666666","0.115528","6"
+"INSERT INTO event_push_summary (user_id, room_id, thread_id, notif_count, unread_count, stream_ordering) VALUES ($1,$2,$3,$4,$5,$6) ON CONFLICT (user_id, room_id, thread_id) DO UPDATE SET notif_count=EXCLUDED.notif_count, unread_count=EXCLUDED.unread_count, stream_ordering=EXCLUDED.stream_ordering","0.114844","0.114844","1"
+"UPDATE federation_stream_position SET stream_id = $1 WHERE type = $2 AND instance_name = $3","0.0564635","0.112927","2"
+"<insufficient privilege>","0.0186985","0.112191","6"
+"DELETE FROM event_forward_extremities WHERE room_id = $1","0.05606900000000001","0.11213800000000002","2"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18),($19,$20,$21,$22,$23,$24,$25,$26,$27)","0.11168299999999999","0.11168299999999999","1"
+"SELECT DISTINCT b.state_key
+                FROM (
+                    SELECT room_id FROM current_state_events
+                    WHERE type = $1 AND membership = $2 AND state_key = $3
+                ) AS a
+                INNER JOIN (
+                    SELECT room_id, state_key FROM current_state_events
+                    WHERE type = $4 AND membership = $5 AND state_key = ANY(ARRAY[$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23])
+                ) AS b using (room_id)","0.11162000000000001","0.11162000000000001","1"
+"DELETE FROM event_txn_id_device_id
+                WHERE inserted_ts < $1","0.006881","0.11009600000000001","16"
+"select re1_0.ID from REALM re1_0","0.0218072","0.109036","5"
+"SELECT at.attname, at.attnum, ty.typname
+FROM pg_catalog.pg_attribute at LEFT JOIN pg_catalog.pg_type ty ON (ty.oid = at.atttypid)
+JOIN pg_catalog.pg_class as cl ON cl.oid=AT.attrelid
+JOIN pg_catalog.pg_namespace as nsp ON nsp.oid=cl.relnamespace
+WHERE
+    attrelid=$1::oid AND
+attnum = ANY (
+(SELECT con.conkey FROM pg_catalog.pg_class rel LEFT OUTER JOIN pg_catalog.pg_constraint con ON con.conrelid=rel.oid
+JOIN pg_catalog.pg_namespace as nsp ON nsp.oid=REL.relnamespace
+AND con.contype=$2 WHERE rel.relkind IN ($3,$4,$5, $6) AND
+    rel.oid = ($7)::oid
+)::oid[])","0.107768","0.107768","1"
+"<insufficient privilege>","0.0179135","0.107481","6"
+"<insufficient privilege>","0.0176235","0.10574100000000002","6"
+"SELECT presence_stream_id FROM users_to_send_full_presence_to WHERE user_id = $1","0.01318975","0.105518","8"
+"<insufficient privilege>","0.016964666666666666","0.101788","6"
+"<insufficient privilege>","0.016816666666666667","0.10089999999999999","6"
+"SELECT position, message FROM syncv3_to_device_messages WHERE user_id = $1 AND device_id = $2 AND position > $3 ORDER BY position ASC LIMIT $4","0.049109","0.098218","2"
+"SELECT version, algorithm, auth_data, etag FROM e2e_room_keys_versions WHERE user_id = $1 AND version = $2 AND deleted = $3","0.049048999999999995","0.09809799999999999","2"
+"DELETE FROM federation_inbound_events_staging
+                    WHERE origin = $1 AND event_id = $2
+                    RETURNING received_ts","0.048063","0.096126","2"
+"SELECT 1 FROM ONLY ""public"".""events"" x WHERE ""event_id"" OPERATOR(pg_catalog.=) $1 FOR KEY SHARE OF x","0.047923999999999994","0.09584799999999999","2"
+"UPDATE local_media_repository SET last_access_ts = $1 WHERE media_id = $2","0.095138","0.095138","1"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26])","0.093434","0.093434","1"
+"SET ROLE 'avnadmin'","0.0465","0.093","2"
+"SELECT oid, pg_catalog.format_type(oid, $2) AS typname FROM pg_catalog.pg_type WHERE oid = ANY($1) ORDER BY oid","0.046099","0.092198","2"
+"SELECT user_name, rule_id, priority_class, priority, conditions, actions FROM push_rules WHERE user_name = ANY(ARRAY[$1])","0.045908000000000004","0.09181600000000001","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14])","0.089078","0.089078","1"
+"UPDATE remote_media_cache SET last_access_ts = $1 WHERE media_origin = $2 AND media_id = $3","0.088954","0.088954","1"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99,$100,$101,$102,$103,$104,$105,$106,$107,$108,$109])","0.087698","0.087698","1"
+"SET ROLE 'avnadmin'","0.043512999999999996","0.08702599999999999","2"
+"DELETE FROM syncv3_device_list_updates WHERE user_id=$1 AND device_id=$2 AND bucket=$3","0.085767","0.085767","1"
+"SELECT origin, event_id
+                FROM federation_inbound_events_staging
+                WHERE room_id = $1
+                ORDER BY received_ts ASC
+                LIMIT $2","0.0427485","0.085497","2"
+"SELECT server_name, key_id, key_json, ts_valid_until_ms
+                FROM server_keys_json WHERE $1=$2
+                 OR (server_name=$3 AND key_id=$4)
+                ORDER BY ts_added_ms","0.08525200000000001","0.08525200000000001","1"
+"SELECT out.event_stream_ordering, e.event_id, e.room_id, e.type, se.state_key, redacts, relates_to_id, membership, rejections.reason IS NOT NULL, e.outlier FROM events AS e INNER JOIN ex_outlier_stream AS out USING (event_id) LEFT JOIN redactions USING (event_id) LEFT JOIN state_events AS se USING (event_id) LEFT JOIN event_relations USING (event_id) LEFT JOIN room_memberships USING (event_id) LEFT JOIN rejections USING (event_id) WHERE $1 < out.event_stream_ordering AND out.event_stream_ordering <= $2 AND out.instance_name = $3 ORDER BY out.event_stream_ordering ASC","0.0414065","0.082813","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36])","0.082315","0.082315","1"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18),($19,$20,$21,$22,$23,$24,$25,$26,$27)","0.081137","0.081137","1"
+"SELECT stream_id, from_user_id AS user_id
+                FROM user_signature_stream
+                WHERE $1 < stream_id AND stream_id <= $2
+                ORDER BY stream_id ASC
+                LIMIT $3","0.011566285714285715","0.08096400000000001","7"
+"UPDATE redactions SET have_censored = $1 WHERE redacts = ANY(ARRAY[$2])","0.039464","0.078928","2"
+"INSERT INTO device_lists_stream (instance_name, stream_id, user_id, device_id) VALUES ($1,$2,$3,$4),($5,$6,$7,$8),($9,$10,$11,$12),($13,$14,$15,$16),($17,$18,$19,$20),($21,$22,$23,$24),($25,$26,$27,$28),($29,$30,$31,$32),($33,$34,$35,$36),($37,$38,$39,$40),($41,$42,$43,$44),($45,$46,$47,$48)","0.077247","0.077247","1"
+"INSERT INTO presence_stream (stream_id, user_id, state, last_active_ts, last_federation_update_ts, last_user_sync_ts, status_msg, currently_active, instance_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9),($10,$11,$12,$13,$14,$15,$16,$17,$18),($19,$20,$21,$22,$23,$24,$25,$26,$27)","0.07691500000000001","0.07691500000000001","1"
+"SELECT ""ticket_states"".* FROM ""ticket_states"" WHERE ""ticket_states"".""state_type_id"" = $1","0.015378199999999998","0.07689100000000001","5"
+"SELECT $4 FROM ONLY ""public"".""worker_read_write_locks"" x WHERE ""lock_name"" OPERATOR(pg_catalog.=) $1 AND ""lock_key"" OPERATOR(pg_catalog.=) $2 AND ""token"" OPERATOR(pg_catalog.=) $3 FOR KEY SHARE OF x","0.012583166666666666","0.075499","6"
+"SET ROLE 'avnadmin'","0.0374685","0.074937","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19])","0.074758","0.074758","1"
+"SET standard_conforming_strings = on","0.005326571428571429","0.074572","14"
+"SELECT event_id, instance_name, stream_ordering
+                FROM events
+                WHERE
+                    room_id = $1
+                    AND not outlier
+                    AND ($2 >= stream_ordering) AND ($3 < stream_ordering)
+                ORDER BY stream_ordering DESC LIMIT $4","0.024769000000000003","0.07430700000000001","3"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79])","0.074157","0.074157","1"
+"SELECT room_id, has_auth_chain_index FROM rooms WHERE room_id = $1","0.07399399999999999","0.07399399999999999","1"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80,$81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98,$99,$100,$101,$102,$103,$104,$105])","0.073967","0.073967","1"
+"SELECT enabled FROM per_user_experimental_features WHERE user_id = $1 AND feature = $2","0.014552999999999998","0.072765","5"
+"SELECT event_id, outlier FROM events WHERE event_id = ANY(ARRAY[$1])","0.0359045","0.071809","2"
+"SET ROLE 'avnadmin'","0.0355705","0.071141","2"
+"SELECT
+                dlop1.destination,
+                dlop1.user_id,
+                MAX(dlop1.stream_id) AS stream_id,
+                (SELECT MIN(dlop2.device_id) AS device_id FROM
+                    device_lists_outbound_pokes dlop2
+                    WHERE dlop2.destination = dlop1.destination AND
+                      dlop2.user_id=dlop1.user_id AND
+                      dlop2.stream_id=MAX(dlop1.stream_id)
+                )
+            FROM device_lists_outbound_pokes dlop1
+                GROUP BY destination, user_id
+                HAVING min(ts) < $1 AND count(*) > $2","0.07025999999999999","0.07025999999999999","1"
+"SELECT event_json, internal_metadata, origin
+                FROM federation_inbound_events_staging
+                WHERE room_id = $1
+                ORDER BY received_ts ASC
+                LIMIT $2","0.034747","0.069494","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24])","0.069081","0.069081","1"
+"SELECT ""permissions"".""name"" FROM ""permissions"" WHERE (permissions.active = $1 AND (permissions.name = $2 OR permissions.name LIKE $3 OR permissions.name = $4 OR permissions.name LIKE $5 OR permissions.name = $6 OR permissions.name LIKE $7 OR permissions.name = $8 OR permissions.name LIKE $9 OR permissions.name = $10 OR permissions.name LIKE $11 OR permissions.name = $12 OR permissions.name LIKE $13 OR permissions.name = $14 OR permissions.name LIKE $15 OR permissions.name = $16 OR permissions.name LIKE $17 OR permissions.name = $18 OR permissions.name LIKE $19))","0.068626","0.068626","1"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49])","0.066286","0.066286","1"
+"DELETE FROM device_lists_remote_resync WHERE user_id = $1","0.0318225","0.063645","2"
+"SET intervalstyle = iso_8601","0.004540357142857143","0.06356500000000001","14"
+"SET ROLE 'avnadmin'","0.031498","0.062996","2"
+"SELECT event_id, redacts FROM redactions WHERE redacts = ANY(ARRAY[$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53])","0.062455","0.062455","1"
+"SELECT DISTINCT(user_id) FROM event_push_actions WHERE stream_ordering >= $1 AND stream_ordering <= $2 AND notif = $3","0.031216","0.062432","2"
+"SET ROLE 'avnadmin'","0.0308875","0.061775","2"
+"SELECT e.stream_ordering, e.event_id, e.received_ts FROM events AS e WHERE $1 < e.stream_ordering AND e.stream_ordering <= $2 ORDER BY e.stream_ordering ASC LIMIT $3","0.01500325","0.060013","4"
+"SELECT user_id FROM device_lists_remote_resync WHERE user_id = ANY(ARRAY[$1,$2])","0.028863","0.057726","2"
+"INSERT INTO state_groups_state (state_group, room_id, type, state_key, event_id) VALUES ($1,$2,$3,$4,$5)","0.057018","0.057018","1"
+"<insufficient privilege>","0.028336","0.056672","2"
+"DELETE FROM event_push_actions_staging WHERE event_id = $1","0.028276000000000003","0.056552000000000005","2"
+"SET ROLE 'avnadmin'","0.027485999999999997","0.05497199999999999","2"
+"SET application_name = 'PostgreSQL JDBC Driver'","0.010979599999999999","0.054898","5"
+"SELECT address FROM userHistory","0.006716375","0.053730999999999994","8"
+"SELECT user_id FROM erased_users WHERE user_id = ANY(ARRAY[$1,$2])","0.008723666666666666","0.052342","6"
+"<insufficient privilege>","0.025876","0.051752","2"
+"SET ROLE 'avnadmin'","0.025807999999999998","0.051615999999999995","2"
+"SELECT ""active_job_locks"".* FROM ""active_job_locks"" WHERE ""active_job_locks"".""lock_key"" = $1 AND ""active_job_locks"".""active_job_id"" = $2 LIMIT $3 FOR UPDATE","0.0064494999999999995","0.051596","8"
+"SELECT event_id FROM current_state_events WHERE event_id = ANY(ARRAY[$1])","0.051483","0.051483","1"
+"<insufficient privilege>","0.025704499999999998","0.051408999999999996","2"
+"SELECT room_id, session_id, first_message_index, forwarded_count, is_verified, session_data FROM e2e_room_keys WHERE user_id = $1 AND version = $2 AND room_id = $3 AND session_id = $4","0.051276999999999996","0.051276999999999996","1"
+"BEGIN","0.0025532500000000004","0.051065000000000006","20"
+"DELETE FROM syncv3_to_device_messages WHERE user_id = $1 AND device_id = $2 AND position <= $3","0.025515","0.05103","2"
+"SET ROLE 'avnadmin'","0.02527","0.05054","2"
+"COMMIT","0.001912192307692308","0.04971700000000001","26"
+"<insufficient privilege>","0.049412","0.049412","1"
+"SET ROLE 'avnadmin'","0.0238275","0.047655","2"
+"<insufficient privilege>","0.0237815","0.047563","2"
+"<insufficient privilege>","0.046996","0.046996","1"
+"<insufficient privilege>","0.0232775","0.046555","2"
+"<insufficient privilege>","0.0229445","0.045889","2"
+"UPDATE syncv3_device_data SET data=$1 WHERE user_id=$2 AND device_id=$3","0.043653","0.043653","1"
+"SET ROLE 'avnadmin'","0.021770499999999998","0.043540999999999996","2"
+"SELECT stream_id, room_id, type, state_key, event_id, prev_event_id
+                FROM current_state_delta_stream
+                WHERE $1 < stream_id AND stream_id <= $2
+                ORDER BY stream_id ASC","0.010694500000000001","0.042778000000000004","4"
+"<insufficient privilege>","0.0212435","0.042487","2"
+"SET ROLE 'avnadmin'","0.020951499999999998","0.041902999999999996","2"
+"SELECT * FROM syncv3_snapshots WHERE snapshot_id = $1","0.041486","0.041486","1"
+"SELECT $4 FROM ONLY ""public"".""worker_read_write_locks_mode"" x WHERE $1 OPERATOR(pg_catalog.=) ""lock_name"" AND $2 OPERATOR(pg_catalog.=) ""lock_key"" AND $3 OPERATOR(pg_catalog.=) ""token"" FOR KEY SHARE OF x","0.0098455","0.039382","4"
+"SELECT prev_batch FROM syncv3_events WHERE prev_batch IS NOT NULL AND room_id=$1 AND event_nid >= $2 LIMIT $3","0.03902","0.03902","1"
+"<insufficient privilege>","0.0192935","0.038587","2"
+"<insufficient privilege>","0.019011","0.038022","2"
+"<insufficient privilege>","0.019001","0.038002","2"
+"<insufficient privilege>","0.018675999999999998","0.037351999999999996","2"
+"DELETE FROM cache_invalidation_stream_by_instance
+                WHERE $1 <= stream_id AND stream_id <= $2","0.036968","0.036968","1"
+"SELECT server_name FROM partial_state_rooms_servers WHERE room_id = $1","0.036888000000000004","0.036888000000000004","1"
+"<insufficient privilege>","0.0184365","0.036873","2"
+"<insufficient privilege>","0.0183455","0.036691","2"
+"<insufficient privilege>","0.0182165","0.036433","2"
+"SHOW TIME ZONE","0.005185428571428571","0.036298","7"
+"<insufficient privilege>","0.018053","0.036106","2"
+"SHOW search_path","0.005145571428571429","0.036018999999999995","7"
+"<insufficient privilege>","0.017784","0.035568","2"
+"<insufficient privilege>","0.017713","0.035426","2"
+"<insufficient privilege>","0.0175525","0.035105","2"
+"<insufficient privilege>","0.017203999999999997","0.034407999999999994","2"
+"SELECT ""chat_sessions"".* FROM ""chat_sessions"" WHERE ""chat_sessions"".""state"" != $1 AND (updated_at < $2)","0.006860399999999999","0.034302","5"
+"<insufficient privilege>","0.017083","0.034166","2"
+"<insufficient privilege>","0.016833","0.033666","2"
+"SELECT room_id, thread_id, MAX(event_stream_ordering)
+            FROM receipts_linearized
+            WHERE receipt_type = ANY(ARRAY[$1,$2])
+                AND thread_id = ANY($3)
+                AND room_id = ANY($4)
+            AND user_id = $5
+            GROUP BY room_id, thread_id
+
+        UNION ALL
+
+            SELECT room_id, thread_id, MAX(stream_ordering)
+            FROM receipts_linearized
+            INNER JOIN events USING (room_id, event_id)
+            WHERE receipt_type = ANY(ARRAY[$6,$7])
+                AND room_id = ANY($8)
+                AND thread_id IS NULL
+            AND user_id = $9
+            GROUP BY room_id, thread_id","0.033165","0.033165","1"
+"delete from CLIENT_INITIAL_ACCESS where (EXPIRATION>$2 and (TIMESTAMP+EXPIRATION)<$1) or REMAINING_COUNT=$3","0.0065138","0.032569","5"
+"<insufficient privilege>","0.0160975","0.032195","2"
+"<insufficient privilege>","0.015799499999999998","0.031598999999999995","2"
+"<insufficient privilege>","0.015654","0.031308","2"
+"<insufficient privilege>","0.015368","0.030736","2"
+"<insufficient privilege>","0.015125","0.03025","2"
+"SELECT stream_id, room_id, type, state_key, event_id
+                FROM current_state_delta_stream
+                WHERE $1 < stream_id AND stream_id <= $2
+                    AND instance_name = $3
+                ORDER BY stream_id ASC LIMIT $4","0.0147485","0.029497","2"
+"<insufficient privilege>","0.0145385","0.029077","2"
+"<insufficient privilege>","0.0137235","0.027447","2"
+"<insufficient privilege>","0.013696","0.027392","2"
+"DELETE FROM sessions WHERE expiry_time_ms <= $1","0.008886333333333333","0.026659","3"
+"<insufficient privilege>","0.006216","0.024864","4"
+"DELETE FROM current_state_events WHERE room_id = $1 AND type = $2 AND state_key = $3","0.024755","0.024755","1"
+"<insufficient privilege>","0.011805","0.02361","2"
+"<insufficient privilege>","0.011209","0.022417999999999997","2"
+"SELECT ignorer_user_id FROM ignored_users WHERE ignored_user_id = $1","0.022091","0.022091","1"
+"SELECT invalidation_ts FROM cache_invalidation_stream_by_instance
+                WHERE stream_id > $1
+                ORDER BY stream_id ASC
+                LIMIT $2","0.022021000000000002","0.022021000000000002","1"
+"<insufficient privilege>","0.010565999999999999","0.021131999999999998","2"
+"DELETE FROM threepid_validation_token WHERE
+            expires < $1","0.006798333333333333","0.020395","3"
+"DELETE FROM event_failed_pull_attempts
+            WHERE event_id = $1 and room_id = $2","0.0095405","0.019081","2"
+"<insufficient privilege>","0.018548","0.018548","1"
+"SELECT ""import_jobs"".* FROM ""import_jobs"" WHERE ""import_jobs"".""started_at"" IS NULL AND ""import_jobs"".""dry_run"" = $1 ORDER BY ""import_jobs"".""started_at"" DESC, ""import_jobs"".""id"" DESC","0.017728","0.017728","1"
+"<insufficient privilege>","0.0088485","0.017697","2"
+"SET DateStyle='ISO'","0.017575","0.017575","1"
+"<insufficient privilege>","0.0084185","0.016837","2"
+"<insufficient privilege>","0.008405","0.01681","2"
+"<insufficient privilege>","0.007212","0.014424","2"
+"<insufficient privilege>","0.006815","0.01363","2"
+"SELECT chain_id, MAX(sequence_number) FROM event_auth_chains
+            WHERE chain_id = ANY($1)
+            GROUP BY chain_id","0.013597","0.013597","1"
+"<insufficient privilege>","0.0067009999999999995","0.013401999999999999","2"
+"<insufficient privilege>","0.006695","0.01339","2"
+"<insufficient privilege>","0.006624","0.013248","2"
+"<insufficient privilege>","0.006598","0.013196","2"
+"<insufficient privilege>","0.006413","0.012826","2"
+"<insufficient privilege>","0.006345","0.01269","2"
+"<insufficient privilege>","0.0060735","0.012147","2"
+"<insufficient privilege>","0.0060305","0.012061","2"
+"COMMIT","0.0023531999999999997","0.011766","5"
+"SET extra_float_digits = 3","0.010563","0.010563","1"
+"SELECT max(stream_id), destination FROM device_federation_outbox WHERE $1 < stream_id AND stream_id <= $2 GROUP BY destination","0.01009","0.01009","1"
+"<insufficient privilege>","0.00228525","0.009141","4"
+"SELECT max(stream_id), user_id FROM device_inbox WHERE $1 < stream_id AND stream_id <= $2 GROUP BY user_id","0.008099","0.008099","1"
+"SELECT MIN(send_ts) FROM delayed_events WHERE is_processed = $1","0.007260999999999999","0.007260999999999999","1"
+"DELETE FROM delayed_events WHERE room_id = $1 AND event_type = $2 AND state_key = $3 AND is_processed = $4","0.007174000000000001","0.007174000000000001","1"
+"BEGIN","0.0016475","0.0065899999999999995","4"
+"DELETE FROM monthly_active_users WHERE timestamp < $1 AND NOT user_id = ANY($2)","0.006543","0.006543","1"
+"SET application_name = 'PostgreSQL JDBC Driver'","0.006162","0.006162","1"
+"select this_.uuid as y0_ from upload_request this_ where this_.activation_date<$1 and this_.status=$2","0.004405","0.004405","1"
+"select this_.uuid as y0_ from upload_request this_ where this_.notification_date<$1 and this_.notification_date>$2 and this_.notification_date<this_.expiry_date and this_.status=$3 and this_.notified=$4","0.0028569999999999997","0.0028569999999999997","1"
+"select this_.uuid as y0_ from upload_request this_ where this_.expiry_date<$1 and this_.status=$2","0.002794","0.002794","1"
+"select this_.uuid as y0_ from upload_request_group this_ where this_.expiry_date<$1 and this_.status=$2","0.00247","0.00247","1"
+"COMMIT","0.002024","0.002024","1"
