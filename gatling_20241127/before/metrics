@@ -1,0 +1,8 @@
+# TYPE postgres_execution summary
+postgres_execution{quantile="0.5",} 0.0019005430000000002
+postgres_execution{quantile="0.75",} 0.0029982710000000003
+postgres_execution{quantile="0.95",} 0.008323071000000001
+postgres_execution{quantile="0.98",} 0.014811135000000001
+postgres_execution{quantile="0.99",} 0.024379391
+postgres_execution{quantile="0.999",} 0.071827455
+postgres_execution_count 2149596.0
