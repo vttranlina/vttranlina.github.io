@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-06-25 00:51 → 2026-06-28 00:51 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-27 17:53 UTC",
+    "excerpt": "Strong backend activity in `calendar-side-service`: 16 new PRs and 13 new issues in this reporting window.",
+    "variants": {
+      "en": "activity-reports/2026-06-28_00-51-26-2026-06-25_00-51_to_2026-06-28_00-51-en.html",
+      "vi": "activity-reports/2026-06-28_00-51-26-2026-06-25_00-51_to_2026-06-28_00-51-vi.html"
+    },
+    "metrics": {
+      "New PRs": 16,
+      "Issues": 13,
+      "Comments": 82,
+      "Reviews": 46,
+      "Total": 157
+    }
+  }
+]

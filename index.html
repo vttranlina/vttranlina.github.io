@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="GitHub activity reports">
+  <title>GitHub Activity Reports</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="github-activity-assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div>
+    <p class="eyebrow">Dark static dashboard</p>
+    <h1>GitHub Activity Reports</h1>
+    <p class="subtitle">Generated from local Markdown summaries. Newest reports are listed first.</p>
+  </div>
+  <label class="search">
+    <span>Search</span>
+    <input id="search" type="search" placeholder="booking, flaky, calendar...">
+  </label>
+</header>
+<main class="layout">
+  <section class="latest">
+  <div>
+    <p class="eyebrow">Latest</p>
+    <h2>Calendar Team Activity Summary</h2>
+    <p class="period">2026-06-25 00:51 → 2026-06-28 00:51 Asia/Ho_Chi_Minh</p>
+    <p>Strong backend activity in <code>calendar-side-service</code>: 16 new PRs and 13 new issues in this reporting window.</p>
+    <div class="metrics"><span class="metric"><span>New PRs</span><strong>16</strong></span><span class="metric"><span>Issues</span><strong>13</strong></span><span class="metric"><span>Comments</span><strong>82</strong></span><span class="metric"><span>Reviews</span><strong>46</strong></span><span class="metric"><span>Total</span><strong>157</strong></span></div>
+  </div>
+  <div class="actions"><a class="button" href="activity-reports/2026-06-28_00-51-26-2026-06-25_00-51_to_2026-06-28_00-51-vi.html">Tiếng Việt</a><a class="button" href="activity-reports/2026-06-28_00-51-26-2026-06-25_00-51_to_2026-06-28_00-51-en.html">English</a></div>
+</section>
+  <section>
+    <div class="section-title">
+      <h2>Reports</h2>
+      <span>1 total</span>
+    </div>
+    <div id="reports" class="report-list">
+      <article class="report-card" data-search="calendar team activity summary 2026-06-25 00:51 → 2026-06-28 00:51 asia/ho_chi_minh strong backend activity in `calendar-side-service`: 16 new prs and 13 new issues in this reporting window.">
+  <div class="card-main">
+    <div class="eyebrow">2026-06-27 17:53 UTC</div>
+    <h2>Calendar Team Activity Summary</h2>
+    <p class="period">2026-06-25 00:51 → 2026-06-28 00:51 Asia/Ho_Chi_Minh</p>
+    <p class="excerpt">Strong backend activity in <code>calendar-side-service</code>: 16 new PRs and 13 new issues in this reporting window.</p>
+    <div class="metrics"><span class="metric"><span>New PRs</span><strong>16</strong></span><span class="metric"><span>Issues</span><strong>13</strong></span><span class="metric"><span>Comments</span><strong>82</strong></span><span class="metric"><span>Reviews</span><strong>46</strong></span><span class="metric"><span>Total</span><strong>157</strong></span></div>
+  </div>
+  <div class="actions"><a class="button" href="activity-reports/2026-06-28_00-51-26-2026-06-25_00-51_to_2026-06-28_00-51-vi.html">Tiếng Việt</a><a class="button" href="activity-reports/2026-06-28_00-51-26-2026-06-25_00-51_to_2026-06-28_00-51-en.html">English</a></div>
+</article>
+    </div>
+  </section>
+</main>
+<script>
+const input = document.getElementById('search');
+const cards = [...document.querySelectorAll('.report-card')];
+input?.addEventListener('input', () => {
+  const query = input.value.trim().toLowerCase();
+  cards.forEach(card => {
+    card.hidden = query && !card.dataset.search.includes(query);
+  });
+});
+</script>
+</body>
+</html>
