@@ -19,107 +19,224 @@
 </header>
 <main class="report-layout">
   <article class="markdown-body">
-    <h1 id="calendar-team-activity-summary">Calendar Team Activity Summary</h1>
+    <h1>Calendar Team Activity Summary</h1>
 <p>Period: 2026-06-25 00:51 +07 -&gt; 2026-06-28 00:51 +07</p>
 <p>Language: English</p>
-<h2 id="tl-dr">TL;DR</h2>
+<h2>TL;DR</h2>
 <ul>
 <li>Strong backend activity in <code>calendar-side-service</code>: 16 new PRs and 13 new issues in this reporting window.</li>
-<li>Booking links progressed across several features: booker confirmation email merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/852" target="_blank" rel="noopener noreferrer">pull/852</a>, optional name/description merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/861" target="_blank" rel="noopener noreferrer">pull/861</a>, ICS reference merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/865" target="_blank" rel="noopener noreferrer">pull/865</a>, auto-accept open in <a href="https://github.com/linagora/twake-calendar-side-service/pull/863" target="_blank" rel="noopener noreferrer">pull/863</a>, and event search criterion open in <a href="https://github.com/linagora/twake-calendar-side-service/pull/869" target="_blank" rel="noopener noreferrer">pull/869</a>.</li>
-<li>Address book WebAdmin management was designed, implemented, documented, tested, fixed, and merged via <a href="https://github.com/linagora/twake-calendar-side-service/pull/851" target="_blank" rel="noopener noreferrer">pull/851</a>.</li>
-<li>Test stability remains an active concern: fork count tuning did not solve <a href="https://github.com/linagora/twake-calendar-side-service/issues/818" target="_blank" rel="noopener noreferrer">issues/818</a>; additional stabilizations landed in <a href="https://github.com/linagora/twake-calendar-side-service/pull/847" target="_blank" rel="noopener noreferrer">pull/847</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/854" target="_blank" rel="noopener noreferrer">pull/854</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/855" target="_blank" rel="noopener noreferrer">pull/855</a>, and an open WebSocket fix <a href="https://github.com/linagora/twake-calendar-side-service/pull/866" target="_blank" rel="noopener noreferrer">pull/866</a>.</li>
-<li>Team calendar repository work advanced with memory implementation merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/857" target="_blank" rel="noopener noreferrer">pull/857</a> and MongoDB implementation open/approved in <a href="https://github.com/linagora/twake-calendar-side-service/pull/858" target="_blank" rel="noopener noreferrer">pull/858</a>.</li>
+<li>Booking links progressed across several features: booker confirmation email merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/852">pull/852</a>, optional name/description merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/861">pull/861</a>, ICS reference merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/865">pull/865</a>, auto-accept open in <a href="https://github.com/linagora/twake-calendar-side-service/pull/863">pull/863</a>, and event search criterion open in <a href="https://github.com/linagora/twake-calendar-side-service/pull/869">pull/869</a>.</li>
+<li>Address book WebAdmin management was designed, implemented, documented, tested, fixed, and merged via <a href="https://github.com/linagora/twake-calendar-side-service/pull/851">pull/851</a>.</li>
+<li>Test stability remains an active concern: fork count tuning did not solve <a href="https://github.com/linagora/twake-calendar-side-service/issues/818">issues/818</a>; additional stabilizations landed in <a href="https://github.com/linagora/twake-calendar-side-service/pull/847">pull/847</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/854">pull/854</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/855">pull/855</a>, and an open WebSocket fix <a href="https://github.com/linagora/twake-calendar-side-service/pull/866">pull/866</a>.</li>
+<li>Team calendar repository work advanced with memory implementation merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/857">pull/857</a> and MongoDB implementation open/approved in <a href="https://github.com/linagora/twake-calendar-side-service/pull/858">pull/858</a>.</li>
 </ul>
-<h2 id="highlights">Highlights</h2>
-<h3 id="backend-side-service-sabre">Backend / Side Service / Sabre</h3>
+<h2>Highlights</h2>
+<h3>Backend / Side Service / Sabre</h3>
 <ul>
-<li><strong>Booking links</strong></li>
-<li>Booker confirmation email was merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/852" target="_blank" rel="noopener noreferrer">pull/852</a>. A security/privacy decision was made not to include unauthenticated booker-provided booking title in the email body; wording was adjusted from “booking link request” to “booking request” (<a href="https://github.com/linagora/twake-calendar-side-service/issues/828#issuecomment-4806693050" target="_blank" rel="noopener noreferrer">issues/828 comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/852#issuecomment-4806919966" target="_blank" rel="noopener noreferrer">pull/852 comment</a>).</li>
-<li>Optional <code>name</code> and <code>description</code> for booking links were merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/861" target="_blank" rel="noopener noreferrer">pull/861</a>. A MongoDB persistence bug was caught by tests and fixed by copying <code>name</code>/<code>description</code> into <code>MongoDBBookingLinkDAO.insert</code> (<a href="https://github.com/linagora/twake-calendar-side-service/pull/861#issuecomment-4810237228" target="_blank" rel="noopener noreferrer">pull/861 comment</a>).</li>
-<li>Booking-link reference in generated event ICS was merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/865" target="_blank" rel="noopener noreferrer">pull/865</a>. The branch was rebased after conflicts with <a href="https://github.com/linagora/twake-calendar-side-service/pull/861" target="_blank" rel="noopener noreferrer">pull/861</a> and reduced to the ICS-reference change only (<a href="https://github.com/linagora/twake-calendar-side-service/pull/865#issuecomment-4812812325" target="_blank" rel="noopener noreferrer">pull/865 comment</a>).</li>
-<li>Booking-link search/indexing is in progress via <a href="https://github.com/linagora/twake-calendar-side-service/issues/867" target="_blank" rel="noopener noreferrer">issues/867</a> and <a href="https://github.com/linagora/twake-calendar-side-service/pull/869" target="_blank" rel="noopener noreferrer">pull/869</a>. The agreed direction from <a href="https://github.com/linagora/twake-calendar-side-service/issues/864" target="_blank" rel="noopener noreferrer">issues/864</a>: use <code>X-TWAKE-BOOKING-LINK</code>, embed a stable internal identifier rather than mutable public id, expose the criterion to end-user event search, and ensure cleanup deletes from CalDAV as source of truth (<a href="https://github.com/linagora/twake-calendar-side-service/issues/864#issuecomment-4812635144" target="_blank" rel="noopener noreferrer">issues/864 decision comment</a>).</li>
-<li>Batch cleanup for booking links is now tracked separately in <a href="https://github.com/linagora/twake-calendar-side-service/issues/868" target="_blank" rel="noopener noreferrer">issues/868</a>. It should build on the search/indexing work and must avoid deleting only from OpenSearch.</li>
-</ul>
+<li>
+<p><strong>Booking links</strong></p>
 <ul>
-<li><strong>Address book WebAdmin / CardDAV</strong></li>
-<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/851" target="_blank" rel="noopener noreferrer">pull/851</a> added WebAdmin routes for user address book management and was merged.</li>
-<li>The design covers list/create/delete, public visibility, and delegation/sharees; it proxies Sabre CardDAV operations and documents the routes in <code>docs/apis/webadmin.md</code> (<a href="https://github.com/linagora/twake-calendar-side-service/issues/801#issuecomment-4798649417" target="_blank" rel="noopener noreferrer">issues/801 analysis</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/801#issuecomment-4799778076" target="_blank" rel="noopener noreferrer">issues/801 updated analysis</a>).</li>
-<li>A test failure where deleting a system address book returned <code>500</code> instead of <code>400</code> was fixed by checking address book type before calling DAV delete (<a href="https://github.com/linagora/twake-calendar-side-service/pull/851#issuecomment-4803340382" target="_blank" rel="noopener noreferrer">pull/851 fix comment</a>).</li>
+<li>Booker confirmation email was merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/852">pull/852</a>. A security/privacy decision was made not to include unauthenticated booker-provided booking title in the email body; wording was adjusted from “booking link request” to “booking request” (<a href="https://github.com/linagora/twake-calendar-side-service/issues/828#issuecomment-4806693050">issues/828 comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/852#issuecomment-4806919966">pull/852 comment</a>).</li>
+<li>Optional <code>name</code> and <code>description</code> for booking links were merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/861">pull/861</a>. A MongoDB persistence bug was caught by tests and fixed by copying <code>name</code>/<code>description</code> into <code>MongoDBBookingLinkDAO.insert</code> (<a href="https://github.com/linagora/twake-calendar-side-service/pull/861#issuecomment-4810237228">pull/861 comment</a>).</li>
+<li>Booking-link reference in generated event ICS was merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/865">pull/865</a>. The branch was rebased after conflicts with <a href="https://github.com/linagora/twake-calendar-side-service/pull/861">pull/861</a> and reduced to the ICS-reference change only (<a href="https://github.com/linagora/twake-calendar-side-service/pull/865#issuecomment-4812812325">pull/865 comment</a>).</li>
+<li>Booking-link search/indexing is in progress via <a href="https://github.com/linagora/twake-calendar-side-service/issues/867">issues/867</a> and <a href="https://github.com/linagora/twake-calendar-side-service/pull/869">pull/869</a>. The agreed direction from <a href="https://github.com/linagora/twake-calendar-side-service/issues/864">issues/864</a>: use <code>X-TWAKE-BOOKING-LINK</code>, embed a stable internal identifier rather than mutable public id, expose the criterion to end-user event search, and ensure cleanup deletes from CalDAV as source of truth (<a href="https://github.com/linagora/twake-calendar-side-service/issues/864#issuecomment-4812635144">issues/864 decision comment</a>).</li>
+<li>Batch cleanup for booking links is now tracked separately in <a href="https://github.com/linagora/twake-calendar-side-service/issues/868">issues/868</a>. It should build on the search/indexing work and must avoid deleting only from OpenSearch.</li>
 </ul>
+</li>
+<li>
+<p><strong>Address book WebAdmin / CardDAV</strong></p>
 <ul>
-<li><strong>Team calendar</strong></li>
-<li>Entity repository API and memory implementation were merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/857" target="_blank" rel="noopener noreferrer">pull/857</a>.</li>
-<li>MongoDB entity repository implementation is open and approved in <a href="https://github.com/linagora/twake-calendar-side-service/pull/858" target="_blank" rel="noopener noreferrer">pull/858</a>.</li>
-<li>A design concern was split out: renaming a team calendar likely requires renaming the underlying DAV collection and subscriptions, tracked in <a href="https://github.com/linagora/twake-calendar-side-service/issues/859" target="_blank" rel="noopener noreferrer">issues/859</a> from <a href="https://github.com/linagora/twake-calendar-side-service/pull/858#discussion_r3480726600" target="_blank" rel="noopener noreferrer">pull/858 inline comment</a>.</li>
-<li>Decision on invitations: team calendars should be treated as event holders, not participants; inviting team calendars is not supported for now (<a href="https://github.com/linagora/twake-calendar-side-service/issues/515#issuecomment-4796847243" target="_blank" rel="noopener noreferrer">issues/515 comment</a>).</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/851">pull/851</a> added WebAdmin routes for user address book management and was merged.</li>
+<li>The design covers list/create/delete, public visibility, and delegation/sharees; it proxies Sabre CardDAV operations and documents the routes in <code>docs/apis/webadmin.md</code> (<a href="https://github.com/linagora/twake-calendar-side-service/issues/801#issuecomment-4798649417">issues/801 analysis</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/801#issuecomment-4799778076">issues/801 updated analysis</a>).</li>
+<li>A test failure where deleting a system address book returned <code>500</code> instead of <code>400</code> was fixed by checking address book type before calling DAV delete (<a href="https://github.com/linagora/twake-calendar-side-service/pull/851#issuecomment-4803340382">pull/851 fix comment</a>).</li>
 </ul>
+</li>
+<li>
+<p><strong>Team calendar</strong></p>
 <ul>
-<li><strong>SaaS user provisioning</strong></li>
-<li>On <a href="https://github.com/linagora/twake-calendar-side-service/pull/838" target="_blank" rel="noopener noreferrer">pull/838</a>, the team clarified why Calendar auto-provisions registered users on settings while TMail checks LDAP-only user existence (<a href="https://github.com/linagora/twake-calendar-side-service/pull/838#issuecomment-4795293557" target="_blank" rel="noopener noreferrer">pull/838 discussion</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/838#issuecomment-4796107699" target="_blank" rel="noopener noreferrer">pull/838 answer</a>).</li>
+<li>Entity repository API and memory implementation were merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/857">pull/857</a>.</li>
+<li>MongoDB entity repository implementation is open and approved in <a href="https://github.com/linagora/twake-calendar-side-service/pull/858">pull/858</a>.</li>
+<li>A design concern was split out: renaming a team calendar likely requires renaming the underlying DAV collection and subscriptions, tracked in <a href="https://github.com/linagora/twake-calendar-side-service/issues/859">issues/859</a> from <a href="https://github.com/linagora/twake-calendar-side-service/pull/858#discussion_r3480726600">pull/858 inline comment</a>.</li>
+<li>Decision on invitations: team calendars should be treated as event holders, not participants; inviting team calendars is not supported for now (<a href="https://github.com/linagora/twake-calendar-side-service/issues/515#issuecomment-4796847243">issues/515 comment</a>).</li>
 </ul>
-<h3 id="frontend">Frontend</h3>
+</li>
+<li>
+<p><strong>SaaS user provisioning</strong></p>
+<ul>
+<li>On <a href="https://github.com/linagora/twake-calendar-side-service/pull/838">pull/838</a>, the team clarified why Calendar auto-provisions registered users on settings while TMail checks LDAP-only user existence (<a href="https://github.com/linagora/twake-calendar-side-service/pull/838#issuecomment-4795293557">pull/838 discussion</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/838#issuecomment-4796107699">pull/838 answer</a>).</li>
+</ul>
+</li>
+</ul>
+<h3>Frontend</h3>
 <ul>
 <li>No dedicated frontend repository activity was included in this report.</li>
-<li>Backend APIs are being prepared for frontend needs:</li>
-<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/837#issuecomment-4793353321" target="_blank" rel="noopener noreferrer">issues/837 comment</a> states the related work is needed for a new frontend sprint.</li>
-<li>Public agenda / booking event flow was decomposed into token signing, reservation route returning JWT, event get route, and cancel route in <a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4796046452" target="_blank" rel="noopener noreferrer">issues/826 comment</a>, with new issues <a href="https://github.com/linagora/twake-calendar-side-service/issues/841" target="_blank" rel="noopener noreferrer">issues/841</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/842" target="_blank" rel="noopener noreferrer">issues/842</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/843" target="_blank" rel="noopener noreferrer">issues/843</a>, and <a href="https://github.com/linagora/twake-calendar-side-service/issues/844" target="_blank" rel="noopener noreferrer">issues/844</a>.</li>
-<li>There was an open API-shape question on whether <code>bookingLink</code> needs to be returned in the booked event response or whether frontend can fetch it separately via slots API (<a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4798103501" target="_blank" rel="noopener noreferrer">issues/826 comment</a>). Not enough signal in this window to conclude.</li>
-</ul>
-<h3 id="integration-tests-qa">Integration Tests / QA</h3>
+<li>Backend APIs are being prepared for frontend needs:
 <ul>
-<li>Flaky test investigation on <a href="https://github.com/linagora/twake-calendar-side-service/issues/818" target="_blank" rel="noopener noreferrer">issues/818</a> remains important. Setting app module <code>forkCount = 1</code> via <a href="https://github.com/linagora/twake-calendar-side-service/pull/840" target="_blank" rel="noopener noreferrer">pull/840</a> did not resolve the issue (<a href="https://github.com/linagora/twake-calendar-side-service/issues/818#issuecomment-4807498978" target="_blank" rel="noopener noreferrer">issues/818 comment</a>).</li>
-<li>Stability-related changes merged:</li>
-<li>Graceful AMQP consumer shutdown: <a href="https://github.com/linagora/twake-calendar-side-service/pull/847" target="_blank" rel="noopener noreferrer">pull/847</a>.</li>
-<li>MongoDB 8.0.6 alignment with preprod/prod: <a href="https://github.com/linagora/twake-calendar-side-service/pull/855" target="_blank" rel="noopener noreferrer">pull/855</a>.</li>
-<li>Flaky <code>actionLinksShouldWorkForExternalUser</code> test stabilization: <a href="https://github.com/linagora/twake-calendar-side-service/pull/854" target="_blank" rel="noopener noreferrer">pull/854</a>.</li>
-<li>WebSocket test stabilization remains open in <a href="https://github.com/linagora/twake-calendar-side-service/pull/866" target="_blank" rel="noopener noreferrer">pull/866</a>. A CI failure was diagnosed as an over-broad assertion: after unregistering, the test must ignore legitimate <code>calendarList</code> notifications and assert specifically that no import event is received (<a href="https://github.com/linagora/twake-calendar-side-service/pull/866#issuecomment-4817413884" target="_blank" rel="noopener noreferrer">pull/866 CI review</a>).</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/837#issuecomment-4793353321">issues/837 comment</a> states the related work is needed for a new frontend sprint.</li>
+<li>Public agenda / booking event flow was decomposed into token signing, reservation route returning JWT, event get route, and cancel route in <a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4796046452">issues/826 comment</a>, with new issues <a href="https://github.com/linagora/twake-calendar-side-service/issues/841">issues/841</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/842">issues/842</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/843">issues/843</a>, and <a href="https://github.com/linagora/twake-calendar-side-service/issues/844">issues/844</a>.</li>
+<li>There was an open API-shape question on whether <code>bookingLink</code> needs to be returned in the booked event response or whether frontend can fetch it separately via slots API (<a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4798103501">issues/826 comment</a>). Not enough signal in this window to conclude.</li>
 </ul>
-<h2 id="important-items">Important Items</h2>
-<div class="table-wrap"><table>
-<thead><tr><th>Priority</th><th>Repo</th><th>Item</th><th>Summary</th><th>Why it matters</th><th>Status / Owner</th></tr></thead>
+</li>
+</ul>
+<h3>Integration Tests / QA</h3>
+<ul>
+<li>Flaky test investigation on <a href="https://github.com/linagora/twake-calendar-side-service/issues/818">issues/818</a> remains important. Setting app module <code>forkCount = 1</code> via <a href="https://github.com/linagora/twake-calendar-side-service/pull/840">pull/840</a> did not resolve the issue (<a href="https://github.com/linagora/twake-calendar-side-service/issues/818#issuecomment-4807498978">issues/818 comment</a>).</li>
+<li>Stability-related changes merged:
+<ul>
+<li>Graceful AMQP consumer shutdown: <a href="https://github.com/linagora/twake-calendar-side-service/pull/847">pull/847</a>.</li>
+<li>MongoDB 8.0.6 alignment with preprod/prod: <a href="https://github.com/linagora/twake-calendar-side-service/pull/855">pull/855</a>.</li>
+<li>Flaky <code>actionLinksShouldWorkForExternalUser</code> test stabilization: <a href="https://github.com/linagora/twake-calendar-side-service/pull/854">pull/854</a>.</li>
+</ul>
+</li>
+<li>WebSocket test stabilization remains open in <a href="https://github.com/linagora/twake-calendar-side-service/pull/866">pull/866</a>. A CI failure was diagnosed as an over-broad assertion: after unregistering, the test must ignore legitimate <code>calendarList</code> notifications and assert specifically that no import event is received (<a href="https://github.com/linagora/twake-calendar-side-service/pull/866#issuecomment-4817413884">pull/866 CI review</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>P1</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/869" target="_blank" rel="noopener noreferrer">pull/869</a></td><td>Index and expose booking-link event search criterion.</td><td>Prerequisite for finding and later cleaning events created from a compromised booking link.</td><td>open / @chibenwa</td></tr>
-<tr><td>P1</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/issues/868" target="_blank" rel="noopener noreferrer">issues/868</a></td><td>Booking-link batch cleanup.</td><td>Cleanup must delete from CalDAV source of truth, not only OpenSearch.</td><td>open / TBD</td></tr>
-<tr><td>P1</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/866" target="_blank" rel="noopener noreferrer">pull/866</a></td><td>Stabilize flaky WebSocket message reception tests.</td><td>Test flakiness affects CI reliability and PR throughput.</td><td>open / @chibenwa</td></tr>
-<tr><td>P1</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/858" target="_blank" rel="noopener noreferrer">pull/858</a></td><td>Team calendar MongoDB entity repository implementation.</td><td>Completes persistence layer after API/memory implementation; needed for team calendar feature.</td><td>open, approved / @vttranlina</td></tr>
-<tr><td>P1</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/issues/859" target="_blank" rel="noopener noreferrer">issues/859</a></td><td>Rename DAV collection when team calendar is renamed.</td><td>Avoids inconsistency between team calendar metadata and underlying DAV collection/subscriptions.</td><td>open / TBD</td></tr>
-<tr><td>P2</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/851" target="_blank" rel="noopener noreferrer">pull/851</a></td><td>Address book admin WebAdmin interface.</td><td>Adds admin operations for CardDAV address books, public visibility, and delegation.</td><td>merged / @chibenwa</td></tr>
-<tr><td>P2</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/861" target="_blank" rel="noopener noreferrer">pull/861</a></td><td>Booking links optional name and description.</td><td>Improves booking link metadata and fixed MongoDB persistence coverage.</td><td>merged / @chibenwa</td></tr>
-<tr><td>P2</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/865" target="_blank" rel="noopener noreferrer">pull/865</a></td><td>Reference booking link in generated event ICS.</td><td>First step toward search and cleanup of booking-link-created events.</td><td>merged / @chibenwa</td></tr>
-<tr><td>P2</td><td>calendar-side-service</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/852" target="_blank" rel="noopener noreferrer">pull/852</a></td><td>Email bookers when booking requests are received.</td><td>Improves booking user feedback while avoiding unauthenticated content injection in email.</td><td>merged / @vttranlina</td></tr>
-</tbody></table></div>
-<h2 id="review-discussion-signals">Review &amp; Discussion Signals</h2>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/869">pull/869</a></td>
+<td>Index and expose booking-link event search criterion.</td>
+<td>Prerequisite for finding and later cleaning events created from a compromised booking link.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/868">issues/868</a></td>
+<td>Booking-link batch cleanup.</td>
+<td>Cleanup must delete from CalDAV source of truth, not only OpenSearch.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/866">pull/866</a></td>
+<td>Stabilize flaky WebSocket message reception tests.</td>
+<td>Test flakiness affects CI reliability and PR throughput.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/858">pull/858</a></td>
+<td>Team calendar MongoDB entity repository implementation.</td>
+<td>Completes persistence layer after API/memory implementation; needed for team calendar feature.</td>
+<td>open, approved / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/859">issues/859</a></td>
+<td>Rename DAV collection when team calendar is renamed.</td>
+<td>Avoids inconsistency between team calendar metadata and underlying DAV collection/subscriptions.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/851">pull/851</a></td>
+<td>Address book admin WebAdmin interface.</td>
+<td>Adds admin operations for CardDAV address books, public visibility, and delegation.</td>
+<td>merged / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/861">pull/861</a></td>
+<td>Booking links optional name and description.</td>
+<td>Improves booking link metadata and fixed MongoDB persistence coverage.</td>
+<td>merged / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/865">pull/865</a></td>
+<td>Reference booking link in generated event ICS.</td>
+<td>First step toward search and cleanup of booking-link-created events.</td>
+<td>merged / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/852">pull/852</a></td>
+<td>Email bookers when booking requests are received.</td>
+<td>Improves booking user feedback while avoiding unauthenticated content injection in email.</td>
+<td>merged / @vttranlina</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
 <ul>
-<li><strong>Booking-link traceability decisions are mostly settled.</strong> From <a href="https://github.com/linagora/twake-calendar-side-service/issues/864" target="_blank" rel="noopener noreferrer">issues/864</a>, the team agreed on <code>X-TWAKE-BOOKING-LINK</code>, stable internal id, end-user-visible search criterion, and CalDAV-based deletion for cleanup. Remaining implementation work is split into search/indexing <a href="https://github.com/linagora/twake-calendar-side-service/pull/869" target="_blank" rel="noopener noreferrer">pull/869</a> and cleanup <a href="https://github.com/linagora/twake-calendar-side-service/issues/868" target="_blank" rel="noopener noreferrer">issues/868</a>.</li>
-<li><strong>Address book admin API design expanded during review.</strong> Initial list/create/delete scope was extended to public visibility and delegation. Review also forced documentation and test cleanup before merge in <a href="https://github.com/linagora/twake-calendar-side-service/pull/851" target="_blank" rel="noopener noreferrer">pull/851</a>.</li>
-<li><strong>Test failures provided useful product signals.</strong> The WebSocket failure in <a href="https://github.com/linagora/twake-calendar-side-service/pull/866" target="_blank" rel="noopener noreferrer">pull/866</a> showed that <code>calendarList</code> notifications are independent of per-calendar registration; tests should assert specific message categories rather than “no message at all”.</li>
-<li><strong>Team calendar identity model needs care.</strong> The team clarified that team calendars are event holders, not participants, and identified DAV collection rename as a separate issue (<a href="https://github.com/linagora/twake-calendar-side-service/issues/515#issuecomment-4796847243" target="_blank" rel="noopener noreferrer">issues/515 comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/859" target="_blank" rel="noopener noreferrer">issues/859</a>).</li>
-<li><strong>Public agenda JWT security concern appears acceptable but not deeply reviewed.</strong> Including <code>calendarId</code> and <code>ownerId</code> in JWT was considered acceptable by analogy with <code>ParticipationTokenSigner</code> (<a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4797055182" target="_blank" rel="noopener noreferrer">issues/826 comment</a>); no broader security review signal was present.</li>
+<li><strong>Booking-link traceability decisions are mostly settled.</strong> From <a href="https://github.com/linagora/twake-calendar-side-service/issues/864">issues/864</a>, the team agreed on <code>X-TWAKE-BOOKING-LINK</code>, stable internal id, end-user-visible search criterion, and CalDAV-based deletion for cleanup. Remaining implementation work is split into search/indexing <a href="https://github.com/linagora/twake-calendar-side-service/pull/869">pull/869</a> and cleanup <a href="https://github.com/linagora/twake-calendar-side-service/issues/868">issues/868</a>.</li>
+<li><strong>Address book admin API design expanded during review.</strong> Initial list/create/delete scope was extended to public visibility and delegation. Review also forced documentation and test cleanup before merge in <a href="https://github.com/linagora/twake-calendar-side-service/pull/851">pull/851</a>.</li>
+<li><strong>Test failures provided useful product signals.</strong> The WebSocket failure in <a href="https://github.com/linagora/twake-calendar-side-service/pull/866">pull/866</a> showed that <code>calendarList</code> notifications are independent of per-calendar registration; tests should assert specific message categories rather than “no message at all”.</li>
+<li><strong>Team calendar identity model needs care.</strong> The team clarified that team calendars are event holders, not participants, and identified DAV collection rename as a separate issue (<a href="https://github.com/linagora/twake-calendar-side-service/issues/515#issuecomment-4796847243">issues/515 comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/859">issues/859</a>).</li>
+<li><strong>Public agenda JWT security concern appears acceptable but not deeply reviewed.</strong> Including <code>calendarId</code> and <code>ownerId</code> in JWT was considered acceptable by analogy with <code>ParticipationTokenSigner</code> (<a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4797055182">issues/826 comment</a>); no broader security review signal was present.</li>
 </ul>
-<h2 id="risks-blockers">Risks / Blockers</h2>
+<h2>Risks / Blockers</h2>
 <ul>
-<li><strong>Flaky tests are not fully resolved.</strong> <a href="https://github.com/linagora/twake-calendar-side-service/issues/818" target="_blank" rel="noopener noreferrer">issues/818</a> remains a risk; fork count change did not solve it, and <a href="https://github.com/linagora/twake-calendar-side-service/pull/866" target="_blank" rel="noopener noreferrer">pull/866</a> is still open.</li>
-<li><strong>Booking-link cleanup correctness risk.</strong> Cleanup must delete events from CalDAV and handle pagination/limits, not just remove OpenSearch documents. This is explicitly called out in <a href="https://github.com/linagora/twake-calendar-side-service/issues/864#issuecomment-4812019452" target="_blank" rel="noopener noreferrer">issues/864 analysis</a>.</li>
-<li><strong>Team calendar rename can create DAV inconsistency if not handled.</strong> Tracked by <a href="https://github.com/linagora/twake-calendar-side-service/issues/859" target="_blank" rel="noopener noreferrer">issues/859</a>.</li>
+<li><strong>Flaky tests are not fully resolved.</strong> <a href="https://github.com/linagora/twake-calendar-side-service/issues/818">issues/818</a> remains a risk; fork count change did not solve it, and <a href="https://github.com/linagora/twake-calendar-side-service/pull/866">pull/866</a> is still open.</li>
+<li><strong>Booking-link cleanup correctness risk.</strong> Cleanup must delete events from CalDAV and handle pagination/limits, not just remove OpenSearch documents. This is explicitly called out in <a href="https://github.com/linagora/twake-calendar-side-service/issues/864#issuecomment-4812019452">issues/864 analysis</a>.</li>
+<li><strong>Team calendar rename can create DAV inconsistency if not handled.</strong> Tracked by <a href="https://github.com/linagora/twake-calendar-side-service/issues/859">issues/859</a>.</li>
 <li>No P0 incident or release blocker is visible in the data for this reporting window.</li>
 </ul>
-<h2 id="action-items">Action Items</h2>
-<div class="table-wrap"><table>
-<thead><tr><th>Action</th><th>Suggested owner</th><th>Source</th></tr></thead>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
 <tbody>
-<tr><td>Finish review/merge of booking-link search criterion after validating indexing/search behavior.</td><td>@chibenwa / reviewer TBD</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/869" target="_blank" rel="noopener noreferrer">pull/869</a></td></tr>
-<tr><td>Specify and implement booking-link cleanup task with CalDAV deletion, pagination, and processed/deleted/failed counts.</td><td>TBD</td><td><a href="https://github.com/linagora/twake-calendar-side-service/issues/868" target="_blank" rel="noopener noreferrer">issues/868</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/864#issuecomment-4812019452" target="_blank" rel="noopener noreferrer">issues/864 analysis</a></td></tr>
-<tr><td>Re-run and merge WebSocket stabilization if CI is green after the targeted assertion fix.</td><td>@chibenwa</td><td><a href="https://github.com/linagora/twake-calendar-side-service/pull/866" target="_blank" rel="noopener noreferrer">pull/866</a></td></tr>
-<tr><td>Decide implementation approach for team calendar DAV collection rename and subscriptions.</td><td>TBD</td><td><a href="https://github.com/linagora/twake-calendar-side-service/issues/859" target="_blank" rel="noopener noreferrer">issues/859</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/858#discussion_r3480726600" target="_blank" rel="noopener noreferrer">pull/858 inline comment</a></td></tr>
-<tr><td>Close API-shape question for booked event response: include <code>bookingLink</code> or let frontend fetch via slots API.</td><td>Backend + Frontend TBD</td><td><a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4798103501" target="_blank" rel="noopener noreferrer">issues/826 comment</a></td></tr>
-</tbody></table></div>
-<h2 id="low-signal-ignored">Low-signal / Ignored</h2>
+<tr>
+<td>Finish review/merge of booking-link search criterion after validating indexing/search behavior.</td>
+<td>@chibenwa / reviewer TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/869">pull/869</a></td>
+</tr>
+<tr>
+<td>Specify and implement booking-link cleanup task with CalDAV deletion, pagination, and processed/deleted/failed counts.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/868">issues/868</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/864#issuecomment-4812019452">issues/864 analysis</a></td>
+</tr>
+<tr>
+<td>Re-run and merge WebSocket stabilization if CI is green after the targeted assertion fix.</td>
+<td>@chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/866">pull/866</a></td>
+</tr>
+<tr>
+<td>Decide implementation approach for team calendar DAV collection rename and subscriptions.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/859">issues/859</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/858#discussion_r3480726600">pull/858 inline comment</a></td>
+</tr>
+<tr>
+<td>Close API-shape question for booked event response: include <code>bookingLink</code> or let frontend fetch via slots API.</td>
+<td>Backend + Frontend TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/826#issuecomment-4798103501">issues/826 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
 <ul>
 <li>Automated CodeScene approvals and repeated quality-gate pass messages were ignored unless they exposed a useful signal, such as missing expected test coverage or a failing gate.</li>
 <li>Bot/session-stat comments were ignored.</li>
-<li>Closed joke README issues/PRs <a href="https://github.com/linagora/twake-calendar-side-service/issues/845" target="_blank" rel="noopener noreferrer">issues/845</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/849" target="_blank" rel="noopener noreferrer">issues/849</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/846" target="_blank" rel="noopener noreferrer">pull/846</a>, and <a href="https://github.com/linagora/twake-calendar-side-service/pull/850" target="_blank" rel="noopener noreferrer">pull/850</a> were ignored as non-product activity.</li>
-<li>Duplicate booking-link name/description PR <a href="https://github.com/linagora/twake-calendar-side-service/pull/862" target="_blank" rel="noopener noreferrer">pull/862</a> was ignored beyond noting it duplicated merged <a href="https://github.com/linagora/twake-calendar-side-service/pull/861" target="_blank" rel="noopener noreferrer">pull/861</a>.</li>
+<li>Closed joke README issues/PRs <a href="https://github.com/linagora/twake-calendar-side-service/issues/845">issues/845</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/849">issues/849</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/846">pull/846</a>, and <a href="https://github.com/linagora/twake-calendar-side-service/pull/850">pull/850</a> were ignored as non-product activity.</li>
+<li>Duplicate booking-link name/description PR <a href="https://github.com/linagora/twake-calendar-side-service/pull/862">pull/862</a> was ignored beyond noting it duplicated merged <a href="https://github.com/linagora/twake-calendar-side-service/pull/861">pull/861</a>.</li>
 </ul>
+
   </article>
 </main>
 </body>

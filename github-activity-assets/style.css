@@ -140,7 +140,41 @@ h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); letter-spacing: -.025em; }
 .markdown-body h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .markdown-body h2 { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--border); }
 .markdown-body h3 { margin-top: 24px; color: #f0f6fc; }
+.markdown-body h4 {
+  margin: 28px 0 8px;
+  color: #f0f6fc;
+  font-size: 1.18rem;
+  letter-spacing: -.01em;
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 12px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, .10), transparent 62%);
+  border-radius: 8px;
+}
 .markdown-body p, .markdown-body li { font-size: 1.02rem; }
+.markdown-body ul ul {
+  margin: 8px 0 16px;
+  padding-left: 1.35rem;
+}
+.markdown-body h3 + ul > li:has(> p > strong:first-child) {
+  list-style: none;
+  margin: 24px 0;
+}
+.markdown-body h3 + ul > li:has(> p > strong:first-child)::marker {
+  content: "";
+}
+.markdown-body h3 + ul > li:has(> p > strong:first-child) > p:first-child {
+  margin: 0 0 10px;
+}
+.markdown-body h3 + ul > li:has(> p > strong:first-child) > p:first-child strong {
+  display: block;
+  color: #f0f6fc;
+  font-size: 1.18rem;
+  letter-spacing: -.01em;
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 12px;
+  background: linear-gradient(90deg, rgba(88, 166, 255, .10), transparent 62%);
+  border-radius: 8px;
+}
 .markdown-body code {
   background: rgba(110, 118, 129, .2);
   border-radius: 6px;
@@ -162,8 +196,15 @@ h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); letter-spacing: -.025em; }
   color: var(--muted);
   padding-left: 16px;
 }
-.table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--border); border-radius: 14px; }
-table { width: 100%; border-collapse: collapse; min-width: 720px; }
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 18px 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
 th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
 th { color: #f0f6fc; background: rgba(13, 17, 23, .72); }
 tr:last-child td { border-bottom: 0; }
