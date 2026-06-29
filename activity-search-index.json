@@ -1,6 +1,23 @@
 [
   {
     "title": "Calendar Team Activity Summary",
+    "period": "2026-06-22 00:00 → 2026-06-29 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-29 02:06 UTC",
+    "excerpt": "Booking links progressed significantly on backend: WebAdmin CRUD, confirmation emails, optional name/description, ICS reference, and search criterion work landed or opened; cleanup remains to implement via CalDAV source-of-truth deletion.",
+    "variants": {
+      "en": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-en.html",
+      "vi": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-vi.html"
+    },
+    "metrics": {
+      "New PRs": 42,
+      "Issues": 62,
+      "Comments": 435,
+      "Reviews": 281,
+      "Total": 820
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
     "period": "2026-06-22 00:00 → 2026-06-28 00:00 Asia/Ho_Chi_Minh",
     "generated": "2026-06-28 02:53 UTC",
     "excerpt": "Booking links moved forward significantly: webadmin CRUD merged, booker confirmation email merged, optional name/description merged, ICS now references booking links, and indexing/search work is open for follow-up.",
