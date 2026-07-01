@@ -1,6 +1,93 @@
 [
   {
     "title": "Calendar Team Activity Summary",
+    "period": "2026-06-30 09:16 → 2026-07-01 09:16 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 02:22 UTC",
+    "excerpt": "Booking links backend tiến nhanh: cancel route merged; get route mới mở. pull/881, pull/886",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_09-16-42-2026-06-30_09-16_to_2026-07-01_09-16-vi.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 1,
+      "Comments": 49,
+      "Reviews": 63,
+      "Commits": 0,
+      "Total": 122
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-06-30 05:23 → 2026-07-01 05:23 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-30 22:34 UTC",
+    "excerpt": "Frontend prod bug `organizer.asJcal is not a function` → đã fix/merge: issues/1095, pull/1096.",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_05-23-49-2026-06-30_05-23_to_2026-07-01_05-23-vi.html"
+    },
+    "metrics": {
+      "New PRs": 6,
+      "Issues": 1,
+      "Comments": 48,
+      "Reviews": 61,
+      "Commits": 0,
+      "Total": 116
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-06-29 11:21 → 2026-06-30 11:21 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-30 04:23 UTC",
+    "excerpt": "Frontend có PR mới cho booking links/booking slots: pull/1094. PR đã thêm DTO, DAO private/public và route public booking, nhưng còn vài điểm cần xử lý trước khi merge.",
+    "variants": {
+      "vi": "activity-reports/2026-06-30_11-21-54-2026-06-29_11-21_to_2026-06-30_11-21-vi.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 1,
+      "Comments": 20,
+      "Reviews": 11,
+      "Commits": 0,
+      "Total": 33
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-06-29 07:57 → 2026-06-30 07:57 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-30 01:05 UTC",
+    "excerpt": "Booking links had heavy backend activity: ICS custom value typing was merged in pull/872, while new PRs cover booking confirmation tokens, owner info, timezone-aware slots, and admin deletion.",
+    "variants": {
+      "en": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-en.html",
+      "vi": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-vi.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 6,
+      "Comments": 55,
+      "Reviews": 45,
+      "Commits": 3,
+      "Total": 118
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-06-28 23:50 → 2026-06-29 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-29 16:58 UTC",
+    "excerpt": "Booking links had heavy backend activity: slots timezone support pull/880, owner info exposure pull/878, event deletion admin task pull/876, auto-accept pull/863, booking token work pull/873, pull/874.",
+    "variants": {
+      "en": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-en.html",
+      "vi": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-vi.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 7,
+      "Comments": 52,
+      "Reviews": 41,
+      "Commits": 3,
+      "Total": 112
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
     "period": "2026-06-22 00:00 → 2026-06-29 00:00 Asia/Ho_Chi_Minh",
     "generated": "2026-06-29 02:06 UTC",
     "excerpt": "Booking links progressed significantly on backend: WebAdmin CRUD, confirmation emails, optional name/description, ICS reference, and search criterion work landed or opened; cleanup remains to implement via CalDAV source-of-truth deletion.",
@@ -13,6 +100,7 @@
       "Issues": 62,
       "Comments": 435,
       "Reviews": 281,
+      "Commits": 0,
       "Total": 820
     }
   },
@@ -30,6 +118,7 @@
       "Issues": 24,
       "Comments": 113,
       "Reviews": 65,
+      "Commits": 0,
       "Total": 224
     }
   }
