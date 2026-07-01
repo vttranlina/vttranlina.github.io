@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Reindex calendar events lỗi `MongoCursorNotFoundException` → root cause rõ: cursor Mongo sống quá lâu khi downstream chậm/throttle. Fix đề xuất: `collectList()` user/resource trước xử lý. issues/887">
+  <title>Calendar Team Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-01 08:05 UTC</p>
+  <h1>Calendar Team Activity Summary</h1>
+  <p class="period">2026-07-01 11:54 → 2026-07-01 14:54 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>2</strong></span><span class="metric"><span>Issues</span><strong>5</strong></span><span class="metric"><span>Comments</span><strong>7</strong></span><span class="metric"><span>Reviews</span><strong>3</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>17</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Calendar Team Activity Summary</h1>
+<p>Period: <code>2026-07-01 11:54 +07</code> -&gt; <code>2026-07-01 14:54 +07</code></p>
+<p>Language: Tiếng Việt</p>
+<h2>TL;DR</h2>
+<ul>
+<li>Reindex calendar events lỗi <code>MongoCursorNotFoundException</code> → root cause rõ: cursor Mongo sống quá lâu khi downstream chậm/throttle. Fix đề xuất: <code>collectList()</code> user/resource trước xử lý. <a href="https://github.com/linagora/twake-calendar-side-service/issues/887">issues/887</a></li>
+<li>WebAdmin task details thêm expose effective running options. Issue + PR mở. <a href="https://github.com/linagora/twake-calendar-side-service/issues/889">issues/889</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/890">pull/890</a></li>
+<li>WebAdmin param <code>eventsPerSecond</code> nghi bug UI/query string: duplicate param, thiếu <code>&amp;</code>. Cần xác nhận frontend vs backend. <a href="https://github.com/linagora/twake-calendar-side-service/issues/888">issues/888</a></li>
+<li>Booking link route #886 đã được approve; public id trong URL được chấp nhận. <a href="https://github.com/linagora/twake-calendar-side-service/pull/886">pull/886</a></li>
+<li>Sabre mở 2 issue: duplicate <code>DAV</code>/<code>X-Sabre-Version</code> headers; simple reports efficiency. <a href="https://github.com/linagora/esn-sabre/issues/404">issues/404</a>, <a href="https://github.com/linagora/esn-sabre/issues/403">issues/403</a></li>
+<li>Integration tests thêm contract tests team calendar, PR mở, bot gates pass. <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a></li>
+</ul>
+<h2>Highlights</h2>
+<h3>Backend / Side Service / Sabre</h3>
+<h4>Booking links</h4>
+<ul>
+<li><code>BookedEventGetRoute</code> được approve. Public id trong URL OK. <a href="https://github.com/linagora/twake-calendar-side-service/pull/886">pull/886</a></li>
+</ul>
+<h4>Address book / CardDAV webadmin</h4>
+<ul>
+<li>WebAdmin task details cần expose effective task running options. Impl mở tại <a href="https://github.com/linagora/twake-calendar-side-service/pull/890">pull/890</a>, source <a href="https://github.com/linagora/twake-calendar-side-service/issues/889">issues/889</a>.</li>
+<li><code>eventsPerSecond</code> param tạo sai: frontend sinh 2 param, thiếu <code>&amp;</code>; có thể chỉ là UI bug. Cần giải thích/confirm. <a href="https://github.com/linagora/twake-calendar-side-service/issues/888">issues/888</a></li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li>Sabre efficiency: <code>Simple reports efficiency</code> mới mở, chưa đủ tín hiệu chi tiết. <a href="https://github.com/linagora/esn-sabre/issues/403">issues/403</a></li>
+<li>Sabre response headers duplicate <code>DAV</code>/<code>X-Sabre-Version</code>; nghi PHP + nginx cùng set. <a href="https://github.com/linagora/esn-sabre/issues/404">issues/404</a></li>
+</ul>
+<h3>Frontend</h3>
+<ul>
+<li>Không có PR/issue/commit mới.</li>
+<li>Tuy nhiên <code>eventsPerSecond</code> có signal nghi frontend query-string generation bug. <a href="https://github.com/linagora/twake-calendar-side-service/issues/888">issues/888</a></li>
+</ul>
+<h3>Integration Tests / QA</h3>
+<ul>
+<li>Team calendar DAV contract tests thêm trong integration-test. PR mở, CodeScene gates pass. <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a></li>
+<li>Reindex regression test được đề xuất: assert source listing consumed fully trước per-item work. <a href="https://github.com/linagora/twake-calendar-side-service/issues/887">issues/887</a></li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/887">issues/887</a></td>
+<td>Reindex task fail do Mongo cursor timeout khi stream user/resource + xử lý chậm/throttle</td>
+<td>Task partial/failed dù <code>failedEventCount = 0</code>; ảnh hưởng reindex lớn</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/888">issues/888</a></td>
+<td><code>eventsPerSecond</code> param bị duplicate/format sai</td>
+<td>Task config sai hoặc UI gây req lỗi</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/890">pull/890</a></td>
+<td>Expose effective task running options trong WebAdmin</td>
+<td>Debug/ops task dễ hơn</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>integration-test</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a></td>
+<td>Thêm team calendar DAV contract tests</td>
+<td>Tăng coverage contract Sabre/team calendar</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/404">issues/404</a></td>
+<td>Duplicate DAV headers</td>
+<td>Protocol/header correctness; cần phân lớp PHP/nginx</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/403">issues/403</a></td>
+<td>Simple reports efficiency</td>
+<td>Perf Sabre report path</td>
+<td>open / @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Reindex root cause đã phân tích sâu: live Mongo cursor + sequential <code>concatMap</code> + <code>eventsPerSecond</code> throttle → <code>getMore</code> sau &gt;10m → cursor reaped. Khuyến nghị <code>collectList()</code> cho <code>userDAO.list()</code> + <code>resourceDAO.findAll()</code>. <a href="https://github.com/linagora/twake-calendar-side-service/issues/887#issuecomment-4851675144">issues/887 comment</a></li>
+<li>Alternative reindex fixes bị đánh giá kém hơn: <code>noCursorTimeout(true)</code> có leak risk khi cancel/abort; <code>batchSize</code> lớn brittle/16MB bound. <a href="https://github.com/linagora/twake-calendar-side-service/issues/887#issuecomment-4851675144">issues/887 comment</a></li>
+<li><code>eventsPerSecond</code> cần plain-English clarification; hiện nghi UI bug, chưa chốt root cause. <a href="https://github.com/linagora/twake-calendar-side-service/issues/888">issues/888</a></li>
+<li>Booking route design: public id trong URL được chấp nhận; PR approved. <a href="https://github.com/linagora/twake-calendar-side-service/pull/886#issuecomment-4850679019">pull/886 comment</a></li>
+</ul>
+<h2>Risks / Blockers</h2>
+<ul>
+<li>Reindex production task có thể tiếp tục fail trên dataset lớn nếu vẫn stream cursor. <a href="https://github.com/linagora/twake-calendar-side-service/issues/887">issues/887</a></li>
+<li><code>eventsPerSecond</code> bug chưa rõ layer frontend/backend → có thể block task config reliability. <a href="https://github.com/linagora/twake-calendar-side-service/issues/888">issues/888</a></li>
+<li>Không thấy blocker release rõ ràng khác trong dữ liệu của window này.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Impl <code>collectList()</code> cho user/resource listing trong <code>CalendarEventsReindexService.reindex</code>; thêm regression test</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/887#issuecomment-4851675144">issues/887 comment</a></td>
+</tr>
+<tr>
+<td>Xác nhận <code>eventsPerSecond</code> duplicate param là frontend UI bug hay backend parsing issue; update issue bằng plain English</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/888">issues/888</a></td>
+</tr>
+<tr>
+<td>Review/merge WebAdmin task running options nếu CI OK</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/890">pull/890</a></td>
+</tr>
+<tr>
+<td>Review team calendar contract tests</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a></td>
+</tr>
+<tr>
+<td>Điều tra duplicate Sabre headers: PHP vs nginx ownership</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/404">issues/404</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>CodeScene bot approvals/gate text.</li>
+<li>Bot/session stats comment.</li>
+<li>Repos không activity: frontend, helm local git.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

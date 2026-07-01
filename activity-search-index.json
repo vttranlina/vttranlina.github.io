@@ -1,6 +1,57 @@
 [
   {
     "title": "Calendar Team Activity Summary",
+    "period": "2026-07-01 17:39 → 2026-07-01 19:39 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 12:41 UTC",
+    "excerpt": "Side-service tag `2.4.1.1` tạo xong → đề xuất deploy prod ngày mai; gồm fix reindex cursor timeout, booking links, WebAdmin `runningOptions` (issues/871 comment).",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_19-39-10-2026-07-01_17-39_to_2026-07-01_19-39-vi.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 0,
+      "Comments": 9,
+      "Reviews": 9,
+      "Commits": 0,
+      "Total": 18
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-07-01 14:42 → 2026-07-01 17:42 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 10:50 UTC",
+    "excerpt": "Reindex fail do Mongo cursor idle timeout → side-service fix merged: materialize user/resource list. pull/891",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_17-42-19-2026-07-01_14-42_to_2026-07-01_17-42-vi.html"
+    },
+    "metrics": {
+      "New PRs": 6,
+      "Issues": 3,
+      "Comments": 54,
+      "Reviews": 19,
+      "Commits": 0,
+      "Total": 82
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-07-01 11:54 → 2026-07-01 14:54 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 08:05 UTC",
+    "excerpt": "Reindex calendar events lỗi `MongoCursorNotFoundException` → root cause rõ: cursor Mongo sống quá lâu khi downstream chậm/throttle. Fix đề xuất: `collectList()` user/resource trước xử lý. issues/887",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_14-54-31-2026-07-01_11-54_to_2026-07-01_14-54-vi.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 5,
+      "Comments": 7,
+      "Reviews": 3,
+      "Commits": 0,
+      "Total": 17
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
     "period": "2026-06-30 09:16 → 2026-07-01 09:16 Asia/Ho_Chi_Minh",
     "generated": "2026-07-01 02:22 UTC",
     "excerpt": "Booking links backend tiến nhanh: cancel route merged; get route mới mở. pull/881, pull/886",
