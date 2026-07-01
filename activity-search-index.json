@@ -1,6 +1,23 @@
 [
   {
     "title": "Calendar Team Activity Summary",
+    "period": "2026-06-30 21:23 → 2026-07-01 21:23 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 14:25 UTC",
+    "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → root cause rõ. Side-service fix merged pull/891; Sabre perf fix open/preprod pull/406.",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_21-23-11-2026-06-30_21-23_to_2026-07-01_21-23-vi.html"
+    },
+    "metrics": {
+      "New PRs": 11,
+      "Issues": 6,
+      "Comments": 71,
+      "Reviews": 37,
+      "Commits": 0,
+      "Total": 125
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
     "period": "2026-07-01 17:39 → 2026-07-01 19:39 Asia/Ho_Chi_Minh",
     "generated": "2026-07-01 12:41 UTC",
     "excerpt": "Side-service tag `2.4.1.1` tạo xong → đề xuất deploy prod ngày mai; gồm fix reindex cursor timeout, booking links, WebAdmin `runningOptions` (issues/871 comment).",
