@@ -1,6 +1,57 @@
 [
   {
     "title": "Calendar Team Activity Summary",
+    "period": "2026-07-01 09:01 → 2026-07-02 09:01 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 02:03 UTC",
+    "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → side-service fix đã merge: materialize users/resources trước xử lý pull/891, issues/887.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_09-01-28-2026-07-01_09-01_to_2026-07-02_09-01-vi.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 6,
+      "Comments": 72,
+      "Reviews": 34,
+      "Commits": 0,
+      "Total": 121
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-07-01 20:47 → 2026-07-02 08:47 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 01:49 UTC",
+    "excerpt": "Window yên: 1 PR mới/merged, ít comment.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_08-47-57-2026-07-01_20-47_to_2026-07-02_08-47-vi.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 0,
+      "Comments": 2,
+      "Reviews": 1,
+      "Commits": 0,
+      "Total": 4
+    }
+  },
+  {
+    "title": "2026-07-01_19-58_to_2026-07-01_21-58",
+    "period": "2026-07-01 19:58 → 2026-07-01 21:58 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 15:02 UTC",
+    "excerpt": "",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_21-58-33-2026-07-01_19-58_to_2026-07-01_21-58-vi.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 0,
+      "Comments": 2,
+      "Reviews": 0,
+      "Commits": 0,
+      "Total": 2
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
     "period": "2026-06-30 21:23 → 2026-07-01 21:23 Asia/Ho_Chi_Minh",
     "generated": "2026-07-01 14:25 UTC",
     "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → root cause rõ. Side-service fix merged pull/891; Sabre perf fix open/preprod pull/406.",
