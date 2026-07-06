@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Booking links progressed across backend and frontend: public booking APIs/UI landed, slots now expose owner/details/timezone support, cancel/get/reservation token routes were merged, and acknowledgement email enrichment is still open in pull/906.">
+  <title>Calendar Team Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-06 02:04 UTC</p>
+  <h1>Calendar Team Activity Summary</h1>
+  <p class="period">2026-06-29 00:00 → 2026-07-06 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>49</strong></span><span class="metric"><span>Issues</span><strong>25</strong></span><span class="metric"><span>Comments</span><strong>387</strong></span><span class="metric"><span>Reviews</span><strong>267</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>728</strong></span></div>
+</header>
+<main class="report-layout">
+  <section class="repo-meta">
+  <h2>Repositories crawled (4)</h2>
+  <div class="repo-chip-list">
+    <span class="repo-chip" style="--repo-border:rgba(245,158,11,.62);--repo-bg:rgba(245,158,11,.17);--repo-fg:#fef3c7;">calendar-side-service · github · linagora/twake-calendar-side-service</span>
+<span class="repo-chip" style="--repo-border:rgba(20,184,166,.58);--repo-bg:rgba(20,184,166,.16);--repo-fg:#ccfbf1;">esn-sabre · github · linagora/esn-sabre</span>
+<span class="repo-chip" style="--repo-border:rgba(245,158,11,.62);--repo-bg:rgba(245,158,11,.17);--repo-fg:#fef3c7;">integration-test · github · linagora/twake-calendar-integration-tests</span>
+<span class="repo-chip" style="--repo-border:rgba(239,68,68,.60);--repo-bg:rgba(239,68,68,.18);--repo-fg:#fee2e2;">frontend · github · linagora/twake-calendar-frontend</span>
+  </div>
+</section>
+  <article class="markdown-body">
+    <h1>Calendar Team Activity Summary</h1>
+<p>Period: 2026-06-29 00:00 +07 -&gt; 2026-07-06 00:00 +07</p>
+<p>Language: English</p>
+<h2>TL;DR</h2>
+<ul>
+<li>Booking links progressed across backend and frontend: public booking APIs/UI landed, slots now expose owner/details/timezone support, cancel/get/reservation token routes were merged, and acknowledgement email enrichment is still open in <a href="https://github.com/linagora/twake-calendar-side-service/pull/906">pull/906</a>.</li>
+<li>Reindex/search reliability received major fixes: Mongo cursor timeout was fixed and deployed via <a href="https://github.com/linagora/twake-calendar-side-service/pull/891">pull/891</a>, Sabre filterless REPORT performance was improved in <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, but recurring-event indexing correctness remains an important open item in <a href="https://github.com/linagora/twake-calendar-side-service/issues/895">issues/895</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/898">pull/898</a>.</li>
+<li>Team Calendar backend/Sabre support advanced: Side Service WebAdmin CRUD APIs <a href="https://github.com/linagora/twake-calendar-side-service/pull/901">pull/901</a>, Sabre support <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, and integration contracts <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a> were merged; private/confidential visibility follow-up remains open in <a href="https://github.com/linagora/twake-calendar-integration-tests/issues/289">issues/289</a>.</li>
+<li>Sabre release/regression work was active: duplicated DAV headers fixed in <a href="https://github.com/linagora/esn-sabre/pull/405">pull/405</a>, attendee PARTSTAT 403 fixed in <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a>, read ACL enforcement fixed in <a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a>.</li>
+<li>Frontend shipped key flows: public booking basic UI <a href="https://github.com/linagora/twake-calendar-frontend/pull/1097">pull/1097</a>, event deep link <a href="https://github.com/linagora/twake-calendar-frontend/pull/1102">pull/1102</a>, mail URI template <a href="https://github.com/linagora/twake-calendar-frontend/pull/1099">pull/1099</a>, and organizer serialization regression fix <a href="https://github.com/linagora/twake-calendar-frontend/pull/1096">pull/1096</a>.</li>
+<li>Audit logging work is open but needs design changes before merge: <a href="https://github.com/linagora/twake-calendar-side-service/pull/903">pull/903</a> must avoid logging private payload bodies and should likely use higher-level audit events and a single audit queue.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Backend / Side Service / Sabre</h3>
+<h4>Booking links</h4>
+<ul>
+<li>Side Service merged several booking-link backend pieces:
+<ul>
+<li>Token signing and reservation JWT flow via <a href="https://github.com/linagora/twake-calendar-side-service/pull/873">pull/873</a> and <a href="https://github.com/linagora/twake-calendar-side-service/pull/874">pull/874</a>.</li>
+<li>Public slots now expose owner/details and booking metadata via <a href="https://github.com/linagora/twake-calendar-side-service/pull/878">pull/878</a>, with requested timezone support in <a href="https://github.com/linagora/twake-calendar-side-service/pull/880">pull/880</a>.</li>
+<li>Admin deletion of booking-link-created events was merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/876">pull/876</a>; an unstable offset paging bug was caught during review and fixed by using DAV listing as source of truth instead of paging the search index.</li>
+<li>Booked event cancel/get routes were merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/881">pull/881</a> and <a href="https://github.com/linagora/twake-calendar-side-service/pull/886">pull/886</a>. Review clarified idempotency/error handling for cancel and that the get endpoint can rely on the public slots endpoint when the public id is available.</li>
+</ul>
+</li>
+<li>Booking confirmation email still needs follow-through: <a href="https://github.com/linagora/twake-calendar-side-service/issues/899">issues/899</a> remains open and <a href="https://github.com/linagora/twake-calendar-side-service/pull/906">pull/906</a> is open, with approval signal but not merged in the data.</li>
+<li>Frontend API wiring and UI consumed the new booking APIs through <a href="https://github.com/linagora/twake-calendar-frontend/pull/1094">pull/1094</a> and <a href="https://github.com/linagora/twake-calendar-frontend/pull/1097">pull/1097</a>. Follow-ups include attendee timezone selection <a href="https://github.com/linagora/twake-calendar-frontend/issues/1103">issues/1103</a>, open slot filtering work <a href="https://github.com/linagora/twake-calendar-frontend/pull/1104">pull/1104</a>, and better validation/error handling captured in review on <a href="https://github.com/linagora/twake-calendar-frontend/pull/1097">pull/1097</a>.</li>
+</ul>
+<h4>Address book / CardDAV webadmin</h4>
+<ul>
+<li>WebAdmin task visibility improved: effective running options are now exposed in task details via <a href="https://github.com/linagora/twake-calendar-side-service/pull/890">pull/890</a> / <a href="https://github.com/linagora/twake-calendar-side-service/issues/889">issues/889</a>.</li>
+<li>Domain provisioning was tightened:
+<ul>
+<li>Only mail DNS config is required for domain provisioning in <a href="https://github.com/linagora/twake-calendar-side-service/pull/893">pull/893</a>.</li>
+<li>Provisioned SaaS users are registered as Domain Members regardless of user search mode in <a href="https://github.com/linagora/twake-calendar-side-service/issues/904">issues/904</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/905">pull/905</a>.</li>
+</ul>
+</li>
+<li>Release/deployment notes show Side Service images deployed around <code>2.4.1.x</code>, including reindex fixes and the OpenSearch index switch to <code>calendar-4</code> for shared/delegated calendar search in <a href="https://github.com/linagora/twake-calendar-side-service/issues/871">issues/871</a>.</li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li>Side Service merged Team Calendar WebAdmin CRUD APIs in <a href="https://github.com/linagora/twake-calendar-side-service/pull/901">pull/901</a>. Review clarified behavior: create is not idempotent, delete should be idempotent, and tests were added to make that explicit.</li>
+<li>Team Calendar AMQP list notifications are ignored in <a href="https://github.com/linagora/twake-calendar-side-service/pull/902">pull/902</a>, closing <a href="https://github.com/linagora/twake-calendar-side-service/issues/892">issues/892</a>.</li>
+<li>Sabre Team Calendar support was merged in <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, backed by integration contract tests in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a>.</li>
+<li>A remaining visibility/security follow-up was explicitly created: private/confidential events in public team calendars need coverage in <a href="https://github.com/linagora/twake-calendar-integration-tests/issues/289">issues/289</a>.</li>
+<li>There is still a product/search requirement signal: team calendar name is needed for quick search, despite an initial question about whether the ticket was needed in <a href="https://github.com/linagora/twake-calendar-side-service/issues/834">issues/834</a>.</li>
+</ul>
+<h4>Reindex / search / Sabre performance</h4>
+<ul>
+<li>Side Service fixed large reindex failures caused by Mongo cursor timeout by materializing user/resource listings before slow per-item processing in <a href="https://github.com/linagora/twake-calendar-side-service/pull/891">pull/891</a>, closing <a href="https://github.com/linagora/twake-calendar-side-service/issues/887">issues/887</a>.</li>
+<li>Sabre fixed the root performance issue for filterless XML <code>calendar-query</code> REPORT by batching / single-querying data in <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, closing <a href="https://github.com/linagora/esn-sabre/issues/403">issues/403</a>. Preprod signal showed large improvement, but reindex still reported 4 failed events due to malformed ICS.</li>
+<li>Malformed ICS with observance-less <code>VTIMEZONE</code> was analyzed in <a href="https://github.com/linagora/twake-calendar-side-service/issues/896">issues/896</a>. A sanitizer attempt <a href="https://github.com/linagora/twake-calendar-side-service/pull/897">pull/897</a> was considered too hacky; final direction appears to ignore the affected test events rather than ship parser workaround.</li>
+<li>Recurring event indexing race remains the most important unresolved backend correctness topic: <a href="https://github.com/linagora/twake-calendar-side-service/issues/895">issues/895</a> identified delete-then-index race and stale overridden occurrence resurrection; <a href="https://github.com/linagora/twake-calendar-side-service/pull/898">pull/898</a> evolved to use UID collapse, stale occurrence pruning, indexed sequence, stored recurrenceId, and upgrade instructions, but is still open in the report.</li>
+</ul>
+<h4>Sabre ACL / scheduling / release</h4>
+<ul>
+<li>Sabre release <code>2.4.1</code> was deployed with <code>SABRE_EMAIL_VALARM_RECIPIENT_SCHEDULING=true</code> and <code>CALDAV_ORGANIZER_VALIDATION=true</code>, then organizer validation was temporarily disabled due to attendee PARTSTAT regression, tracked in <a href="https://github.com/linagora/esn-sabre/issues/408">issues/408</a>.</li>
+<li>Attendee PARTSTAT update 403 was fixed in <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a>, with integration coverage in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/285">pull/285</a>.</li>
+<li>Read ACL enforcement for PROPFIND and JSON reports was fixed in <a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a>, with integration tests in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/286">pull/286</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/287">pull/287</a>, and <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/288">pull/288</a>.</li>
+<li>Duplicate <code>DAV</code> / <code>X-Sabre-Version</code> response headers were fixed in <a href="https://github.com/linagora/esn-sabre/pull/405">pull/405</a>, closing <a href="https://github.com/linagora/esn-sabre/issues/404">issues/404</a>.</li>
+<li>VALARM merge logic remains open in <a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a>, with related frontend alarm issue <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">issues/1100</a>.</li>
+</ul>
+<h3>Frontend</h3>
+<ul>
+<li>Public booking flow:
+<ul>
+<li>Booking DAO/API calls and public route scaffolding landed in <a href="https://github.com/linagora/twake-calendar-frontend/pull/1094">pull/1094</a>.</li>
+<li>Basic booking UI and flow were merged in <a href="https://github.com/linagora/twake-calendar-frontend/pull/1097">pull/1097</a>. QA caught and addressed locale/time display, cut-off calendar row, owner readability, backend error display, form reset, stale slots, and timezone request handling.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1104">pull/1104</a> is open to filter unavailable/past dates and slots; CodeRabbit found a real empty-state bug when all visible slots are filtered out.</li>
+</ul>
+</li>
+<li>Deep links:
+<ul>
+<li><code>/events/:uid</code> support was merged in <a href="https://github.com/linagora/twake-calendar-frontend/pull/1102">pull/1102</a>. QA found the UID REPORT response includes <code>VTIMEZONE</code>; <code>extractCalendarEvents</code> was fixed to skip non-<code>vevent</code> components.</li>
+<li><code>/newEvent?attendee=...</code> prefill support is open in <a href="https://github.com/linagora/twake-calendar-frontend/pull/1106">pull/1106</a>, with QA saying it works and README route documentation added. Direct component test coverage was suggested but appears low-risk.</li>
+</ul>
+</li>
+<li>Event creation regression:
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1095">issues/1095</a> / <a href="https://github.com/linagora/twake-calendar-frontend/pull/1096">pull/1096</a> fixed <code>organizer.asJcal is not a function</code> by ensuring <code>organiserData</code> remains a full <code>userOrganiser</code> instance in Redux state.</li>
+</ul>
+</li>
+<li>Platform/mail URL:
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1099">pull/1099</a> added URI template support for <code>MAIL_SPA_URL</code> and reused the shared resolver for visio templates. A review suggestion to <code>encodeURIComponent</code> substitutions was explicitly rejected because placeholders are used in host/subdomain positions where percent encoding would break DNS labels.</li>
+</ul>
+</li>
+<li>Booking-link ICS retro-compat:
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1093">issues/1093</a> concluded read parsing already ignores jCal value type; retro-compat responsibility moved to Sabre side, with related Sabre normalization in <a href="https://github.com/linagora/esn-sabre/pull/402">pull/402</a>.</li>
+</ul>
+</li>
+</ul>
+<h3>Integration Tests / QA</h3>
+<ul>
+<li>Integration tests were expanded for:
+<ul>
+<li>Sabre custom videoconference URI type in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/280">pull/280</a>.</li>
+<li>Team Calendar DAV contracts in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a>.</li>
+<li>Attendee PARTSTAT organizer validation regression in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/285">pull/285</a>.</li>
+<li>Private calendar access denial and filterless private calendar query in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/286">pull/286</a> and <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/287">pull/287</a>.</li>
+<li>Accepting either multistatus-denied or direct 403 for forbidden delegation REPORT in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/288">pull/288</a>.</li>
+</ul>
+</li>
+<li>Test images were bumped for Sabre and Side Service via <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/281">pull/281</a> and <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/290">pull/290</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/284">pull/284</a> remains open to cover organizer update preserving attendee personal alarm settings, related to Sabre <a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a> and frontend <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">issues/1100</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/895">issues/895</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/898">pull/898</a></td>
+<td>Fix recurring event indexing race and stale overridden occurrence search results.</td>
+<td>Search correctness and release upgrade require mapping changes, reindex, sequence/recurrenceId handling.</td>
+<td>open / @chibenwa, @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre + calendar-side-service</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/891">pull/891</a></td>
+<td>Reindex bottlenecks were addressed on both Sabre REPORT and Side Service cursor handling.</td>
+<td>Large reindex stability was a production/preprod issue; fixes reduce timeout risk but malformed ICS still caused partial results.</td>
+<td>merged / deployed signal</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/903">pull/903</a></td>
+<td>Audit log consumer is open and needs redesign to avoid logging private DAV bodies.</td>
+<td>Raw event/vCard bodies are private; audit logs must be high-level semantic events, not technical payload dumps.</td>
+<td>open / @Arsnael</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a></td>
+<td>Fixed attendee PARTSTAT update blocked by organizer validation.</td>
+<td>Regression after enabling organizer validation; directly affected invited attendees updating participation.</td>
+<td>merged / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1097">pull/1097</a></td>
+<td>Public booking flow was merged after QA and review fixes.</td>
+<td>Core booking UX became usable; remaining follow-ups affect timezone selection, validation, and slot filtering.</td>
+<td>merged / @Eriikah</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1104">pull/1104</a></td>
+<td>Booking slot/date filtering is open; empty-state bug identified for today with only past slots.</td>
+<td>Avoids users selecting invalid/past slots and prevents blank UI.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service + esn-sabre + integration-test</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/901">pull/901</a>, <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">pull/283</a></td>
+<td>Team Calendar WebAdmin/Sabre/contracts progressed and merged.</td>
+<td>Enables Team Calendar entity management and DAV principal behavior; follow-up visibility tests remain.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>integration-test</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/issues/289">issues/289</a></td>
+<td>Add tests for private/confidential events visibility in public team calendars.</td>
+<td>Privacy visibility matrix is not fully covered yet.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+  </article>
+</main>
+</body>
+</html>

@@ -1,6 +1,109 @@
 [
   {
     "title": "Calendar Team Activity Summary",
+    "period": "2026-06-29 00:00 → 2026-07-06 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-06 02:04 UTC",
+    "excerpt": "Booking links progressed across backend and frontend: public booking APIs/UI landed, slots now expose owner/details/timezone support, cancel/get/reservation token routes were merged, and acknowledgement email enrichment is still open in pull/906.",
+    "variants": {
+      "en": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-en.html",
+      "vi": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-vi.html"
+    },
+    "metrics": {
+      "New PRs": 49,
+      "Issues": 25,
+      "Comments": 387,
+      "Reviews": 267,
+      "Commits": 0,
+      "Total": 728
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-07-03 23:50 → 2026-07-04 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-04 16:52 UTC",
+    "excerpt": "Backend có PR mới cho booking acknowledgement email, bổ sung thông tin booking link trong email: pull/906.",
+    "variants": {
+      "vi": "activity-reports/2026-07-04_23-50-16-2026-07-03_23-50_to_2026-07-04_23-50-vi.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 1,
+      "Comments": 19,
+      "Reviews": 14,
+      "Commits": 0,
+      "Total": 36
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-07-03 11:02 → 2026-07-04 11:02 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-04 04:04 UTC",
+    "excerpt": "Team Calendar tiến triển mạnh ở backend/Sabre/integration: WebAdmin CRUD APIs đã merge trong side-service pull/901, fix AMQP ignore team calendar list notifications đã merge pull/902, Sabre team-calendar support được review/approve ở pull/407.",
+    "variants": {
+      "vi": "activity-reports/2026-07-04_11-02-15-2026-07-03_11-02_to_2026-07-04_11-02-vi.html"
+    },
+    "metrics": {
+      "New PRs": 10,
+      "Issues": 4,
+      "Comments": 90,
+      "Reviews": 68,
+      "Commits": 0,
+      "Total": 172
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-07-02 23:50 → 2026-07-03 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-03 16:52 UTC",
+    "excerpt": "Team Calendar tiến triển mạnh: Side Service đã merge WebAdmin CRUD APIs pull/901 và fix bỏ qua AMQP list notifications pull/902; Sabre team-calendar support được review/approve trên pull/407.",
+    "variants": {
+      "vi": "activity-reports/2026-07-03_23-50-19-2026-07-02_23-50_to_2026-07-03_23-50-vi.html"
+    },
+    "metrics": {
+      "New PRs": 12,
+      "Issues": 4,
+      "Comments": 113,
+      "Reviews": 79,
+      "Commits": 0,
+      "Total": 208
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-07-02 15:04 → 2026-07-02 19:04 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 12:06 UTC",
+    "excerpt": "Sabre ACL gap → PR fix đọc ACL trước `PROPFIND` + JSON reports: pull/411.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_19-04-25-2026-07-02_15-04_to_2026-07-02_19-04-vi.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 0,
+      "Comments": 17,
+      "Reviews": 8,
+      "Commits": 0,
+      "Total": 27
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
+    "period": "2026-07-02 09:48 → 2026-07-02 12:48 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 05:51 UTC",
+    "excerpt": "Sabre deploy `2.4.1` + env mới → regression: attendee update `PARTSTAT` bị `403 Organizer invalid`; workaround `CALDAV_ORGANIZER_VALIDATION=false`. Xem issues/408.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_12-48-16-2026-07-02_09-48_to_2026-07-02_12-48-vi.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 3,
+      "Comments": 15,
+      "Reviews": 1,
+      "Commits": 0,
+      "Total": 20
+    }
+  },
+  {
+    "title": "Calendar Team Activity Summary",
     "period": "2026-07-01 09:01 → 2026-07-02 09:01 Asia/Ho_Chi_Minh",
     "generated": "2026-07-02 02:03 UTC",
     "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → side-service fix đã merge: materialize users/resources trước xử lý pull/891, issues/887.",
