@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Strong Sabre activity in this reporting window: 18 PRs and 14 issues, mostly around scheduling, validation, team calendars, ACLs, and CalDAV REPORT performance.">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-07 06:47 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-06-10 00:00 → 2026-07-07 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>18</strong></span><span class="metric"><span>Issues</span><strong>14</strong></span><span class="metric"><span>Comments</span><strong>174</strong></span><span class="metric"><span>Reviews</span><strong>86</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>292</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: <code>2026-06-10 00:00 +07</code> -&gt; <code>2026-07-07 00:00 +07</code></p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>TL;DR</h2>
+<ul>
+<li><code>esn-sabre</code> có nhiều thay đổi backend quan trọng: team calendar principal support đã merge qua <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, cùng các follow-up về organizer/iTIP vẫn còn mở ở <a href="https://github.com/linagora/esn-sabre/issues/393">issues/393</a>, <a href="https://github.com/linagora/esn-sabre/issues/394">issues/394</a>, <a href="https://github.com/linagora/esn-sabre/issues/400">issues/400</a>.</li>
+<li>Tối ưu <code>calendar-query REPORT</code> cho reindex đã merge qua <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>; preprod cho thấy cải thiện lớn, nhưng reindex vẫn có 4 event fail cần follow-up từ <a href="https://github.com/linagora/esn-sabre/pull/406#issuecomment-4859763106">pull/406 preprod result</a>.</li>
+<li><code>OrganizerValidationPlugin</code> đã merge và bật trong release qua <a href="https://github.com/linagora/esn-sabre/pull/395">pull/395</a>, nhưng gây regression <code>403</code> khi attendee cập nhật <code>PARTSTAT</code>; issue đã được xử lý bằng <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a> / <a href="https://github.com/linagora/esn-sabre/issues/408">issues/408</a>.</li>
+<li>Lỗ hổng read ACL khi <code>PROPFIND</code>/JSON reports truy cập calendar không đủ quyền đã được tách và fix bằng <a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a>.</li>
+<li>VALARM recipient-specific scheduling đã merge qua <a href="https://github.com/linagora/esn-sabre/pull/390">pull/390</a>, nhưng merge logic còn issue mở ở <a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a>, cần frontend chốt chiến lược UID.</li>
+<li>Có một số quyết định kỹ thuật cần follow-up: strict validation chỉ chạy khi client gửi <code>Prefer: handling=strict</code> từ <a href="https://github.com/linagora/esn-sabre/issues/398#issuecomment-4807541971">issues/398 comment</a>, và matrix PRIVATE/CONFIDENTIAL còn nhiều câu hỏi mở ở <a href="https://github.com/linagora/esn-sabre/issues/272#issuecomment-4827111397">issues/272 comment</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Backend / Side Service / Sabre</h3>
+<h4>Booking links</h4>
+<ul>
+<li>Không thấy activity trực tiếp về booking links trong repository được crawl.</li>
+</ul>
+<h4>Address book / CardDAV webadmin</h4>
+<ul>
+<li>Không thấy thay đổi rõ ràng về address book hoặc CardDAV webadmin trong window này.</li>
+<li>Có thay đổi DAV/ACL liên quan quyền đọc calendar: <a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a> enforce read ACL trước <code>PROPFIND</code> và cho JSON reports.</li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li>Team calendar principal support đã được triển khai và merge qua <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, đóng <a href="https://github.com/linagora/esn-sabre/issues/391">issues/391</a> và <a href="https://github.com/linagora/esn-sabre/issues/392">issues/392</a>.</li>
+<li>Trong review của <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, phát hiện case user không phải member vẫn query được event khi team calendar public/private bị hiểu sai; sau đó xác nhận đây là vấn đề ACL chung, không chỉ team calendar, và tách fix qua <a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a>.</li>
+<li>Các follow-up team calendar vẫn mở:
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/393">issues/393</a>: cho phép organizer là member team calendar có quyền write.</li>
+<li><a href="https://github.com/linagora/esn-sabre/issues/394">issues/394</a>: cập nhật iTIP handling cho team calendars.</li>
+<li><a href="https://github.com/linagora/esn-sabre/issues/400">issues/400</a>: khả năng thay đổi <code>ORGANIZER</code> của event trong context team calendar.</li>
+</ul>
+</li>
+</ul>
+<h4>Scheduling / iTIP / VALARM</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/386">pull/386</a> đã drop synchronous scheduling cho <a href="https://github.com/linagora/esn-sabre/issues/377">issues/377</a>.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/390">pull/390</a> thêm recipient-specific email <code>VALARM</code> scheduling. Review đã làm rõ organizer vẫn có thể giữ alarm cá nhân trên source event qua <a href="https://github.com/linagora/esn-sabre/pull/390#discussion_r3440808647">pull/390 review comment</a>.</li>
+<li><a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a> vẫn mở về VALARM scheduling merge logic. Backend cần frontend mô tả rõ chiến lược UID, có thể gắn với <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">twake-calendar-frontend/issues/1100</a>.</li>
+</ul>
+<h4>Validation / CalDAV correctness</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/395">pull/395</a> thêm <code>OrganizerValidationPlugin</code> để hạn chế spoofing <code>ORGANIZER</code> khi <code>PUT</code>; quyết định kỹ thuật từ <a href="https://github.com/linagora/esn-sabre/issues/389">issues/389</a>: <code>VEVENT</code> only, opt-in ban đầu, reject <code>ATTENDEE</code> without <code>ORGANIZER</code>, và cùng UID phải giữ cùng organizer.</li>
+<li>Release đã bật <code>CALDAV_ORGANIZER_VALIDATION=true</code> và <code>SABRE_EMAIL_VALARM_RECIPIENT_SCHEDULING=true</code> theo <a href="https://github.com/linagora/esn-sabre/issues/401#issuecomment-4861759261">issues/401 comment</a>.</li>
+<li>Regression sau khi bật organizer validation: attendee update <code>PARTSTAT</code> bị <code>403 Organizer invalid</code>; đã được report ở <a href="https://github.com/linagora/esn-sabre/issues/408">issues/408</a> và fix bằng <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a>. Giải pháp: khi update object hiện có, cho phép nếu <code>ORGANIZER</code> không đổi.</li>
+<li>Review <code>CalendarObjectValidator</code> ở <a href="https://github.com/linagora/esn-sabre/issues/398#issuecomment-4807541971">issues/398 comment</a> chỉ ra caveat quan trọng: validation hiện là opt-in qua <code>Prefer: handling=strict</code>; nếu frontend không gửi header này thì validator không bảo vệ các flow liên quan.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/399">pull/399</a> đã xử lý một phần review validator: require <code>DTSTART</code> cho <code>RRULE</code>/<code>EXDATE</code> và document strict <code>TZID</code> matching.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/402">pull/402</a> register custom VObject property types; review yêu cầu giữ backward compatibility để frontend có thể vẫn tạo old syntax và backend normalize sang new syntax từ <a href="https://github.com/linagora/esn-sabre/pull/402#discussion_r3490025892">pull/402 review</a>.</li>
+</ul>
+<h4>Performance / Reports / Release hygiene</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/403">issues/403</a> phân tích root cause timeout khi <code>calendar-query REPORT</code> không filter: stock Sabre loop gây N+1 Mongo round-trip. <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a> batch/single-query hóa path này.</li>
+<li>Preprod test trên <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a> cho thấy cùng report giảm từ khoảng <code>12s</code> prod xuống <code>3-4s</code> preprod theo <a href="https://github.com/linagora/esn-sabre/pull/406#issuecomment-4859864777">pull/406 timing comment</a>.</li>
+<li>Reindex preprod xử lý <code>151479</code> events nhưng fail <code>4</code> events theo <a href="https://github.com/linagora/esn-sabre/pull/406#issuecomment-4859763106">pull/406 preprod result</a>; chưa đủ tín hiệu để kết luận nguyên nhân.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/405">pull/405</a> fix duplicated <code>DAV</code> / <code>X-Sabre-Version</code> / <code>MS-Author-Via</code> headers. Review đã giữ <code>Allow</code> header ở <code>location /</code> để minimize diff và tránh thay đổi ngoài bug scope.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/388">pull/388</a> install legacy timezones để fix <a href="https://github.com/linagora/esn-sabre/issues/387">issues/387</a> với <code>Asia/Calcutta</code>.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/397">pull/397</a> migrate test Mongo lên <code>8.0.6</code>.</li>
+</ul>
+<h4>Privacy / Visibility</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/272#issuecomment-4827111397">issues/272 comment</a> phân tích lại behavior <code>CLASS=PRIVATE/CONFIDENTIAL</code>. Đề xuất tách outcome <code>SHOW / ANONYMISE / FILTER_OUT</code>, thêm relationship resolver cho owner/delegate/participant/other, và tránh leak qua free-busy.</li>
+<li>Các câu hỏi mở đáng chú ý: delegate có level nào được full access với confidential không, confidential có nên invisible hoàn toàn trong public free-busy không, và scope hiện tại nên implement full confidential hay chỉ PRIVATE delegate behavior.</li>
+</ul>
+<h3>Frontend</h3>
+<ul>
+<li>Không có frontend repository nào được crawl trực tiếp, nên chưa đủ tín hiệu về code frontend.</li>
+<li>Tuy nhiên backend cần phối hợp frontend ở 3 điểm:
+<ul>
+<li>VALARM merge logic cần frontend mô tả UID naming strategy rõ ràng qua <a href="https://github.com/linagora/esn-sabre/issues/409#issuecomment-4862824741">issues/409 comment</a> và <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">twake-calendar-frontend/issues/1100</a>.</li>
+<li><code>CalendarObjectValidator</code> chỉ chạy khi client gửi <code>Prefer: handling=strict</code>; cần xác nhận các flow frontend liên quan có gửi header này từ <a href="https://github.com/linagora/esn-sabre/issues/398#issuecomment-4807541971">issues/398 comment</a>.</li>
+<li>VObject custom properties nên giữ compatibility với old syntax để tránh coordinated upgrade bắt buộc, theo review trên <a href="https://github.com/linagora/esn-sabre/pull/402">pull/402</a>.</li>
+</ul>
+</li>
+</ul>
+<h3>Integration Tests / QA</h3>
+<ul>
+<li>Organizer validation có liên kết IT từ <a href="https://github.com/linagora/esn-sabre/issues/389#issuecomment-4806190118">issues/389 comment</a> qua <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/278">twake-calendar-integration-tests/pull/278</a>.</li>
+<li>Regression attendee <code>PARTSTAT</code> có IT coverage được trỏ từ <a href="https://github.com/linagora/esn-sabre/issues/408#issuecomment-4863390332">issues/408 comment</a> qua <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/285">twake-calendar-integration-tests/pull/285</a>.</li>
+<li>ACL guard cho report optimization có IT reproduce ở <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/287">twake-calendar-integration-tests/pull/287</a> và update expected status <code>403</code> thay vì <code>207</code> ở <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/288">twake-calendar-integration-tests/pull/288</a>.</li>
+<li>Có signal QA tốt từ preprod cho <a href="https://github.com/linagora/esn-sabre/pull/405">pull/405</a> và <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, nhưng reindex còn 4 failures cần điều tra thêm.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/408">issues/408</a> / <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a></td>
+<td>Fix regression <code>403</code> khi attendee update <code>PARTSTAT</code> sau khi bật organizer validation.</td>
+<td>Ảnh hưởng trực tiếp RSVP/update flow sau release; cần đảm bảo không tái phát.</td>
+<td>closed / merged, @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a></td>
+<td>Tối ưu XML <code>calendar-query REPORT</code> bằng batch/single-query path.</td>
+<td>Giảm timeout/N+1 Mongo cho reindex calendar lớn; preprod cho thấy cải thiện mạnh.</td>
+<td>merged, @chibenwa / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a></td>
+<td>En</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+  </article>
+</main>
+</body>
+</html>

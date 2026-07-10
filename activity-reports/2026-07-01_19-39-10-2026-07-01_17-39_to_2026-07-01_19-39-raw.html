@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Side-service tag `2.4.1.1` tạo xong → đề xuất deploy prod ngày mai; gồm fix reindex cursor timeout, booking links, WebAdmin `runningOptions` (issues/871 comment).">
+  <title>Calendar Team Code Activity · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-01 12:41 UTC</p>
+  <h1>Calendar Team Code Activity</h1>
+  <p class="period">2026-07-01 17:39 → 2026-07-01 19:39 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>0</strong></span><span class="metric"><span>Issues</span><strong>0</strong></span><span class="metric"><span>Comments</span><strong>9</strong></span><span class="metric"><span>Reviews</span><strong>9</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>18</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Calendar Team Code Activity</h1>
+<ul>
+<li>Window local: <code>2026-07-01 17:39 +07</code> -&gt; <code>2026-07-01 19:39 +07</code></li>
+<li>Window UTC: <code>2026-07-01T10:39:09Z</code> -&gt; <code>2026-07-01T12:39:09Z</code></li>
+<li>Generated at: <code>2026-07-01T12:41:20Z</code></li>
+<li>Run: <code>2026-07-01_19-39-10</code></li>
+<li>Status: <code>completed</code> (5/5 repositories collected)</li>
+<li>Ignored users: <code>@coderabbitai</code></li>
+</ul>
+<h2>Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Provider</th>
+<th>New PRs</th>
+<th>New Issues</th>
+<th>Issue/PR Comments</th>
+<th>PR Reviews</th>
+<th>PR Review Comments</th>
+<th>Discussions</th>
+<th>Discussion Comments</th>
+<th>Commits</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/linagora/twake-calendar-side-service">calendar-side-service</a></td>
+<td>github</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></td>
+<td>github</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests">integration-test</a></td>
+<td>github</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<td><a href="https://github.com/linagora/twake-calendar-frontend">frontend</a></td>
+<td>github</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr>
+<td>helm-twake-calendar</td>
+<td>local_git</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2>calendar-side-service (linagora/twake-calendar-side-service)</h2>
+<h3>New Pull Requests</h3>
+<p><em>Không có.</em></p>
+<h3>New Issues</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussions</h3>
+<p><em>Không có.</em></p>
+<h3>New Commits</h3>
+<p><em>Không có.</em></p>
+<h3>New Issue/PR Conversation Comments</h3>
+<ul>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-side-service/issues/871#issuecomment-4853552022">comment</a> on #871 — @vttranlina, 2026-07-01 17:53</p>
+<blockquote>
+<blockquote>
+<p>Target image: linagora/twake-calendar-side-service:2.4.0</p>
+</blockquote>
+<p>I just created tag <code>2.4.1.1</code> (include fix the calendar event reindex issue)</p>
+<p>I propose deploying this image to prod tomorrow.</p>
+<h2>New since <code>2.4.0</code>:</h2>
+<ul>
+<li>Booking links update</li>
+<li>WebAdmin tasks: expose <code>runningOptions</code>.</li>
+<li>Reindex: fixed MongoDB cursor timeout during large calendar event reindexing.</li>
+</ul>
+<p>https://github.com/linagora/twake-calendar-side-service/compare/2.4.0...2.4.1.1</p>
+</blockquote>
+</li>
+</ul>
+<h3>New Pull Request Reviews</h3>
+<p><em>Không có.</em></p>
+<h3>New Pull Request Review Comments</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussion Comments</h3>
+<p><em>Không có.</em></p>
+<h2>esn-sabre (linagora/esn-sabre)</h2>
+<h3>New Pull Requests</h3>
+<p><em>Không có.</em></p>
+<h3>New Issues</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussions</h3>
+<p><em>Không có.</em></p>
+<h3>New Commits</h3>
+<p><em>Không có.</em></p>
+<h3>New Issue/PR Conversation Comments</h3>
+<ul>
+<li>
+<p><a href="https://github.com/linagora/esn-sabre/pull/407#issuecomment-4854868070">comment</a> on #407 — @chibenwa, 2026-07-01 19:35</p>
+<blockquote>
+<blockquote>
+<p>When bob is not a member of a team calendar (with ACL set to private), bob can still query events in that team calendar.</p>
+</blockquote>
+<p>... if the visibility of that team calendar is public!</p>
+</blockquote>
+</li>
+</ul>
+<h3>New Pull Request Reviews</h3>
+<ul>
+<li>
+<p>PR #407 <a href="https://github.com/linagora/esn-sabre/pull/407">issues/391 feat: add team-calendar support</a> — commented by @chibenwa, 2026-07-01 19:37</p>
+<blockquote>
+<p>Had a read of the prod code.</p>
+<p>This looks great so far!</p>
+</blockquote>
+</li>
+<li>
+<p>PR #405 <a href="https://github.com/linagora/esn-sabre/pull/405">ISSUE-404 Fix duplicated DAV/X-Sabre-Version headers in DAV responses</a> — approved by @vttranlina, 2026-07-01 18:06</p>
+<blockquote>
+<p>tested</p>
+</blockquote>
+</li>
+</ul>
+<h3>New Pull Request Review Comments</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussion Comments</h3>
+<p><em>Không có.</em></p>
+<h2>integration-test (linagora/twake-calendar-integration-tests)</h2>
+<h3>New Pull Requests</h3>
+<p><em>Không có.</em></p>
+<h3>New Issues</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussions</h3>
+<p><em>Không có.</em></p>
+<h3>New Commits</h3>
+<p><em>Không có.</em></p>
+<h3>New Issue/PR Conversation Comments</h3>
+<p><em>Không có.</em></p>
+<h3>New Pull Request Reviews</h3>
+<ul>
+<li>PR #283 <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">esn-sabre/issues/391 test(dav): add team calendar contract tests</a> — commented by @chibenwa, 2026-07-01 17:45</li>
+<li>PR #283 <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">esn-sabre/issues/391 test(dav): add team calendar contract tests</a> — commented by @chibenwa, 2026-07-01 17:46</li>
+<li>PR #283 <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">esn-sabre/issues/391 test(dav): add team calendar contract tests</a> — commented by @chibenwa, 2026-07-01 17:46</li>
+<li>PR #283 <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283">esn-sabre/issues/391 test(dav): add team calendar contract tests</a> — commented by @vttranlina, 2026-07-01 18:30</li>
+</ul>
+<h3>New Pull Request Review Comments</h3>
+<ul>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283#discussion_r3505205738">inline comment</a> on PR #283 — @chibenwa, 2026-07-01 17:45</p>
+<blockquote>
+<p>Let's make it easier to see who is the organizer of that event please.</p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283#discussion_r3505208887">inline comment</a> on PR #283 — @chibenwa, 2026-07-01 17:46</p>
+<blockquote>
+<p>Please add tests on <code>Team calendar public visibility</code></p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283#discussion_r3505210935">inline comment</a> on PR #283 — @chibenwa, 2026-07-01 17:46</p>
+<blockquote>
+<p>Why is this test removed ?</p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/283#discussion_r3505481228">inline comment</a> on PR #283 — @vttranlina, 2026-07-01 18:30</p>
+<blockquote>
+<p>Because team-calendar is only a &quot;holder&quot; (as you mentioned in a somewhere), we do not need to support search by name or email address.</p>
+<p>We do not index Mongo these two fields, and adding LIKE/regex search would slow it down.</p>
+</blockquote>
+</li>
+</ul>
+<h3>New Discussion Comments</h3>
+<p><em>Không có.</em></p>
+<h2>frontend (linagora/twake-calendar-frontend)</h2>
+<h3>New Pull Requests</h3>
+<p><em>Không có.</em></p>
+<h3>New Issues</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussions</h3>
+<p><em>Không có.</em></p>
+<h3>New Commits</h3>
+<p><em>Không có.</em></p>
+<h3>New Issue/PR Conversation Comments</h3>
+<ul>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-frontend/pull/1099#issuecomment-4853516766">comment</a> on #1099 — @chibenwa, 2026-07-01 17:49</p>
+<blockquote>
+<p>Fixed the failing lint error.</p>
+<p>The single auto-fixable error was a <code>prettier/prettier</code> violation in <code>common/src/utils/__test__/mailUrlUtils.test.ts</code>: the <code>workplaceFqdn</code> assertion broke the <code>expect(...)</code> argument, but since the <code>expect(resolveMailSpaUrl({ ... })).toBe(</code> head fits within the 80-column <code>printWidth</code>, Prettier requires breaking the <code>.toBe(...)</code> argument instead — now consistent with the other two <code>expect</code> assertions in the same file.</p>
+<p>Note: I could not run <code>eslint</code>/<code>prettier</code> in this environment (command execution is gated), so the fix was derived by inspecting the changed files against the repo <code>.prettierrc</code>. Pushed as a4cd85d.</p>
+<hr>
+<p><em>Generated automatically</em></p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-frontend/pull/1099#issuecomment-4853517994">comment</a> on #1099 — @chibenwa, 2026-07-01 17:49</p>
+<blockquote>
+<p>&lt;details&gt;&lt;summary&gt;🤖 Session stats&lt;/summary&gt;</p>
+<p>41 turns | 304s | in=3602 out=16757 cache_read=849122 cache_write=34166 | cost=1.2041 USD</p>
+<p>&lt;/details&gt;</p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://github.com/linagora/twake-calendar-frontend/pull/1099#issuecomment-4853630055">comment</a> on #1099 — @Arsnael, 2026-07-01 18:01</p>
+<blockquote>
+<p>Docker images published for this PR:</p>
+<ul>
+<li>Private: linagora/twake-calendar-web-pr:1099</li>
+<li>Public: linagora/twake-calendar-public-pr:1099</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3>New Pull Request Reviews</h3>
+<ul>
+<li>
+<p>PR #1099 <a href="https://github.com/linagora/twake-calendar-frontend/pull/1099">[#1098] Support URI template in MAIL_SPA_URL for platform mode</a> — commented by @chibenwa, 2026-07-01 17:41</p>
+<blockquote>
+<p>+1</p>
+</blockquote>
+</li>
+<li>
+<p>PR #1099 <a href="https://github.com/linagora/twake-calendar-frontend/pull/1099">[#1098] Support URI template in MAIL_SPA_URL for platform mode</a> — commented by @chibenwa, 2026-07-01 17:43</p>
+<blockquote>
+<p>Linting fails</p>
+<pre><code>✖ 302 problems (1 error, 301 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+</code></pre>
+</blockquote>
+</li>
+<li>
+<p>PR #1099 <a href="https://github.com/linagora/twake-calendar-frontend/pull/1099">[#1098] Support URI template in MAIL_SPA_URL for platform mode</a> — approved by @codescene-delta-analysis[bot], 2026-07-01 17:49</p>
+<blockquote>
+<p><strong>Gates Passed</strong>
+<a href="#"></a> 3 Quality Gates Passed</p>
+<p><a href="https://codescene.io/projects/75877/delta/results/6814772">See analysis details in CodeScene</a></p>
+<p><strong>Absence of Expected Change Pattern</strong></p>
+<ul>
+<li>twake-calendar-frontend/common/src/utils/videoConferenceUtils.ts is usually changed with: twake-calendar-frontend/common/src/utils/<strong>test</strong>/videoConferenceUtils.test.ts</li>
+</ul>
+<h2></h2>
+<p><strong>Quality Gate Profile:</strong> <a href="https://codescene.io/projects/75877/config/delta-analysis">The Bare Minimum</a>
+<a href="https://codescene.io/docs/developer-tools/mcp/codescene-mcp-server.html">Install CodeScene MCP</a>: safeguard and uplift AI-generated code. Catch issues early with our <a href="https://codescene.com/developer-hub">IDE extension</a> and <a href="https://codescene.io/docs/cli/index.html">CLI tool</a>.</p>
+</blockquote>
+</li>
+</ul>
+<h3>New Pull Request Review Comments</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussion Comments</h3>
+<p><em>Không có.</em></p>
+<h2>helm-twake-calendar (helm-twake-calendar)</h2>
+<h3>Warnings</h3>
+<ul>
+<li><code>This repository is collected from local git history only; merge requests, issues and comments are not included.</code></li>
+</ul>
+<h3>New Pull Requests</h3>
+<p><em>Không có.</em></p>
+<h3>New Issues</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussions</h3>
+<p><em>Không có.</em></p>
+<h3>New Commits</h3>
+<p><em>Không có.</em></p>
+<h3>New Issue/PR Conversation Comments</h3>
+<p><em>Không có.</em></p>
+<h3>New Pull Request Reviews</h3>
+<p><em>Không có.</em></p>
+<h3>New Pull Request Review Comments</h3>
+<p><em>Không có.</em></p>
+<h3>New Discussion Comments</h3>
+<p><em>Không có.</em></p>
+<h2>Notes</h2>
+<ul>
+<li><code>Issue/PR Conversation Comments</code> dùng endpoint issue comments của GitHub, nên bao gồm cả comment thường trong PR conversation.</li>
+<li><code>Pull Request Review Comments</code> là inline code review comments.</li>
+<li><code>Discussion Comments</code> hiện crawl top-level comments; nested replies có thể được mở rộng sau nếu cần.</li>
+<li><code>local_git</code> repositories are collected from local commit history only.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

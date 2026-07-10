@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Frontend tập trung mạnh vào Booking: thêm chọn timezone cho attendee trong pull/1111, đã được approve bởi reviewer chính vào cuối window.">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-07 10:17 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-07 09:15 → 2026-07-07 17:15 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>2</strong></span><span class="metric"><span>Issues</span><strong>2</strong></span><span class="metric"><span>Comments</span><strong>22</strong></span><span class="metric"><span>Reviews</span><strong>26</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>52</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-07 09:15 +07 -&gt; 2026-07-07 17:15 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>TL;DR</h2>
+<ul>
+<li>Frontend tập trung mạnh vào Booking: thêm chọn timezone cho attendee trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1111">pull/1111</a>, đã được approve bởi reviewer chính vào cuối window.</li>
+<li>Booking confirm dialog / booked event preview trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1110">pull/1110</a> đã được approve, nhưng có follow-up UX cần tạo issue: trạng thái “pending owner validation” chưa rõ và thiếu nút cancel.</li>
+<li>Booking link list trong sidebar được mở qua <a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">pull/1112</a>; CodeScene từng fail vì hotspot/method size nhưng sau đó pass, vẫn có signal cần kiểm tra strict TypeScript cho <code>handleMenuOpen</code>.</li>
+<li>Booking edge cases trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1107">pull/1107</a> có yêu cầu mới: xử lý <code>429</code> rate limit ngay từ đầu.</li>
+<li>Có 2 issue frontend mới cần grooming: <a href="https://github.com/linagora/twake-calendar-frontend/issues/1114">issues/1114</a> về booked event preview và <a href="https://github.com/linagora/twake-calendar-frontend/issues/1113">issues/1113</a> về giải thích trong Access modal.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Backend / Side Service / Sabre</h3>
+<h4>Booking links</h4>
+<ul>
+<li>Không có repo backend được crawl trong window này. Tuy nhiên comment trên <a href="https://github.com/linagora/twake-calendar-frontend/issues/1058#issuecomment-4899870072">issues/1058</a> xác nhận một số edge cases booking link đã/đang được xử lý phía side-service: booking link inactive qua <a href="https://github.com/linagora/twake-calendar-side-service/issues/920">side-service issues/920</a>, slot đã qua qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/915">side-service pull/915</a>, và conflict booking song song đã được xử lý theo comment.</li>
+</ul>
+<h4>Address book / CardDAV webadmin</h4>
+<ul>
+<li>Không có activity liên quan trong dữ liệu của window này.</li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li>Không có activity liên quan trong dữ liệu của window này.</li>
+</ul>
+<h3>Frontend</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1111">pull/1111</a> thêm khả năng attendee chọn timezone trong booking flow: truyền timezone vào hook fetch slots, calendar, time-slot section, header và confirm dialog. Các review correctness chính về timezone-aware “today”/month boundary được nêu trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1111#discussion_r3533738804">pull/1111 review comment</a>; ít nhất một phần đã được đánh dấu addressed. PR đã được approve bởi @chibenwa và @Eriikah.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1110">pull/1110</a> thêm booking confirm dialog và booked event preview. Type-check issue về props thừa cho <code>SuccessSummary</code> đã được nêu và marked addressed trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1110#discussion_r3534656251">pull/1110 review comment</a>. UX follow-up: confirmation link chưa thể hiện rõ event đang pending owner validation và cần cancel button theo <a href="https://github.com/linagora/twake-calendar-frontend/pull/1110#issuecomment-4902415179">pull/1110 comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">pull/1112</a> thêm danh sách booking links vào calendar selection/sidebar, di chuyển <code>listBookingLinks</code> sang common package, thêm copy-to-clipboard và locale keys. CodeScene ban đầu fail vì hotspot trong <code>CalendarSelection.tsx</code>, sau đó pass. CodeRabbit còn flag khả năng fail strict TS do callback thiếu type trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1112#discussion_r3535098859">pull/1112 review comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1108">pull/1108</a> mobile responsive cho booking page có Docker image mới và CodeScene pass; không thấy signal blocker mới.</li>
+<li>Issue mới <a href="https://github.com/linagora/twake-calendar-frontend/issues/1114">issues/1114</a> mở để improve booked event preview.</li>
+<li>Issue mới <a href="https://github.com/linagora/twake-calendar-frontend/issues/1113">issues/1113</a> mở để bổ sung explanations trong Access modal.</li>
+</ul>
+<h3>Integration Tests / QA</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1111">pull/1111</a> có thêm/cập nhật test cho timezone behavior theo walkthrough; cần đặc biệt chú ý boundary quanh midnight và month edge vì đã có review correctness.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">pull/1112</a> có đề xuất thêm unit tests cho <code>categorizeCalendars</code> để khóa logic bucket personal/resource/delegated/shared trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1112#discussion_r3535098859">pull/1112 review</a>.</li>
+<li>Không thấy report test failure rõ ràng ngoài các review type-check/correctness ở trên.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1111">pull/1111</a></td>
+<td>Cho phép attendee chọn timezone trong booking flow; đã được approve.</td>
+<td>Timezone ảnh hưởng trực tiếp slot availability, past-slot filtering và booking confirmation.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1110">pull/1110</a></td>
+<td>Booking confirm dialog và booked event preview đã gần sẵn sàng, còn follow-up UX về pending validation/cancel.</td>
+<td>Nếu UX không rõ, attendee có thể hiểu nhầm trạng thái booking hoặc không biết cách hủy.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">pull/1112</a></td>
+<td>Thêm booking link list vào sidebar và copy link; cần kiểm tra typing strict cho callback.</td>
+<td>Tính năng mới trên sidebar dùng chung common component; lỗi TS có thể block merge/build.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1107">pull/1107</a></td>
+<td>Booking edge cases cần bổ sung xử lý <code>429</code> rate limit.</td>
+<td>Rate limit là trạng thái user-facing cần message rõ ngay từ đầu.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1114">issues/1114</a></td>
+<td>Improve booked event preview.</td>
+<td>Follow-up trực tiếp cho trải nghiệm sau booking.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1113">issues/1113</a></td>
+<td>Thêm explanations trong Access modal.</td>
+<td>Giúp giảm ambiguity trong quyền truy cập/chia sẻ.</td>
+<td>open / TBD</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Quyết định trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1111">pull/1111</a>: mobile header không hiển thị owner name là intentional, nên CodeRabbit đã withdraw suggestion sau <a href="https://github.com/linagora/twake-calendar-frontend/pull/1111#discussion_r3534238069">pull/1111 discussion</a>.</li>
+<li>Quyết định trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1111">pull/1111</a>: booking name được coi là required, không cần fallback default title theo <a href="https://github.com/linagora/twake-calendar-frontend/pull/1111#discussion_r3534300182">pull/1111 discussion</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1110">pull/1110</a> có signal follow-up rõ từ @chibenwa về pending validation/cancel button; @Eriikah trả lời sẽ tạo issue trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1110#issuecomment-4902561707">pull/1110 comment</a>.</li>
+</ul>
+<h2>Risks / Blockers</h2>
+<ul>
+<li>Không thấy blocker P0 trong dữ liệu của window này.</li>
+<li>Rủi ro merge/build còn lại: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1112#discussion_r3535098859">pull/1112 review comment</a> nói <code>strict</code> TypeScript có thể fail nếu <code>handleMenuOpen</code> thiếu type rõ ràng.</li>
+<li>Rủi ro UX: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1110#issuecomment-4902415179">pull/1110 comment</a> chỉ ra confirmation link chưa đủ rõ về trạng thái pending owner validation và thiếu cancel button.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tạo/follow issue cho UX confirmation link: làm rõ “pending owner validation” và thêm cancel button.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1110#issuecomment-4902561707">pull/1110 comment</a></td>
+</tr>
+<tr>
+<td>Kiểm tra/fix explicit types cho <code>handleMenuOpen</code> trong <code>CalendarSelection.tsx</code> để tránh strict TS failure.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1112#discussion_r3535098859">pull/1112 review comment</a></td>
+</tr>
+<tr>
+<td>Bổ sung xử lý <code>429</code> rate limit cho booking edge cases với message user-facing phù hợp.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1107#issuecomment-4902653353">pull/1107 comment</a></td>
+</tr>
+<tr>
+<td>Groom và ưu tiên <a href="https://github.com/linagora/twake-calendar-frontend/issues/1114">issues/1114</a> cùng <a href="https://github.com/linagora/twake-calendar-frontend/issues/1113">issues/1113</a>.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1114">issues/1114</a>, <a href="https://github.com/linagora/twake-calendar-frontend/issues/1113">issues/1113</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua các comment publish Docker image lặp lại và marketing/footer từ bot.</li>
+<li>Bỏ qua các approval CodeScene lặp lại sau khi quality gates đã pass, trừ các lần fail/pass có ý nghĩa trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">pull/1112</a>.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

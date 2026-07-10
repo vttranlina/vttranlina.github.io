@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Backend có issue/PR mới cho SaaS rename: issues/929 và pull/930 để reimport display name từ LDAP khi nhận settings message.">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-08 09:02 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-08 10:00 → 2026-07-08 16:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>2</strong></span><span class="metric"><span>Issues</span><strong>2</strong></span><span class="metric"><span>Comments</span><strong>18</strong></span><span class="metric"><span>Reviews</span><strong>11</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>33</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-08 10:00 +07 -&gt; 2026-07-08 16:00 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>TL;DR</h2>
+<ul>
+<li>Backend có issue/PR mới cho SaaS rename: <a href="https://github.com/linagora/twake-calendar-side-service/issues/929">issues/929</a> và <a href="https://github.com/linagora/twake-calendar-side-service/pull/930">pull/930</a> để reimport display name từ LDAP khi nhận settings message.</li>
+<li>Team Calendar mở yêu cầu email notify khi thêm member: <a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a>; vẫn cần chốt “có thật sự cần email này không”.</li>
+<li>PR webadmin Team Calendar member route <a href="https://github.com/linagora/twake-calendar-side-service/pull/924">pull/924</a> bị CodeScene fail do duplication/large test method, có thể cần xử lý trước merge.</li>
+<li>Sabre đã chốt rule cho ORGANIZER trong <a href="https://github.com/linagora/esn-sabre/issues/400">issues/400</a>: bất kỳ member có <code>dav:read-write</code> có thể đổi organizer sang member khác.</li>
+<li>Frontend có PR mới cải thiện booked event preview <a href="https://github.com/linagora/twake-calendar-frontend/pull/1117">pull/1117</a>; CodeScene pass và Docker image đã publish, nhưng CodeRabbit bị rate limit.</li>
+<li>Booking link list <a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">pull/1112</a> có signal review về explicit typing cho handler; tác giả dự kiến xử lý trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1114">pull/1114</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>SaaS rename / LDAP display name</h4>
+<ul>
+<li>Tạo issue <a href="https://github.com/linagora/twake-calendar-side-service/issues/929">issues/929</a> cho “SaaS handle rename”.</li>
+<li>Mở PR <a href="https://github.com/linagora/twake-calendar-side-service/pull/930">pull/930</a> để reimport user display name từ LDAP khi có settings message; CodeScene đã pass, có +1 từ reviewer.</li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li>Tạo issue <a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a> về việc gửi email notify khi member được thêm vào Team Calendar; câu hỏi mở là có cần email notification không.</li>
+<li>PR <a href="https://github.com/linagora/twake-calendar-side-service/pull/924">pull/924</a> bổ sung route quản lý Team Calendar member, nhưng CodeScene báo fail ở test <code>TeamCalendarMemberRoutesTest.java</code> vì duplication và large method.</li>
+</ul>
+<h4>Booking links / Public booking</h4>
+<ul>
+<li>PR <a href="https://github.com/linagora/twake-calendar-side-service/pull/921">pull/921</a> được approve cho behavior public link trả <code>400</code> khi booking link inactive; reviewer đề xuất follow-up đổi type <code>Optional&lt;String&gt;</code> -&gt; <code>String</code>.</li>
+<li>Frontend booking link list <a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">pull/1112</a> có review về typing cho <code>handleMenuOpen</code>; tác giả nói sẽ xử lý trong scope <a href="https://github.com/linagora/twake-calendar-frontend/pull/1114">pull/1114</a>.</li>
+</ul>
+<h4>Frontend appointment / booked event preview</h4>
+<ul>
+<li>PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1117">pull/1117</a> mở để cải thiện booked event preview; Docker images đã publish và CodeScene pass.</li>
+<li>PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1116">pull/1116</a> về delete appointment trong private calendar có Docker images published và CodeScene pass.</li>
+</ul>
+<h4>Sabre permissions</h4>
+<ul>
+<li>Trong <a href="https://github.com/linagora/esn-sabre/issues/400">issues/400</a>, team đã làm rõ quyền đổi <code>ORGANIZER</code>: bất kỳ member có quyền <code>dav:read-write</code> có thể đổi organizer sang member khác.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/930">#930</a></td>
+<td>Reimport display name từ LDAP khi nhận settings message cho SaaS rename.</td>
+<td>Ảnh hưởng dữ liệu hiển thị user sau rename; cần đảm bảo CI/Jenkins hoàn tất trước merge.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/928">#928</a></td>
+<td>Đề xuất email notify khi thêm member vào Team Calendar.</td>
+<td>Cần quyết định product/UX trước khi implement để tránh notification không cần thiết.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/924">#924</a></td>
+<td>Team Calendar member route bị CodeScene fail ở test duplication/large method.</td>
+<td>Có thể chặn quality gate hoặc làm test khó bảo trì.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/400">#400</a></td>
+<td>Chốt rule: member <code>dav:read-write</code> có thể đổi <code>ORGANIZER</code> sang member khác.</td>
+<td>Đây là quyết định permission cần phản ánh đúng trong implementation/test.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1117">#1117</a></td>
+<td>Cải thiện booked event preview; CodeScene pass, Docker images đã publish.</td>
+<td>PR frontend mới cho public booking flow, cần review human vì CodeRabbit bị rate limit.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1112">#1112</a></td>
+<td>Booking link list có comment yêu cầu explicit typing cho handler.</td>
+<td>Tránh lỗi TypeScript <code>noImplicitAny</code> trong strict mode; tác giả dự kiến xử lý ở #1114.</td>
+<td>open / @Eriikah</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1112#discussion_r3541458865">pull/1112 review comment</a> chỉ ra <code>handleMenuOpen</code> cần type rõ ràng cho <code>e</code> và <code>link</code>; tác giả phản hồi sẽ xử lý trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1114">pull/1114</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/928#issuecomment-4911343312">issues/928 comment</a> là câu hỏi product còn mở: “Do we actually need this email notification?”</li>
+<li><a href="https://github.com/linagora/esn-sabre/issues/400#issuecomment-4913018999">issues/400 comment</a> là quyết định kỹ thuật rõ ràng về quyền đổi organizer trong Sabre.</li>
+</ul>
+<h2>Risks / Blockers</h2>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/924">pull/924</a> đang có CodeScene failed gate do test duplication/large method; cần xử lý hoặc chủ động suppress nếu team chấp nhận.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1117">pull/1117</a> bị CodeRabbit rate limit nên chưa có review tự động từ CodeRabbit trong window này; không phải blocker rõ ràng nhưng cần human review.</li>
+<li>Không thấy blocker production rõ ràng trong dữ liệu của window này.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt có cần email notification khi thêm member vào Team Calendar hay không.</td>
+<td>Product/TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a></td>
+</tr>
+<tr>
+<td>Sửa hoặc quyết định suppress CodeScene findings cho <code>TeamCalendarMemberRoutesTest.java</code>.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/924">pull/924</a></td>
+</tr>
+<tr>
+<td>Sau khi merge <a href="https://github.com/linagora/twake-calendar-side-service/pull/921">pull/921</a>, mở follow-up đổi booking link <code>type</code> từ <code>Optional&lt;String&gt;</code> sang <code>String</code>.</td>
+<td>@chibenwa hoặc TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/921">pull/921 review</a></td>
+</tr>
+<tr>
+<td>Đảm bảo explicit typing cho <code>handleMenuOpen</code> được xử lý trong scope #1114 hoặc PR liên quan.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1112#discussion_r3541458865">pull/1112 review comment</a></td>
+</tr>
+<tr>
+<td>Áp dụng quyết định Sabre về quyền <code>dav:read-write</code> đổi organizer vào implementation/test nếu chưa có.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/400">issues/400</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua phần lớn bot noise từ CodeRabbit/CodeScene, session stats, Docker image publish tự động, trừ khi có tác động tới review/quality gate.</li>
+<li>Bỏ qua repository <code>twake-calendar-integration-tests</code> vì không có activity trong reporting window này.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

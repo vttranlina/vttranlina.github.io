@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Có issue mới về việc gửi email thông báo khi thêm member vào Team Calendar; requirement còn mở với câu hỏi “có thật sự cần email notification không?” issues/928.">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-08 05:42 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-08 06:40 → 2026-07-08 12:40 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>0</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>4</strong></span><span class="metric"><span>Reviews</span><strong>3</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>8</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-08 06:40 +07 -&gt; 2026-07-08 12:40 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>TL;DR</h2>
+<ul>
+<li>Có issue mới về việc gửi email thông báo khi thêm member vào Team Calendar; requirement còn mở với câu hỏi “có thật sự cần email notification không?” <a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a>.</li>
+<li>Image <code>2.4.3.2</code> đã được deploy lên preprod và test thủ công đang hoạt động đúng cho <a href="https://github.com/linagora/twake-calendar-side-service/issues/925#issuecomment-4910984337">issues/925 comment</a>.</li>
+<li>PR xử lý public booking link inactive trả <code>400</code> có thêm thảo luận nhỏ về phạm vi error type; nếu muốn chuẩn hóa error type cho lỗi khác thì nên tách ticket/PR mới <a href="https://github.com/linagora/twake-calendar-side-service/pull/921#discussion_r3540901215">pull/921 review comment</a>.</li>
+<li><code>esn-sabre</code> không có activity đáng chú ý trong reporting window này.</li>
+<li>Activity chủ yếu là issue/comment/review; không có PR mới hoặc commit mới.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Team Calendar</h4>
+<ul>
+<li>Tạo issue mới cho luồng notify member bằng email khi được thêm vào Team Calendar <a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a>.</li>
+<li>Requirement chưa chốt: cần xác nhận có thật sự cần email notification hay không <a href="https://github.com/linagora/twake-calendar-side-service/issues/928#issuecomment-4911343312">issues/928 comment</a>.</li>
+</ul>
+<h4>Booking links</h4>
+<ul>
+<li>PR inactive public booking link trả <code>400</code> tiếp tục có review signal về phạm vi error type <a href="https://github.com/linagora/twake-calendar-side-service/pull/921">pull/921</a>.</li>
+<li>Đề xuất hiện tại: chỉ thêm error type cho inactive booking link; nếu muốn áp dụng cho lỗi khác thì tạo ticket/PR riêng <a href="https://github.com/linagora/twake-calendar-side-service/pull/921#discussion_r3540901215">pull/921 review comment</a>.</li>
+</ul>
+<h4>Preprod / QA</h4>
+<ul>
+<li>Image <code>2.4.3.2</code> đã được deploy lên preprod và được test thủ công là hoạt động đúng <a href="https://github.com/linagora/twake-calendar-side-service/issues/925#issuecomment-4910984337">issues/925 comment</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a></td>
+<td>Issue mới về email notification khi thêm member vào Team Calendar.</td>
+<td>Cần quyết định product/UX trước khi triển khai để tránh làm sai scope.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/925#issuecomment-4910984337">issues/925 comment</a></td>
+<td>Image <code>2.4.3.2</code> đã lên preprod và test thủ công đang OK.</td>
+<td>Tín hiệu tốt cho validation/release tiếp theo, nhưng chưa đủ tín hiệu về automated/regression coverage.</td>
+<td>preprod tested / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/921">pull/921</a></td>
+<td>PR inactive booking link trả <code>400</code>; review nhắc giữ scope error type hẹp.</td>
+<td>Tránh scope creep; nếu cần chuẩn hóa error type rộng hơn nên tách việc.</td>
+<td>in review / @hungphan227</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Có một open question rõ ràng ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a>: team cần chốt có cần email notification cho Team Calendar member hay không.</li>
+<li>Với <a href="https://github.com/linagora/twake-calendar-side-service/pull/921">pull/921</a>, reviewer đề xuất không mở rộng error type ngoài inactive booking link trong PR hiện tại; nếu cần thì tạo ticket/PR mới.</li>
+</ul>
+<h2>Risks / Blockers</h2>
+<ul>
+<li>Requirement của <a href="https://github.com/linagora/twake-calendar-side-service/issues/928">issues/928</a> chưa rõ; có thể block hoặc làm lại nếu triển khai trước khi chốt nhu cầu email notification.</li>
+<li>Không thấy blocker kỹ thuật rõ ràng khác trong dữ liệu của window này.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt với product/team có cần gửi email khi member được thêm vào Team Calendar hay không.</td>
+<td>@vttranlina / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/928#issuecomment-4911343312">issues/928 comment</a></td>
+</tr>
+<tr>
+<td>Nếu muốn chuẩn hóa error type cho các lỗi khác ngoài inactive booking link, tạo ticket/PR riêng thay vì mở rộng scope PR hiện tại.</td>
+<td>@hungphan227 / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/921#discussion_r3540901215">pull/921 review comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua các approval tự động từ CodeScene vì chỉ báo quality gates passed, không có review nội dung đáng kể.</li>
+<li>Bỏ qua comment <code>+1</code> trên <a href="https://github.com/linagora/twake-calendar-side-service/pull/903">pull/903</a> vì không thêm thông tin kỹ thuật mới.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

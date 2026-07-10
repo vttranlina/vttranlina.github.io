@@ -1,1 +1,667 @@
-[]
+[
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-09 09:16 → 2026-07-10 09:16 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-10 02:18 UTC",
+    "excerpt": "Period: 2026-07-09 09:16 +07 -> 2026-07-10 09:16 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-10_09-16-28-2026-07-09_09-16_to_2026-07-10_09-16-vi.html",
+      "raw": "activity-reports/2026-07-10_09-16-28-2026-07-09_09-16_to_2026-07-10_09-16-raw.html"
+    },
+    "metrics": {
+      "New PRs": 12,
+      "Issues": 7,
+      "Comments": 71,
+      "Reviews": 67,
+      "Commits": 0,
+      "Total": 157
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-08 23:50 → 2026-07-09 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-09 16:52 UTC",
+    "excerpt": "Period: 2026-07-08 23:50 +07 -> 2026-07-09 23:50 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-09_23-50-19-2026-07-08_23-50_to_2026-07-09_23-50-vi.html",
+      "raw": "activity-reports/2026-07-09_23-50-19-2026-07-08_23-50_to_2026-07-09_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 11,
+      "Issues": 7,
+      "Comments": 73,
+      "Reviews": 70,
+      "Commits": 0,
+      "Total": 161
+    }
+  },
+  {
+    "title": "Calendar Team Code Activity",
+    "period": "2026-07-08 23-50 → 2026-07-09 23-50",
+    "generated": "2026-07-09 23-50-10",
+    "excerpt": "- Window local: `2026-07-08 23:50 +07` -> `2026-07-09 23:50 +07`",
+    "variants": {
+      "raw": "activity-reports/2026-07-09_23-50-10-2026-07-08_23-50_to_2026-07-09_23-50-raw.html"
+    },
+    "metrics": {}
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-09 08:41 → 2026-07-09 14:41 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-09 07:44 UTC",
+    "excerpt": "Booking links có nhiều PR backend được review/approve: màu tùy chọn, kiểm tra quyền ghi calendar, email khi bookee hủy, và xử lý race OpenSearch.",
+    "variants": {
+      "vi": "activity-reports/2026-07-09_14-41-59-2026-07-09_08-41_to_2026-07-09_14-41-vi.html",
+      "raw": "activity-reports/2026-07-09_14-41-59-2026-07-09_08-41_to_2026-07-09_14-41-raw.html"
+    },
+    "metrics": {
+      "New PRs": 3,
+      "Issues": 0,
+      "Comments": 25,
+      "Reviews": 28,
+      "Commits": 0,
+      "Total": 56
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-09 08:20 → 2026-07-09 14:20 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-09 07:22 UTC",
+    "excerpt": "Booking links tiếp tục là trọng tâm: xử lý quyền ghi calendar, màu booking link, email khi bookee hủy, và flow tạo booking trên frontend.",
+    "variants": {
+      "vi": "activity-reports/2026-07-09_14-20-29-2026-07-09_08-20_to_2026-07-09_14-20-vi.html",
+      "raw": "activity-reports/2026-07-09_14-20-29-2026-07-09_08-20_to_2026-07-09_14-20-raw.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 0,
+      "Comments": 24,
+      "Reviews": 28,
+      "Commits": 0,
+      "Total": 54
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-08 08:57 → 2026-07-09 08:57 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-09 01:59 UTC",
+    "excerpt": "Booking links tiếp tục là luồng chính: side-service có PR mới cho màu, quyền ghi calendar, email khi bookee hủy; frontend có cải tiến preview/modal xác nhận booking.",
+    "variants": {
+      "vi": "activity-reports/2026-07-09_08-57-35-2026-07-08_08-57_to_2026-07-09_08-57-vi.html",
+      "raw": "activity-reports/2026-07-09_08-57-35-2026-07-08_08-57_to_2026-07-09_08-57-raw.html"
+    },
+    "metrics": {
+      "New PRs": 11,
+      "Issues": 9,
+      "Comments": 72,
+      "Reviews": 51,
+      "Commits": 0,
+      "Total": 143
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-07 23:50 → 2026-07-08 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-08 16:52 UTC",
+    "excerpt": "Backend booking links có nhiều PR mới: thêm màu, giới hạn calendar có quyền ghi, email khi bookee hủy, chuẩn hóa `ErrorDetail.type`; phần lớn đã qua CodeScene/human review nhưng vẫn còn vài điểm cần follow-up.",
+    "variants": {
+      "vi": "activity-reports/2026-07-08_23-50-12-2026-07-07_23-50_to_2026-07-08_23-50-vi.html",
+      "raw": "activity-reports/2026-07-08_23-50-12-2026-07-07_23-50_to_2026-07-08_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 11,
+      "Issues": 9,
+      "Comments": 71,
+      "Reviews": 50,
+      "Commits": 0,
+      "Total": 141
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-08 14:31 → 2026-07-08 17:31 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-08 10:32 UTC",
+    "excerpt": "Backend booking links có 2 PR mới: thêm `color` tùy chọn pull/933 và chỉ cho chọn calendar có quyền ghi pull/935.",
+    "variants": {
+      "vi": "activity-reports/2026-07-08_17-31-02-2026-07-08_14-31_to_2026-07-08_17-31-vi.html",
+      "raw": "activity-reports/2026-07-08_17-31-02-2026-07-08_14-31_to_2026-07-08_17-31-raw.html"
+    },
+    "metrics": {
+      "New PRs": 4,
+      "Issues": 4,
+      "Comments": 22,
+      "Reviews": 11,
+      "Commits": 0,
+      "Total": 41
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-08 10:00 → 2026-07-08 16:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-08 09:02 UTC",
+    "excerpt": "Backend có issue/PR mới cho SaaS rename: issues/929 và pull/930 để reimport display name từ LDAP khi nhận settings message.",
+    "variants": {
+      "vi": "activity-reports/2026-07-08_16-00-37-2026-07-08_10-00_to_2026-07-08_16-00-vi.html",
+      "raw": "activity-reports/2026-07-08_16-00-37-2026-07-08_10-00_to_2026-07-08_16-00-raw.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 2,
+      "Comments": 18,
+      "Reviews": 11,
+      "Commits": 0,
+      "Total": 33
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-08 06:40 → 2026-07-08 12:40 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-08 05:42 UTC",
+    "excerpt": "Có issue mới về việc gửi email thông báo khi thêm member vào Team Calendar; requirement còn mở với câu hỏi “có thật sự cần email notification không?” issues/928.",
+    "variants": {
+      "vi": "activity-reports/2026-07-08_12-41-00-2026-07-08_06-40_to_2026-07-08_12-40-vi.html",
+      "raw": "activity-reports/2026-07-08_12-41-00-2026-07-08_06-40_to_2026-07-08_12-40-raw.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 1,
+      "Comments": 4,
+      "Reviews": 3,
+      "Commits": 0,
+      "Total": 8
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-07 11:22 → 2026-07-08 11:22 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-08 04:24 UTC",
+    "excerpt": "Đã xử lý hướng tương thích AMQP khi Sabre thêm field `connectedUser`: Sabre có PR thêm field pull/418, integration tests được cập nhật ở pull/293, side-service đã merge fix bỏ qua unknown fields ở pull/927.",
+    "variants": {
+      "vi": "activity-reports/2026-07-08_11-22-36-2026-07-07_11-22_to_2026-07-08_11-22-vi.html",
+      "raw": "activity-reports/2026-07-08_11-22-36-2026-07-07_11-22_to_2026-07-08_11-22-raw.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 7,
+      "Comments": 65,
+      "Reviews": 38,
+      "Commits": 0,
+      "Total": 119
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-06 23:50 → 2026-07-07 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-07 16:52 UTC",
+    "excerpt": "Có sự cố P1 “event counter broken” trên `imap.linagora.com`: issue được mở ở side-service issues/925, fix Sabre đã merge qua pull/420, integration test tái hiện đang mở ở issues/294 / pull/295.",
+    "variants": {
+      "vi": "activity-reports/2026-07-07_23-50-03-2026-07-06_23-50_to_2026-07-07_23-50-vi.html",
+      "raw": "activity-reports/2026-07-07_23-50-03-2026-07-06_23-50_to_2026-07-07_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 14,
+      "Issues": 10,
+      "Comments": 93,
+      "Reviews": 68,
+      "Commits": 0,
+      "Total": 185
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-07 09:15 → 2026-07-07 17:15 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-07 10:17 UTC",
+    "excerpt": "Frontend tập trung mạnh vào Booking: thêm chọn timezone cho attendee trong pull/1111, đã được approve bởi reviewer chính vào cuối window.",
+    "variants": {
+      "vi": "activity-reports/2026-07-07_17-15-15-2026-07-07_09-15_to_2026-07-07_17-15-vi.html",
+      "raw": "activity-reports/2026-07-07_17-15-15-2026-07-07_09-15_to_2026-07-07_17-15-raw.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 2,
+      "Comments": 22,
+      "Reviews": 26,
+      "Commits": 0,
+      "Total": 52
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-06 00:00 → 2026-07-07 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-07 07:01 UTC",
+    "excerpt": "Heavy activity on `calendar-side-service`: 72 PRs and 62 issues in this reporting window, mostly merged/closed.",
+    "variants": {
+      "en": "activity-reports/2026-07-07_13-59-55-2026-06-06_to_2026-07-07-en.html",
+      "vi": "activity-reports/2026-07-07_13-59-55-2026-06-06_to_2026-07-07-vi.html",
+      "raw": "activity-reports/2026-07-07_13-59-55-2026-06-06_to_2026-07-07-raw.html"
+    },
+    "metrics": {
+      "New PRs": 72,
+      "Issues": 62,
+      "Comments": 413,
+      "Reviews": 322,
+      "Commits": 0,
+      "Total": 869
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-10 00:00 → 2026-07-07 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-07 06:47 UTC",
+    "excerpt": "Strong Sabre activity in this reporting window: 18 PRs and 14 issues, mostly around scheduling, validation, team calendars, ACLs, and CalDAV REPORT performance.",
+    "variants": {
+      "en": "activity-reports/2026-07-07_13-46-24-2026-06-10_to_2026-07-07-en.html",
+      "vi": "activity-reports/2026-07-07_13-46-24-2026-06-10_to_2026-07-07-vi.html",
+      "raw": "activity-reports/2026-07-07_13-46-24-2026-06-10_to_2026-07-07-raw.html"
+    },
+    "metrics": {
+      "New PRs": 18,
+      "Issues": 14,
+      "Comments": 174,
+      "Reviews": 86,
+      "Commits": 0,
+      "Total": 292
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-06 08:52 → 2026-07-07 08:52 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-07 01:54 UTC",
+    "excerpt": "Booking links là luồng hoạt động chính: backend đã merge kiểm tra slot quá khứ/slot availability trong pull/915 và pull/916; frontend tiếp tục xử lý edge cases/mobile/confirmation trong pull/1107, pull/1108, pull/1110.",
+    "variants": {
+      "vi": "activity-reports/2026-07-07_08-52-24-2026-07-06_08-52_to_2026-07-07_08-52-vi.html",
+      "raw": "activity-reports/2026-07-07_08-52-24-2026-07-06_08-52_to_2026-07-07_08-52-raw.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 8,
+      "Comments": 83,
+      "Reviews": 51,
+      "Commits": 0,
+      "Total": 151
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-05 23:50 → 2026-07-06 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-06 16:52 UTC",
+    "excerpt": "Booking link được harden đáng kể ở backend: chặn booking/cancel slot trong quá khứ và enforce availability kể cả khi không có availability rules; các PR liên quan đã merge: pull/915, pull/916.",
+    "variants": {
+      "vi": "activity-reports/2026-07-06_23-50-15-2026-07-05_23-50_to_2026-07-06_23-50-vi.html",
+      "raw": "activity-reports/2026-07-06_23-50-15-2026-07-05_23-50_to_2026-07-06_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 8,
+      "Comments": 83,
+      "Reviews": 51,
+      "Commits": 0,
+      "Total": 151
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-29 00:00 → 2026-07-06 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-06 02:04 UTC",
+    "excerpt": "Booking links progressed across backend and frontend: public booking APIs/UI landed, slots now expose owner/details/timezone support, cancel/get/reservation token routes were merged, and acknowledgement email enrichment is still open in pull/906.",
+    "variants": {
+      "en": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-en.html",
+      "vi": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-vi.html",
+      "raw": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-raw.html"
+    },
+    "metrics": {
+      "New PRs": 49,
+      "Issues": 25,
+      "Comments": 387,
+      "Reviews": 267,
+      "Commits": 0,
+      "Total": 728
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-07-03 23:50 → 2026-07-04 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-04 16:52 UTC",
+    "excerpt": "Backend có PR mới cho booking acknowledgement email, bổ sung thông tin booking link trong email: pull/906.",
+    "variants": {
+      "vi": "activity-reports/2026-07-04_23-50-16-2026-07-03_23-50_to_2026-07-04_23-50-vi.html",
+      "raw": "activity-reports/2026-07-04_23-50-16-2026-07-03_23-50_to_2026-07-04_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 1,
+      "Comments": 19,
+      "Reviews": 14,
+      "Commits": 0,
+      "Total": 36
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-07-03 11:02 → 2026-07-04 11:02 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-04 04:04 UTC",
+    "excerpt": "Team Calendar tiến triển mạnh ở backend/Sabre/integration: WebAdmin CRUD APIs đã merge trong side-service pull/901, fix AMQP ignore team calendar list notifications đã merge pull/902, Sabre team-calendar support được review/approve ở pull/407.",
+    "variants": {
+      "vi": "activity-reports/2026-07-04_11-02-15-2026-07-03_11-02_to_2026-07-04_11-02-vi.html",
+      "raw": "activity-reports/2026-07-04_11-02-15-2026-07-03_11-02_to_2026-07-04_11-02-raw.html"
+    },
+    "metrics": {
+      "New PRs": 10,
+      "Issues": 4,
+      "Comments": 90,
+      "Reviews": 68,
+      "Commits": 0,
+      "Total": 172
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-02 23:50 → 2026-07-03 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-03 16:52 UTC",
+    "excerpt": "Team Calendar tiến triển mạnh: Side Service đã merge WebAdmin CRUD APIs pull/901 và fix bỏ qua AMQP list notifications pull/902; Sabre team-calendar support được review/approve trên pull/407.",
+    "variants": {
+      "vi": "activity-reports/2026-07-03_23-50-19-2026-07-02_23-50_to_2026-07-03_23-50-vi.html",
+      "raw": "activity-reports/2026-07-03_23-50-19-2026-07-02_23-50_to_2026-07-03_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 12,
+      "Issues": 4,
+      "Comments": 113,
+      "Reviews": 79,
+      "Commits": 0,
+      "Total": 208
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-02 15:04 → 2026-07-02 19:04 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 12:06 UTC",
+    "excerpt": "Sabre ACL gap → PR fix đọc ACL trước `PROPFIND` + JSON reports: pull/411.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_19-04-25-2026-07-02_15-04_to_2026-07-02_19-04-vi.html",
+      "raw": "activity-reports/2026-07-02_19-04-25-2026-07-02_15-04_to_2026-07-02_19-04-raw.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 0,
+      "Comments": 17,
+      "Reviews": 8,
+      "Commits": 0,
+      "Total": 27
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-02 09:48 → 2026-07-02 12:48 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 05:51 UTC",
+    "excerpt": "Sabre deploy `2.4.1` + env mới → regression: attendee update `PARTSTAT` bị `403 Organizer invalid`; workaround `CALDAV_ORGANIZER_VALIDATION=false`. Xem issues/408.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_12-48-16-2026-07-02_09-48_to_2026-07-02_12-48-vi.html",
+      "raw": "activity-reports/2026-07-02_12-48-16-2026-07-02_09-48_to_2026-07-02_12-48-raw.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 3,
+      "Comments": 15,
+      "Reviews": 1,
+      "Commits": 0,
+      "Total": 20
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-01 09:01 → 2026-07-02 09:01 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 02:03 UTC",
+    "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → side-service fix đã merge: materialize users/resources trước xử lý pull/891, issues/887.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_09-01-28-2026-07-01_09-01_to_2026-07-02_09-01-vi.html",
+      "raw": "activity-reports/2026-07-02_09-01-28-2026-07-01_09-01_to_2026-07-02_09-01-raw.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 6,
+      "Comments": 72,
+      "Reviews": 34,
+      "Commits": 0,
+      "Total": 121
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-01 20:47 → 2026-07-02 08:47 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-02 01:49 UTC",
+    "excerpt": "Window yên: 1 PR mới/merged, ít comment.",
+    "variants": {
+      "vi": "activity-reports/2026-07-02_08-47-57-2026-07-01_20-47_to_2026-07-02_08-47-vi.html",
+      "raw": "activity-reports/2026-07-02_08-47-57-2026-07-01_20-47_to_2026-07-02_08-47-raw.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 0,
+      "Comments": 2,
+      "Reviews": 1,
+      "Commits": 0,
+      "Total": 4
+    }
+  },
+  {
+    "title": "2026-07-01_19-58_to_2026-07-01_21-58",
+    "period": "2026-07-01 19:58 → 2026-07-01 21:58 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 15:02 UTC",
+    "excerpt": "",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_21-58-33-2026-07-01_19-58_to_2026-07-01_21-58-vi.html",
+      "raw": "activity-reports/2026-07-01_21-58-33-2026-07-01_19-58_to_2026-07-01_21-58-raw.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 0,
+      "Comments": 2,
+      "Reviews": 0,
+      "Commits": 0,
+      "Total": 2
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-30 21:23 → 2026-07-01 21:23 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 14:25 UTC",
+    "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → root cause rõ. Side-service fix merged pull/891; Sabre perf fix open/preprod pull/406.",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_21-23-11-2026-06-30_21-23_to_2026-07-01_21-23-vi.html",
+      "raw": "activity-reports/2026-07-01_21-23-11-2026-06-30_21-23_to_2026-07-01_21-23-raw.html"
+    },
+    "metrics": {
+      "New PRs": 11,
+      "Issues": 6,
+      "Comments": 71,
+      "Reviews": 37,
+      "Commits": 0,
+      "Total": 125
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-01 17:39 → 2026-07-01 19:39 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 12:41 UTC",
+    "excerpt": "Side-service tag `2.4.1.1` tạo xong → đề xuất deploy prod ngày mai; gồm fix reindex cursor timeout, booking links, WebAdmin `runningOptions` (issues/871 comment).",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_19-39-10-2026-07-01_17-39_to_2026-07-01_19-39-vi.html",
+      "raw": "activity-reports/2026-07-01_19-39-10-2026-07-01_17-39_to_2026-07-01_19-39-raw.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 0,
+      "Comments": 9,
+      "Reviews": 9,
+      "Commits": 0,
+      "Total": 18
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-07-01 14:42 → 2026-07-01 17:42 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 10:50 UTC",
+    "excerpt": "Reindex fail do Mongo cursor idle timeout → side-service fix merged: materialize user/resource list. pull/891",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_17-42-19-2026-07-01_14-42_to_2026-07-01_17-42-vi.html",
+      "raw": "activity-reports/2026-07-01_17-42-19-2026-07-01_14-42_to_2026-07-01_17-42-raw.html"
+    },
+    "metrics": {
+      "New PRs": 6,
+      "Issues": 3,
+      "Comments": 54,
+      "Reviews": 19,
+      "Commits": 0,
+      "Total": 82
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-01 11:54 → 2026-07-01 14:54 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 08:05 UTC",
+    "excerpt": "Reindex calendar events lỗi `MongoCursorNotFoundException` → root cause rõ: cursor Mongo sống quá lâu khi downstream chậm/throttle. Fix đề xuất: `collectList()` user/resource trước xử lý. issues/887",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_14-54-31-2026-07-01_11-54_to_2026-07-01_14-54-vi.html",
+      "raw": "activity-reports/2026-07-01_14-54-31-2026-07-01_11-54_to_2026-07-01_14-54-raw.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 5,
+      "Comments": 7,
+      "Reviews": 3,
+      "Commits": 0,
+      "Total": 17
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-30 09:16 → 2026-07-01 09:16 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-01 02:22 UTC",
+    "excerpt": "Booking links backend tiến nhanh: cancel route merged; get route mới mở. pull/881, pull/886",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_09-16-42-2026-06-30_09-16_to_2026-07-01_09-16-vi.html",
+      "raw": "activity-reports/2026-07-01_09-16-42-2026-06-30_09-16_to_2026-07-01_09-16-raw.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 1,
+      "Comments": 49,
+      "Reviews": 63,
+      "Commits": 0,
+      "Total": 122
+    }
+  },
+  {
+    "title": "Tóm tắt hoạt động Calendar Team",
+    "period": "2026-06-30 05:23 → 2026-07-01 05:23 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-30 22:34 UTC",
+    "excerpt": "Frontend prod bug `organizer.asJcal is not a function` → đã fix/merge: issues/1095, pull/1096.",
+    "variants": {
+      "vi": "activity-reports/2026-07-01_05-23-49-2026-06-30_05-23_to_2026-07-01_05-23-vi.html",
+      "raw": "activity-reports/2026-07-01_05-23-49-2026-06-30_05-23_to_2026-07-01_05-23-raw.html"
+    },
+    "metrics": {
+      "New PRs": 6,
+      "Issues": 1,
+      "Comments": 48,
+      "Reviews": 61,
+      "Commits": 0,
+      "Total": 116
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-29 11:21 → 2026-06-30 11:21 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-30 04:23 UTC",
+    "excerpt": "Frontend có PR mới cho booking links/booking slots: pull/1094. PR đã thêm DTO, DAO private/public và route public booking, nhưng còn vài điểm cần xử lý trước khi merge.",
+    "variants": {
+      "vi": "activity-reports/2026-06-30_11-21-54-2026-06-29_11-21_to_2026-06-30_11-21-vi.html",
+      "raw": "activity-reports/2026-06-30_11-21-54-2026-06-29_11-21_to_2026-06-30_11-21-raw.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 1,
+      "Comments": 20,
+      "Reviews": 11,
+      "Commits": 0,
+      "Total": 33
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-29 07:57 → 2026-06-30 07:57 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-30 01:05 UTC",
+    "excerpt": "Booking links had heavy backend activity: ICS custom value typing was merged in pull/872, while new PRs cover booking confirmation tokens, owner info, timezone-aware slots, and admin deletion.",
+    "variants": {
+      "en": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-en.html",
+      "vi": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-vi.html",
+      "raw": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-raw.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 6,
+      "Comments": 55,
+      "Reviews": 45,
+      "Commits": 3,
+      "Total": 118
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-28 23:50 → 2026-06-29 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-29 16:58 UTC",
+    "excerpt": "Booking links had heavy backend activity: slots timezone support pull/880, owner info exposure pull/878, event deletion admin task pull/876, auto-accept pull/863, booking token work pull/873, pull/874.",
+    "variants": {
+      "en": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-en.html",
+      "vi": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-vi.html",
+      "raw": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 9,
+      "Issues": 7,
+      "Comments": 52,
+      "Reviews": 41,
+      "Commits": 3,
+      "Total": 112
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-22 00:00 → 2026-06-29 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-29 02:06 UTC",
+    "excerpt": "Booking links progressed significantly on backend: WebAdmin CRUD, confirmation emails, optional name/description, ICS reference, and search criterion work landed or opened; cleanup remains to implement via CalDAV source-of-truth deletion.",
+    "variants": {
+      "en": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-en.html",
+      "vi": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-vi.html",
+      "raw": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-raw.html"
+    },
+    "metrics": {
+      "New PRs": 42,
+      "Issues": 62,
+      "Comments": 435,
+      "Reviews": 281,
+      "Commits": 0,
+      "Total": 820
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-06-22 00:00 → 2026-06-28 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-06-28 02:53 UTC",
+    "excerpt": "Booking links moved forward significantly: webadmin CRUD merged, booker confirmation email merged, optional name/description merged, ICS now references booking links, and indexing/search work is open for follow-up.",
+    "variants": {
+      "en": "activity-reports/2026-06-28_09-51-36-2026-06-22_to_2026-06-28-en.html",
+      "vi": "activity-reports/2026-06-28_09-51-36-2026-06-22_to_2026-06-28-vi.html",
+      "raw": "activity-reports/2026-06-28_09-51-36-2026-06-22_to_2026-06-28-raw.html"
+    },
+    "metrics": {
+      "New PRs": 22,
+      "Issues": 24,
+      "Comments": 113,
+      "Reviews": 65,
+      "Commits": 0,
+      "Total": 224
+    }
+  }
+]

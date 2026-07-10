@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Heavy activity on `calendar-side-service`: 72 PRs and 62 issues in this reporting window, mostly merged/closed.">
+  <title>Tóm tắt hoạt động Calendar Team · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-07 07:01 UTC</p>
+  <h1>Tóm tắt hoạt động Calendar Team</h1>
+  <p class="period">2026-06-06 00:00 → 2026-07-07 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>72</strong></span><span class="metric"><span>Issues</span><strong>62</strong></span><span class="metric"><span>Comments</span><strong>413</strong></span><span class="metric"><span>Reviews</span><strong>322</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>869</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Tóm tắt hoạt động Calendar Team</h1>
+<p>Kỳ báo cáo: 2026-06-06 00:00 +07 -&gt; 2026-07-07 00:00 +07</p>
+<p>Ngôn ngữ: Tiếng Việt</p>
+<h2>TL;DR</h2>
+<ul>
+<li>Hoạt động tập trung mạnh ở <code>calendar-side-service</code>: 72 PR mới, 62 issue mới; phần lớn đã merge/close, chủ yếu quanh Booking links, Team Calendar, search/reindex và ổn định test.</li>
+<li>Booking links/Public agenda tiến rất nhanh: CRUD WebAdmin, tên/mô tả, auto-accept, token get/cancel, slots theo timezone, email xác nhận, cleanup events theo booking link, chặn booking/cancel trong quá khứ và validate availability được merge qua nhiều PR như <a href="https://github.com/linagora/twake-calendar-side-service/pull/839">pull/839</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/876">pull/876</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/915">pull/915</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/916">pull/916</a>.</li>
+<li>Search/reindex có nhiều fix quan trọng: shared/delegated/resource calendar search, Mongo cursor timeout khi reindex lớn, và race condition khi index recurring events được xử lý qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/794">pull/794</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/891">pull/891</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/898">pull/898</a>.</li>
+<li>Team Calendar backend đã có entity repository, Mongo implementation, WebAdmin CRUD entity và People Search support qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/857">pull/857</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/858">pull/858</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/901">pull/901</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/917">pull/917</a>; vẫn còn các phần members CRUD, integration tests và rename DAV collection cần làm.</li>
+<li>Có 2 follow-up đáng chú ý: bảo vệ spoofing booker identity cho Booking link <a href="https://github.com/linagora/twake-calendar-side-service/issues/919">issues/919</a> và hoàn thiện audit log consumer Sabre CRUD <a href="https://github.com/linagora/twake-calendar-side-service/pull/903">pull/903</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Backend / Side Service / Sabre</h3>
+<h4>Booking links</h4>
+<ul>
+<li>WebAdmin CRUD cho booking links đã được thêm để phục vụ sprint frontend mới qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/839">pull/839</a>.</li>
+<li>Booking link model/API được mở rộng với <code>name</code>, <code>description</code>, <code>autoAccept</code>, owner info, timezone-aware slots và thông tin public slots đầy đủ hơn qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/861">pull/861</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/863">pull/863</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/878">pull/878</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/880">pull/880</a>.</li>
+<li>Luồng booking confirmation được bổ sung token để frontend có thể lấy/cancel booking event: signer <a href="https://github.com/linagora/twake-calendar-side-service/pull/873">pull/873</a>, reservation trả token <a href="https://github.com/linagora/twake-calendar-side-service/pull/874">pull/874</a>, get route <a href="https://github.com/linagora/twake-calendar-side-service/pull/886">pull/886</a>, cancel route <a href="https://github.com/linagora/twake-calendar-side-service/pull/881">pull/881</a>.</li>
+<li>Event được tạo từ booking link giờ có traceability để search/cleanup: reference trong ICS <a href="https://github.com/linagora/twake-calendar-side-service/pull/865">pull/865</a>, index/search criterion <a href="https://github.com/linagora/twake-calendar-side-service/pull/869">pull/869</a>, admin task cleanup events theo booking link <a href="https://github.com/linagora/twake-calendar-side-service/pull/876">pull/876</a>. Review đã phát hiện bug paging khi vừa search vừa delete; fix chuyển sang DAV listing là source of truth trong <a href="https://github.com/linagora/twake-calendar-side-service/pull/876#discussion_r3492517958">pull/876 review comment</a>.</li>
+<li>Email booker khi nhận request và email acknowledgement có booking link details được merge qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/852">pull/852</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/906">pull/906</a>. Có quyết định không đưa input tự do từ unauthenticated booker vào email để tránh lạm dụng nội dung.</li>
+<li>Public booking hardening: chặn past slots/booking/cancellation <a href="https://github.com/linagora/twake-calendar-side-service/pull/915">pull/915</a> và enforce availability kể cả khi không có availability rules <a href="https://github.com/linagora/twake-calendar-side-service/pull/916">pull/916</a>. Rate limiting vẫn được theo dõi ở issue cũ <a href="https://github.com/linagora/twake-calendar-side-service/issues/622">issues/622</a>.</li>
+<li>Rủi ro bảo mật mới: booking endpoint hiện cho phép khai báo <code>creator.email</code> tự do; nếu email là user nội bộ thì có thể spoof identity. Đề xuất optional authentication + config flag đang ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/919">issues/919</a>.</li>
+</ul>
+<h4>Address book / CardDAV webadmin</h4>
+<ul>
+<li>Address book admin WebAdmin interface đã merge qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/851">pull/851</a>: list/create/delete address books, public visibility và delegation/invitee; có documentation trong <code>docs/apis/webadmin.md</code>.</li>
+<li>Review/fix đáng chú ý trong <a href="https://github.com/linagora/twake-calendar-side-service/pull/851">pull/851</a>: system address book deletion cần trả 400 thay vì 500/204 giả, bằng cách check type trước khi gọi DAV.</li>
+<li>User calendar management WebAdmin routes được thêm qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/789">pull/789</a>; các route patch domain settings và public visibility setting được hoàn thiện qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/783">pull/783</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/793">pull/793</a>.</li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li>Grooming đã chốt model chính: Team Calendar có entity do side-service quản lý, members dựa trên DAV permissions, organizer/iTIP dùng user có write delegation thay vì team mailbox/virtual mail address; xem task split trong <a href="https://github.com/linagora/twake-calendar-side-service/issues/515#issuecomment-4777195365">issues/515 comment</a>.</li>
+<li>Entity repository API + memory implementation và MongoDB implementation đã merge qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/857">pull/857</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/858">pull/858</a>.</li>
+<li>WebAdmin CRUD APIs cho Team Calendar entity đã merge qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/901">pull/901</a>. Review đã làm rõ create không idempotent, delete idempotent và cần test rõ behavior.</li>
+<li>AMQP đã ignore team calendar list notifications qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/902">pull/902</a>.</li>
+<li>Team Calendar được đưa vào People Search qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/917">pull/917</a>, cần cho quick search/subscription/public readable team calendar. Review gợi ý hướng dài hạn: lifecycle event bus + OpenSearch-based search providers cho domain lớn.</li>
+<li>Các phần còn mở: members management <a href="https://github.com/linagora/twake-calendar-side-service/issues/832">issues/832</a>, integration tests <a href="https://github.com/linagora/twake-calendar-side-service/issues/833">issues/833</a>, rename DAV collection khi Team Calendar rename <a href="https://github.com/linagora/twake-calendar-side-service/issues/859">issues/859</a>, demo video <a href="https://github.com/linagora/twake-calendar-side-service/issues/835">issues/835</a>.</li>
+</ul>
+<h4>Search / Reindex / Ops</h4>
+<ul>
+<li>Shared/delegated calendar search được triển khai qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/788">pull/788</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/794">pull/794</a>; resource calendar events indexing được bổ sung qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/806">pull/806</a>.</li>
+<li>Reindex lớn từng fail vì Mongo cursor timeout; root cause là streaming cursor trong khi xử lý mỗi user/resource quá chậm. Fix materialize user/resource listing trước khi xử lý qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/891">pull/891</a>, liên quan <a href="https://github.com/linagora/twake-calendar-side-service/issues/887">issues/887</a>.</li>
+<li>Race condition khi indexing recurring events với overridden occurrences được phân tích sâu ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/895">issues/895</a> và fix qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/898">pull/898</a>: collapse theo UID ở OpenSearch, prune removed occurrences theo identity/recurrenceId, chỉ prune khi master upsert thực sự thắng sequence guard, giữ <code>recurrenceId</code> trong document.</li>
+<li>Một fix observance-less <code>VTIMEZONE</code> trong ICS parsing <a href="https://github.com/linagora/twake-calendar-side-service/pull/897">pull/897</a> bị đánh giá là quá hacky; issue <a href="https://github.com/linagora/twake-calendar-side-service/issues/896">issues/896</a> được hướng tới ignore vì dữ liệu là test events. Nếu lỗi xuất hiện trên dữ liệu thật, cần mở lại hướng xử lý.</li>
+<li>iTIP malformed recipient/sender address được sanitize/ignore đúng cách qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/912">pull/912</a>: invalid recipient không local sẽ ack/ignore thay vì dead-letter; valid recipients trong fan-out vẫn được xử lý.</li>
+<li>Logback startup error do thiếu Jackson JSON formatter dependency được fix qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/910">pull/910</a>. REST API cũng reject email thiếu domain qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/907">pull/907</a>.</li>
+<li>Audit log consumer cho Sabre CRUD đang mở ở <a href="https://github.com/linagora/twake-calendar-side-service/pull/903">pull/903</a>. Thiết kế queue đã được đơn giản hóa về một audit queue, nhưng review vẫn yêu cầu audit trail phải có “who” và “on what”, không log private vCard/event payload.</li>
+</ul>
+<h3>Frontend</h3>
+<ul>
+<li>Không có repository frontend được crawl trong window này, nên chưa đủ tín hiệu để tổng hợp activity frontend trực tiếp.</li>
+<li>Backend đã chuẩn bị nhiều endpoint cho frontend: Booking link CRUD/slots/details/cancel, Address book WebAdmin, Team Calendar People Search.</li>
+<li>Follow-up frontend/admin đáng chú ý: booking cleanup đã xong backend nhưng vẫn cần hiển thị trong admin front, được nhắc ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/868">issues/868</a> và <a href="https://github.com/linagora/twake-mail-admin/issues/15">twake-mail-admin/issues/15</a>.</li>
+</ul>
+<h3>Integration Tests / QA</h3>
+<ul>
+<li>Nhiều thay đổi tập trung ổn định test: dùng shared Sabre DAV extension <a href="https://github.com/linagora/twake-calendar-side-service/pull/885">pull/885</a>, cập nhật test image Sabre <a href="https://github.com/linagora/twake-calendar-side-service/pull/823">pull/823</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/882">pull/882</a>, thích nghi async scheduling <a href="https://github.com/linagora/twake-calendar-side-service/pull/809">pull/809</a>.</li>
+<li>Flaky WebSocket/import tests được xử lý qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/866">pull/866</a>; root cause là test assert “không nhận bất kỳ message nào” trong khi calendarList notification hợp lệ vẫn có thể đến.</li>
+<li>Effort giảm flaky app module gồm forkCount/Mongo/Sabre/AMQP shutdown qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/840">pull/840</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/855">pull/855</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/847">pull/847</a>; signal từ <a href="https://github.com/linagora/twake-calendar-side-service/issues/818">issues/818</a> cho thấy forkCount=1 một mình không đủ.</li>
+<li>Các PR search/indexing quan trọng đều được bổ sung contract/integration tests, đặc biệt <a href="https://github.com/linagora/twake-calendar-side-service/pull/898">pull/898</a> có nhiều vòng fix test cho Memory và OpenSearch backends.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/919">issues/919</a></td>
+<td>Booking link cần validate creator identity khi creator là registered user.</td>
+<td>Đóng lỗ spoofing: người ngoài có thể đặt booking như một user nội bộ nếu chỉ khai báo email trong body.</td>
+<td>open / @chibenwa, TBD</td>
+</tr>
+</tbody>
+</table>
+
+  </article>
+</main>
+</body>
+</html>

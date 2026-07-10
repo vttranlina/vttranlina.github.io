@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Strong Sabre activity in this reporting window: 18 PRs and 14 issues, mostly around scheduling, validation, team calendars, ACLs, and CalDAV REPORT performance.">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-07 06:47 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-06-10 00:00 → 2026-07-07 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>18</strong></span><span class="metric"><span>Issues</span><strong>14</strong></span><span class="metric"><span>Comments</span><strong>174</strong></span><span class="metric"><span>Reviews</span><strong>86</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>292</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-06-10 00:00 +07 -&gt; 2026-07-07 00:00 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+</ul>
+<p>Language: English</p>
+<h2>TL;DR</h2>
+<ul>
+<li>Strong Sabre activity in this reporting window: 18 PRs and 14 issues, mostly around scheduling, validation, team calendars, ACLs, and CalDAV REPORT performance.</li>
+<li>Major CalDAV REPORT optimization was merged in <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, addressing the N+1 query issue from <a href="https://github.com/linagora/esn-sabre/issues/403">issues/403</a>. Preprod showed large gains, but one reindex run still ended with 4 failed events.</li>
+<li>Organizer validation shipped via <a href="https://github.com/linagora/esn-sabre/pull/395">pull/395</a>, then caused a PARTSTAT regression after deployment; it was mitigated by disabling <code>CALDAV_ORGANIZER_VALIDATION</code> and fixed in <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a>.</li>
+<li>Team calendar principal support was merged in <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, while related follow-ups remain open for organizer rules and iTIP handling: <a href="https://github.com/linagora/esn-sabre/issues/393">issues/393</a>, <a href="https://github.com/linagora/esn-sabre/issues/394">issues/394</a>, <a href="https://github.com/linagora/esn-sabre/issues/400">issues/400</a>.</li>
+<li>General read ACL enforcement was tightened in <a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a> after team-calendar testing exposed that non-members could still query some events.</li>
+<li>Open follow-up: VALARM scheduling merge logic in <a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a>, including frontend UID naming alignment via <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">frontend issues/1100</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Backend / Side Service / Sabre</h3>
+<h4>Booking links</h4>
+<ul>
+<li>No booking-link activity was visible in the collected Sabre report.</li>
+</ul>
+<h4>Address book / CardDAV webadmin</h4>
+<ul>
+<li>No Address Book / CardDAV webadmin activity was visible in the collected Sabre report.</li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li>Team calendar principal support was implemented and merged in <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>, closing <a href="https://github.com/linagora/esn-sabre/issues/391">issues/391</a> and <a href="https://github.com/linagora/esn-sabre/issues/392">issues/392</a>.</li>
+<li>Remaining team-calendar behavior is not complete: organizer membership rules and iTIP handling are still tracked in <a href="https://github.com/linagora/esn-sabre/issues/393">issues/393</a>, <a href="https://github.com/linagora/esn-sabre/issues/394">issues/394</a>, and <a href="https://github.com/linagora/esn-sabre/issues/400">issues/400</a>.</li>
+<li>ACL testing found that a non-member could query events under some visibility/ACL combinations. The team clarified this was a general ACL issue, not only team-calendar-specific, and fixed it in <a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a>.</li>
+</ul>
+<h4>Scheduling / iTIP / VALARM</h4>
+<ul>
+<li>Synchronous scheduling was dropped in <a href="https://github.com/linagora/esn-sabre/pull/386">pull/386</a>.</li>
+<li>Recipient-specific email VALARM scheduling was merged in <a href="https://github.com/linagora/esn-sabre/pull/390">pull/390</a>. Review clarified that organizer source events keep complete recipient lists and organizer personal alarms are covered by tests.</li>
+<li>Release deployment enabled <code>SABRE_EMAIL_VALARM_RECIPIENT_SCHEDULING=true</code> and initially enabled <code>CALDAV_ORGANIZER_VALIDATION=true</code> in <a href="https://github.com/linagora/esn-sabre/issues/401">issues/401</a>.</li>
+<li>VALARM merge logic remains open in <a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a>. The discussion points to a required frontend UID naming strategy update in <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">frontend issues/1100</a>.</li>
+</ul>
+<h4>Validation / RFC behavior</h4>
+<ul>
+<li>Organizer PUT validation was designed in <a href="https://github.com/linagora/esn-sabre/issues/389">issues/389</a> and merged in <a href="https://github.com/linagora/esn-sabre/pull/395">pull/395</a>. Decisions captured there: VEVENT-only, opt-in first, reject ATTENDEE without ORGANIZER, and keep ORGANIZER consistent across VEVENT overrides.</li>
+<li>A production-facing regression appeared after enabling organizer validation: attendees could not update PARTSTAT because the plugin rejected unchanged organizer data. The issue was tracked in <a href="https://github.com/linagora/esn-sabre/issues/408">issues/408</a> and fixed in <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a>.</li>
+<li><code>CalendarObjectValidator</code> was reviewed in <a href="https://github.com/linagora/esn-sabre/issues/398">issues/398</a>. Key caveat: validation is opt-in via <code>Prefer: handling=strict</code>, so frontend flows must send the header or the validator gives no protection.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/399">pull/399</a> tightened validation by requiring <code>DTSTART</code> for <code>RRULE</code>/<code>EXDATE</code> and documenting stricter TZID matching.</li>
+</ul>
+<h4>CalDAV REPORT performance and ACL</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/403">issues/403</a> identified the XML <code>calendar-query</code> REPORT N+1 pattern as the likely root cause of reindex timeouts: large calendars caused thousands of Mongo round-trips and VObject parses.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a> implemented batched and single-query report paths. Review requested moving report logic into a dedicated class; this was done before merge.</li>
+<li>Preprod testing reported REPORT time around 3–4s versus 12s for the same query against prod, but a reindex run still failed after processing 151,479 events with 4 failures. This needs follow-up before considering the path fully stable.</li>
+<li>ACL behavior around optimized reports was adjusted after integration-test feedback in <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, with related test updates referenced in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/287">integration-tests pull/287</a> and <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/288">integration-tests pull/288</a>.</li>
+</ul>
+<h4>DAV / headers / compatibility</h4>
+<ul>
+<li>Duplicate <code>DAV</code>, <code>X-Sabre-Version</code>, and related headers were fixed in <a href="https://github.com/linagora/esn-sabre/pull/405">pull/405</a>, closing <a href="https://github.com/linagora/esn-sabre/issues/404">issues/404</a>. Review kept the diff minimal and preserved the global <code>Allow</code> header behavior.</li>
+<li>Legacy timezone support was installed in <a href="https://github.com/linagora/esn-sabre/pull/388">pull/388</a>, closing <a href="https://github.com/linagora/esn-sabre/issues/387">issues/387</a>.</li>
+<li>Custom VObject property registration was merged in <a href="https://github.com/linagora/esn-sabre/pull/402">pull/402</a>. Review asked to keep backward compatibility with old frontend syntax and normalize it server-side, linked to <a href="https://github.com/linagora/twake-calendar-frontend/issues/1093">frontend issues/1093</a>.</li>
+<li>Test infrastructure moved to Mongo 8.0.6 in <a href="https://github.com/linagora/esn-sabre/pull/397">pull/397</a>.</li>
+</ul>
+<h3>Frontend</h3>
+<ul>
+<li>Frontend coordination is required for VALARM UID naming strategy from <a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a>, using <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">frontend issues/1100</a> as the tracking point.</li>
+<li>Frontend compatibility for custom VObject property syntax was explicitly requested during <a href="https://github.com/linagora/esn-sabre/pull/402">pull/402</a>, linked to <a href="https://github.com/linagora/twake-calendar-frontend/issues/1093">frontend issues/1093</a>.</li>
+<li>The validator review in <a href="https://github.com/linagora/esn-sabre/issues/398">issues/398</a> says the frontend must send <code>Prefer: handling=strict</code> for strict validation paths; otherwise related recurrence safeguards are inactive.</li>
+</ul>
+<h3>Integration Tests / QA</h3>
+<ul>
+<li>Organizer validation was tied to integration coverage through <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/278">integration-tests pull/278</a>.</li>
+<li>PARTSTAT regression coverage was referenced in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/285">integration-tests pull/285</a> alongside the fix in <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a>.</li>
+<li>ACL/report behavior was reproduced and adjusted through <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/287">integration-tests pull/287</a> and <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/288">integration-tests pull/288</a>.</li>
+<li>Preprod validation was active for <a href="https://github.com/linagora/esn-sabre/pull/405">pull/405</a> and <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, with positive header testing and improved REPORT timings, but reindex still had residual failures.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a></td>
+<td>Batched/single-query CalDAV <code>calendar-query</code> REPORT implementation merged.</td>
+<td>Removes a major N+1 performance path impacting reindex and large calendars.</td>
+<td>merged / @chibenwa, @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/408">issues/408</a>, <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a></td>
+<td>Organizer validation blocked attendee PARTSTAT updates after deployment; fix merged.</td>
+<td>This was a user-facing regression after enabling <code>CALDAV_ORGANIZER_VALIDATION</code>.</td>
+<td>closed / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/411">pull/411</a></td>
+<td>Read ACL checks enforced for PROPFIND and JSON reports.</td>
+<td>Prevents unauthorized event queries exposed during team-calendar/REPORT testing.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a></td>
+<td>Team calendar principal support merged.</td>
+<td>Foundation for team-calendar functionality; still has follow-up behavior gaps.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a></td>
+<td>VALARM scheduling merge logic remains open; frontend UID strategy needs alignment.</td>
+<td>Incorrect UID strategy can break recipient-specific VALARM behavior.</td>
+<td>open / @vttranlina + frontend TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/398">issues/398</a>, <a href="https://github.com/linagora/esn-sabre/pull/399">pull/399</a></td>
+<td>Validator review led to stricter <code>DTSTART</code>/TZID behavior, but strict mode is opt-in.</td>
+<td>Protection is ineffective unless clients send <code>Prefer: handling=strict</code>.</td>
+<td>partially addressed / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/272">issues/272</a></td>
+<td>PRIVATE/CONFIDENTIAL visibility matrix was analyzed with open design questions.</td>
+<td>Privacy behavior affects owner/delegate/public/free-busy data exposure.</td>
+<td>open / TBD</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Organizer validation decisions were explicitly made in <a href="https://github.com/linagora/esn-sabre/issues/389">issues/389</a>: VEVENT-only, opt-in first, reject ATTENDEE without ORGANIZER, and assume same ORGANIZER across VEVENT overrides.</li>
+<li><a href="https://github.com/linagora/esn-sabre/issues/398">issues/398</a> contains an important limitation: current recurrence validation checks syntax/form, not whether <code>RECURRENCE-ID</code> maps to a real recurrence occurrence.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/406#discussion_r3504622636">pull/406 review comment</a> requested isolating REPORT override logic into a dedicated class; this was implemented before merge.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/405#discussion_r3504284407">pull/405 review comment</a> kept the header fix scoped to duplicated capability headers and preserved the global <code>Allow</code> behavior.</li>
+<li>Team-calendar PRs repeatedly failed CodeScene gates for low cohesion / complex methods in hot files, but human review approved <a href="https://github.com/linagora/esn-sabre/pull/407">pull/407</a>. Treat as technical debt signal, not an active blocker.</li>
+</ul>
+<h2>Risks / Blockers</h2>
+<ul>
+<li>No clear release blocker remains in the collected data, but organizer validation should be rechecked after <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a> because it was temporarily disabled during the <a href="https://github.com/linagora/esn-sabre/issues/401">issues/401</a> deployment.</li>
+<li>Reindex performance improved after <a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a>, but the preprod reindex still failed with 4 failed events. Root cause is not clear from the report.</li>
+<li>VALARM merge logic in <a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a> remains open and depends on precise frontend UID behavior.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confirm whether <code>CALDAV_ORGANIZER_VALIDATION</code> can be safely re-enabled after the PARTSTAT fix.</td>
+<td>@vttranlina / @hungphan227</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/401">issues/401</a>, <a href="https://github.com/linagora/esn-sabre/pull/410">pull/410</a></td>
+</tr>
+<tr>
+<td>Investigate the 4 failed events from the preprod reindex after REPORT optimization.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/406">pull/406</a></td>
+</tr>
+<tr>
+<td>Specify and implement the frontend UID naming strategy for VALARM scheduling merge logic.</td>
+<td>Frontend TBD / @vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/409">issues/409</a>, <a href="https://github.com/linagora/twake-calendar-frontend/issues/1100">frontend issues/1100</a></td>
+</tr>
+<tr>
+<td>Confirm frontend strict-mode header usage for recurrence/validator-sensitive flows.</td>
+<td>Frontend TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/398">issues/398</a></td>
+</tr>
+<tr>
+<td>Decide scope and behavior for PRIVATE/CONFIDENTIAL visibility, especially delegate and free-busy handling.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/272">issues/272</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Repeated Docker image publication comments and automated CodeScene approvals were ignored unless they indicated a real quality gate or design concern.</li>
+<li>Repeated CodeScene test-file-only nits, session-stat comments, and duplicated bot reviews were mostly ignored.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>
