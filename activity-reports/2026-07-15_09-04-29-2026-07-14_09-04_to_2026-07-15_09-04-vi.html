@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-14 09:04 +07 -&gt; 2026-07-15 09:04 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-15 02:06 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-14 09:04 → 2026-07-15 09:04 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>0</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>9</strong></span><span class="metric"><span>Reviews</span><strong>6</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>16</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-14 09:04 +07 -&gt; 2026-07-15 09:04 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Activity tập trung vào Public Agenda / booking link: có issue mới về email sai khi booker hủy lịch <a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a>.</li>
+<li>Team đang nghiêng về hướng không đính kèm ICS cho email liên quan booking link để tránh hành vi không kiểm soát được trên Thunderbird/client khác <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4965357974">issues/923 comment</a>.</li>
+<li>Frontend PR visibility toggle cho menu sidebar / booking links <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a> có nhiều câu hỏi review cần xử lý: vị trí state/hook, fallback URL public/private, helper copy dùng chung, và event vs Redux.</li>
+<li>PR chỉnh format ngày trong tiếng Việt <a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a> đã có Docker image và CodeScene pass; chưa thấy review thủ công đáng chú ý trong window này.</li>
+<li><code>esn-sabre</code> và <code>integration-test</code> không có activity mới trong reporting window này.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Public Agenda / Booking email</h4>
+<ul>
+<li>Issue mới <a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a> báo email gửi sai cho owner/booker khi booker hủy booked event.</li>
+<li>Đề xuất kỹ thuật cho <a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a>: phân biệt trường hợp booker hủy và owner hủy trong <code>ItipEmailNotificationPublisher</code>, có thể thêm property <code>X-PUBLICLY-DELETED;VALUE=BOOLEAN:TRUE</code> vào ICS để xác định title email <a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-4967502111">issues/952 comment</a>.</li>
+<li>Với vấn đề ICS trên booking link, có tín hiệu đồng thuận rằng Thunderbird cũng gặp vấn đề và có thể nên bỏ ICS attachment, thay bằng email body rõ ràng hơn <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4965357974">issues/923 comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4970981528">issues/923 comment</a>.</li>
+</ul>
+<h4>Frontend booking links / sidebar visibility</h4>
+<ul>
+<li>PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a> đang bị review về thiết kế state/data loading: nếu <code>visibleBookingLinks</code> chỉ dùng trong <code>CalendarController</code>, reviewer hỏi vì sao không load trực tiếp ở đó <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#discussion_r3577157486">pull/1128 review comment</a>.</li>
+<li>Có câu hỏi về fallback khi <code>PUBLIC_PAGE_BASE</code> null: private app có thể không có route <code>/booking</code>, nên cần xác nhận missing case <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#discussion_r3577183805">pull/1128 review comment</a>.</li>
+<li>Reviewer đề xuất đưa logic copy vào helper chung và cân nhắc dùng Redux state thay vì fire event thủ công <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#discussion_r3577193290">pull/1128 review comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#discussion_r3577232918">pull/1128 review comment</a>.</li>
+</ul>
+<h4>Frontend Vietnamese day format</h4>
+<ul>
+<li>PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a> có Docker image đã publish để test <a href="https://github.com/linagora/twake-calendar-frontend/pull/1138#issuecomment-4966884247">pull/1138 comment</a>.</li>
+<li>CodeScene bot approved <a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a>; đây là tín hiệu quality gate pass, chưa đủ tín hiệu về review chức năng.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a></td>
+<td>Email gửi sai cho owner/booker khi booker hủy booked event trong Public Agenda.</td>
+<td>Có thể gây nhầm lẫn cho người dùng và sai semantics hủy lịch; cần phân biệt owner cancel vs booker cancel.</td>
+<td>open / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/923">issues/923</a></td>
+<td>Vấn đề ICS trong email booking link cũng xuất hiện trên Thunderbird; hướng được nhắc tới là bỏ ICS attachment và dựa vào body email rõ ràng.</td>
+<td>Đây là quyết định ảnh hưởng trải nghiệm email/client interoperability cho booking link.</td>
+<td>cần chốt hướng / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a></td>
+<td>PR visibility toggle cho menu/sidebar có nhiều review về placement của logic, URL public booking, helper dùng chung và state management.</td>
+<td>Nếu không xử lý sớm có thể tạo technical debt hoặc lỗi route khi public base URL thiếu.</td>
+<td>review pending / PR author</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a></td>
+<td>PR chỉnh format ngày trong tiếng Việt đã có Docker image và CodeScene pass.</td>
+<td>Có thể sẵn sàng cho QA/review thủ công, nhưng chưa đủ tín hiệu để kết luận đã hoàn tất functional review.</td>
+<td>pending manual validation / TBD</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Cần chốt rõ chiến lược ICS cho booking link: bỏ attachment hoàn toàn hay vẫn dùng metadata như <code>X-PUBLICLY-DELETED</code> cho một số case. Hai luồng thảo luận liên quan nằm ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/923">issues/923</a> và <a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a>.</li>
+<li>Với <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a>, reviewer đang đặt câu hỏi thiết kế chứ không chỉ nit: data loading location, hook placement trong private app, fallback route, và event vs Redux cần được phản hồi trước khi merge.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt hướng xử lý email booking link: bỏ ICS attachment hay thêm marker ICS để phân biệt booker/owner cancel.</td>
+<td>TBD / side-service maintainers</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4970981528">issues/923 comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-4967502111">issues/952 comment</a></td>
+</tr>
+<tr>
+<td>Phản hồi các review thiết kế trên PR visibility toggle, đặc biệt <code>PUBLIC_PAGE_BASE</code> null và route <code>/booking</code> trong private app.</td>
+<td>PR author</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#discussion_r3577183805">pull/1128 review comment</a></td>
+</tr>
+<tr>
+<td>Cân nhắc refactor copy function thành helper chung và quyết định dùng Redux state hay event cho cập nhật visibility.</td>
+<td>PR author / frontend reviewers</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#discussion_r3577193290">pull/1128 review comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#discussion_r3577232918">pull/1128 review comment</a></td>
+</tr>
+<tr>
+<td>QA/review thủ công PR format ngày tiếng Việt trên Docker image đã publish.</td>
+<td>TBD / QA hoặc frontend reviewer</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1138#issuecomment-4966884247">pull/1138 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua bot noise từ CodeRabbit theo cấu hình crawl; CodeScene approval chỉ được ghi nhận như tín hiệu quality gate, không xem là review chức năng.</li>
+<li>Không có commit mới hoặc activity đáng chú ý trong <code>esn-sabre</code> và <code>integration-test</code>.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

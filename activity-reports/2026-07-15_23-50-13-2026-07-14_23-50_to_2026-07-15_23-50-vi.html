@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-14 23:50 +07 -&gt; 2026-07-15 23:50 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-15 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-14 23:50 → 2026-07-15 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>7</strong></span><span class="metric"><span>Issues</span><strong>5</strong></span><span class="metric"><span>Comments</span><strong>32</strong></span><span class="metric"><span>Reviews</span><strong>42</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>86</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-14 23:50 +07 -&gt; 2026-07-15 23:50 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Activity tập trung chủ yếu ở <a href="https://github.com/linagora/twake-calendar-frontend">frontend</a>, đặc biệt quanh Booking links: websocket, edit modal, UI private management, metadata public link, regular hours và validation.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/953">side-service pull/953</a> đang mở để bỏ file ICS khỏi email booking link; còn câu hỏi kỹ thuật về nguồn ICS từ AMQP và thiếu property <code>X-PUBLICLY-CREATED</code>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">frontend pull/1144</a> xử lý format ISO-8601 cho availability/working days và đã bổ sung guard tránh crash hydration khi backend payload malformed.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1148">frontend pull/1148</a> thêm websocket cho booking links; CodeScene ban đầu fail ở <code>updateCalendars.ts</code> nhưng sau đó đã pass.</li>
+<li>Một số PR frontend đã được approve hoặc gần sẵn sàng, nhưng vẫn có follow-up và phụ thuộc merge/rebase: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1145">pull/1145</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a>.</li>
+<li>Không thấy activity đáng chú ý ở <code>esn-sabre</code>, <code>integration-test</code>, và không có commit mới trong local git <code>helm-twake-calendar</code>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Booking links / Frontend</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1148">pull/1148</a> thêm websocket cho booking links. CodeScene báo “Bumpy Road Ahead” ở <code>updateCalendars.ts</code>, sau đó đã được xử lý để quality gates pass.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a> thêm edit modal cho booking links, đã được approve với yêu cầu tạo follow-up cho chỉnh availability rules; follow-up đã được mở tại <a href="https://github.com/linagora/twake-calendar-frontend/issues/1147">issues/1147</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1145">pull/1145</a> cải thiện UI quản lý booking link trong private app. CodeScene còn signal về <code>Large Method</code> ở <code>BookingLinkChip</code>; tác giả kỳ vọng vấn đề biến mất sau khi <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a> merge và PR được rebase.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1139">pull/1139</a> set metadata cho public link, đã có approve từ CodeScene, @Eriikah và @chibenwa.</li>
+</ul>
+<h4>Availability / Working days</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1143">issues/1143</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">pull/1144</a> chuẩn hóa working days theo ISO-8601 cho availability.</li>
+<li>Trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">pull/1144</a>, review yêu cầu guard <code>businessHours.daysOfWeek</code> bằng <code>Array.isArray</code> để tránh reducer hydration throw khi backend payload thiếu hoặc sai kiểu; tác giả đã áp dụng và push fix.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">pull/1144</a> từng bị Prettier fail ở <code>__test__/features/Settings/WorkingDays.test.tsx</code>; đã refactor assertion để format ổn định, nhưng CI cần xác nhận lại.</li>
+</ul>
+<h4>Validation / UX</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1140">issues/1140</a> mô tả bug validation khi end-time bằng start-time rồi đổi lại sau start-time; <a href="https://github.com/linagora/twake-calendar-frontend/pull/1146">pull/1146</a> xử lý validate lại ngay khi nhập giá trị hợp lệ.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1142">issues/1142</a> ghi nhận vấn đề line wrapping và độ rộng modal preview event.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a> implement regular hour; reviewer yêu cầu display chấp nhận được trên màn hình không quá rộng và tooltip/flyover cho action <code>+</code>/<code>copy</code>. Sau đó @chibenwa xác nhận latest image đã conform tại <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137#issuecomment-4981744088">pull/1137 comment</a>.</li>
+</ul>
+<h4>Side-service / Booking email ICS</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a> bỏ ICS file khỏi email liên quan booking link. Review yêu cầu email nên “booking link oriented” và thân thiện hơn với end user, đồng thời cần chia sẻ screenshot email khi sẵn sàng.</li>
+<li>Có open question trong <a href="https://github.com/linagora/twake-calendar-side-service/pull/953#discussion_r3584513786">pull/953 review comment</a>: ICS lấy từ AMQP <code>calendar:event:notificationEmail:send</code> không chứa <code>X-PUBLICLY-CREATED</code>; hai hướng được nêu là update Sabre hoặc fetch full event từ Sabre.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/954">pull/954</a> fix subscribe SMTP synchronous code chạy trên <code>boundedElastic</code>, đã merged.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a></td>
+<td>Bỏ ICS attachment khỏi email booking link; còn câu hỏi về nguồn dữ liệu ICS thiếu <code>X-PUBLICLY-CREATED</code>.</td>
+<td>Có thể ảnh hưởng logic phân biệt booking link email và quyết định cần sửa Sabre hay fetch full event.</td>
+<td>open / @hungphan227, cần input từ backend/Sabre</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1148">pull/1148</a></td>
+<td>Thêm websocket cho booking links; CodeScene fail ban đầu ở <code>updateCalendars.ts</code> rồi đã pass.</td>
+<td>Websocket là thay đổi behavior quan trọng cho đồng bộ booking links; cần review kỹ coverage/test do CodeScene từng báo expected test pattern.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">pull/1144</a></td>
+<td>Gửi working days theo ISO-8601 và guard payload malformed cho <code>daysOfWeek</code>.</td>
+<td>Tránh sai lệch format availability và tránh crash hydration khi backend trả dữ liệu không đủ chuẩn.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a></td>
+<td>Edit modal cho booking links đã được approve, kèm follow-up chỉnh availability rules.</td>
+<td>Là bước chính trong luồng quản lý booking link; follow-up đã tạo ở <a href="https://github.com/linagora/twake-calendar-frontend/issues/1147">issues/1147</a>.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1145">pull/1145</a></td>
+<td>Cải thiện UI private booking management; còn signal CodeScene về large method, có thể phụ thuộc <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a>.</td>
+<td>Có rủi ro merge/rebase nếu hotspot warning không tự hết sau dependency.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1140">issues/1140</a> / <a href="https://github.com/linagora/twake-calendar-frontend/pull/1146">pull/1146</a></td>
+<td>Sửa bug validation end-time/start-time bằng cách validate lại ngay khi nhập giá trị hợp lệ.</td>
+<td>Bug UX dễ gặp trong form booking/availability.</td>
+<td>open / @Eriikah</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/953#discussion_r3584513786">pull/953 review comment</a> là signal cần quyết định kỹ thuật: update Sabre hay fetch full event từ Sabre để có property <code>X-PUBLICLY-CREATED</code>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1144#discussion_r3587871862">pull/1144 review comment</a> xác nhận rủi ro thực tế trên hydration path nếu <code>daysOfWeek</code> không phải array; fix đã được mô tả là minimal và đối xứng inbound/outbound.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a> có feedback UX về layout màn hình rộng và tooltip cho action không rõ nghĩa; latest image được xác nhận conform, nhưng tooltip/flyover chưa đủ tín hiệu đã hoàn tất.</li>
+<li>CodeScene noise khá nhiều, nhưng các signal còn đáng theo dõi là <a href="https://github.com/linagora/twake-calendar-frontend/pull/1145">pull/1145</a> <code>Large Method</code> và dependency/rebase với <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a>.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt hướng xử lý ICS thiếu <code>X-PUBLICLY-CREATED</code>: update Sabre hay fetch full event từ Sabre.</td>
+<td>@hungphan227 + backend/Sabre reviewer</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/953#discussion_r3584513786">pull/953 review comment</a></td>
+</tr>
+<tr>
+<td>Chia sẻ screenshot email booking link sau khi điều chỉnh message end-user friendly.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a></td>
+</tr>
+<tr>
+<td>Re-run/kiểm tra CI Prettier cho <a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">pull/1144</a> sau fix format test.</td>
+<td>@chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1144#issuecomment-4982509839">pull/1144 comment</a></td>
+</tr>
+<tr>
+<td>Sau khi <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a> merge, rebase <a href="https://github.com/linagora/twake-calendar-frontend/pull/1145">pull/1145</a> và xác nhận CodeScene warning biến mất hoặc xử lý tiếp.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1145#issuecomment-4982164541">pull/1145 comment</a></td>
+</tr>
+<tr>
+<td>Xác nhận có cần tooltip/flyover cho action <code>+</code> và <code>copy</code> trong regular hour UI hay tạo follow-up riêng.</td>
+<td>@lethemanh / @Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1137#issuecomment-4981109574">pull/1137 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua phần lớn comment publish Docker image tự động và các approve lặp lại từ CodeScene khi không còn feedback actionable.</li>
+<li>Đã ignore 26 comment/review item từ @coderabbitai theo cấu hình crawl; chỉ giữ lại signal khi được người trong team nhắc và có tác động kỹ thuật.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

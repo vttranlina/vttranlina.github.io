@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-16 07:56 +07 -&gt; 2026-07-16 13:56 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-16 06:59 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-16 07:56 → 2026-07-16 13:56 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>4</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>36</strong></span><span class="metric"><span>Reviews</span><strong>37</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>78</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-16 07:56 +07 -&gt; 2026-07-16 13:56 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Booking link email flow đang tiến gần merge: side-service <a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a> đã được approve; cần bảo đảm email message/screenshot cancel ổn và Sabre metadata fix đã deploy pre-prod.</li>
+<li>Sabre đã merge 2 fix để preserve public agenda metadata: <a href="https://github.com/linagora/esn-sabre/pull/427">pull/427</a> và <a href="https://github.com/linagora/esn-sabre/pull/428">pull/428</a>; liên quan trực tiếp tới <code>X-PUBLICLY-*</code> trong email/booking link.</li>
+<li>Team calendar scheduling vẫn còn tín hiệu cần xử lý: <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a> cần validation mạnh hơn bằng cách kiểm tra team calendar chứa đúng event UID; CodeScene vẫn fail hotspot.</li>
+<li>Integration tests được bổ sung cho public metadata và team calendar: <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/302">pull/302</a> đã merge, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303">pull/303</a> còn open với câu hỏi về rule organizer/write-member.</li>
+<li>Frontend regular hours/booking links có nhiều PR được approve, nhưng <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a> cần rebase; issue follow-up về hiển thị regular hours đã được tạo: <a href="https://github.com/linagora/twake-calendar-frontend/issues/1149">issues/1149</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Booking links / public metadata</h4>
+<ul>
+<li>side-service <a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a> loại bỏ ICS attachment cho email liên quan booking link; reviewer yêu cầu kiểm tra UX email end-user friendly và screenshot cancel, sau đó PR đã được @chibenwa approve.</li>
+<li>Sabre fix để giữ metadata public agenda đã merge qua <a href="https://github.com/linagora/esn-sabre/pull/427">pull/427</a>, sau đó bổ sung registry <code>X-PUBLICLY-DELETED</code> trong <a href="https://github.com/linagora/esn-sabre/pull/428">pull/428</a>.</li>
+<li>Integration test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/302">pull/302</a> đã merge để cover public metadata trong email notifications; review yêu cầu thêm <code>X-PUBLICLY-CREATOR</code> và <code>X-OPENPAAS-BOOKING-LINK</code> tại <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/302#discussion_r3592450097">pull/302 review comment</a>.</li>
+<li>Sabre image <code>linagora/esn-sabre:2.4.3.5</code> đã được deploy lên pre-prod cho service <code>sabre-preprod</code> theo comment trên <a href="https://github.com/linagora/twake-calendar-side-service/pull/953#issuecomment-4988335621">pull/953</a>.</li>
+</ul>
+<h4>Team Calendar scheduling</h4>
+<ul>
+<li>esn-sabre <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a> tiếp tục xử lý support team calendar scheduling; có đồng thuận tăng validation: không chỉ dựa vào random UUID, mà cần xác nhận team calendar chứa đúng event UID (<a href="https://github.com/linagora/esn-sabre/pull/424#discussion_r3592027179">pull/424 review comment</a>).</li>
+<li>Integration test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a> đã được approve và có đề xuất bổ sung test bảo đảm <code>TEAM_CALENDAR_ID</code> không thể bypass ACL khi user không có quyền vào team calendar (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300#issuecomment-4988289218">pull/300 comment</a>).</li>
+<li>Integration test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303">pull/303</a> thêm coverage organizer transfer cho team calendar, nhưng còn câu hỏi nghiệp vụ: có nên relax để write-member được edit mọi property của <code>VEVENT</code> nếu <code>ORGANIZER</code> là write member (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303#discussion_r3592752373">pull/303 review comment</a>).</li>
+</ul>
+<h4>Frontend regular hours / booking links</h4>
+<ul>
+<li>Frontend <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a> về regular hours đã pass CodeScene, có Docker images, nhưng cần rebase; vấn đề layout trên màn hình rộng/hẹp được tách thành <a href="https://github.com/linagora/twake-calendar-frontend/issues/1149">issues/1149</a>.</li>
+<li>Các PR booking/private booking được approve: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">pull/1144</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1146">pull/1146</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1148">pull/1148</a>.</li>
+<li>Với actions trong <a href="https://github.com/linagora/twake-calendar-frontend/issues/1086">issues/1086</a>, “Send mail” và “Create event” đã được làm rõ; “Chat” chưa sẵn sàng vì cần link chat theo Matrix ID, nên không nên implement nếu dependency chưa có.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a></td>
+<td>Remove ICS file khỏi email booking link; đã được approve sau khi chia sẻ screenshot email.</td>
+<td>Ảnh hưởng trực tiếp UX booking link email và phụ thuộc Sabre preserve metadata.</td>
+<td>approved / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a></td>
+<td>Support team calendar scheduling, đang tăng validation event UID trong team calendar.</td>
+<td>Tránh dùng <code>TEAM_CALENDAR_ID</code> sai/bypass logic scheduling; CodeScene vẫn fail hotspot.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303">pull/303</a></td>
+<td>Thêm test organizer transfer cho team calendar, còn open question về quyền edit của write-member.</td>
+<td>Quyết định test sẽ khóa hành vi nghiệp vụ team calendar; cần chốt trước khi merge.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/427">pull/427</a>, <a href="https://github.com/linagora/esn-sabre/pull/428">pull/428</a></td>
+<td>Preserve public agenda metadata, gồm <code>X-PUBLICLY-DELETED</code>; cả hai đã merge.</td>
+<td>Fix metadata thiếu trong email/booking link và đã được deploy pre-prod.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1149">issues/1149</a></td>
+<td>Follow-up để cải thiện hiển thị regular hours.</td>
+<td>Tránh UI cần màn hình quá rộng; liên quan review của <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a>.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128">pull/1128</a></td>
+<td>Cả hai PR được nhắc cần rebase.</td>
+<td>Có thể block merge dù review/build đã ổn.</td>
+<td>needs rebase / owners TBD</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Có quyết định kiến trúc chưa chốt trong esn-sabre <a href="https://github.com/linagora/esn-sabre/pull/426">pull/426</a>: direct MongoDB write để provision user tránh dependency runtime, nhưng coupling schema với side-service; phương án gọi side-service webadmin/API ổn định schema hơn nhưng thêm cross-service call trên auth path. Chưa đủ tín hiệu để kết luận team đã chọn hướng cuối.</li>
+<li>Team calendar ACL cần test bổ sung: nếu user không có access team calendar T1 nhưng nhận ITIP cho T1, ITIP phải fail để <code>TEAM_CALENDAR_ID</code> không bypass ACL (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300#issuecomment-4988289218">pull/300 comment</a>).</li>
+<li>Frontend “Chat” action trong attendee/actions chưa nên implement nếu chưa có chat link theo Matrix ID; cần hỏi team chat nếu muốn làm tiếp (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1086#issuecomment-4988423906">issues/1086 comment</a>).</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt hướng provisioning user trong Sabre: direct MongoDB write hay gọi side-service webadmin/API.</td>
+<td>@chibenwa / @vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/426#issuecomment-4988073318">pull/426 comment</a></td>
+</tr>
+<tr>
+<td>Implement/verify validation team calendar chứa đúng event UID trong scheduling reply flow.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424#discussion_r3592027179">pull/424 review comment</a></td>
+</tr>
+<tr>
+<td>Bổ sung hoặc xác nhận test ITIP fail khi user không có ACL vào team calendar.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300#issuecomment-4988289218">pull/300 comment</a></td>
+</tr>
+<tr>
+<td>Chốt rule write-member có được edit mọi property của <code>VEVENT</code> khi <code>ORGANIZER</code> là write member hay không.</td>
+<td>@chibenwa / @vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303#discussion_r3592752373">pull/303 review comment</a></td>
+</tr>
+<tr>
+<td>Rebase các frontend PR đang bị nhắc để unblock merge.</td>
+<td>Owners của PR</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1137#issuecomment-4988210400">pull/1137 comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1128#issuecomment-4988209016">pull/1128 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua phần lớn comment bot CodeScene lặp lại khi gates pass; chỉ giữ các fail/gate có khả năng ảnh hưởng merge hoặc chất lượng.</li>
+<li>Bỏ qua Docker image publication comments, trừ khi liên quan tới khả năng test/deploy pre-prod.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

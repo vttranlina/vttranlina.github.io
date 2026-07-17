@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-12 23:50 +07 -&gt; 2026-07-13 23:50 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-13 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-12 23:50 → 2026-07-13 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>2</strong></span><span class="metric"><span>Issues</span><strong>0</strong></span><span class="metric"><span>Comments</span><strong>10</strong></span><span class="metric"><span>Reviews</span><strong>6</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>18</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-12 23:50 +07 -&gt; 2026-07-13 23:50 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Frontend có 2 PR mới đang mở: regular hour cho booking <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a> và chỉnh format thứ trong tiếng Việt <a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a>.</li>
+<li>PR regular hour ban đầu fail CodeScene do duplication trong test nhưng sau đó đã pass quality gates; Docker image PR đã được publish để test <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a>.</li>
+<li>Side-service issue #923 đã thêm METHOD qua PR #949, nhưng test thủ công cho thấy nội dung email/invitation vẫn sai và cần follow-up phía frontend/TMail <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4954579587">issues/923 comment</a>.</li>
+<li>Integration test PR team calendar scheduling <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a> có CodeScene gate fail do code health của test contract; cần xử lý hoặc suppress có chủ đích.</li>
+<li>esn-sabre và helm-twake-calendar không có activity đáng chú ý trong reporting window này.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Frontend booking / regular hour</h4>
+<ul>
+<li>PR mới <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a> implement regular hour cho booking. Docker images đã publish cho private/public để QA dùng kiểm thử <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137#issuecomment-4955811828">comment</a>.</li>
+<li>CodeScene ban đầu báo fail do duplication trong <code>useRegularHours.test.tsx</code>, sau đó các quality gates đã pass ở các review tiếp theo <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a>.</li>
+</ul>
+<h4>Vietnamese localization</h4>
+<ul>
+<li>PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a> chỉnh format ngày trong tuần bằng tiếng Việt cho issue #1129. CodeScene báo code health improved và quality gates pass; Docker image PR đã publish <a href="https://github.com/linagora/twake-calendar-frontend/pull/1138#issuecomment-4956855431">comment</a>.</li>
+</ul>
+<h4>Invitation email / METHOD handling</h4>
+<ul>
+<li>Với side-service <a href="https://github.com/linagora/twake-calendar-side-service/issues/923">issues/923</a>, phần thêm <code>METHOD</code> đã xong qua PR #949, nhưng cần deploy code mới để test <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4954385392">comment</a>.</li>
+<li>Test thủ công cho thấy title/buttons/blue text đã hiển thị, nhưng content sai: kỳ vọng dạng “quan has proposed an event to you” <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4954579587">comment</a>. Đã tạo ticket phía TMail Flutter <a href="https://github.com/linagora/tmail-flutter/issues/4697">issues/4697</a>, còn câu hỏi mở là có cần thêm case <code>CANCEL</code> không <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4955722407">comment</a>.</li>
+</ul>
+<h4>Integration tests / Team Calendar</h4>
+<ul>
+<li>PR integration test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a> bổ sung coverage cho team calendar scheduling.</li>
+<li>CodeScene fail gate do <code>TeamCalendarSchedulingContract.java</code>: hàm <code>calendarDataWithAlarm</code> có quá nhiều arguments và module dùng nhiều string arguments <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300#discussion_r3569692989">inline comment</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/923">issues/923</a></td>
+<td>METHOD đã được thêm, nhưng nội dung invitation email vẫn sai khi test thủ công.</td>
+<td>Ảnh hưởng trải nghiệm nhận lời mời/scheduling; cần chốt trách nhiệm giữa Calendar và TMail frontend.</td>
+<td>open / @hungphan227, frontend/TMail TBD</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>integration-test</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a></td>
+<td>Thêm coverage team calendar scheduling nhưng CodeScene gate đang fail trên test contract.</td>
+<td>Có thể block merge hoặc làm giảm chất lượng test nếu không xử lý/suppress rõ ràng.</td>
+<td>open / @hungphan227</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a></td>
+<td>Implement regular hour; quality gates hiện đã pass và Docker images đã publish.</td>
+<td>Feature booking cần QA xác nhận trên image PR trước khi merge.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a></td>
+<td>Chỉnh format ngày trong tuần tiếng Việt; CodeScene pass/improved và image đã publish.</td>
+<td>Cải thiện localization tiếng Việt, cần review/QA nhanh để merge.</td>
+<td>open / @lethemanh</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Có câu hỏi chưa chốt trên <a href="https://github.com/linagora/twake-calendar-side-service/issues/923">issues/923</a>: có cần thêm case <code>CANCEL</code> vào ticket TMail Flutter <a href="https://github.com/linagora/tmail-flutter/issues/4697">issues/4697</a> hay không <a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4955722407">comment</a>.</li>
+<li>CodeScene signal đáng chú ý còn tồn tại ở integration-test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a>: test helper có nhiều string arguments/argument count cao; nên cân nhắc refactor test data builder thay vì chỉ suppress nếu PR còn mở.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deploy side-service code có METHOD để test lại invitation flow end-to-end.</td>
+<td>@hungphan227 / DevOps TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4954385392">issues/923 comment</a></td>
+</tr>
+<tr>
+<td>Xác nhận và sửa nội dung invitation email phía TMail Flutter; quyết định có bổ sung case <code>CANCEL</code> hay không.</td>
+<td>frontend/TMail TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/923#issuecomment-4955722407">issues/923 comment</a></td>
+</tr>
+<tr>
+<td>Xử lý CodeScene findings trong integration-test PR #300 hoặc ghi rõ lý do suppress.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300#discussion_r3569692989">pull/300 review comment</a></td>
+</tr>
+<tr>
+<td>QA image PR cho regular hour trước khi merge.</td>
+<td>QA TBD / @lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1137#issuecomment-4955811828">pull/1137 comment</a></td>
+</tr>
+<tr>
+<td>QA/review nhanh PR format ngày tiếng Việt.</td>
+<td>QA TBD / reviewer TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1138">pull/1138</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua 9 comment/review từ @coderabbitai trong frontend theo cấu hình crawl.</li>
+<li>Các comment publish Docker image và bot CodeScene lặp lại chỉ được gom lại khi có tác động đến QA hoặc quality gate.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

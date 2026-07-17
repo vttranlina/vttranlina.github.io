@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-10 14:52 +07 -&gt; 2026-07-10 16:52 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-10 09:54 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-10 14:52 → 2026-07-10 16:52 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>3</strong></span><span class="metric"><span>Issues</span><strong>3</strong></span><span class="metric"><span>Comments</span><strong>15</strong></span><span class="metric"><span>Reviews</span><strong>10</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>31</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-10 14:52 +07 -&gt; 2026-07-10 16:52 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Team Calendar scheduling đang có PR chính ở Sabre: <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a>. Điểm nghẽn là xử lý <code>REPLY</code> khi event gốc nằm trong delegated/canonical Team Calendar thay vì calendar cá nhân của organizer.</li>
+<li>Có đề xuất dùng custom iCalendar property <code>X-OPENPAAS-TEAM-CALENDAR-ID</code> để lookup đúng Team Calendar khi xử lý reply; cần chốt hướng này trước khi merge <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a>.</li>
+<li>Review đã cảnh báo rủi ro hiệu năng nghiêm trọng trong query fallback của Sabre: <a href="https://github.com/linagora/esn-sabre/pull/424#discussion_r3557315344">pull/424 review comment</a>. CodeScene cũng đang fail gate do hotspot/complexity.</li>
+<li>Side-service đã merge fix cho admin bypass cross-domain checks qua OpenPaaS API: <a href="https://github.com/linagora/twake-calendar-side-service/pull/947">pull/947</a>.</li>
+<li>Side-service có issue mới để hỗ trợ email update notification khi thay đổi video conference: <a href="https://github.com/linagora/twake-calendar-side-service/issues/948">issues/948</a>, liên quan đến việc xử lý diff các property mới từ Sabre.</li>
+<li>Frontend tiếp tục mảng booking links: PR edit modal mới <a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a>, issue metadata public links <a href="https://github.com/linagora/twake-calendar-frontend/issues/1134">issues/1134</a>, và color customization <a href="https://github.com/linagora/twake-calendar-frontend/issues/1135">issues/1135</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Team Calendar scheduling / Sabre</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a> thêm hỗ trợ Team Calendar scheduling cho <a href="https://github.com/linagora/esn-sabre/issues/394">issues/394</a>, nhưng đang “slightly stuck” ở case <code>REPLY</code>: Sabre lookup event theo calendar home của Bob nên không tìm thấy event đang lưu dưới Team Calendar.</li>
+<li>Hướng tạm thời là fallback khi <code>REPLY</code> lookup thất bại thì tìm trong delegated Team Calendar nodes; tác giả ghi nhận cách này chạy được nhưng “not clean approach” trong <a href="https://github.com/linagora/esn-sabre/pull/424#issuecomment-4933254872">comment</a>.</li>
+<li>Có thảo luận rằng RFC field chuẩn như <code>SENT-BY</code> không khớp hoàn toàn với model hiện tại; đề xuất thử custom property <code>X-OPENPAAS-TEAM-CALENDAR-ID</code> để xử lý đặc biệt khi <code>REPLY</code>/event lookup: <a href="https://github.com/linagora/esn-sabre/pull/424#issuecomment-4933321980">comment</a>, <a href="https://github.com/linagora/esn-sabre/pull/424#issuecomment-4933387277">comment</a>.</li>
+<li>Review cảnh báo query fallback có thể là “absolute perf killer”: <a href="https://github.com/linagora/esn-sabre/pull/424#discussion_r3557315344">pull/424 review comment</a>. Đây là rủi ro cần xử lý trước khi merge.</li>
+</ul>
+<h4>Side-service</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/947">pull/947</a> đã merge fix cho admin user bypass cross-domain checks khi dùng OpenPaaS API.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/948">issues/948</a> được tạo để thêm support email update notification cho thay đổi video conference; issue này được link từ thảo luận Sabre <a href="https://github.com/linagora/esn-sabre/pull/421#issuecomment-4933435071">pull/421 comment</a> về việc side-service cần handle các property mới trong diff khi gửi event update invite emails.</li>
+<li>Có handoff trên <a href="https://github.com/linagora/twake-calendar-side-service/pull/944#issuecomment-4933352198">pull/944 comment</a>: @chibenwa giao @hungphan227 xử lý tiếp.</li>
+</ul>
+<h4>Frontend / Booking links</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a> thêm edit modal cho booking links theo [#1082]; CodeScene fail do <code>useAppointmentForm</code> complexity trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133 review</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1107">pull/1107</a> về booking edge cases đã được @Eriikah approve và CodeScene pass, đồng thời báo cải thiện code health ở <code>EventPreviewPage.tsx</code>.</li>
+<li>Có 2 issue mới cho public/booking links: Open Graph metadata cho public links <a href="https://github.com/linagora/twake-calendar-frontend/issues/1134">issues/1134</a> và booking link color customisation <a href="https://github.com/linagora/twake-calendar-frontend/issues/1135">issues/1135</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1103">issues/1103</a> được báo đã hoàn thành bởi <a href="https://github.com/linagora/twake-calendar-frontend/pull/1111">pull/1111</a>.</li>
+</ul>
+<h4>Integration tests / QA</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a> cho coverage Team Calendar scheduling được CodeScene approve/pass gates, là tín hiệu tốt để đồng bộ với thay đổi Sabre.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a></td>
+<td>Hỗ trợ Team Calendar scheduling, nhưng còn open question cho <code>REPLY</code> lookup và representation của Team Calendar trong iCalendar.</td>
+<td>Có thể ảnh hưởng correctness của PARTSTAT sync và invitation flow cho Team Calendar; fallback hiện tại có rủi ro thiết kế và hiệu năng.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424#discussion_r3557315344">pull/424 review comment</a></td>
+<td>Reviewer cảnh báo query fallback có thể gây vấn đề hiệu năng lớn.</td>
+<td>Nếu merge nguyên trạng có thể tạo regression hiệu năng trên scheduling path.</td>
+<td>unresolved / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/948">issues/948</a></td>
+<td>Thêm support email update notification cho thay đổi video conference và có thể cần xử lý property diff mới.</td>
+<td>Cần để email update invite phản ánh đúng thay đổi liên quan video conference/custom properties.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a></td>
+<td>Thêm edit modal cho booking links, nhưng CodeScene fail do complexity trong <code>useAppointmentForm</code>.</td>
+<td>Feature booking links đang tiến triển, nhưng cần giảm complexity trước khi merge để tránh nợ kỹ thuật.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/947">pull/947</a></td>
+<td>Fix admin user bypass cross-domain checks qua OpenPaaS API đã merge.</td>
+<td>Thay đổi behavior quan trọng cho admin/API permission path.</td>
+<td>merged / @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Open question chính: nên dùng fallback search delegated Team Calendar nodes hay thêm custom property <code>X-OPENPAAS-TEAM-CALENDAR-ID</code> để lookup event khi xử lý <code>REPLY</code> trong Sabre. Dữ liệu hiện tại cho thấy tác giả sẽ thử custom property, nhưng chưa đủ tín hiệu là đã chốt thiết kế: <a href="https://github.com/linagora/esn-sabre/pull/424#issuecomment-4933321980">comment</a>.</li>
+<li>CodeScene fail trên <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a> nhiều lần do complexity/hotspot ở <code>Plugin.php</code> và <code>Utils.php</code>; đây là tín hiệu bổ sung cho rủi ro maintainability của hướng implement hiện tại.</li>
+<li>CodeScene fail trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a> do <code>useAppointmentForm</code> có cyclomatic complexity 16; nên refactor trước khi review sâu phần UI/UX.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt thiết kế lookup Team Calendar cho <code>REPLY</code>: fallback query hay custom <code>X-OPENPAAS-TEAM-CALENDAR-ID</code>, và document trade-off.</td>
+<td>@vttranlina + reviewer Sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a></td>
+</tr>
+<tr>
+<td>Rà soát và tối ưu query fallback bị cảnh báo perf killer trước khi merge Sabre PR.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424#discussion_r3557315344">pull/424 review comment</a></td>
+</tr>
+<tr>
+<td>Cập nhật side-service để handle property diff mới khi gửi event update invite emails nếu Sabre thêm custom property.</td>
+<td>@vttranlina / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/948">issues/948</a></td>
+</tr>
+<tr>
+<td>Refactor <code>useAppointmentForm</code> trong booking link edit modal để giảm complexity và pass CodeScene.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1133">pull/1133</a></td>
+</tr>
+<tr>
+<td>Tiếp tục xử lý handoff trên side-service PR #944.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/944#issuecomment-4933352198">pull/944 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua các comment Docker image published trên frontend PR vì chỉ là thông báo build artifacts.</li>
+<li>Bỏ qua bot noise/duplicate CodeScene details và 7 comment/review từ @coderabbitai đã bị crawler ignore; chỉ giữ lại các failure/gate có tác động review.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>
