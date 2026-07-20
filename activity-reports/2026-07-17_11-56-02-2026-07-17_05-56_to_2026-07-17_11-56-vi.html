@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-17 05:56 +07 -&gt; 2026-07-17 11:56 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-17 04:58 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-17 05:56 → 2026-07-17 11:56 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>1</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>4</strong></span><span class="metric"><span>Reviews</span><strong>10</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>16</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-17 05:56 +07 -&gt; 2026-07-17 11:56 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Booking link + team calendar tiếp tục là luồng trọng tâm: có issue mới yêu cầu booking link có thể backed by team calendar <a href="https://github.com/linagora/twake-calendar-side-service/issues/963">issues/963</a>.</li>
+<li>iTIP delivery có PR loại bỏ guard cũ về organizer và đã được approve <a href="https://github.com/linagora/twake-calendar-side-service/pull/962">pull/962</a>.</li>
+<li>Luồng hủy booking còn câu hỏi kỹ thuật chưa chốt: dùng <code>X-PUBLICLY-DELETED</code> hay chuyển sang <code>STATUS:CANCELLED</code>, có thể kéo theo thay đổi ở Sabre <a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-4998961833">issues/952 comment</a>.</li>
+<li>Team calendar scheduling ở Sabre và integration tests có CodeScene gate fail cần xử lý hoặc suppress có chủ đích: <a href="https://github.com/linagora/esn-sabre/pull/424">esn-sabre pull/424</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">integration-tests pull/300</a>.</li>
+<li>Frontend có các review đáng chú ý về contact card attendee/Twake Chat URL và fallback color palette <a href="https://github.com/linagora/twake-calendar-frontend/pull/1150">pull/1150</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1151">pull/1151</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Booking links / Team Calendar</h4>
+<ul>
+<li>Issue mới yêu cầu đảm bảo một booking link có thể được backed bởi team calendar <a href="https://github.com/linagora/twake-calendar-side-service/issues/963">issues/963</a>. Đây có vẻ là phần nối giữa booking public flow và team calendar ownership/scheduling.</li>
+<li>Sabre PR support team calendar scheduling đang bị CodeScene báo hotspot decline ở <code>SchedulePluginTest.php</code> và <code>Plugin.php</code> <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a>.</li>
+<li>Integration test cho organizer transfer của team calendar đã được approve bởi reviewer người và bot <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303">pull/303</a>.</li>
+</ul>
+<h4>iTIP / Booking cancellation</h4>
+<ul>
+<li>PR loại bỏ obsolete old organizer guard khỏi iTIP delivery đã được approve <a href="https://github.com/linagora/twake-calendar-side-service/pull/962">pull/962</a>.</li>
+<li>Trong thảo luận về hủy booking, có đề xuất phân biệt case booker cancel vs owner cancel bằng <code>X-PUBLICLY-DELETED;VALUE=BOOLEAN:TRUE</code>, nhưng cách hiện tại có thể phải update ICS rồi delete; phương án thay thế là dùng <code>STATUS:CANCELLED</code> và cập nhật Sabre <a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-4998961833">issues/952 comment</a>.</li>
+</ul>
+<h4>Frontend reviews</h4>
+<ul>
+<li>PR hiển thị contact card attendee có câu hỏi mở về cách lấy Matrix/Twake Chat target domain và hành vi khi user không có account Twake Chat <a href="https://github.com/linagora/twake-calendar-frontend/pull/1150#discussion_r3600133829">pull/1150 review comment</a>.</li>
+<li>PR backend color support bị review yêu cầu tránh hard-code fallback color, nên dùng màu từ palette <a href="https://github.com/linagora/twake-calendar-frontend/pull/1151#discussion_r3600139657">pull/1151 review comment</a>.</li>
+<li>PR refactor search/resources DAO đã được approve <a href="https://github.com/linagora/twake-calendar-frontend/pull/1152">pull/1152</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/963">issues/963</a></td>
+<td>Cần đảm bảo booking link có thể backed bởi team calendar.</td>
+<td>Có thể ảnh hưởng thiết kế booking public flow, quyền sở hữu calendar và scheduling.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-4998961833">issues/952 comment</a></td>
+<td>Chưa chốt cách biểu diễn hủy booking: <code>X-PUBLICLY-DELETED</code> hay <code>STATUS:CANCELLED</code>.</td>
+<td>Quyết định này ảnh hưởng email notification, ICS lifecycle và có thể cần thay đổi Sabre.</td>
+<td>cần quyết định / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a></td>
+<td>Support team calendar scheduling nhưng CodeScene gate fail vì hotspot/complexity/duplication.</td>
+<td>Có thể block merge nếu quality gate là bắt buộc; cần refactor hoặc suppress có lý do.</td>
+<td>open / PR owner</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a></td>
+<td>Test coverage team calendar scheduling bị CodeScene báo new code health dưới ngưỡng.</td>
+<td>Test quan trọng cho team calendar, nhưng cần xử lý quality signal trước khi merge nếu gate enforced.</td>
+<td>open / PR owner</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1150">pull/1150</a></td>
+<td>Contact card attendee cần làm rõ Twake Chat URL target/domain và fallback khi user không có chat account.</td>
+<td>Tránh triển khai link chat sai hoặc UX lỗi cho attendee không có Twake Chat.</td>
+<td>review comment / PR owner</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Luồng booking cancellation có open question kỹ thuật thật sự: nếu muốn property <code>X-PUBLICLY-DELETED</code> xuất hiện trong AMQP notification ICS thì phải update ICS trước khi delete, cách này bị đánh giá là “not great”; phương án <code>STATUS:CANCELLED</code> lại đòi hỏi cập nhật Sabre <a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-4998961833">issues/952 comment</a>.</li>
+<li>Frontend contact card cần xác nhận nguồn của Matrix/Twake Chat target suffix như <code>:matrix.org</code> hoặc <code>:twake.app</code>, và rule khi target user không có Twake Chat account <a href="https://github.com/linagora/twake-calendar-frontend/pull/1150#discussion_r3600133829">pull/1150 review comment</a>.</li>
+<li>Các review còn lại chủ yếu là approve hoặc bot quality gate; chưa đủ tín hiệu về disagreement ngoài các điểm trên.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt biểu diễn semantic cho hủy booking public: <code>X-PUBLICLY-DELETED</code> vs <code>STATUS:CANCELLED</code>, và xác định có cần thay đổi Sabre không.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-4998961833">issues/952 comment</a></td>
+</tr>
+<tr>
+<td>Triage scope cho booking link backed by team calendar và liên kết với các PR Sabre/integration test hiện có.</td>
+<td>@chibenwa / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/963">issues/963</a></td>
+</tr>
+<tr>
+<td>Xử lý hoặc suppress có lý do CodeScene gate fail cho team calendar scheduling ở Sabre.</td>
+<td>PR owner</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a></td>
+</tr>
+<tr>
+<td>Trả lời câu hỏi về Twake Chat target/domain và behavior khi attendee không có chat account.</td>
+<td>PR owner / frontend reviewer</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1150#discussion_r3600133829">pull/1150 review comment</a></td>
+</tr>
+<tr>
+<td>Thay fallback color hard-code bằng màu từ palette hoặc giải thích lý do không dùng palette.</td>
+<td>PR owner</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1151#discussion_r3600139657">pull/1151 review comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua các approve/comment tự động từ CodeScene khi gate passed và không có rủi ro cụ thể.</li>
+<li>Bỏ qua các review approval không kèm nội dung kỹ thuật mới.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

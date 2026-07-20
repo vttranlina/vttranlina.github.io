@@ -1,6 +1,74 @@
 [
   {
     "title": "Activity Summary",
+    "period": "2026-07-13 00:00 → 2026-07-20 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-20 01:53 UTC",
+    "excerpt": "Period: 2026-07-13 to 2026-07-20",
+    "variants": {
+      "vi": "activity-reports/2026-07-20_08-50-04-2026-07-13_to_2026-07-20-vi.html"
+    },
+    "metrics": {
+      "New PRs": 30,
+      "Issues": 21,
+      "Comments": 156,
+      "Reviews": 171,
+      "Commits": 0,
+      "Total": 378
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-18 23:50 → 2026-07-19 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-19 16:52 UTC",
+    "excerpt": "Period: 2026-07-18 23:50 +07 -> 2026-07-19 23:50 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-19_23-50-04-2026-07-18_23-50_to_2026-07-19_23-50-vi.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 0,
+      "Comments": 0,
+      "Reviews": 0,
+      "Commits": 0,
+      "Total": 0
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-17 08:45 → 2026-07-17 14:45 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-17 07:48 UTC",
+    "excerpt": "Period: 2026-07-17 08:45 +07 -> 2026-07-17 14:45 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-17_14-45-22-2026-07-17_08-45_to_2026-07-17_14-45-vi.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 1,
+      "Comments": 3,
+      "Reviews": 8,
+      "Commits": 0,
+      "Total": 13
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-17 05:56 → 2026-07-17 11:56 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-17 04:58 UTC",
+    "excerpt": "Period: 2026-07-17 05:56 +07 -> 2026-07-17 11:56 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-17_11-56-02-2026-07-17_05-56_to_2026-07-17_11-56-vi.html"
+    },
+    "metrics": {
+      "New PRs": 1,
+      "Issues": 1,
+      "Comments": 4,
+      "Reviews": 10,
+      "Commits": 0,
+      "Total": 16
+    }
+  },
+  {
+    "title": "Activity Summary",
     "period": "2026-07-16 09:12 → 2026-07-17 09:12 Asia/Ho_Chi_Minh",
     "generated": "2026-07-17 02:14 UTC",
     "excerpt": "Period: 2026-07-16 09:12 +07 -> 2026-07-17 09:12 +07",
