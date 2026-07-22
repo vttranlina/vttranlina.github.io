@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-13 to 2026-07-20">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-20 03:34 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-13 00:00 → 2026-07-20 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>30</strong></span><span class="metric"><span>Issues</span><strong>21</strong></span><span class="metric"><span>Comments</span><strong>156</strong></span><span class="metric"><span>Reviews</span><strong>171</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>378</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-13 to 2026-07-20</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: English</p>
+<h2>Quick read</h2>
+<ul>
+<li>Public agenda / booking-link email cancellation remains the main backend topic. Several fixes landed, but <a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a> and <a href="https://github.com/linagora/twake-calendar-side-service/pull/969">pull/969</a> are still open, with one unresolved product question about what cancellation actor additional attendees should see.</li>
+<li>Booking-link email handling changed direction: ICS attachments are removed for booking-link emails via <a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a>, and Sabre now preserves public agenda metadata through <a href="https://github.com/linagora/esn-sabre/pull/427">pull/427</a>, <a href="https://github.com/linagora/esn-sabre/pull/428">pull/428</a>, and <a href="https://github.com/linagora/esn-sabre/pull/430">pull/430</a>.</li>
+<li>Booking link <code>extraAttendees</code> support was merged in <a href="https://github.com/linagora/twake-calendar-side-service/pull/959">pull/959</a>, with a notable design change from a flat list to a future-proof attendee tree.</li>
+<li>Team calendar scheduling / organizer-transfer work advanced across Sabre and integration tests: <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a>, <a href="https://github.com/linagora/esn-sabre/pull/429">pull/429</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300">pull/300</a>, and <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303">pull/303</a>.</li>
+<li>Frontend had high activity around booking-link UX, availability, regular hours, contact cards, and modal behavior. Most small booking UX fixes merged; <a href="https://github.com/linagora/twake-calendar-frontend/pull/1150">pull/1150</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1151">pull/1151</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1157">pull/1157</a>, and <a href="https://github.com/linagora/twake-calendar-frontend/pull/1160">pull/1160</a> remain open.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Public agenda / booking-link email cancellation</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/953">pull/953</a> removed ICS attachments from booking-link-related emails after issues with mail clients rendering incorrect or misleading invitation content. The team agreed to rely on a better email body instead.</li>
+<li>Sabre metadata preservation was fixed through <a href="https://github.com/linagora/esn-sabre/pull/427">pull/427</a> and <a href="https://github.com/linagora/esn-sabre/pull/428">pull/428</a>, then extended to <code>X-PUBLICLY-CANCELLED-BY</code> in <a href="https://github.com/linagora/esn-sabre/pull/430">pull/430</a>.</li>
+<li>The cancellation fix plan for <a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a> converged on adding <code>X-PUBLICLY-CANCELLED-BY</code>, using a dedicated booking-cancelled email template, and updating organizer events with <code>STATUS:CANCELLED</code>; <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/304">pull/304</a> covers the organizer PUT <code>STATUS:CANCELLED</code> behavior.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/969">pull/969</a> is still WIP and has a CodeScene warning on test complexity in <code>BookedEventCancelledTest.java</code>.</li>
+</ul>
+<h4>Booking links / availability / frontend UX</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/959">pull/959</a> merged <code>extraAttendees</code> support for booking links. Review pushed the API and Mongo representation from a flat list to an <code>and</code> tree of <code>participant</code> leaves to keep future optional/substitute attendee logic additive.</li>
+<li>Frontend booking-link UX improvements landed: private booking management UI <a href="https://github.com/linagora/twake-calendar-frontend/pull/1145">pull/1145</a>, websocket updates for booking links <a href="https://github.com/linagora/twake-calendar-frontend/pull/1148">pull/1148</a>, edit availability rule fix <a href="https://github.com/linagora/twake-calendar-frontend/pull/1153">pull/1153</a>, public page empty-name spacing <a href="https://github.com/linagora/twake-calendar-frontend/pull/1158">pull/1158</a>, and date hover state <a href="https://github.com/linagora/twake-calendar-frontend/pull/1159">pull/1159</a>.</li>
+<li>Availability working days now use ISO-8601 format via <a href="https://github.com/linagora/twake-calendar-frontend/pull/1144">pull/1144</a>. A valid review finding led to guarding malformed <code>daysOfWeek</code> payloads with <code>Array.isArray</code> to avoid reducer hydration crashes.</li>
+<li>Regular hours were implemented and refined in <a href="https://github.com/linagora/twake-calendar-frontend/pull/1137">pull/1137</a>, with the display default aligned to 9:00–18:00 after product feedback in <a href="https://github.com/linagora/twake-calendar-frontend/issues/1149">issues/1149</a>.</li>
+</ul>
+<h4>Team calendar scheduling / Sabre</h4>
+<ul>
+<li>Sabre team calendar scheduling work progressed in <a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a>, including stronger validation that a given team calendar contains the relevant event UID before resolving replies.</li>
+<li>Organizer transfer to write members was merged in <a href="https://github.com/linagora/esn-sabre/pull/429">pull/429</a>, backed by integration coverage in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303">pull/303</a>.</li>
+<li>A security-related integration-test signal was raised for team calendar ITIP: <code>TEAM_CALENDAR_ID</code> must not bypass ACLs when a recipient lacks access, captured in the discussion on <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300#issuecomment-4988289218">pull/300</a>.</li>
+</ul>
+<h4>Auth / provisioning</h4>
+<ul>
+<li>Sabre auto-provisioning on DAV request was merged in <a href="https://github.com/linagora/esn-sabre/pull/426">pull/426</a>. Review required provisioning only when the user exists in LDAP and populating names from LDAP rather than hardcoding empty values.</li>
+<li>There is an architectural tradeoff noted on <a href="https://github.com/linagora/esn-sabre/pull/426#issuecomment-4988073318">pull/426</a>: direct MongoDB writes avoid cross-service calls on the auth path but couple Sabre to side-service storage schema.</li>
+</ul>
+<h4>Frontend contact card / cross-app integrations</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1150">pull/1150</a> adds attendee contact cards but remains open. Review explicitly asked not to expose chat unless the action is scoped and ready, and to gate mail action on Mail SPA configuration.</li>
+<li>Chat deep-linking is not fully specified. A web-only workaround was proposed in <a href="https://github.com/linagora/twake-calendar-frontend/issues/1086#issuecomment-5001187864">issues/1086 comment</a>, but open questions remain around how Calendar obtains Matrix IDs and what to do for non-Twake users.</li>
+<li>File picker / Drive integration was scoped into follow-up work in <a href="https://github.com/linagora/twake-calendar-frontend/issues/247#issuecomment-5001869740">issues/247</a>: iframe rendering behind an env gate, postMessage communication, then refinement.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/969">pull/969</a></td>
+<td>Public agenda cancellation sends wrong emails when the booker cancels; WIP fix uses cancellation actor metadata and dedicated email handling.</td>
+<td>User-facing email correctness; risk of confusing owner/booker/additional attendees.</td>
+<td>open / @hungphan227, @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/430">pull/430</a></td>
+<td>Sabre preserves <code>X-PUBLICLY-CANCELLED-BY</code> metadata.</td>
+<td>Required backend support for correct public agenda cancellation emails.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/959">pull/959</a></td>
+<td>Booking link <code>extraAttendees</code> merged with a future-proof tree model instead of a flat list.</td>
+<td>API/storage shape decision affects frontend, webadmin, and later optional/substitute attendee logic.</td>
+<td>merged / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/426">pull/426</a></td>
+<td>DAV auto-provisioning now relies on LDAP existence and LDAP user content.</td>
+<td>Auth-path behavior and user provisioning consistency; direct DB write coupling remains a known tradeoff.</td>
+<td>merged / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre / twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/424">pull/424</a>, <a href="https://github.com/linagora/esn-sabre/pull/429">pull/429</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/303">pull/303</a></td>
+<td>Team calendar scheduling and organizer-transfer coverage advanced.</td>
+<td>Team calendar ACL and organizer semantics are sensitive; regressions could allow wrong updates or blocked scheduling.</td>
+<td>mostly merged/approved / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1150">pull/1150</a></td>
+<td>Attendee contact card is open; chat action scope and Matrix ID retrieval are unresolved.</td>
+<td>Cross-app UX depends on Mail/Chat readiness and configuration gates.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1151">pull/1151</a></td>
+<td>Backend color support is open and had a requested conflict fix plus fallback color feedback.</td>
+<td>Normal product feature, but should not merge with unresolved conflict or hardcoded palette issues.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1156">issues/1156</a> / <a href="https://github.com/linagora/twake-calendar-frontend/pull/1157">pull/1157</a></td>
+<td>Mini calendar no longer shows current week; PR is open and reviewer noted Monday is selected by default unexpectedly.</td>
+<td>Small but visible calendar navigation regression.</td>
+<td>open / @Eriikah</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Public agenda cancellation has one unresolved product/UX question: should additional attendees see the real cancellation actor when a booker cancels, or is showing the organizer acceptable in the standard cancellation email? Source: <a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-5009643448">issues/952 comment</a>.</li>
+<li>The Sabre auto-provisioning implementation chose direct MongoDB writes over side-service API calls for now. This avoids a synchronous auth-path dependency, but the storage-schema coupling should be treated as an explicit architecture decision, not an accidental implementation detail: <a href="https://github.com/linagora/esn-sabre/pull/426#issuecomment-4988073318">pull/426 comment</a>.</li>
+<li>Contact card chat action is not ready for general implementation. The current signal is to either refine scope with Chat or keep it out of the Calendar UI for now: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1150#discussion_r3593685656">pull/1150 review comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/issues/1086#issuecomment-5001187864">issues/1086 comment</a>.</li>
+<li>Team calendar ITIP / ACL coverage has a clear security expectation: <code>TEAM_CALENDAR_ID</code> must not be usable to bypass ACLs: <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/300#issuecomment-4988289218">pull/300 comment</a>.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Close the cancellation actor decision for additional attendees, then finish/review <a href="https://github.com/linagora/twake-calendar-side-service/pull/969">pull/969</a>.</td>
+<td>@vttranlina / @hungphan227 / product TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-5009643448">issues/952 comment</a></td>
+</tr>
+<tr>
+<td>Resolve CodeScene test complexity or decide to accept/suppress it before merging the WIP cancellation fix.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/969#discussion_r3607495373">pull/969 review comment</a></td>
+</tr>
+<tr>
+<td>Keep explicit ownership of the Sabre auto-provisioning storage-schema coupling; revisit if side-service user schema changes.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/426#issuecomment-4988073318">pull/426 comment</a></td>
+</tr>
+<tr>
+<td>Define scope for contact-card chat action: how to obtain Matrix ID, Twake-only vs external users, and whether to implement or drop for now.</td>
+<td>@lethemanh / Chat team TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1086#issuecomment-5001187864">issues/1086 comment</a></td>
+</tr>
+<tr>
+<td>Fix frontend open PR blockers: conflict on backend color support and unexpected default Monday selection in mini calendar.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1151#issuecomment-5000600093">pull/1151 comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1157#issuecomment-5005373669">pull/1157 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Ignored repeated Docker image publication notices, CodeScene approval noise, and routine “+1” reviews unless they carried a blocker or design signal.</li>
+<li>The frontend report explicitly ignored 53 CodeRabbit items from <code>@coderabbitai</code>; only human-confirmed or actionable review signals were summarized.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

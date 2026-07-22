@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-20 08:40 +07 -&gt; 2026-07-21 08:40 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-21 01:42 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-20 08:40 → 2026-07-21 08:40 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>12</strong></span><span class="metric"><span>Issues</span><strong>11</strong></span><span class="metric"><span>Comments</span><strong>36</strong></span><span class="metric"><span>Reviews</span><strong>46</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>105</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-20 08:40 +07 -&gt; 2026-07-21 08:40 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Bug gửi email alarm sau khi organizer hủy event đã có fix trong <a href="https://github.com/linagora/twake-calendar-side-service/pull/971">pull/971</a>; test regression phát hiện case delegated VALARM recipient và đã được xử lý bằng cách xóa alarm theo <code>eventPath</code>.</li>
+<li>Luồng public booking cancellation/unaccepted scheduling đang được xử lý xuyên repo qua <a href="https://github.com/linagora/esn-sabre/pull/431">pull/431</a> và <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/305">pull/305</a>; cần chú ý CodeScene đang fail hotspot complexity ở Sabre.</li>
+<li>Frontend có nhiều PR UI/booking mới: sửa regular hours khi edit booking <a href="https://github.com/linagora/twake-calendar-frontend/pull/1176">pull/1176</a>, event status trong public preview <a href="https://github.com/linagora/twake-calendar-frontend/pull/1174">pull/1174</a>, delegated calendar owner name <a href="https://github.com/linagora/twake-calendar-frontend/pull/1175">pull/1175</a>.</li>
+<li>Quyết định product/tech cho chat button: tạm bỏ khỏi scope hiện tại, tạo follow-up <a href="https://github.com/linagora/twake-calendar-frontend/issues/1161">issues/1161</a>; đã rõ cách build <code>matrixId</code> và các domain hỗ trợ.</li>
+<li>Team Calendar có signal về lỗi xóa calendar qua WebAdmin không cleanup <code>calendarinstances</code>; hướng đang làm là gọi Sabre để cleanup, xem <a href="https://github.com/linagora/twake-calendar-side-service/pull/972#discussion_r3613474678">pull/972 review comment</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Alarm cancellation / VALARM</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/970">issues/970</a> báo bug email alarm vẫn gửi sau khi organizer hủy event; <a href="https://github.com/linagora/twake-calendar-side-service/pull/971">pull/971</a> thêm fix để không giữ alarm của calendar object đã bị cancel.</li>
+<li>Regression test mới bắt được case VALARM có duplicate recipient và delegated recipient; root cause là xóa alarm theo calendar owner thay vì theo <code>eventPath</code>. Fix thêm <code>deleteByEventPath(eventUid, eventPath)</code> cho memory/Mongo DAO và dùng trong <code>EventAlarmHandler</code>, xem <a href="https://github.com/linagora/twake-calendar-side-service/pull/971#issuecomment-5021178759">pull/971 comment</a>.</li>
+<li>Reviewer yêu cầu thêm case attendee xóa bản copy của mình thì alarm organizer vẫn còn; test đã thêm và pass, xem <a href="https://github.com/linagora/twake-calendar-side-service/pull/971">pull/971 review</a> và <a href="https://github.com/linagora/twake-calendar-side-service/pull/971#issuecomment-5022010150">pull/971 comment</a>.</li>
+</ul>
+<h4>Public agenda / booking cancellation</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/431">pull/431</a> sửa Sabre để skip unaccepted public agenda scheduling paths, liên quan tới <a href="https://github.com/linagora/twake-calendar-side-service/issues/968">issues/968</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/305">pull/305</a> bổ sung integration test cho unaccepted public booking cancellation và đã được approve.</li>
+<li>Rủi ro còn lại: CodeScene fail quality gate trên <a href="https://github.com/linagora/esn-sabre/pull/431">pull/431</a> vì <code>Plugin.beforeUnbind</code> bị đánh dấu complex method, xem <a href="https://github.com/linagora/esn-sabre/pull/431#discussion_r3612037738">pull/431 review comment</a>.</li>
+</ul>
+<h4>Frontend booking/public UI</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1173">pull/1173</a> sửa alignment booking preview cho <a href="https://github.com/linagora/twake-calendar-frontend/issues/1171">issues/1171</a> và đã merged.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1176">pull/1176</a> xử lý bug edit booking regular hours cho <a href="https://github.com/linagora/twake-calendar-frontend/issues/1170">issues/1170</a>; đang open nhưng CodeScene pass.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1174">pull/1174</a> thêm event status/icon trong public event preview cho <a href="https://github.com/linagora/twake-calendar-frontend/issues/1172">issues/1172</a> và đã được approve.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1175">pull/1175</a> hiển thị owner name trong calendar modal khi calendar được delegated; đã được approve.</li>
+</ul>
+<h4>Team Calendar</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/972">pull/972</a> thêm integration tests cho Team Calendar flows.</li>
+<li>Inline review nêu lỗi liên quan xóa team-calendar qua WebAdmin: metadata bị xóa nhưng <code>calendarinstances</code> không cleanup đúng, gây lỗi khi member report calendar list; hướng xử lý đang triển khai là WebAdmin gọi Sabre để cleanup, xem <a href="https://github.com/linagora/twake-calendar-side-service/pull/972#discussion_r3613474678">pull/972 review comment</a>.</li>
+</ul>
+<h4>Chat with attendee</h4>
+<ul>
+<li>Với <a href="https://github.com/linagora/twake-calendar-frontend/issues/1086">issues/1086</a>, quyết định là skip chat button khỏi scope hiện tại và tạo follow-up <a href="https://github.com/linagora/twake-calendar-frontend/issues/1161">issues/1161</a>.</li>
+<li>Follow-up đã làm rõ: chỉ support Twake targets, <code>matrixId</code> có dạng <code>@{targetUsername}:{workplaceDomain}</code>, cần <code>{matrixId}</code> interpolation và <code>CHAT_WITH_URI</code> trong <code>.env.js</code>; các domain đã validate gồm <code>twake.linagora.com</code>, <code>stg.lin-saas.com</code>, <code>twake.app</code>, xem <a href="https://github.com/linagora/twake-calendar-frontend/issues/1161#issuecomment-5023092582">issues/1161 comment</a> và <a href="https://github.com/linagora/twake-calendar-frontend/issues/1161#issuecomment-5023570720">issues/1161 comment</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/970">issues/970</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/971">pull/971</a></td>
+<td>Sửa lỗi alarm email vẫn tồn tại sau khi organizer cancel event; deletion scope chuyển sang <code>eventPath</code>.</td>
+<td>Tránh gửi notification sai sau cancellation, nhất là với delegated VALARM recipients.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre, twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/431">pull/431</a> / <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/305">pull/305</a></td>
+<td>Fix và test cho unaccepted public booking cancellation/scheduling paths.</td>
+<td>Luồng public booking cancellation cần đúng ở cả Sabre và integration tests; Sabre còn CodeScene quality gate fail.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/972">pull/972</a></td>
+<td>Team Calendar integration tests kèm phát hiện lỗi cleanup khi xóa team-calendar qua WebAdmin.</td>
+<td>Nếu không cleanup <code>calendarinstances</code>, member có thể gặp lỗi khi load/report calendar list.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1161">issues/1161</a></td>
+<td>Chat button được tách thành follow-up; đã rõ URI template, <code>matrixId</code>, env config và domain hỗ trợ.</td>
+<td>Giảm scope hiện tại nhưng vẫn giữ hướng triển khai rõ ràng cho backlog.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1176">pull/1176</a></td>
+<td>Sửa bug edit booking regular hours cho <a href="https://github.com/linagora/twake-calendar-frontend/issues/1170">issues/1170</a>.</td>
+<td>Ảnh hưởng trực tiếp tới booking slot editing.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1167">issues/1167</a></td>
+<td>Issue TypeError/Sentry mới được mở.</td>
+<td>Có thể là runtime error frontend, nhưng chưa đủ tín hiệu về impact hoặc repro.</td>
+<td>open / @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Với <a href="https://github.com/linagora/twake-calendar-side-service/issues/952">issues/952</a>, quyết định: trong email cancellation tiêu chuẩn, việc hiển thị organizer là cancellation actor được chấp nhận, xem <a href="https://github.com/linagora/twake-calendar-side-service/issues/952#issuecomment-5019599604">issues/952 comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1160">pull/1160</a> đã được functional test, nhưng reviewer gợi ý cần xem các báo cáo “Rabbit Critical”; chưa đủ tín hiệu trong report để biết đây có phải blocker hay không.</li>
+<li>Không thấy disagreement lớn; phần lớn review là approval hoặc bot quality checks.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xử lý hoặc chủ động suppress/giải thích CodeScene hotspot complexity trong Sabre trước khi merge.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/431#discussion_r3612037738">pull/431 review comment</a></td>
+</tr>
+<tr>
+<td>Theo dõi hướng cleanup Team Calendar qua WebAdmin gọi Sabre và đảm bảo có issue/PR cover phần fix ngoài integration tests.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/972#discussion_r3613474678">pull/972 review comment</a></td>
+</tr>
+<tr>
+<td>Làm rõ “Rabbit Critical” trên draggable Responsive Modal có cần xử lý trước merge/release không.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1160">pull/1160 review</a></td>
+</tr>
+<tr>
+<td>Khi quay lại chat button, implement <code>CHAT_WITH_URI</code>, <code>{matrixId}</code> interpolation và chỉ enable khi config tồn tại.</td>
+<td>@lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1161#issuecomment-5023092582">issues/1161 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua phần lớn bot noise: CodeScene promotional text, Docker image published comments lặp lại, và 24 item từ @coderabbitai.</li>
+<li>Không liệt kê chi tiết các approval “+1” không kèm yêu cầu thay đổi, trừ khi liên quan trạng thái merge/review của PR quan trọng.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

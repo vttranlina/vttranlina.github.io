@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-21 09:37 +07 -&gt; 2026-07-22 09:37 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-22 02:41 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-21 09:37 → 2026-07-22 09:37 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>10</strong></span><span class="metric"><span>Issues</span><strong>10</strong></span><span class="metric"><span>Comments</span><strong>36</strong></span><span class="metric"><span>Reviews</span><strong>45</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>101</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-21 09:37 +07 -&gt; 2026-07-22 09:37 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Backend đang mở thêm API phục vụ frontend Team Calendar: <code>GET /api/team-calendars/{id}</code> qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a> và API gom <code>GET /api/entity/{id}</code> qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a>.</li>
+<li>Đã merge fix quan trọng cho Team Calendar ở Sabre: member có thể <code>REPORT</code> canonical team calendar URL qua <a href="https://github.com/linagora/esn-sabre/pull/435">pull/435</a>; integration test tương ứng đang mở và đã được approve ở <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/306">pull/306</a>.</li>
+<li>Demo Team Calendar nên chờ frontend sẵn sàng; còn thiếu query backend lấy thông tin team-calendar và đang có lỗi truyền organizer/attendee khi tạo event trong team calendar theo <a href="https://github.com/linagora/twake-calendar-side-service/issues/835#issuecomment-5032659275">issues/835 comment</a>.</li>
+<li>Public booking/email cancellation vẫn cần follow-up: <a href="https://github.com/linagora/twake-calendar-side-service/pull/969">pull/969</a> có request “resolve conflict”, và có thêm nhu cầu mở ticket gửi email cho booker khi organizer xóa event từ <a href="https://github.com/linagora/twake-calendar-side-service/issues/968#issuecomment-5030325283">issues/968 comment</a>.</li>
+<li>Frontend có nhiều PR booking/UI mới và đã được review nhanh: public booking improvement <a href="https://github.com/linagora/twake-calendar-frontend/pull/1184">pull/1184</a>, ellipsis booking link name <a href="https://github.com/linagora/twake-calendar-frontend/pull/1183">pull/1183</a>, mini-calendar fix <a href="https://github.com/linagora/twake-calendar-frontend/pull/1182">pull/1182</a>, event chip cursor <a href="https://github.com/linagora/twake-calendar-frontend/pull/1178">pull/1178</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Team Calendar / Entity APIs</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/978">issues/978</a> phân tích API <code>GET /api/team-calendar(s)/{id}</code>: response chỉ map dữ liệu có trong DB, không include members vì members lấy từ DAV; cần chốt path và scope members.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a> triển khai <code>GET /api/team-calendars/{id}</code> và đang mở; đã có <code>+1</code>, nhưng CodeScene báo constructor over-injection ở <code>TeamCalendarRoute</code>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/980">issues/980</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a> mở API <code>GET /api/entity/{id}</code> để gom lookup user/team-calendar/resource/domain. Precedence đã được chỉnh thành <code>user → team calendar → resource → domain</code> theo <a href="https://github.com/linagora/twake-calendar-side-service/pull/981#discussion_r3623381572">pull/981 review comment</a>.</li>
+</ul>
+<h4>Team Calendar DAV / Integration Tests</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/434">issues/434</a> được đóng bằng <a href="https://github.com/linagora/esn-sabre/pull/435">pull/435</a>: fix member không <code>REPORT</code> được canonical team calendar URL; PR đã merge.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/306">pull/306</a> bổ sung test cover member report canonical URL; đã được approve bởi CodeScene và @chibenwa, còn open.</li>
+</ul>
+<h4>Public booking / email flows</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/977">pull/977</a> đã merge fix guard “not-email-in-the-past” dựa trên thời gian event mới khi update event.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/969">pull/969</a> tiếp tục xử lý wrong emails khi booker cancel booked event; có evidence email gửi owner/booker và request resolve conflict ở <a href="https://github.com/linagora/twake-calendar-side-service/pull/969#issuecomment-5040601639">pull/969 comment</a>.</li>
+<li>Có signal cần ticket mới: vẫn phải gửi email cho booker khi organizer delete event, được thống nhất “new ticket please” ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/968#issuecomment-5030789100">issues/968 comment</a>.</li>
+</ul>
+<h4>Frontend booking/UI</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1184">pull/1184</a> public page booking improvement đã được @chibenwa approve; CodeScene ban đầu fail <code>Bumpy Road Ahead</code> trong <code>BookingPage.tsx</code> nhưng các review sau đã pass.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1183">pull/1183</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1182">pull/1182</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1178">pull/1178</a> đều đã có approval, lần lượt xử lý booking link name ellipsis, mini calendar selected date, và cursor cho event chip.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1176">pull/1176</a> fix edit booking regular hours đã được @lethemanh và @chibenwa approve, CodeScene pass.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a></td>
+<td>Thêm <code>GET /api/entity/{id}</code> gom lookup user/team-calendar/resource/domain, đã chỉnh precedence lookup.</td>
+<td>Giảm số API frontend phải gọi; cần chốt chất lượng vì CodeScene còn cảnh báo duplication/over-injection.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a></td>
+<td>Thêm <code>GET /api/team-calendars/{id}</code> cho frontend.</td>
+<td>Là dependency trực tiếp cho frontend Team Calendar và demo; cần chốt response shape/path/scope members.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/435">pull/435</a></td>
+<td>Fix member không <code>REPORT</code> được canonical team calendar URL.</td>
+<td>Bug Team Calendar ở layer DAV, ảnh hưởng khả năng đọc calendar canonical URL.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/306">pull/306</a></td>
+<td>Thêm integration test cho canonical team calendar URL.</td>
+<td>Cần merge để khóa regression cho fix Sabre <a href="https://github.com/linagora/esn-sabre/pull/435">pull/435</a>.</td>
+<td>open, approved / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/975">issues/975</a>, <a href="https://github.com/linagora/esn-sabre/issues/432">issues/432</a></td>
+<td>Track release LNG prod 2.4.4 ở side-service và esn-sabre.</td>
+<td>Release coordination across backend/Sabre; chưa đủ tín hiệu về checklist hoặc blocker.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/977">pull/977</a></td>
+<td>Fix email scheduling guard dùng thời gian event mới khi update event.</td>
+<td>Tránh sai logic email khi cập nhật event sang/past thời điểm khác.</td>
+<td>merged / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1184">pull/1184</a></td>
+<td>Public booking page improvement.</td>
+<td>Cải thiện booking public page; đã qua review sau khi CodeScene ban đầu fail.</td>
+<td>open, approved / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/969">pull/969</a></td>
+<td>Sửa email sai gửi cho owner/booker khi booker cancel booked event.</td>
+<td>Public agenda email flow dễ gây nhầm người nhận; còn request resolve conflict.</td>
+<td>open / @hungphan227</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Có open question ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/978">issues/978</a>: dùng path singular hay plural, có include members hay không, và có nên giữ domain trong response khi API domain-scoped. Đề xuất hiện tại nghiêng về DB-only, không members.</li>
+<li>Định hướng API aggregation được đồng ý là follow-up: từ <code>/api/resources/{id}</code>, <code>/api/users/{id}</code>, <code>/api/team-calendars/{id}</code> sang <code>GET /api/entity/{id}</code> theo <a href="https://github.com/linagora/twake-calendar-side-service/issues/978#issuecomment-5032407765">issues/978 comment</a>.</li>
+<li>CodeScene cảnh báo over-injection/duplication ở <a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a> và <a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a>. Tác giả đánh giá một phần là trade-off hợp lý/false positive, nhưng team nên xác nhận trước merge nếu quality gate còn đỏ.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1174#discussion_r3619434600">pull/1174 review comment</a> có nit/request dùng <code>switch case</code>; không thấy signal blocker trong reporting window này.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt và merge API Team Calendar/entity sau khi xác nhận path, response shape, members scope và CodeScene warnings.</td>
+<td>@chibenwa / @vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/978">issues/978</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a></td>
+</tr>
+<tr>
+<td>Merge/hoàn tất integration test canonical team calendar URL để bảo vệ fix Sabre.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/306">pull/306</a></td>
+</tr>
+<tr>
+<td>Resolve conflict và hoàn tất review cho public agenda cancellation email fix.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/969#issuecomment-5040601639">pull/969 comment</a></td>
+</tr>
+<tr>
+<td>Mở ticket mới cho case gửi email tới booker khi organizer delete event.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/968#issuecomment-5030789100">issues/968 comment</a></td>
+</tr>
+<tr>
+<td>Trước demo Team Calendar, hoàn thiện frontend query backend team-calendar info và sửa organizer/attendee khi tạo event trong team calendar.</td>
+<td>Frontend team / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/835#issuecomment-5032659275">issues/835 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua phần lớn bot noise từ CodeScene/CI và Docker image published comments, trừ khi liên quan quality gate hoặc release/demo risk.</li>
+<li>Frontend report ghi nhận đã ignore 12 comment/review item từ @coderabbitai.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

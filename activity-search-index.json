@@ -1,6 +1,75 @@
 [
   {
     "title": "Activity Summary",
+    "period": "2026-07-21 09:37 → 2026-07-22 09:37 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-22 02:41 UTC",
+    "excerpt": "Period: 2026-07-21 09:37 +07 -> 2026-07-22 09:37 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-22_09-37-23-2026-07-21_09-37_to_2026-07-22_09-37-vi.html"
+    },
+    "metrics": {
+      "New PRs": 10,
+      "Issues": 10,
+      "Comments": 36,
+      "Reviews": 45,
+      "Commits": 0,
+      "Total": 101
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-21 08:33 → 2026-07-21 14:33 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-21 07:35 UTC",
+    "excerpt": "Period: 2026-07-21 08:33 +07 -> 2026-07-21 14:33 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-21_14-33-07-2026-07-21_08-33_to_2026-07-21_14-33-vi.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 3,
+      "Comments": 3,
+      "Reviews": 9,
+      "Commits": 0,
+      "Total": 15
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-20 08:40 → 2026-07-21 08:40 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-21 01:42 UTC",
+    "excerpt": "Period: 2026-07-20 08:40 +07 -> 2026-07-21 08:40 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-21_08-40-12-2026-07-20_08-40_to_2026-07-21_08-40-vi.html"
+    },
+    "metrics": {
+      "New PRs": 12,
+      "Issues": 11,
+      "Comments": 36,
+      "Reviews": 46,
+      "Commits": 0,
+      "Total": 105
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-13 00:00 → 2026-07-20 00:00 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-20 03:34 UTC",
+    "excerpt": "Period: 2026-07-13 to 2026-07-20",
+    "variants": {
+      "en": "activity-reports/2026-07-20_10-33-11-2026-07-13_to_2026-07-20-en.html",
+      "vi": "activity-reports/2026-07-20_10-33-11-2026-07-13_to_2026-07-20-vi.html"
+    },
+    "metrics": {
+      "New PRs": 30,
+      "Issues": 21,
+      "Comments": 156,
+      "Reviews": 171,
+      "Commits": 0,
+      "Total": 378
+    }
+  },
+  {
+    "title": "Activity Summary",
     "period": "2026-07-13 00:00 → 2026-07-20 00:00 Asia/Ho_Chi_Minh",
     "generated": "2026-07-20 01:53 UTC",
     "excerpt": "Period: 2026-07-13 to 2026-07-20",
