@@ -1,6 +1,40 @@
 [
   {
     "title": "Activity Summary",
+    "period": "2026-07-23 08:12 → 2026-07-23 16:12 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-23 09:15 UTC",
+    "excerpt": "Period: 2026-07-23 08:12 +07 -> 2026-07-23 16:12 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-23_16-12-33-2026-07-23_08-12_to_2026-07-23_16-12-vi.html"
+    },
+    "metrics": {
+      "New PRs": 3,
+      "Issues": 3,
+      "Comments": 17,
+      "Reviews": 17,
+      "Commits": 0,
+      "Total": 40
+    }
+  },
+  {
+    "title": "Activity Summary",
+    "period": "2026-07-23 09:56 → 2026-07-23 15:56 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-23 09:00 UTC",
+    "excerpt": "Period: 2026-07-23_09-56_to_2026-07-23_15-56",
+    "variants": {
+      "vi": "activity-reports/2026-07-23_15-56-57-2026-07-23_09-56_to_2026-07-23_15-56-vi.html"
+    },
+    "metrics": {
+      "New PRs": 2,
+      "Issues": 2,
+      "Comments": 12,
+      "Reviews": 12,
+      "Commits": 0,
+      "Total": 28
+    }
+  },
+  {
+    "title": "Activity Summary",
     "period": "2026-07-22 08:47 → 2026-07-23 08:47 Asia/Ho_Chi_Minh",
     "generated": "2026-07-23 01:49 UTC",
     "excerpt": "Period: 2026-07-22 08:47 +07 -> 2026-07-23 08:47 +07",
