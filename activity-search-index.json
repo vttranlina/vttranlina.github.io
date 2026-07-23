@@ -1,11 +1,40 @@
 [
   {
     "title": "Activity Summary",
+    "period": "2026-07-23 08:27 → 2026-07-23 16:27 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-23 09:30 UTC",
+    "excerpt": "Period: 2026-07-23 08:27 +07 -> 2026-07-23 16:27 +07",
+    "variants": {
+      "vi": "activity-reports/2026-07-23_16-27-27-2026-07-23_08-27_to_2026-07-23_16-27-vi.html",
+      "raw": "activity-reports/2026-07-23_16-27-27-2026-07-23_08-27_to_2026-07-23_16-27-raw.html"
+    },
+    "metrics": {
+      "New PRs": 4,
+      "Issues": 3,
+      "Comments": 20,
+      "Reviews": 20,
+      "Commits": 0,
+      "Total": 47
+    }
+  },
+  {
+    "title": "Calendar Team Code Activity",
+    "period": "2026-07-23 08-27 → 2026-07-23 16-27",
+    "generated": "2026-07-23 16-27-14",
+    "excerpt": "- Window local: `2026-07-23 08:27 +07` -> `2026-07-23 16:27 +07`",
+    "variants": {
+      "raw": "activity-reports/2026-07-23_16-27-14-2026-07-23_08-27_to_2026-07-23_16-27-raw.html"
+    },
+    "metrics": {}
+  },
+  {
+    "title": "Activity Summary",
     "period": "2026-07-23 08:12 → 2026-07-23 16:12 Asia/Ho_Chi_Minh",
     "generated": "2026-07-23 09:15 UTC",
     "excerpt": "Period: 2026-07-23 08:12 +07 -> 2026-07-23 16:12 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-23_16-12-33-2026-07-23_08-12_to_2026-07-23_16-12-vi.html"
+      "vi": "activity-reports/2026-07-23_16-12-33-2026-07-23_08-12_to_2026-07-23_16-12-vi.html",
+      "raw": "activity-reports/2026-07-23_16-12-33-2026-07-23_08-12_to_2026-07-23_16-12-raw.html"
     },
     "metrics": {
       "New PRs": 3,
@@ -22,7 +51,8 @@
     "generated": "2026-07-23 09:00 UTC",
     "excerpt": "Period: 2026-07-23_09-56_to_2026-07-23_15-56",
     "variants": {
-      "vi": "activity-reports/2026-07-23_15-56-57-2026-07-23_09-56_to_2026-07-23_15-56-vi.html"
+      "vi": "activity-reports/2026-07-23_15-56-57-2026-07-23_09-56_to_2026-07-23_15-56-vi.html",
+      "raw": "activity-reports/2026-07-23_15-56-57-2026-07-23_09-56_to_2026-07-23_15-56-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -39,7 +69,8 @@
     "generated": "2026-07-23 01:49 UTC",
     "excerpt": "Period: 2026-07-22 08:47 +07 -> 2026-07-23 08:47 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-23_08-47-47-2026-07-22_08-47_to_2026-07-23_08-47-vi.html"
+      "vi": "activity-reports/2026-07-23_08-47-47-2026-07-22_08-47_to_2026-07-23_08-47-vi.html",
+      "raw": "activity-reports/2026-07-23_08-47-47-2026-07-22_08-47_to_2026-07-23_08-47-raw.html"
     },
     "metrics": {
       "New PRs": 10,
@@ -56,7 +87,8 @@
     "generated": "2026-07-22 13:54 UTC",
     "excerpt": "Period: 2026-07-22 10:50 +07 -> 2026-07-22 20:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-22_20-50-40-2026-07-22_10-50_to_2026-07-22_20-50-vi.html"
+      "vi": "activity-reports/2026-07-22_20-50-40-2026-07-22_10-50_to_2026-07-22_20-50-vi.html",
+      "raw": "activity-reports/2026-07-22_20-50-40-2026-07-22_10-50_to_2026-07-22_20-50-raw.html"
     },
     "metrics": {
       "New PRs": 8,
@@ -73,7 +105,8 @@
     "generated": "2026-07-22 02:41 UTC",
     "excerpt": "Period: 2026-07-21 09:37 +07 -> 2026-07-22 09:37 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-22_09-37-23-2026-07-21_09-37_to_2026-07-22_09-37-vi.html"
+      "vi": "activity-reports/2026-07-22_09-37-23-2026-07-21_09-37_to_2026-07-22_09-37-vi.html",
+      "raw": "activity-reports/2026-07-22_09-37-23-2026-07-21_09-37_to_2026-07-22_09-37-raw.html"
     },
     "metrics": {
       "New PRs": 10,
@@ -85,12 +118,30 @@
     }
   },
   {
+    "title": "Calendar Team Code Activity",
+    "period": "2026-07-20 23:50 → 2026-07-21 23:50 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-21 16:52 UTC",
+    "excerpt": "- Window local: `2026-07-20 23:50 +07` -> `2026-07-21 23:50 +07`",
+    "variants": {
+      "raw": "activity-reports/2026-07-21_23-50-21-2026-07-20_23-50_to_2026-07-21_23-50-raw.html"
+    },
+    "metrics": {
+      "New PRs": 10,
+      "Issues": 10,
+      "Comments": 35,
+      "Reviews": 39,
+      "Commits": 0,
+      "Total": 94
+    }
+  },
+  {
     "title": "Activity Summary",
     "period": "2026-07-21 08:33 → 2026-07-21 14:33 Asia/Ho_Chi_Minh",
     "generated": "2026-07-21 07:35 UTC",
     "excerpt": "Period: 2026-07-21 08:33 +07 -> 2026-07-21 14:33 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-21_14-33-07-2026-07-21_08-33_to_2026-07-21_14-33-vi.html"
+      "vi": "activity-reports/2026-07-21_14-33-07-2026-07-21_08-33_to_2026-07-21_14-33-vi.html",
+      "raw": "activity-reports/2026-07-21_14-33-07-2026-07-21_08-33_to_2026-07-21_14-33-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -107,7 +158,8 @@
     "generated": "2026-07-21 01:42 UTC",
     "excerpt": "Period: 2026-07-20 08:40 +07 -> 2026-07-21 08:40 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-21_08-40-12-2026-07-20_08-40_to_2026-07-21_08-40-vi.html"
+      "vi": "activity-reports/2026-07-21_08-40-12-2026-07-20_08-40_to_2026-07-21_08-40-vi.html",
+      "raw": "activity-reports/2026-07-21_08-40-12-2026-07-20_08-40_to_2026-07-21_08-40-raw.html"
     },
     "metrics": {
       "New PRs": 12,
@@ -125,7 +177,8 @@
     "excerpt": "Period: 2026-07-13 to 2026-07-20",
     "variants": {
       "en": "activity-reports/2026-07-20_10-33-11-2026-07-13_to_2026-07-20-en.html",
-      "vi": "activity-reports/2026-07-20_10-33-11-2026-07-13_to_2026-07-20-vi.html"
+      "vi": "activity-reports/2026-07-20_10-33-11-2026-07-13_to_2026-07-20-vi.html",
+      "raw": "activity-reports/2026-07-20_10-33-11-2026-07-13_to_2026-07-20-raw.html"
     },
     "metrics": {
       "New PRs": 30,
@@ -137,12 +190,30 @@
     }
   },
   {
+    "title": "Calendar Team Code Activity",
+    "period": "2026-07-19 10:13 → 2026-07-20 10:13 Asia/Ho_Chi_Minh",
+    "generated": "2026-07-20 03:14 UTC",
+    "excerpt": "- Window local: `2026-07-19 10:13 +07` -> `2026-07-20 10:13 +07`",
+    "variants": {
+      "raw": "activity-reports/2026-07-20_10-13-08-2026-07-19_10-13_to_2026-07-20_10-13-raw.html"
+    },
+    "metrics": {
+      "New PRs": 0,
+      "Issues": 0,
+      "Comments": 1,
+      "Reviews": 0,
+      "Commits": 0,
+      "Total": 1
+    }
+  },
+  {
     "title": "Activity Summary",
     "period": "2026-07-13 00:00 → 2026-07-20 00:00 Asia/Ho_Chi_Minh",
     "generated": "2026-07-20 01:53 UTC",
     "excerpt": "Period: 2026-07-13 to 2026-07-20",
     "variants": {
-      "vi": "activity-reports/2026-07-20_08-50-04-2026-07-13_to_2026-07-20-vi.html"
+      "vi": "activity-reports/2026-07-20_08-50-04-2026-07-13_to_2026-07-20-vi.html",
+      "raw": "activity-reports/2026-07-20_08-50-04-2026-07-13_to_2026-07-20-raw.html"
     },
     "metrics": {
       "New PRs": 30,
@@ -159,7 +230,8 @@
     "generated": "2026-07-19 16:52 UTC",
     "excerpt": "Period: 2026-07-18 23:50 +07 -> 2026-07-19 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-19_23-50-04-2026-07-18_23-50_to_2026-07-19_23-50-vi.html"
+      "vi": "activity-reports/2026-07-19_23-50-04-2026-07-18_23-50_to_2026-07-19_23-50-vi.html",
+      "raw": "activity-reports/2026-07-19_23-50-04-2026-07-18_23-50_to_2026-07-19_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -176,7 +248,8 @@
     "generated": "2026-07-17 07:48 UTC",
     "excerpt": "Period: 2026-07-17 08:45 +07 -> 2026-07-17 14:45 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-17_14-45-22-2026-07-17_08-45_to_2026-07-17_14-45-vi.html"
+      "vi": "activity-reports/2026-07-17_14-45-22-2026-07-17_08-45_to_2026-07-17_14-45-vi.html",
+      "raw": "activity-reports/2026-07-17_14-45-22-2026-07-17_08-45_to_2026-07-17_14-45-raw.html"
     },
     "metrics": {
       "New PRs": 1,
@@ -193,7 +266,8 @@
     "generated": "2026-07-17 04:58 UTC",
     "excerpt": "Period: 2026-07-17 05:56 +07 -> 2026-07-17 11:56 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-17_11-56-02-2026-07-17_05-56_to_2026-07-17_11-56-vi.html"
+      "vi": "activity-reports/2026-07-17_11-56-02-2026-07-17_05-56_to_2026-07-17_11-56-vi.html",
+      "raw": "activity-reports/2026-07-17_11-56-02-2026-07-17_05-56_to_2026-07-17_11-56-raw.html"
     },
     "metrics": {
       "New PRs": 1,
@@ -210,7 +284,8 @@
     "generated": "2026-07-17 02:14 UTC",
     "excerpt": "Period: 2026-07-16 09:12 +07 -> 2026-07-17 09:12 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-17_09-12-17-2026-07-16_09-12_to_2026-07-17_09-12-vi.html"
+      "vi": "activity-reports/2026-07-17_09-12-17-2026-07-16_09-12_to_2026-07-17_09-12-vi.html",
+      "raw": "activity-reports/2026-07-17_09-12-17-2026-07-16_09-12_to_2026-07-17_09-12-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -227,7 +302,8 @@
     "generated": "2026-07-16 06:59 UTC",
     "excerpt": "Period: 2026-07-16 07:56 +07 -> 2026-07-16 13:56 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-16_13-57-00-2026-07-16_07-56_to_2026-07-16_13-56-vi.html"
+      "vi": "activity-reports/2026-07-16_13-57-00-2026-07-16_07-56_to_2026-07-16_13-56-vi.html",
+      "raw": "activity-reports/2026-07-16_13-57-00-2026-07-16_07-56_to_2026-07-16_13-56-raw.html"
     },
     "metrics": {
       "New PRs": 4,
@@ -244,7 +320,8 @@
     "generated": "2026-07-16 01:48 UTC",
     "excerpt": "Period: 2026-07-15 08:46 +07 -> 2026-07-16 08:46 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-16_08-46-53-2026-07-15_08-46_to_2026-07-16_08-46-vi.html"
+      "vi": "activity-reports/2026-07-16_08-46-53-2026-07-15_08-46_to_2026-07-16_08-46-vi.html",
+      "raw": "activity-reports/2026-07-16_08-46-53-2026-07-15_08-46_to_2026-07-16_08-46-raw.html"
     },
     "metrics": {
       "New PRs": 8,
@@ -261,7 +338,8 @@
     "generated": "2026-07-15 16:52 UTC",
     "excerpt": "Period: 2026-07-14 23:50 +07 -> 2026-07-15 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-15_23-50-13-2026-07-14_23-50_to_2026-07-15_23-50-vi.html"
+      "vi": "activity-reports/2026-07-15_23-50-13-2026-07-14_23-50_to_2026-07-15_23-50-vi.html",
+      "raw": "activity-reports/2026-07-15_23-50-13-2026-07-14_23-50_to_2026-07-15_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 7,
@@ -279,7 +357,8 @@
     "excerpt": "Period: 2026-07-06 00:00 +07 -> 2026-07-13 00:00 +07",
     "variants": {
       "en": "activity-reports/2026-07-15_23-15-29-2026-07-06_to_2026-07-13-en.html",
-      "vi": "activity-reports/2026-07-15_23-15-29-2026-07-06_to_2026-07-13-vi.html"
+      "vi": "activity-reports/2026-07-15_23-15-29-2026-07-06_to_2026-07-13-vi.html",
+      "raw": "activity-reports/2026-07-15_23-15-29-2026-07-06_to_2026-07-13-raw.html"
     },
     "metrics": {
       "New PRs": 55,
@@ -296,7 +375,8 @@
     "generated": "2026-07-15 11:07 UTC",
     "excerpt": "Period: 2026-07-15 08:05 +07 -> 2026-07-15 18:05 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-15_18-05-44-2026-07-15_08-05_to_2026-07-15_18-05-vi.html"
+      "vi": "activity-reports/2026-07-15_18-05-44-2026-07-15_08-05_to_2026-07-15_18-05-vi.html",
+      "raw": "activity-reports/2026-07-15_18-05-44-2026-07-15_08-05_to_2026-07-15_18-05-raw.html"
     },
     "metrics": {
       "New PRs": 3,
@@ -313,7 +393,8 @@
     "generated": "2026-07-15 02:06 UTC",
     "excerpt": "Period: 2026-07-14 09:04 +07 -> 2026-07-15 09:04 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-15_09-04-29-2026-07-14_09-04_to_2026-07-15_09-04-vi.html"
+      "vi": "activity-reports/2026-07-15_09-04-29-2026-07-14_09-04_to_2026-07-15_09-04-vi.html",
+      "raw": "activity-reports/2026-07-15_09-04-29-2026-07-14_09-04_to_2026-07-15_09-04-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -330,7 +411,8 @@
     "generated": "2026-07-14 16:52 UTC",
     "excerpt": "Period: 2026-07-13 23:50 +07 -> 2026-07-14 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-14_23-50-03-2026-07-13_23-50_to_2026-07-14_23-50-vi.html"
+      "vi": "activity-reports/2026-07-14_23-50-03-2026-07-13_23-50_to_2026-07-14_23-50-vi.html",
+      "raw": "activity-reports/2026-07-14_23-50-03-2026-07-13_23-50_to_2026-07-14_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -347,7 +429,8 @@
     "generated": "2026-07-14 12:26 UTC",
     "excerpt": "Period: 2026-07-11 00:00 +07 -> 2026-07-16 00:00 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-14_19-24-47-2026-07-11_to_2026-07-16-vi.html"
+      "vi": "activity-reports/2026-07-14_19-24-47-2026-07-11_to_2026-07-16-vi.html",
+      "raw": "activity-reports/2026-07-14_19-24-47-2026-07-11_to_2026-07-16-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -364,7 +447,8 @@
     "generated": "2026-07-13 16:52 UTC",
     "excerpt": "Period: 2026-07-12 23:50 +07 -> 2026-07-13 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-13_23-50-09-2026-07-12_23-50_to_2026-07-13_23-50-vi.html"
+      "vi": "activity-reports/2026-07-13_23-50-09-2026-07-12_23-50_to_2026-07-13_23-50-vi.html",
+      "raw": "activity-reports/2026-07-13_23-50-09-2026-07-12_23-50_to_2026-07-13_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -381,7 +465,8 @@
     "generated": "2026-07-12 16:52 UTC",
     "excerpt": "Period: 2026-07-11 23:50 +07 -> 2026-07-12 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-12_23-50-20-2026-07-11_23-50_to_2026-07-12_23-50-vi.html"
+      "vi": "activity-reports/2026-07-12_23-50-20-2026-07-11_23-50_to_2026-07-12_23-50-vi.html",
+      "raw": "activity-reports/2026-07-12_23-50-20-2026-07-11_23-50_to_2026-07-12_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -398,7 +483,8 @@
     "generated": "2026-07-11 16:52 UTC",
     "excerpt": "Period: 2026-07-10 23:50 +07 -> 2026-07-11 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-11_23-50-11-2026-07-10_23-50_to_2026-07-11_23-50-vi.html"
+      "vi": "activity-reports/2026-07-11_23-50-11-2026-07-10_23-50_to_2026-07-11_23-50-vi.html",
+      "raw": "activity-reports/2026-07-11_23-50-11-2026-07-10_23-50_to_2026-07-11_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -415,7 +501,8 @@
     "generated": "2026-07-10 16:51 UTC",
     "excerpt": "Period: 2026-07-09 23:50 +07 -> 2026-07-10 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-10_23-50-03-2026-07-09_23-50_to_2026-07-10_23-50-vi.html"
+      "vi": "activity-reports/2026-07-10_23-50-03-2026-07-09_23-50_to_2026-07-10_23-50-vi.html",
+      "raw": "activity-reports/2026-07-10_23-50-03-2026-07-09_23-50_to_2026-07-10_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 10,
@@ -432,7 +519,8 @@
     "generated": "2026-07-10 09:54 UTC",
     "excerpt": "Period: 2026-07-10 14:52 +07 -> 2026-07-10 16:52 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-10_16-52-10-2026-07-10_14-52_to_2026-07-10_16-52-vi.html"
+      "vi": "activity-reports/2026-07-10_16-52-10-2026-07-10_14-52_to_2026-07-10_16-52-vi.html",
+      "raw": "activity-reports/2026-07-10_16-52-10-2026-07-10_14-52_to_2026-07-10_16-52-raw.html"
     },
     "metrics": {
       "New PRs": 3,
@@ -449,7 +537,8 @@
     "generated": "2026-07-10 09:19 UTC",
     "excerpt": "Period: 2026-07-10 14:16 +07 -> 2026-07-10 16:16 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-10_16-16-53-2026-07-10_14-16_to_2026-07-10_16-16-vi.html"
+      "vi": "activity-reports/2026-07-10_16-16-53-2026-07-10_14-16_to_2026-07-10_16-16-vi.html",
+      "raw": "activity-reports/2026-07-10_16-16-53-2026-07-10_14-16_to_2026-07-10_16-16-raw.html"
     },
     "metrics": {
       "New PRs": 6,
@@ -466,7 +555,8 @@
     "generated": "2026-07-10 08:24 UTC",
     "excerpt": "Period: 2026-07-10 13:22 +07 -> 2026-07-10 15:22 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-10_15-22-32-2026-07-10_13-22_to_2026-07-10_15-22-vi.html"
+      "vi": "activity-reports/2026-07-10_15-22-32-2026-07-10_13-22_to_2026-07-10_15-22-vi.html",
+      "raw": "activity-reports/2026-07-10_15-22-32-2026-07-10_13-22_to_2026-07-10_15-22-raw.html"
     },
     "metrics": {
       "New PRs": 5,
@@ -483,7 +573,8 @@
     "generated": "2026-07-10 06:49 UTC",
     "excerpt": "Period: 2026-07-10_11-47_to_2026-07-10_13-47",
     "variants": {
-      "vi": "activity-reports/2026-07-10_13-47-44-2026-07-10_11-47_to_2026-07-10_13-47-vi.html"
+      "vi": "activity-reports/2026-07-10_13-47-44-2026-07-10_11-47_to_2026-07-10_13-47-vi.html",
+      "raw": "activity-reports/2026-07-10_13-47-44-2026-07-10_11-47_to_2026-07-10_13-47-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -500,7 +591,8 @@
     "generated": "2026-07-10 05:22 UTC",
     "excerpt": "Period: 2026-07-10 09:20 +07 -> 2026-07-10 12:20 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-10_12-20-15-2026-07-10_09-20_to_2026-07-10_12-20-vi.html"
+      "vi": "activity-reports/2026-07-10_12-20-15-2026-07-10_09-20_to_2026-07-10_12-20-vi.html",
+      "raw": "activity-reports/2026-07-10_12-20-15-2026-07-10_09-20_to_2026-07-10_12-20-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -517,7 +609,8 @@
     "generated": "2026-07-10 02:18 UTC",
     "excerpt": "Period: 2026-07-09 09:16 +07 -> 2026-07-10 09:16 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-10_09-16-28-2026-07-09_09-16_to_2026-07-10_09-16-vi.html"
+      "vi": "activity-reports/2026-07-10_09-16-28-2026-07-09_09-16_to_2026-07-10_09-16-vi.html",
+      "raw": "activity-reports/2026-07-10_09-16-28-2026-07-09_09-16_to_2026-07-10_09-16-raw.html"
     },
     "metrics": {
       "New PRs": 12,
@@ -534,7 +627,8 @@
     "generated": "2026-07-09 16:52 UTC",
     "excerpt": "Period: 2026-07-08 23:50 +07 -> 2026-07-09 23:50 +07",
     "variants": {
-      "vi": "activity-reports/2026-07-09_23-50-19-2026-07-08_23-50_to_2026-07-09_23-50-vi.html"
+      "vi": "activity-reports/2026-07-09_23-50-19-2026-07-08_23-50_to_2026-07-09_23-50-vi.html",
+      "raw": "activity-reports/2026-07-09_23-50-19-2026-07-08_23-50_to_2026-07-09_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 11,
@@ -546,12 +640,23 @@
     }
   },
   {
+    "title": "Calendar Team Code Activity",
+    "period": "2026-07-08 23-50 → 2026-07-09 23-50",
+    "generated": "2026-07-09 23-50-10",
+    "excerpt": "- Window local: `2026-07-08 23:50 +07` -> `2026-07-09 23:50 +07`",
+    "variants": {
+      "raw": "activity-reports/2026-07-09_23-50-10-2026-07-08_23-50_to_2026-07-09_23-50-raw.html"
+    },
+    "metrics": {}
+  },
+  {
     "title": "Activity Summary",
     "period": "2026-07-09 08:41 → 2026-07-09 14:41 Asia/Ho_Chi_Minh",
     "generated": "2026-07-09 07:44 UTC",
     "excerpt": "Booking links có nhiều PR backend được review/approve: màu tùy chọn, kiểm tra quyền ghi calendar, email khi bookee hủy, và xử lý race OpenSearch.",
     "variants": {
-      "vi": "activity-reports/2026-07-09_14-41-59-2026-07-09_08-41_to_2026-07-09_14-41-vi.html"
+      "vi": "activity-reports/2026-07-09_14-41-59-2026-07-09_08-41_to_2026-07-09_14-41-vi.html",
+      "raw": "activity-reports/2026-07-09_14-41-59-2026-07-09_08-41_to_2026-07-09_14-41-raw.html"
     },
     "metrics": {
       "New PRs": 3,
@@ -568,7 +673,8 @@
     "generated": "2026-07-09 07:22 UTC",
     "excerpt": "Booking links tiếp tục là trọng tâm: xử lý quyền ghi calendar, màu booking link, email khi bookee hủy, và flow tạo booking trên frontend.",
     "variants": {
-      "vi": "activity-reports/2026-07-09_14-20-29-2026-07-09_08-20_to_2026-07-09_14-20-vi.html"
+      "vi": "activity-reports/2026-07-09_14-20-29-2026-07-09_08-20_to_2026-07-09_14-20-vi.html",
+      "raw": "activity-reports/2026-07-09_14-20-29-2026-07-09_08-20_to_2026-07-09_14-20-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -585,7 +691,8 @@
     "generated": "2026-07-09 01:59 UTC",
     "excerpt": "Booking links tiếp tục là luồng chính: side-service có PR mới cho màu, quyền ghi calendar, email khi bookee hủy; frontend có cải tiến preview/modal xác nhận booking.",
     "variants": {
-      "vi": "activity-reports/2026-07-09_08-57-35-2026-07-08_08-57_to_2026-07-09_08-57-vi.html"
+      "vi": "activity-reports/2026-07-09_08-57-35-2026-07-08_08-57_to_2026-07-09_08-57-vi.html",
+      "raw": "activity-reports/2026-07-09_08-57-35-2026-07-08_08-57_to_2026-07-09_08-57-raw.html"
     },
     "metrics": {
       "New PRs": 11,
@@ -602,7 +709,8 @@
     "generated": "2026-07-08 16:52 UTC",
     "excerpt": "Backend booking links có nhiều PR mới: thêm màu, giới hạn calendar có quyền ghi, email khi bookee hủy, chuẩn hóa `ErrorDetail.type`; phần lớn đã qua CodeScene/human review nhưng vẫn còn vài điểm cần follow-up.",
     "variants": {
-      "vi": "activity-reports/2026-07-08_23-50-12-2026-07-07_23-50_to_2026-07-08_23-50-vi.html"
+      "vi": "activity-reports/2026-07-08_23-50-12-2026-07-07_23-50_to_2026-07-08_23-50-vi.html",
+      "raw": "activity-reports/2026-07-08_23-50-12-2026-07-07_23-50_to_2026-07-08_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 11,
@@ -619,7 +727,8 @@
     "generated": "2026-07-08 10:32 UTC",
     "excerpt": "Backend booking links có 2 PR mới: thêm `color` tùy chọn pull/933 và chỉ cho chọn calendar có quyền ghi pull/935.",
     "variants": {
-      "vi": "activity-reports/2026-07-08_17-31-02-2026-07-08_14-31_to_2026-07-08_17-31-vi.html"
+      "vi": "activity-reports/2026-07-08_17-31-02-2026-07-08_14-31_to_2026-07-08_17-31-vi.html",
+      "raw": "activity-reports/2026-07-08_17-31-02-2026-07-08_14-31_to_2026-07-08_17-31-raw.html"
     },
     "metrics": {
       "New PRs": 4,
@@ -636,7 +745,8 @@
     "generated": "2026-07-08 09:02 UTC",
     "excerpt": "Backend có issue/PR mới cho SaaS rename: issues/929 và pull/930 để reimport display name từ LDAP khi nhận settings message.",
     "variants": {
-      "vi": "activity-reports/2026-07-08_16-00-37-2026-07-08_10-00_to_2026-07-08_16-00-vi.html"
+      "vi": "activity-reports/2026-07-08_16-00-37-2026-07-08_10-00_to_2026-07-08_16-00-vi.html",
+      "raw": "activity-reports/2026-07-08_16-00-37-2026-07-08_10-00_to_2026-07-08_16-00-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -653,7 +763,8 @@
     "generated": "2026-07-08 05:42 UTC",
     "excerpt": "Có issue mới về việc gửi email thông báo khi thêm member vào Team Calendar; requirement còn mở với câu hỏi “có thật sự cần email notification không?” issues/928.",
     "variants": {
-      "vi": "activity-reports/2026-07-08_12-41-00-2026-07-08_06-40_to_2026-07-08_12-40-vi.html"
+      "vi": "activity-reports/2026-07-08_12-41-00-2026-07-08_06-40_to_2026-07-08_12-40-vi.html",
+      "raw": "activity-reports/2026-07-08_12-41-00-2026-07-08_06-40_to_2026-07-08_12-40-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -670,7 +781,8 @@
     "generated": "2026-07-08 04:24 UTC",
     "excerpt": "Đã xử lý hướng tương thích AMQP khi Sabre thêm field `connectedUser`: Sabre có PR thêm field pull/418, integration tests được cập nhật ở pull/293, side-service đã merge fix bỏ qua unknown fields ở pull/927.",
     "variants": {
-      "vi": "activity-reports/2026-07-08_11-22-36-2026-07-07_11-22_to_2026-07-08_11-22-vi.html"
+      "vi": "activity-reports/2026-07-08_11-22-36-2026-07-07_11-22_to_2026-07-08_11-22-vi.html",
+      "raw": "activity-reports/2026-07-08_11-22-36-2026-07-07_11-22_to_2026-07-08_11-22-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -687,7 +799,8 @@
     "generated": "2026-07-07 16:52 UTC",
     "excerpt": "Có sự cố P1 “event counter broken” trên `imap.linagora.com`: issue được mở ở side-service issues/925, fix Sabre đã merge qua pull/420, integration test tái hiện đang mở ở issues/294 / pull/295.",
     "variants": {
-      "vi": "activity-reports/2026-07-07_23-50-03-2026-07-06_23-50_to_2026-07-07_23-50-vi.html"
+      "vi": "activity-reports/2026-07-07_23-50-03-2026-07-06_23-50_to_2026-07-07_23-50-vi.html",
+      "raw": "activity-reports/2026-07-07_23-50-03-2026-07-06_23-50_to_2026-07-07_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 14,
@@ -704,7 +817,8 @@
     "generated": "2026-07-07 10:17 UTC",
     "excerpt": "Frontend tập trung mạnh vào Booking: thêm chọn timezone cho attendee trong pull/1111, đã được approve bởi reviewer chính vào cuối window.",
     "variants": {
-      "vi": "activity-reports/2026-07-07_17-15-15-2026-07-07_09-15_to_2026-07-07_17-15-vi.html"
+      "vi": "activity-reports/2026-07-07_17-15-15-2026-07-07_09-15_to_2026-07-07_17-15-vi.html",
+      "raw": "activity-reports/2026-07-07_17-15-15-2026-07-07_09-15_to_2026-07-07_17-15-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -722,7 +836,8 @@
     "excerpt": "Heavy activity on `calendar-side-service`: 72 PRs and 62 issues in this reporting window, mostly merged/closed.",
     "variants": {
       "en": "activity-reports/2026-07-07_13-59-55-2026-06-06_to_2026-07-07-en.html",
-      "vi": "activity-reports/2026-07-07_13-59-55-2026-06-06_to_2026-07-07-vi.html"
+      "vi": "activity-reports/2026-07-07_13-59-55-2026-06-06_to_2026-07-07-vi.html",
+      "raw": "activity-reports/2026-07-07_13-59-55-2026-06-06_to_2026-07-07-raw.html"
     },
     "metrics": {
       "New PRs": 72,
@@ -740,7 +855,8 @@
     "excerpt": "Strong Sabre activity in this reporting window: 18 PRs and 14 issues, mostly around scheduling, validation, team calendars, ACLs, and CalDAV REPORT performance.",
     "variants": {
       "en": "activity-reports/2026-07-07_13-46-24-2026-06-10_to_2026-07-07-en.html",
-      "vi": "activity-reports/2026-07-07_13-46-24-2026-06-10_to_2026-07-07-vi.html"
+      "vi": "activity-reports/2026-07-07_13-46-24-2026-06-10_to_2026-07-07-vi.html",
+      "raw": "activity-reports/2026-07-07_13-46-24-2026-06-10_to_2026-07-07-raw.html"
     },
     "metrics": {
       "New PRs": 18,
@@ -757,7 +873,8 @@
     "generated": "2026-07-07 01:54 UTC",
     "excerpt": "Booking links là luồng hoạt động chính: backend đã merge kiểm tra slot quá khứ/slot availability trong pull/915 và pull/916; frontend tiếp tục xử lý edge cases/mobile/confirmation trong pull/1107, pull/1108, pull/1110.",
     "variants": {
-      "vi": "activity-reports/2026-07-07_08-52-24-2026-07-06_08-52_to_2026-07-07_08-52-vi.html"
+      "vi": "activity-reports/2026-07-07_08-52-24-2026-07-06_08-52_to_2026-07-07_08-52-vi.html",
+      "raw": "activity-reports/2026-07-07_08-52-24-2026-07-06_08-52_to_2026-07-07_08-52-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -774,7 +891,8 @@
     "generated": "2026-07-06 16:52 UTC",
     "excerpt": "Booking link được harden đáng kể ở backend: chặn booking/cancel slot trong quá khứ và enforce availability kể cả khi không có availability rules; các PR liên quan đã merge: pull/915, pull/916.",
     "variants": {
-      "vi": "activity-reports/2026-07-06_23-50-15-2026-07-05_23-50_to_2026-07-06_23-50-vi.html"
+      "vi": "activity-reports/2026-07-06_23-50-15-2026-07-05_23-50_to_2026-07-06_23-50-vi.html",
+      "raw": "activity-reports/2026-07-06_23-50-15-2026-07-05_23-50_to_2026-07-06_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -792,7 +910,8 @@
     "excerpt": "Booking links progressed across backend and frontend: public booking APIs/UI landed, slots now expose owner/details/timezone support, cancel/get/reservation token routes were merged, and acknowledgement email enrichment is still open in pull/906.",
     "variants": {
       "en": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-en.html",
-      "vi": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-vi.html"
+      "vi": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-vi.html",
+      "raw": "activity-reports/2026-07-06_09-02-30-2026-06-29_to_2026-07-06-raw.html"
     },
     "metrics": {
       "New PRs": 49,
@@ -809,7 +928,8 @@
     "generated": "2026-07-04 16:52 UTC",
     "excerpt": "Backend có PR mới cho booking acknowledgement email, bổ sung thông tin booking link trong email: pull/906.",
     "variants": {
-      "vi": "activity-reports/2026-07-04_23-50-16-2026-07-03_23-50_to_2026-07-04_23-50-vi.html"
+      "vi": "activity-reports/2026-07-04_23-50-16-2026-07-03_23-50_to_2026-07-04_23-50-vi.html",
+      "raw": "activity-reports/2026-07-04_23-50-16-2026-07-03_23-50_to_2026-07-04_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -826,7 +946,8 @@
     "generated": "2026-07-04 04:04 UTC",
     "excerpt": "Team Calendar tiến triển mạnh ở backend/Sabre/integration: WebAdmin CRUD APIs đã merge trong side-service pull/901, fix AMQP ignore team calendar list notifications đã merge pull/902, Sabre team-calendar support được review/approve ở pull/407.",
     "variants": {
-      "vi": "activity-reports/2026-07-04_11-02-15-2026-07-03_11-02_to_2026-07-04_11-02-vi.html"
+      "vi": "activity-reports/2026-07-04_11-02-15-2026-07-03_11-02_to_2026-07-04_11-02-vi.html",
+      "raw": "activity-reports/2026-07-04_11-02-15-2026-07-03_11-02_to_2026-07-04_11-02-raw.html"
     },
     "metrics": {
       "New PRs": 10,
@@ -843,7 +964,8 @@
     "generated": "2026-07-03 16:52 UTC",
     "excerpt": "Team Calendar tiến triển mạnh: Side Service đã merge WebAdmin CRUD APIs pull/901 và fix bỏ qua AMQP list notifications pull/902; Sabre team-calendar support được review/approve trên pull/407.",
     "variants": {
-      "vi": "activity-reports/2026-07-03_23-50-19-2026-07-02_23-50_to_2026-07-03_23-50-vi.html"
+      "vi": "activity-reports/2026-07-03_23-50-19-2026-07-02_23-50_to_2026-07-03_23-50-vi.html",
+      "raw": "activity-reports/2026-07-03_23-50-19-2026-07-02_23-50_to_2026-07-03_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 12,
@@ -860,7 +982,8 @@
     "generated": "2026-07-02 12:06 UTC",
     "excerpt": "Sabre ACL gap → PR fix đọc ACL trước `PROPFIND` + JSON reports: pull/411.",
     "variants": {
-      "vi": "activity-reports/2026-07-02_19-04-25-2026-07-02_15-04_to_2026-07-02_19-04-vi.html"
+      "vi": "activity-reports/2026-07-02_19-04-25-2026-07-02_15-04_to_2026-07-02_19-04-vi.html",
+      "raw": "activity-reports/2026-07-02_19-04-25-2026-07-02_15-04_to_2026-07-02_19-04-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -877,7 +1000,8 @@
     "generated": "2026-07-02 05:51 UTC",
     "excerpt": "Sabre deploy `2.4.1` + env mới → regression: attendee update `PARTSTAT` bị `403 Organizer invalid`; workaround `CALDAV_ORGANIZER_VALIDATION=false`. Xem issues/408.",
     "variants": {
-      "vi": "activity-reports/2026-07-02_12-48-16-2026-07-02_09-48_to_2026-07-02_12-48-vi.html"
+      "vi": "activity-reports/2026-07-02_12-48-16-2026-07-02_09-48_to_2026-07-02_12-48-vi.html",
+      "raw": "activity-reports/2026-07-02_12-48-16-2026-07-02_09-48_to_2026-07-02_12-48-raw.html"
     },
     "metrics": {
       "New PRs": 1,
@@ -894,7 +1018,8 @@
     "generated": "2026-07-02 02:03 UTC",
     "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → side-service fix đã merge: materialize users/resources trước xử lý pull/891, issues/887.",
     "variants": {
-      "vi": "activity-reports/2026-07-02_09-01-28-2026-07-01_09-01_to_2026-07-02_09-01-vi.html"
+      "vi": "activity-reports/2026-07-02_09-01-28-2026-07-01_09-01_to_2026-07-02_09-01-vi.html",
+      "raw": "activity-reports/2026-07-02_09-01-28-2026-07-01_09-01_to_2026-07-02_09-01-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -911,7 +1036,8 @@
     "generated": "2026-07-02 01:49 UTC",
     "excerpt": "Window yên: 1 PR mới/merged, ít comment.",
     "variants": {
-      "vi": "activity-reports/2026-07-02_08-47-57-2026-07-01_20-47_to_2026-07-02_08-47-vi.html"
+      "vi": "activity-reports/2026-07-02_08-47-57-2026-07-01_20-47_to_2026-07-02_08-47-vi.html",
+      "raw": "activity-reports/2026-07-02_08-47-57-2026-07-01_20-47_to_2026-07-02_08-47-raw.html"
     },
     "metrics": {
       "New PRs": 1,
@@ -928,7 +1054,8 @@
     "generated": "2026-07-01 15:02 UTC",
     "excerpt": "",
     "variants": {
-      "vi": "activity-reports/2026-07-01_21-58-33-2026-07-01_19-58_to_2026-07-01_21-58-vi.html"
+      "vi": "activity-reports/2026-07-01_21-58-33-2026-07-01_19-58_to_2026-07-01_21-58-vi.html",
+      "raw": "activity-reports/2026-07-01_21-58-33-2026-07-01_19-58_to_2026-07-01_21-58-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -945,7 +1072,8 @@
     "generated": "2026-07-01 14:25 UTC",
     "excerpt": "Reindex lỗi `MongoCursorNotFoundException` → root cause rõ. Side-service fix merged pull/891; Sabre perf fix open/preprod pull/406.",
     "variants": {
-      "vi": "activity-reports/2026-07-01_21-23-11-2026-06-30_21-23_to_2026-07-01_21-23-vi.html"
+      "vi": "activity-reports/2026-07-01_21-23-11-2026-06-30_21-23_to_2026-07-01_21-23-vi.html",
+      "raw": "activity-reports/2026-07-01_21-23-11-2026-06-30_21-23_to_2026-07-01_21-23-raw.html"
     },
     "metrics": {
       "New PRs": 11,
@@ -962,7 +1090,8 @@
     "generated": "2026-07-01 12:41 UTC",
     "excerpt": "Side-service tag `2.4.1.1` tạo xong → đề xuất deploy prod ngày mai; gồm fix reindex cursor timeout, booking links, WebAdmin `runningOptions` (issues/871 comment).",
     "variants": {
-      "vi": "activity-reports/2026-07-01_19-39-10-2026-07-01_17-39_to_2026-07-01_19-39-vi.html"
+      "vi": "activity-reports/2026-07-01_19-39-10-2026-07-01_17-39_to_2026-07-01_19-39-vi.html",
+      "raw": "activity-reports/2026-07-01_19-39-10-2026-07-01_17-39_to_2026-07-01_19-39-raw.html"
     },
     "metrics": {
       "New PRs": 0,
@@ -979,7 +1108,8 @@
     "generated": "2026-07-01 10:50 UTC",
     "excerpt": "Reindex fail do Mongo cursor idle timeout → side-service fix merged: materialize user/resource list. pull/891",
     "variants": {
-      "vi": "activity-reports/2026-07-01_17-42-19-2026-07-01_14-42_to_2026-07-01_17-42-vi.html"
+      "vi": "activity-reports/2026-07-01_17-42-19-2026-07-01_14-42_to_2026-07-01_17-42-vi.html",
+      "raw": "activity-reports/2026-07-01_17-42-19-2026-07-01_14-42_to_2026-07-01_17-42-raw.html"
     },
     "metrics": {
       "New PRs": 6,
@@ -996,7 +1126,8 @@
     "generated": "2026-07-01 08:05 UTC",
     "excerpt": "Reindex calendar events lỗi `MongoCursorNotFoundException` → root cause rõ: cursor Mongo sống quá lâu khi downstream chậm/throttle. Fix đề xuất: `collectList()` user/resource trước xử lý. issues/887",
     "variants": {
-      "vi": "activity-reports/2026-07-01_14-54-31-2026-07-01_11-54_to_2026-07-01_14-54-vi.html"
+      "vi": "activity-reports/2026-07-01_14-54-31-2026-07-01_11-54_to_2026-07-01_14-54-vi.html",
+      "raw": "activity-reports/2026-07-01_14-54-31-2026-07-01_11-54_to_2026-07-01_14-54-raw.html"
     },
     "metrics": {
       "New PRs": 2,
@@ -1013,7 +1144,8 @@
     "generated": "2026-07-01 02:22 UTC",
     "excerpt": "Booking links backend tiến nhanh: cancel route merged; get route mới mở. pull/881, pull/886",
     "variants": {
-      "vi": "activity-reports/2026-07-01_09-16-42-2026-06-30_09-16_to_2026-07-01_09-16-vi.html"
+      "vi": "activity-reports/2026-07-01_09-16-42-2026-06-30_09-16_to_2026-07-01_09-16-vi.html",
+      "raw": "activity-reports/2026-07-01_09-16-42-2026-06-30_09-16_to_2026-07-01_09-16-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -1030,7 +1162,8 @@
     "generated": "2026-06-30 22:34 UTC",
     "excerpt": "Frontend prod bug `organizer.asJcal is not a function` → đã fix/merge: issues/1095, pull/1096.",
     "variants": {
-      "vi": "activity-reports/2026-07-01_05-23-49-2026-06-30_05-23_to_2026-07-01_05-23-vi.html"
+      "vi": "activity-reports/2026-07-01_05-23-49-2026-06-30_05-23_to_2026-07-01_05-23-vi.html",
+      "raw": "activity-reports/2026-07-01_05-23-49-2026-06-30_05-23_to_2026-07-01_05-23-raw.html"
     },
     "metrics": {
       "New PRs": 6,
@@ -1047,7 +1180,8 @@
     "generated": "2026-06-30 04:23 UTC",
     "excerpt": "Frontend có PR mới cho booking links/booking slots: pull/1094. PR đã thêm DTO, DAO private/public và route public booking, nhưng còn vài điểm cần xử lý trước khi merge.",
     "variants": {
-      "vi": "activity-reports/2026-06-30_11-21-54-2026-06-29_11-21_to_2026-06-30_11-21-vi.html"
+      "vi": "activity-reports/2026-06-30_11-21-54-2026-06-29_11-21_to_2026-06-30_11-21-vi.html",
+      "raw": "activity-reports/2026-06-30_11-21-54-2026-06-29_11-21_to_2026-06-30_11-21-raw.html"
     },
     "metrics": {
       "New PRs": 1,
@@ -1065,7 +1199,8 @@
     "excerpt": "Booking links had heavy backend activity: ICS custom value typing was merged in pull/872, while new PRs cover booking confirmation tokens, owner info, timezone-aware slots, and admin deletion.",
     "variants": {
       "en": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-en.html",
-      "vi": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-vi.html"
+      "vi": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-vi.html",
+      "raw": "activity-reports/2026-06-30_07-57-58-2026-06-29_07-57_to_2026-06-30_07-57-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -1083,7 +1218,8 @@
     "excerpt": "Booking links had heavy backend activity: slots timezone support pull/880, owner info exposure pull/878, event deletion admin task pull/876, auto-accept pull/863, booking token work pull/873, pull/874.",
     "variants": {
       "en": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-en.html",
-      "vi": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-vi.html"
+      "vi": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-vi.html",
+      "raw": "activity-reports/2026-06-29_23-50-20-2026-06-28_23-50_to_2026-06-29_23-50-raw.html"
     },
     "metrics": {
       "New PRs": 9,
@@ -1101,7 +1237,8 @@
     "excerpt": "Booking links progressed significantly on backend: WebAdmin CRUD, confirmation emails, optional name/description, ICS reference, and search criterion work landed or opened; cleanup remains to implement via CalDAV source-of-truth deletion.",
     "variants": {
       "en": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-en.html",
-      "vi": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-vi.html"
+      "vi": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-vi.html",
+      "raw": "activity-reports/2026-06-29_08-59-47-2026-06-22_to_2026-06-29-raw.html"
     },
     "metrics": {
       "New PRs": 42,
@@ -1119,7 +1256,8 @@
     "excerpt": "Booking links moved forward significantly: webadmin CRUD merged, booker confirmation email merged, optional name/description merged, ICS now references booking links, and indexing/search work is open for follow-up.",
     "variants": {
       "en": "activity-reports/2026-06-28_09-51-36-2026-06-22_to_2026-06-28-en.html",
-      "vi": "activity-reports/2026-06-28_09-51-36-2026-06-22_to_2026-06-28-vi.html"
+      "vi": "activity-reports/2026-06-28_09-51-36-2026-06-22_to_2026-06-28-vi.html",
+      "raw": "activity-reports/2026-06-28_09-51-36-2026-06-22_to_2026-06-28-raw.html"
     },
     "metrics": {
       "New PRs": 22,
