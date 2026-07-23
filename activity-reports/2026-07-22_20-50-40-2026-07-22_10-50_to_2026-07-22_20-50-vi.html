@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-22 10:50 +07 -&gt; 2026-07-22 20:50 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-22 13:54 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-22 10:50 → 2026-07-22 20:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>8</strong></span><span class="metric"><span>Issues</span><strong>6</strong></span><span class="metric"><span>Comments</span><strong>38</strong></span><span class="metric"><span>Reviews</span><strong>30</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>82</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-22 10:50 +07 -&gt; 2026-07-22 20:50 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Side-service ghi nhận sự cố SMTP không ổn định sau migration; hướng xử lý là retry 5 lần với exponential backoff, PR đã được review approve nhưng còn tín hiệu CodeScene ở test complexity: <a href="https://github.com/linagora/twake-calendar-side-service/issues/982">issues/982</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/983">pull/983</a>.</li>
+<li>Bản deploy <code>2.4.4.1</code> đã chạy với mapping mới <code>calendar-5</code> do không thể đổi <code>sequence</code> từ <code>index=false</code> sang <code>index=true</code> trực tiếp: <a href="https://github.com/linagora/twake-calendar-side-service/issues/975#issuecomment-5041832994">issues/975 comment</a>.</li>
+<li>Frontend có cụm fix attachment/event modal: gate phần attachment, lọc attachment hỏng không có filename; đang cần ý kiến/review của @Eriikah trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1192">pull/1192</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1193">pull/1193</a>.</li>
+<li>Team Calendar API tiếp tục được review: quyền truy cập GET team-calendar được làm rõ là scoped theo domain và team calendar có thể public trong DAV: <a href="https://github.com/linagora/twake-calendar-side-service/pull/979#discussion_r3628315871">pull/979 review comment</a>.</li>
+<li>Frontend đã merge hai thay đổi nhỏ: ẩn visio link khỏi description để tránh sửa nhầm <a href="https://github.com/linagora/twake-calendar-frontend/pull/1185">pull/1185</a>, và cập nhật bản dịch tiếng Nga footer public calendar <a href="https://github.com/linagora/twake-calendar-frontend/pull/1188">pull/1188</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Side-service / Team Calendar</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/984">pull/984</a> mở để đồng bộ DAV display names cho Team Calendar. Còn câu hỏi quan trọng: thay đổi có cập nhật cả tên subscription của member team calendar không: <a href="https://github.com/linagora/twake-calendar-side-service/pull/984#discussion_r3629533536">pull/984 review comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a> cho <code>GET /api/team-calendars/{id}</code> được approve; review đã chốt hành vi truy cập là domain-scoped và phù hợp với team calendar public trong DAV: <a href="https://github.com/linagora/twake-calendar-side-service/pull/979#discussion_r3628315871">pull/979 review comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a> cho <code>GET /api/entity/{id}</code> được human approve, nhưng CodeScene vẫn báo duplication/large method và constructor over-injection trong route/test: <a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981 review</a>.</li>
+</ul>
+<h4>SMTP / Deployment</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/982">issues/982</a> mô tả lỗi SMTP connection intermittent; @chibenwa đề xuất retry mặc định 5 lần, initial wait 10ms, exponential factor 2: <a href="https://github.com/linagora/twake-calendar-side-service/issues/982#issuecomment-5043643058">issues/982 comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/983">pull/983</a> triển khai retry SMTP và đã được @chibenwa approve, nhưng CodeScene fail do độ phức tạp trong test <code>shouldRetryAndSucceedAfterTransientConnectionFailure</code>: <a href="https://github.com/linagora/twake-calendar-side-service/pull/983">pull/983</a>.</li>
+</ul>
+<h4>Frontend / Attachments và Event modal</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1190">issues/1190</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1192">pull/1192</a> xử lý việc gate attachment section trong event display modal. Build từng fail do lint/prettier, sau đó đã push fix: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1192#issuecomment-5044734841">pull/1192 comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1191">issues/1191</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1193">pull/1193</a> lọc attachment không có filename. Prettier issue đã được sửa thủ công do môi trường local chỉ có Node 12: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1193#issuecomment-5044746800">pull/1193 comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1194">pull/1194</a> được đóng vì duplicate của <a href="https://github.com/linagora/twake-calendar-frontend/pull/1193">pull/1193</a>: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1194#issuecomment-5044693004">pull/1194 comment</a>.</li>
+</ul>
+<h4>Frontend / UI fixes</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1195">pull/1195</a> mở cho cải thiện long name trong sidebar theo <a href="https://github.com/linagora/twake-calendar-frontend/issues/1189">issues/1189</a>; CodeScene pass.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1174">pull/1174</a> được approve cho hiển thị event status với icon trong event preview; CodeScene báo code health cải thiện.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1186">issues/1186</a> mới được mở về double scrollbar trong small web mode create modal; chưa thấy PR xử lý trong reporting window này.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/982">issues/982</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/983">pull/983</a></td>
+<td>Retry SMTP transient failures sau lỗi connection intermittent.</td>
+<td>Có thể ảnh hưởng gửi mail/calendar notification sau migration; cần ổn định trước khi release.</td>
+<td>open, approved human / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/975#issuecomment-5041832994">issues/975 comment</a></td>
+<td>Deploy <code>2.4.4.1</code>, tạo mapping mới <code>calendar-5</code> và chạy WebAdmin reindex.</td>
+<td>Thay đổi index mapping có rủi ro vận hành/search nếu reindex hoặc mapping sai.</td>
+<td>deployed / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1191">issues/1191</a> / <a href="https://github.com/linagora/twake-calendar-frontend/pull/1193">pull/1193</a></td>
+<td>Lọc attachment bị render nhưng thiếu filename.</td>
+<td>Tránh UI lỗi/hiển thị attachment hỏng trên external event.</td>
+<td>open, chờ ý kiến @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1190">issues/1190</a> / <a href="https://github.com/linagora/twake-calendar-frontend/pull/1192">pull/1192</a></td>
+<td>Gate attachment section trong event display modal.</td>
+<td>Cải thiện UX và tránh render section không hợp lệ; build lint đã được sửa.</td>
+<td>open, chờ ý kiến @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/984">pull/984</a></td>
+<td>Đồng bộ DAV display names cho Team Calendar.</td>
+<td>Cần xác nhận có cover tên subscription của member không để tránh display name lệch giữa owner/member.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a></td>
+<td><code>GET /api/team-calendars/{id}</code> được review và approve.</td>
+<td>Quyết định quyền truy cập domain-scoped ảnh hưởng API contract của Team Calendar.</td>
+<td>approved / @vttranlina</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Team Calendar access policy trên <a href="https://github.com/linagora/twake-calendar-side-service/pull/979">pull/979</a> đã được làm rõ: không chỉ member mới query được; team calendar có thể public trong DAV và được scoped theo domain.</li>
+<li>CodeScene đang báo fail trên <a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a> và <a href="https://github.com/linagora/twake-calendar-side-service/pull/983">pull/983</a>. Đây chủ yếu là test/code-health signals, chưa đủ tín hiệu để kết luận blocker nếu CI/repo policy không yêu cầu pass.</li>
+<li>Frontend attachment PRs <a href="https://github.com/linagora/twake-calendar-frontend/pull/1192">pull/1192</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1193">pull/1193</a> đã qua các bot checks sau fix formatting, nhưng human review vẫn đang được gọi rõ ràng từ @Eriikah.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review/cho ý kiến trên frontend attachment fixes trước khi merge.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1192#issuecomment-5044839420">pull/1192 comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1193#issuecomment-5044838679">pull/1193 comment</a></td>
+</tr>
+<tr>
+<td>Xác nhận <a href="https://github.com/linagora/twake-calendar-side-service/pull/984">pull/984</a> có cập nhật cả member team calendar subscription name hay không.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/984#discussion_r3629533536">pull/984 review comment</a></td>
+</tr>
+<tr>
+<td>Quyết định xử lý/suppress CodeScene failures nếu chúng chặn merge trên <code>GET /api/entity/{id}</code> và SMTP retry.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/981">pull/981</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/983">pull/983</a></td>
+</tr>
+<tr>
+<td>Theo dõi issue double scrollbar small web mode vì chưa thấy PR xử lý trong window này.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1186">issues/1186</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua phần lớn bot noise: CodeRabbit rate-limit/no-actionable-comments, CodeScene marketing/details lặp lại, session stats của bot.</li>
+<li>Các comment publish Docker image chỉ được xem là thông tin build artifact, không đưa vào mục quan trọng trừ khi liên quan tới trạng thái review/build.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>
