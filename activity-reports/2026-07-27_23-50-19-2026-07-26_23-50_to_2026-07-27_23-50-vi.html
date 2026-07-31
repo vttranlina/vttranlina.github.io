@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-26 23:50 +07 -&gt; 2026-07-27 23:50 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-27 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-26 23:50 → 2026-07-27 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>7</strong></span><span class="metric"><span>Issues</span><strong>2</strong></span><span class="metric"><span>Comments</span><strong>16</strong></span><span class="metric"><span>Reviews</span><strong>26</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>51</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-26 23:50 +07 -&gt; 2026-07-27 23:50 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li><code>esn-sabre</code> xác nhận bug ACL resource calendar: admin cập nhật qua mirror URL được <code>204</code>, nhưng canonical resource calendar URL bị <code>403</code>; cần fix logic quyền trên canonical calendar (<a href="https://github.com/linagora/esn-sabre/issues/441#issuecomment-5087431289">issues/441 comment</a>).</li>
+<li><code>integration-test</code> có 3 PR cleanup/provisioning đã merge, tập trung chuẩn hóa tạo resource qua webadmin API và tái sử dụng helper assert ICS (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/311">pull/311</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/312">pull/312</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/313">pull/313</a>).</li>
+<li>Test tái hiện lỗi resource admin participation update đã được review <code>+1</code>, chưa thấy yêu cầu sửa thêm trong window này (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/310">pull/310</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/310#issuecomment-5089327139">comment</a>).</li>
+<li><code>frontend</code> có PR TDrive postMessage communication mới đang open nhưng bị CodeScene fail do duplication/complexity trong test và hook iframe state; cần xử lý trước khi merge (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a>).</li>
+<li><code>frontend</code> đã merge các fix UI nhỏ: line wrap trong event preview và contact card on hover (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1224">pull/1224</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1225">pull/1225</a>).</li>
+<li><code>side-service</code> và <code>helm-twake-calendar</code> không có activity đáng chú ý trong reporting window này.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Resource calendar / Sabre</h4>
+<ul>
+<li>Phân tích trên <code>esn-sabre</code> kết luận bug nằm ở logic ACL resource: grant hiện tại chỉ làm delegated/mirror calendar của admin writable, không áp dụng đúng cho canonical resource calendar nên request trực tiếp bị <code>403</code> (<a href="https://github.com/linagora/esn-sabre/issues/441#issuecomment-5087431289">issues/441 comment</a>).</li>
+<li>Bộ integration test liên quan resource admin được củng cố: tạo resource qua webadmin API (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/311">pull/311</a>) và PR tái hiện lỗi participation update đã nhận <code>+1</code> (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/310">pull/310</a>).</li>
+</ul>
+<h4>Integration tests</h4>
+<ul>
+<li>Đã merge cleanup cho delegated calendar lookup theo source, giúp test rõ mục tiêu hơn (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/312">pull/312</a>).</li>
+<li>Đã merge cleanup tái sử dụng <code>CalendarExtractor</code> cho ICS assertions, giảm lặp logic assert trong test (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/313">pull/313</a>).</li>
+<li>CodeScene trên các PR integration-test đều pass quality gates; tín hiệu chính là không có blocker kỹ thuật mới.</li>
+</ul>
+<h4>Frontend / TDrive</h4>
+<ul>
+<li>PR TDrive postMessage communication đang mở, có image Docker publish để test, nhưng CodeScene vẫn fail do code duplication trong test và complexity của <code>usePickerIframeState</code> (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228#discussion_r3656052714">pull/1228 review comment</a>).</li>
+<li>PR TDrive iframe loading cũ nhận approve từ @lethemanh nhưng cũng còn tín hiệu CodeScene fail tương tự về duplication/complexity (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a>).</li>
+<li>Issue yêu cầu hide download button trên prod đã có hướng xử lý vận hành: set <code>debug=false</code> trong <code>.env.js</code>, reload bằng <code>bash reload.sh</code>, liên hệ @Arsnael nếu cần support (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1227#issuecomment-5089542807">issues/1227 comment</a>).</li>
+</ul>
+<h4>Frontend / UI &amp; observability</h4>
+<ul>
+<li>Đã merge fix line wrap trong event preview (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1224">pull/1224</a>).</li>
+<li>Đã merge hiển thị contact card khi hover (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1225">pull/1225</a>).</li>
+<li>PR push source map lên Sentry và xử lý Sentry error đang open, đã được approve và có comment đề nghị phối hợp với @Arsnael về cách setup (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1223">pull/1223</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1223#issuecomment-5088010497">comment</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/441">issues/441</a></td>
+<td>Bug ACL khiến resource admin cập nhật canonical resource calendar bị <code>403</code> dù mirror URL cập nhật được.</td>
+<td>Ảnh hưởng trực tiếp use case quản trị resource calendar; cần fix backend Sabre để quyền admin nhất quán.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a></td>
+<td>TDrive postMessage communication đang open nhưng CodeScene fail trên duplication test và complexity hook iframe.</td>
+<td>TDrive integration là thay đổi đáng kể; quality gate fail có thể chặn merge hoặc tăng rủi ro maintainability.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/310">pull/310</a></td>
+<td>Test tái hiện lỗi resource admin participation update đã được review <code>+1</code>, chưa thấy yêu cầu sửa thêm.</td>
+<td>Cung cấp regression test cho bug ACL/resource trước khi fix Sabre.</td>
+<td>open hoặc chưa đủ tín hiệu merge / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1223">pull/1223</a></td>
+<td>Source map/Sentry error PR đang open, đã pass quality gates và được approve; cần phối hợp setup với @Arsnael.</td>
+<td>Cải thiện observability/debug production errors; cần đảm bảo cấu hình deploy đúng.</td>
+<td>open / @lethemanh, @Arsnael</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1227">issues/1227</a></td>
+<td>Hide download button trên prod có hướng xử lý bằng <code>debug=false</code> và reload.</td>
+<td>Có vẻ là thay đổi cấu hình production, cần đảm bảo đã áp dụng đúng môi trường.</td>
+<td>open / @Eriikah</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>TDrive có tín hiệu lặp lại từ CodeScene trên cả <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a>: duplication trong test TDrive và complexity quanh iframe state/message parsing. Đây không chỉ là bot noise nếu quality gate đang fail.</li>
+<li>CodeScene cũng cảnh báo “absence of expected change pattern” trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a>: <code>createAction.ts</code> thường đi kèm thay đổi <code>submitUpdateHelpers/utils.ts</code>. Chưa đủ tín hiệu để kết luận thiếu thay đổi thật, nhưng nên kiểm tra logic create/update event có cần đồng bộ không.</li>
+<li>Với <a href="https://github.com/linagora/twake-calendar-frontend/pull/1223">pull/1223</a>, review signal chính là cần chốt cách setup Sentry/source map với @Arsnael, không thấy blocker code trong reporting window này.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fix bug ACL trong <code>esn-sabre</code> để resource admin có quyền write trên canonical resource calendar, không chỉ mirror/delegated calendar.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/441#issuecomment-5087431289">issues/441 comment</a></td>
+</tr>
+<tr>
+<td>Xử lý hoặc quyết định suppress hợp lý các CodeScene findings trên TDrive PR, đặc biệt duplication trong tests và complexity <code>usePickerIframeState</code>.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a></td>
+</tr>
+<tr>
+<td>Kiểm tra cảnh báo expected change pattern trên TDrive PR: liệu flow update event có cần thay đổi tương ứng với create event không.</td>
+<td>@Eriikah / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a></td>
+</tr>
+<tr>
+<td>Phối hợp với @Arsnael để hoàn tất setup source map/Sentry trước khi merge/deploy PR.</td>
+<td>@lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1223#issuecomment-5088010497">comment</a></td>
+</tr>
+<tr>
+<td>Áp dụng cấu hình <code>debug=false</code> trên prod để hide download button, reload và xác nhận kết quả.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1227#issuecomment-5089542807">issues/1227 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua phần lớn comment publish Docker images lặp lại trên các PR frontend; chỉ giữ lại khi liên quan khả năng test PR.</li>
+<li>Bỏ qua bot noise/promotional text từ CodeScene và 12 comment/review item từ @coderabbitai đã bị crawler ignore.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

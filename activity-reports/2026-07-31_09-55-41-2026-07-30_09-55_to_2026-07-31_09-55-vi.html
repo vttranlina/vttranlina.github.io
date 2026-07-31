@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-30 09:55 +07 -&gt; 2026-07-31 09:55 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-31 02:57 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-30 09:55 → 2026-07-31 09:55 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>7</strong></span><span class="metric"><span>Issues</span><strong>5</strong></span><span class="metric"><span>Comments</span><strong>30</strong></span><span class="metric"><span>Reviews</span><strong>24</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>66</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-30 09:55 +07 -&gt; 2026-07-31 09:55 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Có activity bảo mật đáng chú ý quanh JSON endpoints của Sabre: endpoint legacy đã bị remove trong <a href="https://github.com/linagora/esn-sabre/pull/444">esn-sabre pull/444</a>, nhưng issue lộ private event qua <code>allEvents=true</code> vẫn mở tại <a href="https://github.com/linagora/esn-sabre/issues/445">esn-sabre issues/445</a> và có PR xử lý bằng anonymization <a href="https://github.com/linagora/esn-sabre/pull/446">esn-sabre pull/446</a>.</li>
+<li>Integration tests đã được cập nhật theo hướng bảo vệ truy cập JSON calendar/private event: <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/318">integration-test pull/318</a> đã merge, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/319">integration-test pull/319</a> đang mở để cover public JSON feed.</li>
+<li>Search/display name phía side-service có issue mới về <code>displayName</code> không nhất quán theo <code>objectTypes</code> tại <a href="https://github.com/linagora/twake-calendar-side-service/issues/998">side-service issues/998</a>; có nghi vấn nguyên nhân từ auto-provisioning/OIDC fallback và đề xuất thêm Contact-based <code>UserNameResolver</code>.</li>
+<li>Frontend có nhiều activity quanh TDrive integration và attachment UI; các PR TDrive đang bị CodeScene gate fail lặp lại do complexity/duplication, đặc biệt <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">frontend pull/1203</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">frontend pull/1228</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1236">frontend pull/1236</a>.</li>
+<li>Có lưu ý cấu hình khi test File Picker với Drive trên môi trường testing: cần đổi flag <code>calendar.embedded-app-url</code> trong bender cho instance Linagora, theo comment ở <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#issuecomment-5130885247">frontend pull/1203</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Security / Private events JSON access</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/444">esn-sabre pull/444</a> đã merge để remove legacy JSON query endpoint; test tương ứng cũ <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/317">integration-test pull/317</a> được đóng vì endpoint đã bị remove.</li>
+<li>Issue mới <a href="https://github.com/linagora/esn-sabre/issues/445">esn-sabre issues/445</a> báo <code>allEvents=true</code> trong JSON query endpoint có thể expose private event; <a href="https://github.com/linagora/esn-sabre/pull/446">esn-sabre pull/446</a> đang mở để anonymize private events thay vì để lộ chi tiết.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/318">integration-test pull/318</a> đã merge để cover private calendar JSON access paths; <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/319">integration-test pull/319</a> đang mở để cover private event details trong public JSON feed.</li>
+</ul>
+<h4>Search / Identity resolution</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/998">side-service issues/998</a> ghi nhận cùng một user có <code>displayName</code> khác nhau tùy <code>objectTypes</code> khi people search.</li>
+<li>Phân tích trong <a href="https://github.com/linagora/twake-calendar-side-service/issues/998#issuecomment-5128177303">side-service issues/998 comment</a> nghi ngờ flow auto-provisioning qua OIDC có thể persist user với <code>firstname</code>/<code>lastname</code> là email khi LDAP không resolve được; đề xuất fallback thêm OpenSearch contacts qua Contact-based <code>UserNameResolver</code>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/997">side-service pull/997</a> cho issue search edge ngram display name đã được approve bởi @hungphan227 và @vttranlina.</li>
+</ul>
+<h4>Public agenda / Booking cancellation</h4>
+<ul>
+<li>Với bug public agenda cancellation ở <a href="https://github.com/linagora/esn-sabre/issues/436">esn-sabre issues/436</a>, có đề xuất không revert mù quáng <a href="https://github.com/linagora/esn-sabre/pull/431">esn-sabre pull/431</a> vì sẽ làm bug <a href="https://github.com/linagora/twake-calendar-side-service/issues/968">side-service issues/968</a> quay lại.</li>
+<li>Hướng xử lý được đề xuất là đưa logic sang side-service: khi nhận <code>METHOD:CANCEL</code> từ RabbitMQ, nếu organizer <code>PARTSTAT=NEEDS-ACTION</code> và event là <code>X-PUBLICLY-CREATED</code>, không gửi email cho attendees trừ booker; xem <a href="https://github.com/linagora/esn-sabre/issues/436#issuecomment-5128337709">esn-sabre issues/436 comment</a>.</li>
+</ul>
+<h4>Frontend / TDrive &amp; attachments</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">frontend pull/1203</a> tiếp tục được test với Drive; có lưu ý cấu hình <code>calendar.embedded-app-url</code> để test File Picker trên <code>calendar-ng-testing.linagora.com</code> tại <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#issuecomment-5130885247">frontend pull/1203 comment</a>.</li>
+<li>Review trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#discussion_r3681441376">frontend pull/1203</a> xác nhận cần handle cả trường hợp có và chưa có <code>workplaceFQDN</code>, vì external SSO/on-prem customer hiện chưa có thông tin này.</li>
+<li>Attachment UI có issue mới <a href="https://github.com/linagora/twake-calendar-frontend/issues/1235">frontend issues/1235</a> và <a href="https://github.com/linagora/twake-calendar-frontend/issues/1237">frontend issues/1237</a>; discussion nghiêng về việc đưa chip component vào Twake MUI để tái sử dụng.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/445">issues/445</a> / <a href="https://github.com/linagora/esn-sabre/pull/446">pull/446</a></td>
+<td>JSON <code>allEvents=true</code> có thể expose private event; PR đang anonymize private events.</td>
+<td>Rủi ro privacy/security với dữ liệu private calendar.</td>
+<td>issue open / PR open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre, integration-test</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/444">pull/444</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/318">pull/318</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/319">pull/319</a></td>
+<td>Remove legacy JSON endpoint đã merge; test private JSON access đã cập nhật một phần, còn test public JSON feed đang mở.</td>
+<td>Cần đảm bảo fix security được khóa bằng integration tests phù hợp.</td>
+<td>partially merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/998">issues/998</a></td>
+<td>People search trả <code>displayName</code> không nhất quán; nghi vấn từ OIDC auto-provisioning và fallback resolver.</td>
+<td>Ảnh hưởng UX search và chất lượng dữ liệu identity/contact.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1236">pull/1236</a></td>
+<td>Các PR TDrive/loader bị CodeScene fail lặp lại do complexity/duplication trong <code>useTdrivePicker</code> và tests.</td>
+<td>Có thể chặn merge hoặc làm tăng nợ kỹ thuật quanh TDrive integration.</td>
+<td>open / owners TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1237">issues/1237</a></td>
+<td>Attachment chip cần align design và có đề xuất đưa component vào Twake MUI.</td>
+<td>Quyết định component location ảnh hưởng reuse cho app React mới và consistency UI.</td>
+<td>open / @Eriikah</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Cần chốt strategy cho JSON endpoint còn lại: comment trên <a href="https://github.com/linagora/esn-sabre/issues/445#issuecomment-5132678624">esn-sabre issues/445</a> đặt câu hỏi endpoint có còn được dùng không; nếu không dùng thì có thể remove thay vì anonymize.</li>
+<li>Với TDrive, review trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#discussion_r3681441376">frontend pull/1203</a> là signal kỹ thuật quan trọng: không được giả định mọi environment đều có <code>workplaceFQDN</code>, nhất là external SSO/on-prem.</li>
+<li>CodeScene báo “absence of expected change pattern” trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">frontend pull/1228</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1236">frontend pull/1236</a>: <code>createAction.ts</code> thường đi kèm <code>submitUpdateHelpers/utils.ts</code>. Chưa đủ tín hiệu để kết luận bug, nhưng nên kiểm tra create/update path có bị lệch behavior không.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quyết định với JSON <code>allEvents</code> endpoint: tiếp tục anonymize hay remove nếu không còn dùng.</td>
+<td>@chibenwa / @vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/445#issuecomment-5132678624">esn-sabre issues/445 comment</a></td>
+</tr>
+<tr>
+<td>Review/merge fix security <a href="https://github.com/linagora/esn-sabre/pull/446">esn-sabre pull/446</a> và test coverage <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/319">integration-test pull/319</a>.</td>
+<td>@chibenwa / @vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/445">esn-sabre issues/445</a></td>
+</tr>
+<tr>
+<td>Điều tra và chốt fallback identity resolver cho inconsistent <code>displayName</code> trong people search.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/998#issuecomment-5128177303">side-service issues/998 comment</a></td>
+</tr>
+<tr>
+<td>Xử lý CodeScene failures hoặc thống nhất suppress có chủ đích cho các PR TDrive trước khi merge.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">frontend pull/1203</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">frontend pull/1228</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1236">frontend pull/1236</a></td>
+</tr>
+<tr>
+<td>Chốt attachment chip component có đưa vào Twake MUI hay chỉ nằm trong Calendar frontend.</td>
+<td>@Eriikah / @Crash--</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1237">frontend issues/1237</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua phần lớn comment publish Docker image tự động và bot CodeScene chi tiết lặp lại; chỉ giữ các gate failure có ảnh hưởng merge/quality.</li>
+<li>Đã bỏ qua 12 comment/review item từ @coderabbitai theo cấu hình crawl.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

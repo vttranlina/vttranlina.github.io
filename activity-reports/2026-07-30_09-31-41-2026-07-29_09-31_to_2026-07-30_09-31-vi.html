@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-29 09:31 +07 -&gt; 2026-07-30 09:31 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-30 02:33 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-29 09:31 → 2026-07-30 09:31 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>9</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>31</strong></span><span class="metric"><span>Reviews</span><strong>29</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>70</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-29 09:31 +07 -&gt; 2026-07-30 09:31 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Search đang có issue quan trọng: keyword/prefix search match sai do <code>edge_ngrams</code> trên display name; đã mở <a href="https://github.com/linagora/twake-calendar-side-service/issues/996">issues/996</a> và PR fix <a href="https://github.com/linagora/twake-calendar-side-service/pull/997">pull/997</a>.</li>
+<li>Booking links tiếp tục được triển khai cả backend và frontend: side-service <a href="https://github.com/linagora/twake-calendar-side-service/pull/991">pull/991</a> có lỗi compile do thay đổi resource admin và đã được commit fix; frontend mở <a href="https://github.com/linagora/twake-calendar-frontend/pull/1232">pull/1232</a> cho nút active status.</li>
+<li>TDrive integration frontend vẫn cần chú ý: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a> có thảo luận về cấu hình Drive URL/workplaceFqdn, CodeScene fail do complexity/duplication, và cần video + môi trường test.</li>
+<li>Integration tests CalDAV được củng cố: đã merge <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/314">pull/314</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/315">pull/315</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/316">pull/316</a>.</li>
+<li>Có một số cleanup/stability backend đã merge: unique MongoDB password placeholders <a href="https://github.com/linagora/twake-calendar-side-service/pull/993">pull/993</a>, local OIDC docker sample <a href="https://github.com/linagora/twake-calendar-side-service/pull/994">pull/994</a>, Awaitility thay fixed sleeps <a href="https://github.com/linagora/twake-calendar-side-service/pull/995">pull/995</a>.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Search</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/996">issues/996</a> ghi nhận keyword search không phản ánh đúng; frontend <a href="https://github.com/linagora/twake-calendar-frontend/issues/1230#issuecomment-5116359154">issues/1230 comment</a> cũng xác nhận liên quan issue backend này.</li>
+<li>Phân tích hiện tại: display name dùng <code>edge_ngrams</code> có thể gây match sai kiểu <code>Point collaboration</code> -&gt; <code>Poi</code> -&gt; match <code>Poizat</code>; đề xuất dùng keyword search analyser cho display name prefixes giống summary trong <a href="https://github.com/linagora/twake-calendar-side-service/issues/996#issuecomment-5123466036">issues/996 comment</a>.</li>
+<li>PR backend fix đã mở: <a href="https://github.com/linagora/twake-calendar-side-service/pull/997">pull/997</a>, hiện open.</li>
+</ul>
+<h4>Booking links / resources</h4>
+<ul>
+<li>Backend <a href="https://github.com/linagora/twake-calendar-side-service/pull/991">pull/991</a> tiếp tục xử lý Location, Visibility, Transparency, Resources và Alarm cho Booking links; có yêu cầu rebase do main thay đổi cách tạo resource administrators trong <a href="https://github.com/linagora/twake-calendar-side-service/pull/991#issuecomment-5114574859">pull/991 comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/991">pull/991</a> gặp compile error rồi đã được thêm commit fix liên quan resource admin theo <a href="https://github.com/linagora/twake-calendar-side-service/pull/991#issuecomment-5116191544">pull/991 comment</a>.</li>
+<li>Frontend mở <a href="https://github.com/linagora/twake-calendar-frontend/pull/1232">pull/1232</a> để implement button trigger active status của booking link; có review signal cần resolve comment trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1232#discussion_r3672165466">pull/1232 review comment</a>.</li>
+</ul>
+<h4>TDrive integration</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a> có thảo luận chưa chốt rõ về cách derive/config Drive URL: một phía muốn cấu hình theo env vì không phải môi trường nào cũng có <code>workplaceFqdn</code>, phía review đặt câu hỏi liệu mọi env chạy Twake Drive có nên có <code>workplaceFqdn</code> không (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#discussion_r3670715679">pull/1203 review comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#discussion_r3671340297">pull/1203 review comment</a>).</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a> đều bị CodeScene fail ở <code>useTdrivePicker</code> complexity và test duplication; đây có thể là rủi ro maintainability nếu không xử lý trước merge.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a> được yêu cầu bổ sung video demo và khả năng test trên calendar-ng-testing trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228#issuecomment-5123307415">pull/1228 comment</a>.</li>
+</ul>
+<h4>CalDAV / integration tests</h4>
+<ul>
+<li>Đã merge <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/314">pull/314</a> để re-enable resource participation update test.</li>
+<li>Đã merge <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/315">pull/315</a> parameterize CalDAV delegation access-right tests, giúp giảm duplication và cải thiện health của <code>CalDavDelegationContract</code>.</li>
+<li>Đã merge <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/316">pull/316</a> bổ sung coverage forbidden owner ACL access.</li>
+</ul>
+<h4>Contacts bridge / Sabre</h4>
+<ul>
+<li>Flow inbound/outbound giữa external apps, RabbitMQ, calendar side-service và esn-sabre được xác nhận trong <a href="https://github.com/linagora/twake-calendar-side-service/issues/989#issuecomment-5115240650">issues/989 comment</a>, với outbound là bridge từ Sabre/CardDAV contact changes sang public common-contact exchange; xác nhận “Yes” ở <a href="https://github.com/linagora/twake-calendar-side-service/issues/989#issuecomment-5123294254">issues/989 comment</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/996">issues/996</a> / <a href="https://github.com/linagora/twake-calendar-side-service/pull/997">pull/997</a></td>
+<td>Search keyword/prefix match sai do analyzer trên display name; PR fix đã mở.</td>
+<td>Ảnh hưởng trực tiếp chất lượng search và có liên kết từ frontend issue.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a> / <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">pull/1228</a></td>
+<td>TDrive integration còn câu hỏi về Drive URL config/workplaceFqdn và fail CodeScene do complexity/duplication.</td>
+<td>Có thể block merge hoặc gây nợ kỹ thuật trong luồng tích hợp TDrive.</td>
+<td>open / @lethemanh, @zatteo, TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/991">pull/991</a></td>
+<td>Booking links backend cần rebase/fix theo thay đổi resource admin; compile error đã được xử lý bằng commit bổ sung.</td>
+<td>PR lớn, đụng resource/admin behavior; cần đảm bảo CI sạch trước merge.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1232">pull/1232</a></td>
+<td>Thêm button trigger active status cho booking link; có review comment cần resolve.</td>
+<td>Hoàn thiện UX quản lý trạng thái booking link.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>integration-test</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/314">pull/314</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/315">pull/315</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/316">pull/316</a></td>
+<td>Bổ sung và cải thiện coverage CalDAV/resource/delegation ACL.</td>
+<td>Tăng confidence cho các thay đổi delegation/resource.</td>
+<td>merged / @vttranlina</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>TDrive Drive URL configuration vẫn là open question: dùng config theo env hay dựa vào <code>workplaceFqdn</code>; cần chốt với người phụ trách env/Twake Drive, có cc @Crash-- trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#discussion_r3671342550">pull/1203 review comment</a>.</li>
+<li>Frontend attendees preview <a href="https://github.com/linagora/twake-calendar-frontend/pull/1233">pull/1233</a> có kỳ vọng UX cụ thể: popover delay 500ms trước khi mở trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1233#discussion_r3672482715">pull/1233 review comment</a>.</li>
+<li>CodeScene fail lặp lại trên TDrive PRs chủ yếu là complexity/duplication; không nhất thiết là blocker chức năng, nhưng nên xử lý hoặc chủ động suppress có lý do nếu team chấp nhận.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review/merge hoặc yêu cầu chỉnh thêm cho search fix trên display name analyzer.</td>
+<td>@chibenwa / reviewer TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/997">pull/997</a></td>
+</tr>
+<tr>
+<td>Chốt strategy Drive URL: env config vs <code>workplaceFqdn</code>, bao gồm trường hợp môi trường thiếu <code>workplaceFqdn</code>.</td>
+<td>@zatteo, @lethemanh, @Crash--</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#discussion_r3671340297">pull/1203 review comment</a></td>
+</tr>
+<tr>
+<td>Bổ sung video demo và xác nhận có thể test TDrive integration trên calendar-ng-testing.</td>
+<td>@lethemanh / PR owner</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228#issuecomment-5123307415">pull/1228 comment</a></td>
+</tr>
+<tr>
+<td>Resolve review comment còn mở trên active status booking link button.</td>
+<td>@lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1232#discussion_r3672165466">pull/1232 review comment</a></td>
+</tr>
+<tr>
+<td>Đảm bảo <a href="https://github.com/linagora/twake-calendar-side-service/pull/991">pull/991</a> đã rebase và CI/compile sạch sau thay đổi resource admin.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/991#issuecomment-5114574859">pull/991 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua phần lớn comment bot lặp lại từ CodeScene/CodeRabbit và thông báo Docker image published, trừ khi có signal về gate fail hoặc cần test.</li>
+<li>Không liệt kê chi tiết các approval bot pass quality gate không kèm rủi ro hoặc quyết định kỹ thuật.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

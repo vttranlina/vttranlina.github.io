@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-07-28 09:39 +07 -&gt; 2026-07-29 09:39 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-07-29 02:44 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-07-28 09:39 → 2026-07-29 09:39 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>4</strong></span><span class="metric"><span>Issues</span><strong>3</strong></span><span class="metric"><span>Comments</span><strong>25</strong></span><span class="metric"><span>Reviews</span><strong>20</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>52</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-07-28 09:39 +07 -&gt; 2026-07-29 09:39 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Quyết định kỹ thuật quan trọng: dùng DAV/Sabre ACL làm source of truth để xác định resource administrators, tránh tin vào <code>resources.administrators</code> trong MongoDB. Phần Sabre đã merge qua <a href="https://github.com/linagora/esn-sabre/pull/443">pull/443</a>, phần side-service đã merge qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/992">pull/992</a>.</li>
+<li>Booking links đang mở rộng field Location, Visibility, Transparency, Resources và Alarm qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/991">pull/991</a>; review yêu cầu chỉnh format alarm để hỗ trợ multi-value và action <code>EMAIL</code>.</li>
+<li>Frontend có PR mới cho dynamic placement của event modals <a href="https://github.com/linagora/twake-calendar-frontend/pull/1229">pull/1229</a>, đã có image build nhưng còn một số trao đổi review nội bộ.</li>
+<li>Frontend mở 2 issue regression/bug cần triage: attendee recap regression <a href="https://github.com/linagora/twake-calendar-frontend/issues/1231">issues/1231</a> và Search Bugs <a href="https://github.com/linagora/twake-calendar-frontend/issues/1230">issues/1230</a>.</li>
+<li>TDrive iframe PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a> có signal nên tái sử dụng <code>cozy-interapp</code> để giảm code duplicate và lấy <code>workplaceFqdn</code> từ OIDC <code>/userinfo</code> thay vì env variable.</li>
+<li><code>integration-test</code> không có activity trong reporting window này.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Resource administrators / ACL source of truth</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/443">esn-sabre pull/443</a> đã merge để cho phép admin delegates ghi vào source calendars, xử lý hướng fix cho lỗi 403 trên canonical source calendar.</li>
+<li>Hướng tiếp cận cũ dựa vào MongoDB <code>resources.administrators</code> bị loại bỏ vì có rủi ro lệch với ACL thực tế; chi tiết reasoning được ghi ở <a href="https://github.com/linagora/esn-sabre/issues/441#issuecomment-5100363477">issues/441 comment</a> và xác nhận đóng hướng cũ ở <a href="https://github.com/linagora/esn-sabre/pull/442#issuecomment-5103067848">pull/442 comment</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/990">side-service issues/990</a> và <a href="https://github.com/linagora/twake-calendar-side-service/pull/992">pull/992</a> đã đóng/merge để đồng bộ resource admin resolution theo DAV/Sabre ACL; reviewer đánh giá implementation đơn giản hơn.</li>
+</ul>
+<h4>Booking links</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/991">side-service pull/991</a> bổ sung Location, Visibility, Transparency, Resources và Alarm cho booking links, hiện vẫn open.</li>
+<li>Review chính yêu cầu alarm dùng format array vì có thể multi-valued và nên có <code>action: EMAIL</code> để future-proof cho các action khác: <a href="https://github.com/linagora/twake-calendar-side-service/pull/991#discussion_r3669105418">pull/991 review comment</a>. Cùng format cần áp dụng ở chỗ khác: <a href="https://github.com/linagora/twake-calendar-side-service/pull/991#discussion_r3669139305">pull/991 review comment</a>.</li>
+<li>Có câu hỏi review về việc có nên expose dữ liệu và để frontend quyết định hiển thị thay vì lọc ở backend: <a href="https://github.com/linagora/twake-calendar-side-service/pull/991#discussion_r3669126688">pull/991 review comment</a>.</li>
+</ul>
+<h4>Frontend event modals và bugs</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1229">frontend pull/1229</a> triển khai dynamic place cho event modals; image Docker đã được publish cho private/public PR builds.</li>
+<li>Hai issue frontend mới cần triage: attendee recap regression <a href="https://github.com/linagora/twake-calendar-frontend/issues/1231">issues/1231</a> và search bugs <a href="https://github.com/linagora/twake-calendar-frontend/issues/1230">issues/1230</a>.</li>
+</ul>
+<h4>TDrive iframe / Cozy intents</h4>
+<ul>
+<li>Trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">frontend pull/1203</a>, có đề xuất dùng lại <code>cozy-interapp</code> để quản lý intent creation, iframe và postMessage protocol, có thể giảm khoảng 300 dòng code nếu thử nhanh thành công: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#issuecomment-5100935811">pull/1203 comment</a>.</li>
+<li>Review cũng gợi ý không cần env variable cho workplace FQDN vì có thể lấy từ OIDC <code>/userinfo</code> attribute <code>workplaceFqdn</code>: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#discussion_r3663685187">pull/1203 review comment</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/443">pull/443</a></td>
+<td>Cho phép admin delegates ghi source calendars dựa trên ACL/delegation.</td>
+<td>Chốt hướng authorization đúng nguồn sự thật, tránh cấp quyền sai khi Mongo metadata lệch ACL.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/992">pull/992</a></td>
+<td>Resource administrators được resolve từ DAV/Sabre ACL thay vì MongoDB.</td>
+<td>Đồng bộ với Sabre và là prerequisite cho resource/team-calendar behavior liên quan.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/991">pull/991</a></td>
+<td>Mở rộng booking links với Location, Visibility, Transparency, Resources, Alarm.</td>
+<td>Feature đang open và có review cần xử lý về schema alarm/future compatibility trước khi merge.</td>
+<td>open / @hungphan227</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1229">pull/1229</a></td>
+<td>Dynamic placement cho event modals.</td>
+<td>Ảnh hưởng UX event modal; cần hoàn tất review/QA trước merge.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1231">issues/1231</a></td>
+<td>Regression ở event preview attendees recap.</td>
+<td>Regression người dùng nhìn thấy, cần triage mức độ ảnh hưởng.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1230">issues/1230</a></td>
+<td>Search bugs mới được báo cáo.</td>
+<td>Có thể ảnh hưởng khả năng tìm kiếm; chưa đủ tín hiệu về scope.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203">pull/1203</a></td>
+<td>TDrive iframe loading có thảo luận tái sử dụng <code>cozy-interapp</code>.</td>
+<td>Có cơ hội giảm duplication và rủi ro maintenance cho integration Cozy intents.</td>
+<td>open / TBD</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Có quyết định kỹ thuật rõ ràng: không dùng MongoDB <code>resources.administrators</code> làm nguồn authorization; ACL/delegation trong Sabre là source of truth. Nguồn: <a href="https://github.com/linagora/esn-sabre/issues/441#issuecomment-5100363477">issues/441 comment</a>, <a href="https://github.com/linagora/esn-sabre/pull/442#issuecomment-5103067848">pull/442 comment</a>.</li>
+<li>Booking links cần chốt contract API cho <code>alarm</code>: array multi-value và action explicit <code>EMAIL</code> được reviewer đề xuất để tránh breaking change khi thêm action khác: <a href="https://github.com/linagora/twake-calendar-side-service/pull/991#discussion_r3669105418">pull/991 review comment</a>.</li>
+<li>TDrive iframe có open question về việc tái sử dụng <code>cozy-interapp</code> thay vì tự implement nhiều phần protocol/iframe handling: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#issuecomment-5100935811">pull/1203 comment</a>.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cập nhật schema/format <code>alarm</code> trong booking links theo hướng array multi-value và <code>action: EMAIL</code>, rồi phản hồi review.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/991#discussion_r3669105418">pull/991 review comment</a></td>
+</tr>
+<tr>
+<td>Chốt backend có expose field liên quan và để frontend tự quyết định hiển thị hay không.</td>
+<td>@hungphan227 / @chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/991#discussion_r3669126688">pull/991 review comment</a></td>
+</tr>
+<tr>
+<td>Triage mức độ ảnh hưởng và bước reproduce cho attendee recap regression.</td>
+<td>@Eriikah / Frontend TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1231">issues/1231</a></td>
+</tr>
+<tr>
+<td>Triage scope các lỗi Search và quyết định priority fix.</td>
+<td>@Eriikah / Frontend TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1230">issues/1230</a></td>
+</tr>
+<tr>
+<td>Thử nhanh khả năng dùng <code>cozy-interapp</code> trong TDrive iframe để giảm duplication trước khi tiếp tục hướng hiện tại.</td>
+<td>@Eriikah / @lethemanh / @zatteo</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1203#issuecomment-5100935811">pull/1203 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua bot noise từ CodeRabbit; report ghi nhận 15 comment/review item từ <code>@coderabbitai</code> bị ignored.</li>
+<li>CodeScene approvals và Docker image publish comments chỉ được dùng làm tín hiệu phụ, không liệt kê chi tiết trừ khi liên quan trạng thái PR.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>
