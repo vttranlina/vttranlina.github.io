@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-09 23:50 → 2026-08-10 23:50 (+07)">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-10 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-09 23:50 → 2026-08-10 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>3</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>5</strong></span><span class="metric"><span>Reviews</span><strong>10</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>19</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-09 23:50 → 2026-08-10 23:50 (+07)</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Tiếng Việt</p>
+<h2>Quick read</h2>
+<ul>
+<li>Hoạt động tập trung ở <code>side-service</code> và <code>frontend</code>; không có activity mới trong <code>esn-sabre</code>, <code>integration-test</code> hoặc <code>helm-twake-calendar</code>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1006">side-service#1006</a> mở PR hỗ trợ DAV rights cho resource administrator, nhưng ticket liên quan vẫn còn các vấn đề về đồng bộ quyền với Sabre và frontend.</li>
+<li>Phát hiện issue mới về việc không gửi email cho booker khi owner chọn “No” trong proposal email: <a href="https://github.com/linagora/twake-calendar-side-service/issues/1005">side-service#1005</a>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">frontend#1250</a> cho Team Calendar đang mở; các image Docker thử nghiệm đã được publish.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1249">frontend#1249</a> đã đóng sau khi xác nhận không còn cần thay đổi cách tải cấu hình Sentry.</li>
+<li>Một inline review trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1249#discussion_r3748031888">frontend#1249</a> đặt câu hỏi về bước build bị lặp; chưa thấy phản hồi giải quyết trong dữ liệu crawl.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Quyền DAV cho resource administrator</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1006">side-service#1006</a> mở để hỗ trợ quyền <code>dav:read-write</code> và <code>dav:administration</code> cho resource administrator.</li>
+<li>Theo cập nhật trên <a href="https://github.com/linagora/twake-calendar-side-service/issues/621#issuecomment-5236099683">issue#621</a>, WebAdmin hiện luôn gán <code>dav:read-write</code>, frontend hardcode access 5, trong khi Sabre thực tế thấy access 3 và từ chối cập nhật ACL. API cần lấy Sabre làm nguồn sự thật và expose đúng quyền DAV.</li>
+</ul>
+<h3>Frontend Team Calendar và chất lượng mã</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">frontend#1250</a> triển khai thay đổi cho Team Calendar; image private và public cho PR đã được publish.</li>
+<li>CodeScene ban đầu báo lỗi quality gate ở <code>EntityDAO.test.tsx</code> do một vi phạm duplication, nhưng lần kiểm tra sau đã pass và cải thiện <code>getTempCalendarsListAsync.ts</code>. Cần xác nhận trạng thái cuối của quality gate trước khi merge.</li>
+</ul>
+<h3>Các thay đổi frontend khác</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1249">frontend#1249</a> đã đóng sau khi xác nhận thay đổi cách tải cấu hình Sentry không còn cần thiết.</li>
+<li>Các PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1228">frontend#1228</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1244">frontend#1244</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1245">frontend#1245</a> đã nhận approval.</li>
+</ul>
+<h3>Public agenda</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1005">side-service#1005</a> ghi nhận lỗi không gửi email cho booker khi owner chọn “No” trong proposal email; issue hiện đang mở.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1006">#1006</a> / <a href="https://github.com/linagora/twake-calendar-side-service/issues/621">#621</a></td>
+<td>Hỗ trợ DAV rights cho resource administrator và điều chỉnh việc expose quyền thực tế từ Sabre.</td>
+<td>Nếu frontend và side-service không dùng cùng quyền thực tế với Sabre, cập nhật ACL sẽ tiếp tục bị từ chối.</td>
+<td>PR đang mở; @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1005">#1005</a></td>
+<td>Không gửi email cho booker khi owner chọn “No” trong proposal email.</td>
+<td>Có thể khiến người đặt lịch không nhận được kết quả phản hồi của proposal.</td>
+<td>Issue đang mở; @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">#1250</a></td>
+<td>Thay đổi cho Team Calendar.</td>
+<td>Đây là thay đổi tính năng đang mở; cần theo dõi kết quả quality gate trước khi merge.</td>
+<td>PR đang mở; @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1249">#1249</a></td>
+<td>Thay đổi cách tải cấu hình Sentry đã được đóng.</td>
+<td>Tránh tiếp tục review hoặc triển khai một thay đổi đã xác nhận là không cần thiết.</td>
+<td>Đã đóng; @lethemanh / @Arsnael</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1249#discussion_r3748031888">frontend#1249 review comment</a> đặt câu hỏi liệu một bước có cần thiết không vì cả hai nhánh đều chạy <code>npm run build</code>; chưa đủ tín hiệu để kết luận đã được xử lý.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">frontend#1250</a> có quality gate từng fail do duplication trong <code>EntityDAO.test.tsx</code>, sau đó một lần kiểm tra đã pass. Nên xác nhận đây là trạng thái kiểm tra cuối cùng.</li>
+<li>Các approval từ CodeScene bot được xem là tín hiệu tự động; không có review bất đồng rõ ràng khác ngoài các mục trên.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xác nhận <a href="https://github.com/linagora/twake-calendar-side-service/pull/1006">side-service#1006</a> đã xử lý đầy đủ việc truyền, resolve và expose quyền DAV theo Sabre, đồng thời cập nhật phần frontend không hardcode access.</td>
+<td>@vttranlina / frontend owner</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/621#issuecomment-5236099683">issue#621</a></td>
+</tr>
+<tr>
+<td>Điều tra và sửa lỗi email không gửi cho booker khi owner chọn “No” trong proposal email.</td>
+<td>@hungphan227 / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1005">issue#1005</a></td>
+</tr>
+<tr>
+<td>Xác nhận quality gate cuối cùng và xử lý duplication nếu vẫn còn trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">frontend#1250</a>.</td>
+<td>@lethemanh / reviewer</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">frontend#1250</a></td>
+</tr>
+<tr>
+<td>Kiểm tra và phản hồi câu hỏi về bước build bị lặp trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1249#discussion_r3748031888">frontend#1249</a>, nếu vẫn cần lưu lại quyết định kỹ thuật.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1249#discussion_r3748031888">frontend#1249 review comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua các comment tự động của <code>@coderabbitai</code> và phần lớn thông báo quality gate chi tiết của CodeScene bot.</li>
+<li>Không có activity mới trong <code>esn-sabre</code>, <code>integration-test</code> và <code>helm-twake-calendar</code>; repository Helm chỉ được thu thập từ lịch sử git cục bộ.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

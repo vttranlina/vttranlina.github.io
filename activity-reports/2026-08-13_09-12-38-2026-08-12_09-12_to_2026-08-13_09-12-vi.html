@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-12_09-12_to_2026-08-13_09-12">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-13 02:14 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-12 09:12 → 2026-08-13 09:12 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>3</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>4</strong></span><span class="metric"><span>Reviews</span><strong>10</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>18</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-12_09-12_to_2026-08-13_09-12</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li><strong>esn-sabre:</strong> Phát hiện issue mới về việc bỏ qua validation của ORGANIZER khi dùng WebDAV COPY/MOVE, cần theo dõi rủi ro.</li>
+<li><strong>Side-service &amp; Sabre:</strong> Cần thống nhất chiến lược xử lý các liên kết vấn đề giữa hai repo trước khi review code (chờ PR từ esn-sabre).</li>
+<li><strong>Frontend/Integration:</strong> Các PR thường lệ đã merge và thông qua kiểm tra chất lượng mã nguồn tự động.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Side-service &amp; Sabre Coordination</h3>
+<p>Trong reporting window này, team đang xử lý các vấn đề liên quan đến việc đồng bộ hóa logic giữa side-service và esn-sabre:</p>
+<ul>
+<li>Merge thành công PR #1010 để tách model cập nhật chia sẻ lịch (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1010">pull/1010</a>).</li>
+<li>Thảo luận về chiến lược xử lý các issue liên quan đến nhau giữa hai repo. Team đề xuất chờ PR giải quyết vấn đề gốc ở esn-sabre trước khi review lại (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1008">pull/1008</a>).</li>
+<li>Comment trên <a href="https://github.com/linagora/esn-sabre/issues/436">issues/436</a> xác nhận việc tách ticket riêng cho các trường hợp email notify phức tạp.</li>
+</ul>
+<h3>Esn-Sabre Validation Issue</h3>
+<p>Một vấn đề quan trọng đã được mở ra liên quan đến logic validation:</p>
+<ul>
+<li>Mở issue mới #450 về việc ORGANIZER validation bị bypass qua WebDAV COPY và MOVE (<a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a>). Cần đánh giá mức độ rủi ro bảo mật hoặc chức năng.</li>
+</ul>
+<h3>Frontend &amp; Integration Tests</h3>
+<p>Hoạt động thường lệ với các cải thiện chất lượng mã nguồn:</p>
+<ul>
+<li>Merge PR #1252 liên quan đến Sentry source maps và Jenkinsfile (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1252">pull/1252</a>).</li>
+<li>Các kiểm tra CodeScene tự động đã thông qua cho các PR mới, cải thiện độ phức tạp mã nguồn trong một số file như <code>getTempCalendarsListAsync.ts</code> (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">pull/1250</a>).</li>
+<li>Integration tests mở rộng coverage cho việc di chuyển sự kiện và kiểm soát truy cập (PR #322 đang chờ review) (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/322">pull/322</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td>#450</td>
+<td>ORGANIZER validation bypass via WebDAV COPY/MOVE</td>
+<td>Rủi ro tiềm ẩn về tính toàn vẹn dữ liệu hoặc bảo mật khi thao tác di chuyển sự kiện. Cần xác nhận nguyên nhân và cách xử lý ngay lập tức.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service/esn-sabre</td>
+<td>#1008/#436</td>
+<td>Chiến lược review liên kết vấn đề giữa repo</td>
+<td>Tránh refactor code nhiều lần do thiếu đồng bộ giải pháp tổng thể trước khi implement từng phần riêng lẻ.</td>
+<td>discussion / @vttranlina, @hungphan227</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><strong>Chiến lược xử lý cross-repo:</strong> Team thống nhất nên chờ PR giải quyết vấn đề gốc trên esn-sabre được push lên main trước khi review lại các liên quan ở side-service. Điều này giúp giảm thiểu rủi ro refactor không cần thiết sau đó (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1008#issuecomment-5263518817">pull/1008</a>).</li>
+<li><strong>Issue liên kết:</strong> Ticket side-service #1005 được tạo để xử lý các trường hợp email notify phức tạp, là một phần của vấn đề lớn hơn đang theo dõi trên esn-sabre (<a href="https://github.com/linagora/esn-sabre/issues/436#issuecomment-5264481186">issues/436</a>).</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đánh giá rủi ro và lên kế hoạch xử lý cho issue validation bypass trên esn-sabre.</td>
+<td>@team-calendar-leads hoặc TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+</tr>
+<tr>
+<td>Thống nhất giải pháp tổng thể trước khi implement các fix riêng lẻ liên quan đến vấn đề chia sẻ lịch giữa side-service và sabre.</td>
+<td>@vttranlina, @hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1008">pull/1008</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Các comment từ bot CodeScene về kiểm tra chất lượng mã nguồn (Code Health Gates Passed).</li>
+<li>Comment thường lệ trong PR đã merge hoặc các review inline không có nội dung kỹ thuật mới.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>
