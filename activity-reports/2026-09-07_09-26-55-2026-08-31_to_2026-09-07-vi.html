@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-terra --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-07 02:29 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-31 00:00 → 2026-09-07 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>17</strong></span><span class="metric"><span>Issues</span><strong>9</strong></span><span class="metric"><span>Comments</span><strong>287</strong></span><span class="metric"><span>Reviews</span><strong>114</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>427</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-terra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-08-31 to 2026-09-07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Luồng sửa lỗi personal alarm đang cần phối hợp merge cả Sabre và frontend; hai phía đã được human review/approve nhưng vẫn mở.</li>
+<li>Team đã đổi hướng xử lý <code>ORGANIZER</code>: cho phép lưu/sao chép sự kiện có organizer ngoài, nhưng chuyển kiểm tra quyền sang lúc scheduling; cần POC trước khi chốt thiết kế.</li>
+<li>Bộ E2E đã được bootstrap và merge, nhưng CI vẫn không ổn định giữa các runner Docker; đây là rủi ro chất lượng/release cần theo dõi.</li>
+<li>Một số sửa lỗi UI/booking đã merge, gồm hiển thị màu booking, vị trí modal và phản hồi bật/tắt booking link.</li>
+<li>Lỗi “propose new time” còn mở, có dấu hiệu liên quan timezone và chỉ tái hiện ở một số future event.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Alarm và scheduling</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/471">pull/471</a> sửa merge logic <code>VALARM</code>: phân biệt alarm của organizer và personal alarm bằng namespace UID; xác nhận tương thích ngược hai chiều, nhưng lỗi chỉ được xử lý hoàn toàn khi cả Sabre lẫn frontend đều cập nhật.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1346">pull/1346</a> lưu và tái sử dụng UID <code>VALARM</code> server trả về, nhằm tránh mất personal alarm khi organizer cập nhật alarm chung; đã có hai approval của reviewer.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">pull/329</a> bổ sung regression test cho cập nhật organizer sau khi sự kiện được chuyển vào Team Calendar.</li>
+</ul>
+<h4>ORGANIZER, Team Calendar và WebDAV</h4>
+<ul>
+<li>Thảo luận quanh <a href="https://github.com/linagora/esn-sabre/issues/472">issues/472</a> chốt hướng tách validation khỏi event storage: kiểm soát quyền khi phát scheduling message, để PUT/COPY/MOVE có ACL được phép dùng <code>ORGANIZER</code> bên ngoài.</li>
+<li>Cần POC để chọn vị trí authorize giữa <code>esn-sabre</code>, side-service, hoặc cả hai theo defense-in-depth; <a href="https://github.com/linagora/esn-sabre/issues/473">issues/473</a> theo dõi việc organizer update chưa cập nhật được event đã chuyển vào Team Calendar.</li>
+<li>Với tên resource có ký tự đặc biệt, đã chốt ưu tiên luôn validate <code>baseCalendarId</code> cho COPY/MOVE thay vì chặn sớm theo tên file trong <a href="https://github.com/linagora/esn-sabre/issues/470">issues/470</a>.</li>
+</ul>
+<h4>E2E và CI</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1336">pull/1336</a> bootstrap E2E tests đã merge. Các lỗi build <code>appList.js</code> và timeout timezone test đã được xử lý, nhưng log sau đó vẫn cho thấy runner <code>ci-james-04</code> không tìm được Docker environment và có flaky run trên <code>ci-james-09</code>.</li>
+<li>Các cảnh báo CodeScene diện rộng trên mã E2E đã bị bỏ qua trong bối cảnh test infrastructure; chưa có tín hiệu human review coi đây là blocker.</li>
+</ul>
+<h4>Booking và trải nghiệm frontend</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1047">pull/1047</a> đã merge để bọc visio link sinh từ booking trong footer separator của ICS; lỗi được xác nhận đã sửa.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1341">pull/1341</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1333">pull/1333</a> đã merge, lần lượt cải thiện phản hồi enable/disable booking link và ưu tiên màu booking.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1334">issues/1334</a> vẫn mở: đề xuất thời gian bị lệch timezone; cần tái hiện ổn định vì lỗi dường như chỉ xảy ra với future event.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre / frontend</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/471">pull/471</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1346">pull/1346</a></td>
+<td>Sửa mất personal VALARM khi organizer cập nhật bằng UID server-generated.</td>
+<td>Cần triển khai đồng bộ hai thành phần để xử lý trọn vẹn lỗi alarm.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/472">issues/472</a></td>
+<td>Chuyển authorization <code>ORGANIZER</code> sang scheduling thay vì storage; cần POC chọn enforcement point.</td>
+<td>Cân bằng security, WebDAV interoperability và use case Team Calendar.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre / integration-test</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/473">issues/473</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">pull/329</a></td>
+<td>Organizer update chưa đồng bộ tới sự kiện đã move vào Team Calendar.</td>
+<td>Ảnh hưởng tính đúng đắn iTIP cho lịch nhóm.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1336">pull/1336</a></td>
+<td>E2E framework đã merge nhưng CI Docker còn phụ thuộc runner và có flaky run.</td>
+<td>Giảm độ tin cậy của kiểm thử regression và có thể chặn merge/release.</td>
+<td>merged, cần theo dõi / @Arsnael</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1334">issues/1334</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1347">pull/1347</a></td>
+<td>Sửa lỗi “propose new time” đang mở; báo cáo chỉ ra sai lệch timezone trên future event.</td>
+<td>Có thể tạo lịch ở sai thời điểm cho người dùng.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1047">pull/1047</a></td>
+<td>Chuẩn hóa phần visio link trong ICS của booking event.</td>
+<td>Khắc phục layout email/ICS theo yêu cầu nghiệp vụ.</td>
+<td>merged / @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Thiết kế <code>VALARM</code> dùng UID namespace thay vì custom property đã được thảo luận trong <a href="https://github.com/linagora/esn-sabre/pull/471">pull/471</a>. Reviewer chấp nhận phương án tối giản hiện tại, với caveat organizer update sẽ thêm lại organizer alarm đã bị attendee xóa—đây là hành vi cũ không đổi.</li>
+<li>Hướng xử lý <code>ORGANIZER</code> đã có đồng thuận nguyên tắc nhưng chưa có quyết định implementation: <a href="https://github.com/linagora/esn-sabre/issues/472">issues/472</a> cần POC trước khi chọn Sabre, side-service hay cả hai cùng authorize.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1338">pull/1338</a> từng cho kết quả khác nhau trên testing do deployment PR; sau khi sửa deployment, hành vi modal được xác nhận đúng như mong đợi.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thực hiện POC authorization scheduling và chốt enforcement point cùng phương án defense-in-depth.</td>
+<td>@vttranlina / TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/472">issues/472</a></td>
+</tr>
+<tr>
+<td>Ổn định Docker environment trên toàn bộ CI runner, đặc biệt <code>ci-james-04</code>, rồi xác nhận E2E không còn flaky.</td>
+<td>@Arsnael / CI team</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1336">pull/1336</a></td>
+</tr>
+<tr>
+<td>Cung cấp/tái xác nhận bước tái hiện lỗi propose-new-time theo future event và timezone để hoàn tất kiểm thử PR.</td>
+<td>@chibenwa / @lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1334">issues/1334</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các comment publish Docker image lặp lại, bot review CodeScene trùng lặp và cảnh báo chất lượng chủ yếu trên mã test.</li>
+<li>Đã bỏ qua 45 comment/review từ <code>@coderabbitai</code> theo cấu hình crawl.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

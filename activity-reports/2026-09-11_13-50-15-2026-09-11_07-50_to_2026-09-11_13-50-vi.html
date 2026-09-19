@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-sol --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-11 06:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-09-11 07:50 → 2026-09-11 13:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>5</strong></span><span class="metric"><span>Issues</span><strong>0</strong></span><span class="metric"><span>Comments</span><strong>7</strong></span><span class="metric"><span>Reviews</span><strong>11</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>23</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-sol --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-09-11 07:50 +07 → 2026-09-11 13:50 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+</ul>
+<p>Language: Tiếng Việt</p>
+<h2>Quick read</h2>
+<ul>
+<li>Chuỗi thay đổi liên repo cho ISSUE-473 đang xử lý định tuyến phản hồi Team Calendar khi invitation đã được di chuyển hoặc thiếu metadata ICS: <a href="https://github.com/linagora/esn-sabre/pull/480">esn-sabre pull/480</a>, <a href="https://github.com/linagora/esn-sabre/pull/481">esn-sabre pull/481</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1057">side-service pull/1057</a>.</li>
+<li>Đã bổ sung kiểm thử tích hợp cho phản hồi không có thuộc tính ICS của Team Calendar tại <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/335">integration-tests pull/335</a>.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/480">esn-sabre pull/480</a> vẫn không đạt CodeScene quality gate do hàm có tỷ lệ tham số kiểu chuỗi cao; cần xử lý hoặc chấp nhận ngoại lệ trước khi merge.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">integration-tests pull/329</a> đang chờ upstream <a href="https://github.com/linagora/esn-sabre/pull/480">esn-sabre pull/480</a>, tạo dependency cần theo dõi.</li>
+<li>API quản trị <code>POST /contacts?action=republish</code> được đề xuất tại <a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">side-service pull/1056</a>, nhưng test đang bị CodeScene cảnh báo trùng lặp mã.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Định tuyến phản hồi Team Calendar</h3>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/480">esn-sabre pull/480</a> triển khai hướng lưu metadata phía database để định tuyến scheduling message tới invitation Team Calendar đã di chuyển; Docker image <code>linagora/esn-sabre-pr:480</code> đã được xuất bản để kiểm thử.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/481">esn-sabre pull/481</a> và <a href="https://github.com/linagora/twake-calendar-side-service/pull/1057">side-service pull/1057</a> xử lý trường hợp phản hồi không có metadata Team Calendar trong ICS. Cả hai đã qua các kiểm tra CodeScene được ghi nhận.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/335">integration-tests pull/335</a> bổ sung coverage CalDAV cho trường hợp thiếu thuộc tính ICS và đã qua ba quality gate.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1057">side-service pull/1057</a> cho biết hai test end-to-end về participation link cho attendee nội bộ và bên ngoài đã có từ PR trước đó.</li>
+</ul>
+<h3>Common contacts</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">side-service pull/1056</a> thêm endpoint republish toàn bộ contact qua <code>POST /contacts?action=republish</code>.</li>
+<li>Quality gate hiện thất bại vì bốn test case trong <code>ContactRoutesTest.java</code> có cấu trúc lặp lại; đây là vấn đề maintainability, chưa có tín hiệu về lỗi chức năng.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/480">pull/480</a></td>
+<td>Định tuyến scheduling message tới invitation Team Calendar đã di chuyển bằng metadata lưu phía server.</td>
+<td>Là thay đổi nền tảng cho chuỗi sửa ISSUE-473 và đang chặn regression test phụ thuộc; quality gate vẫn chưa đạt.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/481">pull/481</a></td>
+<td>Định tuyến phản hồi Team Calendar khi ICS không chứa metadata tương ứng.</td>
+<td>Giúp xử lý phản hồi đáng tin cậy thay vì phụ thuộc hoàn toàn vào thuộc tính ICS.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1057">pull/1057</a></td>
+<td>Resolve delegated event path khi thiếu Team Calendar ICS metadata.</td>
+<td>Hoàn thiện phần side-service của luồng ISSUE-473 xuyên nhiều repository.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/335">pull/335</a></td>
+<td>Kiểm thử phản hồi Team Calendar không có thuộc tính ICS.</td>
+<td>Cung cấp regression coverage cho hành vi mới; quality gate đã đạt.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">pull/1056</a></td>
+<td>Thêm endpoint quản trị để republish toàn bộ contact.</td>
+<td>Hỗ trợ phục hồi/đồng bộ lại dữ liệu contact nhưng cần xử lý cảnh báo duplication trong test.</td>
+<td>open / @hungphan227</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Chưa có human review đáng kể trong reporting window; các approval và cảnh báo đều đến từ CodeScene bot, nên chưa đủ tín hiệu để kết luận các PR đã sẵn sàng merge về mặt nghiệp vụ và kiến trúc.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/480#discussion_r3986019376">esn-sabre pull/480 review comment</a> vẫn cảnh báo <code>TeamCalendarSchedulingRecipientPlugin.php</code> có tỷ lệ tham số chuỗi 42,1%, vượt ngưỡng 39%; cần quyết định refactor hay suppress có lý do.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1056#discussion_r3986108225">side-service pull/1056 review comment</a> chỉ ra duplication giữa bốn test republish contact.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hoàn tất hoặc thống nhất xử lý quality gate của <code>TeamCalendarSchedulingRecipientPlugin.php</code>, sau đó unblock regression test phụ thuộc.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/480#discussion_r3986019376">pull/480 review comment</a></td>
+</tr>
+<tr>
+<td>Refactor phần setup/assertion dùng chung của các test republish contact, hoặc ghi rõ lý do suppress cảnh báo duplication.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1056#discussion_r3986108225">pull/1056 review comment</a></td>
+</tr>
+<tr>
+<td>Bổ sung human review cho chuỗi PR ISSUE-473 và xác nhận thứ tự merge/deploy giữa esn-sabre, side-service và integration tests.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/480">esn-sabre pull/480</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1057">side-service pull/1057</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/335">integration-tests pull/335</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các review CodeScene lặp lại với cùng kết quả và nội dung quảng bá công cụ.</li>
+<li>Không có issue hoặc discussion mới trong reporting window.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

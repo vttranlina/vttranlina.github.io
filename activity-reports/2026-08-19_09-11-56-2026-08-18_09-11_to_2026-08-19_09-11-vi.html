@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-18 09:11 +07 -&gt; 2026-08-19 09:11 +07">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-19 02:14 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-18 09:11 → 2026-08-19 09:11 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>3</strong></span><span class="metric"><span>Issues</span><strong>3</strong></span><span class="metric"><span>Comments</span><strong>17</strong></span><span class="metric"><span>Reviews</span><strong>13</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>36</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-18 09:11 +07 -&gt; 2026-08-19 09:11 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Frontend có nhiều activity nhất: public booking mở thêm 2 PR về expanded/extended fields (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1254">pull/1254</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1255">pull/1255</a>) và 3 issue mới về rich text/event preview/extra attendees (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1256">issues/1256</a>, <a href="https://github.com/linagora/twake-calendar-frontend/issues/1257">issues/1257</a>, <a href="https://github.com/linagora/twake-calendar-frontend/issues/1258">issues/1258</a>).</li>
+<li>Team Calendar event preview trên frontend được cải thiện để hiển thị rõ ngữ cảnh team calendar; feedback reviewer tích cực trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">pull/1250</a>.</li>
+<li>Sabre <a href="https://github.com/linagora/esn-sabre/pull/461">pull/461</a> đang có lỗi test do thiếu class <code>ESN\Utils\Env</code>, cần xử lý trước khi merge.</li>
+<li>Side-service mở <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a> cho Common Contact outbound; có discussion kỹ thuật quanh RFC 9553 / JSContact trên <a href="https://github.com/linagora/twake-calendar-side-service/issues/989">issues/989</a>.</li>
+<li>Integration test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a> chốt kỳ vọng booking notification: organizer mặc định <code>NEEDS-ACTION</code> và tránh gửi email trùng.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Common Contact / RFC 9553</h4>
+<ul>
+<li>Side-service mở <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a> cho Common Contact outbound.</li>
+<li>Trên <a href="https://github.com/linagora/twake-calendar-side-service/issues/989#issuecomment-5323666227">issues/989 comment</a>, team ghi nhận RFC 9553 còn mới và các thư viện hiện tại như <code>ez-vcard</code>, <code>ical4j</code> chưa hỗ trợ API phù hợp; đang thử hướng dùng <code>jscontact-tools</code>.</li>
+<li>Quan điểm review: dùng JSContact/RFC 9553 vẫn tốt hơn gửi raw ICS quanh contact payload (<a href="https://github.com/linagora/twake-calendar-side-service/issues/989#issuecomment-5323795437">issues/989 comment</a>).</li>
+<li>CodeScene báo duplication trong test của <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a>, có thể cần refactor hoặc suppress nếu duplication được chấp nhận trong test (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3803119025">pull/1013 review comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3803119078">pull/1013 review comment</a>).</li>
+</ul>
+<h4>Sabre / Team Calendar</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/460">pull/460</a> tiếp tục xử lý bug thiếu <code>X-OPENPAAS-TEAM-CALENDAR-ID</code> sau khi MOVE event từ Personal sang Team Calendar; CodeScene ghi nhận có cải thiện code health nhưng vẫn fail gate do conditional complexity trong <code>TeamCalendarMetadataPlugin.php</code>.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/461">pull/461</a> về việc hệ thống hóa <code>config.json</code> có test failures: <code>Class &quot;ESN\Utils\Env&quot; not found</code> trong <code>MongoTest</code>, cần fix dependency/autoload hoặc test bootstrap (<a href="https://github.com/linagora/esn-sabre/pull/461#issuecomment-5324413188">pull/461 comment</a>).</li>
+</ul>
+<h4>Booking / Notifications</h4>
+<ul>
+<li>Integration test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a> làm rõ rule khi booker tạo event: organizer mặc định <code>NEEDS-ACTION</code>, đồng thời tránh gửi duplicate emails (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307#issuecomment-5322693466">pull/307 comment</a>).</li>
+<li>Review trên <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a> nhìn chung đồng thuận, chỉ có góp ý nhỏ về filter message theo attendee email (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307#discussion_r3801161681">pull/307 review comment</a>).</li>
+</ul>
+<h4>Frontend / Public Booking và Event Preview</h4>
+<ul>
+<li>Public booking có 2 PR mới: tạo extended fields khi booking creation (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1254">pull/1254</a>) và hiển thị expanded fields trong public booking (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1255">pull/1255</a>). <a href="https://github.com/linagora/twake-calendar-frontend/pull/1254">pull/1254</a> đã được @chibenwa approve.</li>
+<li>Follow-up cho việc hiển thị extra attendees trong public booking đã được tách thành <a href="https://github.com/linagora/twake-calendar-frontend/issues/1258">issues/1258</a>, liên kết từ <a href="https://github.com/linagora/twake-calendar-frontend/pull/1255#issuecomment-5323794615">pull/1255 comment</a>.</li>
+<li>Rich text event description được mở qua <a href="https://github.com/linagora/twake-calendar-frontend/issues/1256">issues/1256</a>; discussion đang nghiêng về bắt buộc support hiển thị, còn editor rich text khi tạo event là “could” và cần chốt thêm. Scope issue hiện được giữ cho event creation (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1256#issuecomment-5323587262">issues/1256 comment</a>, <a href="https://github.com/linagora/twake-calendar-frontend/issues/1256#issuecomment-5323725012">issues/1256 comment</a>).</li>
+<li>Team Calendar event preview trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1250">pull/1250</a> đã được cải thiện để người dùng thấy event thuộc team calendar; feedback từ @chibenwa rất tích cực (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1250#issuecomment-5326660036">pull/1250 comment</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/461">pull/461</a></td>
+<td>Test đang fail vì thiếu <code>ESN\Utils\Env</code> trong <code>MongoTest</code>.</td>
+<td>Có thể block merge của thay đổi config.json và gây regression nếu bootstrap/config chưa đúng.</td>
+<td>chưa rõ / TBD</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1256">issues/1256</a></td>
+<td>Cần hỗ trợ formatted event descriptions; display là bắt buộc, editor rich text còn cần quyết định.</td>
+<td>Ảnh hưởng UX event description và cần policy sanitize/defensive rendering để tránh CSS/heading không mong muốn.</td>
+<td>open / @vttranlina, cần sync @Bobpodvalnyi</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a></td>
+<td>Common Contact outbound đang triển khai theo hướng JSContact/RFC 9553.</td>
+<td>Quyết định format contact payload ảnh hưởng integration lâu dài; thư viện hiện tại chưa hỗ trợ đầy đủ RFC mới.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/460">pull/460</a></td>
+<td>Fix metadata Team Calendar sau MOVE event từ Personal sang Team Calendar.</td>
+<td>Cần để frontend/event preview dựa vào <code>X-OPENPAAS-TEAM-CALENDAR-ID</code> hiển thị đúng ngữ cảnh team calendar.</td>
+<td>đang review / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1254">pull/1254</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1255">pull/1255</a></td>
+<td>Public booking thêm extended/expanded fields.</td>
+<td>Mở rộng booking flow; cần đảm bảo phần hiển thị public và creation đồng bộ.</td>
+<td>open / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a></td>
+<td>Bổ sung kỳ vọng notification email cho booking event chưa accepted.</td>
+<td>Giúp khóa behavior tránh duplicate emails và đúng trạng thái organizer <code>NEEDS-ACTION</code>.</td>
+<td>đang review / @vttranlina</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Rich text description đang có open question: bắt buộc render basic formatting, nhưng việc cho phép user tự nhập rich text khi tạo event cần được chốt với @Bobpodvalnyi; hướng đề xuất là sanitize mạnh, bỏ CSS styling và heading (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1256#issuecomment-5323587262">issues/1256 comment</a>).</li>
+<li>Side-service Common Contact có tín hiệu chọn hướng JSContact thay vì raw ICS, nhưng chưa đủ tín hiệu về mức độ ổn định/thích hợp của library mới trong production (<a href="https://github.com/linagora/twake-calendar-side-service/issues/989#issuecomment-5323666227">issues/989 comment</a>).</li>
+<li>CodeScene gate fail trên <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a> và <a href="https://github.com/linagora/esn-sabre/pull/460">pull/460</a> chủ yếu là duplication/complex conditional; cần phân biệt blocker thật với noise của static analysis.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sửa lỗi test <code>Class &quot;ESN\Utils\Env&quot; not found</code> trong Sabre PR config.json, hoặc cập nhật test bootstrap/autoload tương ứng.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/461#issuecomment-5324413188">pull/461 comment</a></td>
+</tr>
+<tr>
+<td>Chốt scope rich text: chỉ render hay có editor khi tạo event; xác định rule sanitize HTML/basic styling.</td>
+<td>@vttranlina, @Bobpodvalnyi</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1256">issues/1256</a></td>
+</tr>
+<tr>
+<td>Quyết định xử lý CodeScene duplication trong test Common Contact: refactor helper hoặc suppress có lý do.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3803119025">pull/1013 review comment</a></td>
+</tr>
+<tr>
+<td>Theo dõi implementation hiển thị extra attendees trong public booking.</td>
+<td>@lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1258">issues/1258</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua bot/noise từ @coderabbitai và các comment chỉ thông báo Docker image đã publish.</li>
+<li>Các approval CodeScene pass lặp lại không được liệt kê chi tiết, trừ khi có gate fail hoặc signal code health đáng chú ý.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

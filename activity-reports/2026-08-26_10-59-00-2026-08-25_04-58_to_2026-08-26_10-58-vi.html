@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-terra --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-26 04:01 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-25 04:58 → 2026-08-26 10:58 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>7</strong></span><span class="metric"><span>Issues</span><strong>6</strong></span><span class="metric"><span>Comments</span><strong>34</strong></span><span class="metric"><span>Reviews</span><strong>23</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>70</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-terra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-08-25 04:58 +07 → 2026-08-26 10:58 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Frontend có 7 PR mới; đã merge sửa quyền quản trị resource và cập nhật icon người tham gia team calendar qua <a href="https://github.com/linagora/twake-calendar-frontend/pull/1281">pull/1281</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1283">pull/1283</a>.</li>
+<li>Luồng tạo event không có organiser trong team calendar đang chờ xử lý; yêu cầu bắt buộc là người tạo vẫn phải là organiser khi event có attendees trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1289">pull/1289</a>.</li>
+<li>Thiết kế kiểm soát quyền COPY/MOVE ở Sabre chưa chốt: không chấp nhận kiểm tra đơn giản theo <code>baseId</code>; cần validation đúng cho team calendar trong <a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a>.</li>
+<li>Một số cải tiến UI modal/freebusy/attachment đang mở và có review tích cực; <a href="https://github.com/linagora/twake-calendar-frontend/pull/1284">pull/1284</a> đã được xác nhận hành vi mở rộng theo vùng trống.</li>
+<li>Không có activity ở repository integration tests; side-service chỉ có review/giải quyết conflict, chưa có PR mới.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Team calendar và quyền organiser</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1289">pull/1289</a> cho phép tạo event team calendar không có organiser. Review chấp thuận có điều kiện: nếu thêm attendees, người tạo phải được đặt làm organiser; tác giả xác nhận đã đáp ứng bằng video kiểm chứng.</li>
+<li>Ở Sabre, thảo luận <a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a> bác bỏ phương án chỉ cho COPY/MOVE khi cùng <code>baseId</code>: team calendar là ngoại lệ hợp lệ. Cần mô hình hóa và test validation theo quyền/organiser đúng thay vì hard-code ngoại lệ.</li>
+<li>Tình huống event của attendee được COPY/MOVE giữa các calendar của cùng attendee vẫn chưa có validation organiser phù hợp; đề xuất hiện tại là lỗi 500 và mở frontend bug nếu UI tạo luồng này.</li>
+</ul>
+<h4>Frontend UI và khả năng sử dụng</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1284">pull/1284</a> sửa modal kéo-thả để mở rộng về phía không gian còn trống; đã được @lethemanh duyệt sau khi xác nhận modal mở xuống ở đầu trang và mở lên ở cuối trang.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1285">pull/1285</a> điều chỉnh margin modal full-screen trên mobile, đã có approval nhưng vẫn đang mở.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1290">pull/1290</a> bổ sung icon/tooltip trạng thái freebusy không rõ. Cần chỉnh wording tooltip theo đề xuất “Unknown status for remote participants”.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1286">issues/1286</a> chốt hướng hiển thị booking time slot indicator: dùng màu booking link tương ứng và thử render như FullCalendar event đứng đầu danh sách.</li>
+</ul>
+<h4>Các thay đổi đã merge</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1281">pull/1281</a> đã merge sửa xử lý quyền resource administrator, với nhiều approval.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1283">pull/1283</a> đã merge thay icon cạnh người tham gia team calendar trong event preview.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a> về common contact inbound được reviewer chấp nhận; các edge case được chuyển sang ticket follow-up. CodeScene vẫn báo chất lượng mã mới dưới ngưỡng ở 5 file.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+<td>Cần chốt validation COPY/MOVE cho event, bao gồm team calendar và event mà người thao tác chỉ là attendee.</td>
+<td>Kiểm soát quyền sai có thể chặn luồng hợp lệ hoặc tạo lỗi 500 trong thao tác lịch.</td>
+<td>open / @hungphan227, @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1289">pull/1289</a></td>
+<td>Cho phép event team calendar không organiser, nhưng phải giữ invariant người tạo là organiser khi có attendees.</td>
+<td>Liên quan trực tiếp tính đúng đắn organiser/attendee và tương thích validation backend.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1290">pull/1290</a></td>
+<td>Bổ sung trạng thái freebusy không xác định; wording tooltip cần được cập nhật.</td>
+<td>Tránh thông điệp UI khó hiểu cho remote participants.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1284">pull/1284</a></td>
+<td>Sửa hướng mở rộng của modal kéo-thả theo không gian khả dụng.</td>
+<td>Cải thiện UX modal và đã có xác nhận review.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a></td>
+<td>Common contact inbound được chấp nhận, nhưng CodeScene báo 5 file mới có code health thấp.</td>
+<td>Cần theo dõi debt kỹ thuật; edge case đã được hoãn sang ticket khác.</td>
+<td>open / TBD</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Với <a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a>, quyết định kỹ thuật là không dùng điều kiện “cùng <code>baseId</code>” làm luật chính và không chỉ thêm ngoại lệ team calendar; cần viết validation đúng kèm test.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1289">pull/1289</a> có phụ thuộc ngữ nghĩa với validation backend: cần xác minh invariant organiser ở frontend phù hợp với luật COPY/MOVE đang được chốt ở Sabre.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a> có quality gate CodeScene thất bại do duplication và constructor over-injection; chưa đủ tín hiệu để xác định đây có phải blocker merge hay không.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Định nghĩa, triển khai và test validation COPY/MOVE bao phủ team calendar lẫn event do attendee sở hữu calendar.</td>
+<td>@hungphan227 / @chibenwa</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+</tr>
+<tr>
+<td>Xác nhận test cho trường hợp tạo event team calendar có attendees, bảo đảm creator luôn là organiser trước khi merge.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1289">pull/1289</a></td>
+</tr>
+<tr>
+<td>Cập nhật wording tooltip trạng thái freebusy không xác định.</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1290">pull/1290</a></td>
+</tr>
+<tr>
+<td>Quyết định xử lý hoặc ghi nhận debt từ các cảnh báo CodeScene của common contact inbound.</td>
+<td>@vttranlina / @chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các thông báo publish Docker image, approval lặp lại từ CodeScene và 16 comment/review từ CodeRabbit.</li>
+<li>Không có activity tại repository integration tests trong reporting window này.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

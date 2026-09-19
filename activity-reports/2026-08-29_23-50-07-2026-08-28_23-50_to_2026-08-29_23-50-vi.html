@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: qwen3.5:9b --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-29 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-28 23:50 → 2026-08-29 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>0</strong></span><span class="metric"><span>Issues</span><strong>0</strong></span><span class="metric"><span>Comments</span><strong>6</strong></span><span class="metric"><span>Reviews</span><strong>8</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>14</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: qwen3.5:9b --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-08-28 23:50 +07 -&gt; 2026-08-29 23:50 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<h2>Quick read</h2>
+<ul>
+<li><strong>esn-sabre</strong>: PR #465 requires logic implementation for ORGANIZER validation on WebDAV COPY/MOVE operations.</li>
+<li><strong>side-service</strong>: PR #1043 regarding booking links is validated with @Bobpodvalnyi.</li>
+<li><strong>frontend</strong>: Added booking link placeholder, but CodeScene flagged complexity issues in <code>BookingLinkOverlay.tsx</code>.</li>
+<li><strong>General</strong>: No new commits or major releases in this 24-hour window.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>esn-sabre</h3>
+<ul>
+<li>Fix bug: ORGANIZER validation bypassed by WebDAV COPY and MOVE (<a href="https://github.com/linagora/esn-sabre/pull/465">pull/465</a>).
+<ul>
+<li>Logic needs to be implemented so events can be moved/copied if the organizer is valid for the destination.</li>
+</ul>
+</li>
+<li>Upgrade sabre/vobject to the 5.0 development branch (<a href="https://github.com/linagora/esn-sabre/pull/469">pull/469</a>).
+<ul>
+<li>Docker image published for this PR: linagora/esn-sabre-pr:469.</li>
+</ul>
+</li>
+</ul>
+<h3>side-service</h3>
+<ul>
+<li>PR #1043 <a href="https://github.com/linagora/twake-calendar-side-service/pull/1043">ISSUE-1042 Booking link should account for personal calendar</a> approved by bot and validated functionally with @Bobpodvalnyi.</li>
+<li>Discussion on unsent mails management (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1040">pull/1040</a>).
+<ul>
+<li>Decision made to keep admin responsibility for sorting out issues manually to avoid over-complicating design.</li>
+</ul>
+</li>
+</ul>
+<h3>frontend</h3>
+<ul>
+<li>Added booking link placeholder (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a>).
+<ul>
+<li>CodeScene quality gate failed due to complexity in <code>useBookingLinkPositions</code> method (Complex Method).</li>
+</ul>
+</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td>#465</td>
+<td>Fix bug: ORGANIZER validation bypassed by WebDAV COPY and MOVE</td>
+<td>Logic must be implemented to handle valid organizer for destination in MOVE/COPY operations.</td>
+<td>changes_requested / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td>#1043</td>
+<td>Booking link PR validated with @Bobpodvalnyi</td>
+<td>Functional behavior confirmed before merge.</td>
+<td>approved / @Bobpodvalnyi</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><strong>esn-sabre</strong>: Inline comment on PR #465 emphasizes the need to implement logic for valid organizer validation during MOVE/COPY operations.</li>
+<li><strong>side-service</strong>: Comment on PR #1040 suggests keeping design simple by letting admins handle unsent mail issues manually rather than over-engineering.</li>
+<li><strong>frontend</strong>: CodeScene bot flagged <code>BookingLinkOverlay.tsx</code> for complexity violations (3 rules), suggesting potential refactoring needed in the future.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implement MOVE/COPY logic for valid ORGANIZER validation</td>
+<td>@chibenwa or team lead</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/465">pull/465</a></td>
+</tr>
+<tr>
+<td>Review complexity violations in <code>BookingLinkOverlay.tsx</code> to prevent future gate failures</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>CodeScene bot quality gate comments (e.g., &quot;New code is healthy&quot;, &quot;Gates Passed&quot;).</li>
+<li>Docker image publish notifications and local git collection warnings.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

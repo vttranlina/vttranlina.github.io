@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-08 to 2026-08-15">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-14 10:09 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-08 00:00 → 2026-08-15 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>13</strong></span><span class="metric"><span>Issues</span><strong>5</strong></span><span class="metric"><span>Comments</span><strong>41</strong></span><span class="metric"><span>Reviews</span><strong>56</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>115</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-08 00:00 +07 → 2026-08-15 00:00 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Đã vá và merge lỗ hổng lộ dữ liệu chi tiết của sự kiện private/CONFIDENTIAL tới delegated users qua <a href="https://github.com/linagora/esn-sabre/pull/454">pull/454</a>; đồng thời bổ sung test lọc thuộc tính private qua <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/323">pull/323</a>.</li>
+<li>Luồng email Public Agenda đang được gom lại để xử lý thống nhất: bản sửa riêng cho email khi owner từ chối đã đóng <a href="https://github.com/linagora/twake-calendar-side-service/pull/1008">pull/1008</a>, chờ giải pháp tổng thể ở <a href="https://github.com/linagora/esn-sabre/pull/458">pull/458</a>.</li>
+<li>Đồng bộ contacts đã có WebSocket notification qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/1009">pull/1009</a>, nhưng JSON API cho <code>sync-token REPORT</code> vẫn là khoảng trống cần triển khai tại <a href="https://github.com/linagora/esn-sabre/issues/456">issues/456</a>.</li>
+<li>Có hai rủi ro chức năng mở ở Sabre: COPY/MOVE có thể bỏ qua kiểm tra <code>ORGANIZER</code> (<a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a>) và MOVE từ Personal sang Team Calendar làm mất team-calendar ID (<a href="https://github.com/linagora/esn-sabre/issues/457">issues/457</a>).</li>
+<li>Các cải tiến quyền DAV cho resource admin đã merge, nhưng ticket gốc xác nhận vẫn còn phần WebAdmin/API/frontend cần hoàn thiện (<a href="https://github.com/linagora/twake-calendar-side-service/issues/621">issues/621</a>).</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Bảo mật và cô lập dữ liệu</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/454">pull/454</a> đã merge để ngăn private/CONFIDENTIAL event làm lộ dữ liệu trong <code>VALARM</code> lồng nhau và custom properties; phạm vi này được bổ sung regression coverage tại <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/323">pull/323</a>.</li>
+<li>Đã merge tài liệu review authorization/data isolation ở <a href="https://github.com/linagora/esn-sabre/pull/455">pull/455</a>. Review yêu cầu mô tả chính xác cross-domain scheduling, impersonation và các tính năng thực sự hỗ trợ cross-tenant.</li>
+</ul>
+<h4>Public Agenda và scheduling</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/458">pull/458</a> đang mở để chỉ schedule tới booker khi PUT/DELETE booking event chưa được chấp nhận; đây là hướng xử lý tổng thể cho các email notification Public Agenda phân tán, bao gồm <a href="https://github.com/linagora/twake-calendar-side-service/issues/1005">issues/1005</a>.</li>
+<li>PR hiện bị CodeScene chặn bởi nested complexity trong <code>PublicAgendaScheduleUtils.recipientsExceptBooker</code>; cần xử lý hoặc chấp nhận có chủ đích trước khi merge.</li>
+</ul>
+<h4>Contacts sync và kiểm thử</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1009">pull/1009</a> đã merge AMQP consumer để đẩy thay đổi sync token address book qua WebSocket. Integration test hiện bao phủ create/update/delete nhưng chưa xác minh <code>sync-collection REPORT</code>.</li>
+<li><a href="https://github.com/linagora/esn-sabre/issues/456">issues/456</a> theo dõi việc đưa sync-token REPORT cho address book lên JSON API; <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/324">pull/324</a> đang bổ sung contract test CardDAV và đã được approve.</li>
+</ul>
+<h4>Team Calendar và resource permissions</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/322">pull/322</a> đã merge coverage cho event move và access control Team Calendar, nhưng <a href="https://github.com/linagora/esn-sabre/issues/457">issues/457</a> vừa phát hiện MOVE Personal → Team Calendar làm mất <code>X-OPENPAAS-TEAM-CALENDAR-ID</code>.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1006">pull/1006</a> đã merge hỗ trợ DAV rights cho resource admin. Tuy nhiên WebAdmin vẫn luôn gán <code>dav:read-write</code>, API chưa phản ánh đầy đủ quyền thực từ Sabre, và frontend hardcode access 5 gây ACL update bị Sabre từ chối (<a href="https://github.com/linagora/twake-calendar-side-service/issues/621">issues/621</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/454">pull/454</a></td>
+<td>Vá lộ dữ liệu private/CONFIDENTIAL qua VALARM và custom properties cho delegated users.</td>
+<td>Bảo vệ dữ liệu sự kiện nhạy cảm; đã có regression test tại <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/323">pull/323</a>.</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/458">pull/458</a></td>
+<td>Giải pháp scheduling/email tập trung cho booking event chưa được chấp nhận, chỉ gửi tới booker.</td>
+<td>Là dependency cho các lỗi Public Agenda; gate chất lượng đang fail do độ phức tạp lồng nhau.</td>
+<td>open / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+<td>WebDAV COPY/MOVE có thể bỏ qua validation <code>ORGANIZER</code>.</td>
+<td>Có thể tạo/thay đổi event theo đường đi né validation hiện có.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/457">issues/457</a></td>
+<td>MOVE event từ Personal sang Team Calendar làm mất team-calendar ID.</td>
+<td>Có nguy cơ sai ngữ cảnh Team Calendar và metadata event sau khi di chuyển.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/456">issues/456</a></td>
+<td>Cần hỗ trợ <code>sync-token REPORT</code> cho contacts qua JSON API.</td>
+<td>WebSocket sync token đã có, nhưng client chưa thể truy vấn create/update/delete contacts theo token trên JSON API.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/621">issues/621</a></td>
+<td>Phần backend DAV rights đã merge qua <a href="https://github.com/linagora/twake-calendar-side-service/pull/1006">pull/1006</a>, còn thiếu hoàn thiện WebAdmin/API/frontend.</td>
+<td>Quyền resource admin hiển thị và áp dụng chưa nhất quán; ACL update có thể bị từ chối.</td>
+<td>open / @vttranlina</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Review <a href="https://github.com/linagora/twake-calendar-side-service/pull/1000">pull/1000</a> nêu rủi ro N+1 khi enrich attendee/resource cho danh sách booking links; chưa có kết luận rõ ràng về việc batch-resolve IDs hay chấp nhận chi phí hiện tại.</li>
+<li>Với <a href="https://github.com/linagora/esn-sabre/pull/455">pull/455</a>, review đã chốt cần phân biệt cross-domain scheduling với các hành vi khác khi gặp cross-domain, thay vì mô tả chung là cross-tenant.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1009">pull/1009</a> được approve, nhưng review xác nhận JSON API chưa tồn tại; không nên hiểu WebSocket notification là đã hoàn tất khả năng sync contacts end-to-end.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hoàn thiện và review giải pháp tổng thể Public Agenda, đồng thời xử lý quyết định về quality gate trước khi merge.</td>
+<td>@hungphan227 / @vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/458">pull/458</a></td>
+</tr>
+<tr>
+<td>Lập kế hoạch sửa validation <code>ORGANIZER</code> cho COPY/MOVE và regression coverage tương ứng.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+</tr>
+<tr>
+<td>Điều tra và sửa việc mất <code>X-OPENPAAS-TEAM-CALENDAR-ID</code> khi MOVE sang Team Calendar.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/457">issues/457</a></td>
+</tr>
+<tr>
+<td>Triển khai JSON sync-token REPORT cho contacts và bổ sung test xác minh luồng REPORT, không chỉ WebSocket.</td>
+<td>@vttranlina / TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/456">issues/456</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các approval lặp lại, thông báo Docker image và phần lớn nhận xét tự động từ CodeScene không tạo blocker riêng.</li>
+<li>Không đưa các thay đổi chore/configuration nhỏ đã merge vào phần trọng tâm.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

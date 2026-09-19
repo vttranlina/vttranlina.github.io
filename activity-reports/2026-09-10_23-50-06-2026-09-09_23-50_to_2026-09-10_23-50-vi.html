@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: qwen3.5:9b --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-10 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-09-09 23:50 → 2026-09-10 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>1</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>7</strong></span><span class="metric"><span>Reviews</span><strong>14</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>23</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: qwen3.5:9b --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-09-09 23:50 -&gt; 2026-09-10 23:50</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Issue #1360 về lệch ngày tháng trong view tháng cần được xử lý.</li>
+<li>Thảo luận về logic kích hoạt domain VSORA để tránh vấn đề migration trong side-service.</li>
+<li>Nhiều PR frontend đã được approve và publish Docker image mới.</li>
+<li>Thêm test regression mới cho integration-test, cải thiện code health.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Frontend</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1359">pull/1359</a> remove animation loop loading app component đã được approve và merge.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1360">issues/1360</a> báo cáo lỗi lệch ngày tháng trong view tháng cần fix.</li>
+</ul>
+<h3>Side-service</h3>
+<ul>
+<li>Thảo luận về logic kích hoạt domain cho VSORA (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a>). Đề xuất tạo domain ngay sau khi verify thay vì đợi MX/SPF/DMARC để tránh vấn đề migration.</li>
+</ul>
+<h3>Integration Tests</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">pull/329</a> Add regression test for organizer update after team move đã được approve.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/334">pull/334</a> Drop CALDAV_ORGANIZER_VALIDATION giúp cải thiện Code Health.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td>#1360</td>
+<td>Calendar month view day offset</td>
+<td>Bug ảnh hưởng hiển thị lịch tháng, cần điều chỉnh offset.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td>#1055</td>
+<td>Logic kích hoạt domain VSORA</td>
+<td>Cần chốt strategy validation domain trước khi migrate để tránh bounce mail.</td>
+<td>open / @Arsnael, @Crash--</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a>: Thảo luận về việc implement interface validate EmailSubmission trong James project để đồng bộ hóa domain. Cần cân nhắc side effect bounce mail trước khi MX/SPF/DMARC được tạo.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fix bug lệch ngày tháng view tháng</td>
+<td>@Eriikah hoặc team frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1360">issues/1360</a></td>
+</tr>
+<tr>
+<td>Review strategy kích hoạt domain VSORA</td>
+<td>@Crash--, @rezk2ll</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bot comments (CodeScene), Docker image notifications, rebase comments.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

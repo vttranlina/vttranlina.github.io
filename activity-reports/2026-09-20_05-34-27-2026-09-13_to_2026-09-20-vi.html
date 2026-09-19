@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-sol --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-19 22:36 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-09-13 00:00 → 2026-09-20 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>10</strong></span><span class="metric"><span>Issues</span><strong>7</strong></span><span class="metric"><span>Comments</span><strong>56</strong></span><span class="metric"><span>Reviews</span><strong>46</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>119</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-sol --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-09-13 00:00 +07 → 2026-09-20 00:00 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Tiếng Việt</p>
+<h2>Quick read</h2>
+<ul>
+<li>Đã phát hiện luồng xóa dữ liệu người dùng không thu hồi chia sẻ lịch và đăng ký công khai; bản sửa đang mở tại <a href="https://github.com/linagora/twake-calendar-side-service/pull/1063">pull/1063</a> và đã nhận phản hồi tích cực.</li>
+<li>Hai lỗi quyền trên address book clone đã được sửa, có integration test, phát hành trong Sabre <code>2.4.5.12</code> và cập nhật lên PROD LNG qua <a href="https://github.com/linagora/esn-sabre/pull/485">pull/485</a> và <a href="https://github.com/linagora/esn-sabre/pull/487">pull/487</a>.</li>
+<li>Tối ưu việc đọc event khi mở đã lộ regression timezone nghiêm trọng trong quá trình review; <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365">pull/1365</a> đã bổ sung cách lấy timezone từ <code>VTIMEZONE</code> và sửa xử lý recurrence, nhưng vẫn đang mở và cần CI xác nhận đầy đủ.</li>
+<li>Lỗi frontend bị kẹt tại <code>/error</code> khi tải danh sách lịch thất bại đã được sửa và merge trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1367">pull/1367</a>.</li>
+<li>Endpoint republish common contacts đã được merge trong <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a>, với quy ước <code>scope=domain</code>, <code>scope=user</code>, hoặc không có scope để xử lý cả hai.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Xóa dữ liệu người dùng và chia sẻ lịch</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1062">issues/1062</a> xác định việc xóa dữ liệu người dùng chưa hủy calendar sharing và public subscription, có nguy cơ để lại quyền/trạng thái không hợp lệ.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1063">pull/1063</a> triển khai thu hồi các liên kết này trước khi xóa dữ liệu. PR đang mở, đã qua quality gates và nhận <code>+1</code>, chưa thấy yêu cầu thay đổi từ human review.</li>
+</ul>
+<h3>Address book clone và quyền quản trị</h3>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/485">pull/485</a> sửa việc ghi jCard/JSON contact vào shared address book clone; hành vi được chốt theo hướng cho phép thao tác trực tiếp trên clone như Calendar. Coverage đi kèm tại <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/338">pull/338</a>.</li>
+<li>Review test phát hiện thêm lỗi admin không thể quản trị copied address book dù có quyền. Lỗi được sửa tại <a href="https://github.com/linagora/esn-sabre/pull/487">pull/487</a> và kiểm chứng bởi <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/339">pull/339</a>.</li>
+<li>Các bản sửa đã được đóng gói trong release <code>2.4.5.12</code> và xác nhận triển khai lên PROD LNG tại <a href="https://github.com/linagora/esn-sabre/issues/486#issuecomment-5712734110">issues/486 comment</a>.</li>
+</ul>
+<h3>Đọc event, recurrence và timezone</h3>
+<ul>
+<li>Phân tích <a href="https://github.com/linagora/twake-calendar-frontend/issues/1364">issues/1364</a> cho thấy GET khi mở event không phục vụ tải ICS mà bổ sung <code>repetition</code> và <code>timezone</code>; tuy nhiên request đang chạy vô điều kiện, kể cả khi dữ liệu đã đủ.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1365">pull/1365</a> giới hạn request khi grid thiếu rule/timezone, chuyển response sang jCal qua <code>Accept: application/calendar+json</code>, và bổ sung E2E cho event thường lẫn recurring event.</li>
+<li>Thay đổi ban đầu làm event <code>Asia/Tokyo</code> rơi về timezone trình duyệt <code>Europe/Paris</code>. Bản sửa mới lấy timezone từ sibling <code>VTIMEZONE</code>, đồng thời giữ fallback read nếu REPORT không cung cấp timezone; chi tiết tại <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365#issuecomment-5731123647">pull/1365 comment</a>.</li>
+<li>Review tiếp theo phát hiện timezone phải được áp dụng trước khi xây recurrence, nếu không <code>UNTIL</code> có thể lệch qua ranh giới ngày. Logic và regression test đã được cập nhật tại <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365#issuecomment-5731391753">pull/1365 comment</a>.</li>
+</ul>
+<h3>Độ ổn định và UX frontend</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1367">pull/1367</a> đã merge bản sửa để ứng dụng không bị kẹt vĩnh viễn tại <code>/error</code> khi calendar list tải thất bại.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1362">pull/1362</a> đã merge việc bỏ text selection ngoài ý muốn khi kéo modal.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1363">issues/1363</a> về cập nhật public theme provider vẫn mở; chưa đủ tín hiệu trong dữ liệu crawl để đánh giá phạm vi hoặc blocker.</li>
+</ul>
+<h3>Republish common contacts</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a> đã merge endpoint republish theo user/domain.</li>
+<li>Quy ước API được thống nhất: <code>scope=domain</code> chỉ xử lý domain contacts, <code>scope=user</code> chỉ xử lý user contacts, và không truyền scope sẽ xử lý cả hai; xem <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060#issuecomment-5692761044">pull/1060 comment</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1063">pull/1063</a></td>
+<td>Thu hồi calendar sharing và public subscription trước khi xóa dữ liệu người dùng</td>
+<td>Tránh để lại quyền chia sẻ và subscription mồ côi sau khi user bị xóa</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1365">pull/1365</a></td>
+<td>Tối ưu đọc event và sửa cách bảo toàn timezone/recurrence từ REPORT</td>
+<td>Thay đổi chạm luồng mở, sửa và lưu recurring event; regression có thể làm sai timezone hoặc <code>UNTIL</code></td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/487">pull/487</a></td>
+<td>Sửa quyền admin trên copied address book</td>
+<td>Khôi phục đúng quyền quản trị delegation clone; đã có integration test và triển khai production</td>
+<td>merged, released <code>2.4.5.12</code> / @hungphan227</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/485">pull/485</a></td>
+<td>Cho phép tạo JSON contact trong shared address book clone</td>
+<td>Đồng bộ hành vi clone giữa Contacts và Calendar, kèm kiểm thử quyền</td>
+<td>merged / @hungphan227</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1367">pull/1367</a></td>
+<td>Không để ứng dụng mắc kẹt tại <code>/error</code> khi tải calendar list lỗi</td>
+<td>Cải thiện khả năng phục hồi của frontend sau lỗi tải dữ liệu</td>
+<td>merged / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a></td>
+<td>Thêm API republish contacts theo user, domain và scope</td>
+<td>Cung cấp thao tác vận hành có kiểm soát cho common contacts</td>
+<td>merged / @hungphan227</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Regression timezone trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365">pull/1365</a> được phát hiện bởi <code>PAST-19</code>; tác giả không thể chạy Jest hoặc E2E tại worktree do thiếu <code>node_modules</code>, nên CI là nguồn xác nhận chính trước khi merge.</li>
+<li>Review quyền trên <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/338">pull/338</a> đã tạo signal tốt: test create/update/delete đã tồn tại, nhưng kiểm tra quyền admin làm lộ thêm <a href="https://github.com/linagora/esn-sabre/issues/486">issues/486</a>, sau đó được sửa và bổ sung test riêng.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a> vẫn bị CodeScene báo low cohesion trong <code>ContactRoutesTest.java</code> khi merge. Đây không phải blocker đã ghi nhận, nhưng là technical debt cần theo dõi nếu test suite tiếp tục mở rộng.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xác nhận CI của <code>PAST-19</code>, <code>ROBUST-19</code>, <code>ROBUST-20</code> và các regression test recurrence/timezone trước khi merge PR tối ưu đọc event</td>
+<td>@chibenwa / reviewer frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1365#issuecomment-5731391753">pull/1365 comment</a></td>
+</tr>
+<tr>
+<td>Hoàn tất human review và merge bản sửa thu hồi sharing/subscription khi xóa user nếu không còn blocker</td>
+<td>reviewer side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1063">pull/1063</a></td>
+</tr>
+<tr>
+<td>Làm rõ phạm vi và acceptance criteria cho contact search; dữ liệu crawl hiện chưa có mô tả triển khai</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1061">issues/1061</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các thông báo tự động về Docker image, review placeholder/quota và các approval lặp lại từ bot khi không có finding.</li>
+<li>Đã bỏ qua các comment xác nhận ngắn, formatting nit và review trùng lặp không tạo thêm quyết định hoặc blocker.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

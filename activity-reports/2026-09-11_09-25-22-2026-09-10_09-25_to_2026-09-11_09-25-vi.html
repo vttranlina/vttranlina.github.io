@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-sol --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-11 02:31 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-09-10 09:25 → 2026-09-11 09:25 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>1</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>6</strong></span><span class="metric"><span>Reviews</span><strong>69</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>77</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-sol --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-09-10 09:25 +07 → 2026-09-11 09:25 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Tiếng Việt</p>
+<h2>Quick read</h2>
+<ul>
+<li>Đề xuất dùng cột <code>activated</code> để xử lý domain chưa xác thực đã bị bác bỏ; hướng kỹ thuật mới là chặn gửi đồng bộ ở JMAP/SMTP cho đến khi DNS được xác thực và để frontend giải thích trạng thái <code>forbiddenToSend</code> (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1055#issuecomment-5614553307">issues/1055 comment</a>).</li>
+<li>Frontend có lỗi mới về độ lệch ngày trong chế độ xem tháng, cần tái hiện và đánh giá phạm vi ảnh hưởng (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1360">issues/1360</a>).</li>
+<li>PR loại bỏ vòng lặp animation khi tải ứng dụng đã có phê duyệt của reviewer và vượt quality gates, hiện vẫn mở (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1359">pull/1359</a>).</li>
+<li>Regression test cho việc cập nhật organizer sau khi chuyển team đã vượt quality gates, nhưng được yêu cầu rebase lên <code>master</code> mới nhất (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">pull/329</a>).</li>
+<li>Dữ liệu review không đầy đủ do hàng loạt lỗi TLS handshake timeout/timeout từ GitHub API ở cả bốn repository; chưa đủ tín hiệu để kết luận trạng thái review của nhiều PR khác.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Xác thực domain và kiểm soát gửi mail</h3>
+<ul>
+<li>Việc thêm cột <code>activated</code> tương tự TMail không giải quyết đúng vòng đời domain chưa được xác thực.</li>
+<li>Hướng đề xuất là triển khai cơ chế kiểm tra đồng bộ, module hóa cho <code>EmailSubmission/set</code>, áp dụng kiểm soát DNS cho cả JMAP và SMTP, đồng thời tạo domain ngay sau khi xác minh thay vì chờ MX/SPF/DMARC (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1055#issuecomment-5614553307">issues/1055 comment</a>).</li>
+<li>Frontend TMail cần xử lý <code>forbiddenToSend</code>, hiển thị giải thích và CTA khi domain đang chờ kích hoạt. Tác dụng phụ được chấp nhận là email Calendar có thể bounce trước khi hoàn tất MX/SPF/DMARC.</li>
+</ul>
+<h3>Frontend</h3>
+<ul>
+<li>Mở <a href="https://github.com/linagora/twake-calendar-frontend/issues/1360">issues/1360</a> về ngày bị lệch trong month view; report chưa cung cấp bước tái hiện, timezone hay mức độ ảnh hưởng.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1359">pull/1359</a> loại bỏ animation loop của loading app component, đã được @Eriikah phê duyệt và vượt ba quality gates.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1353">pull/1353</a> cập nhật <code>twake-mui</code> và bổ sung override cho Calendar, đã có phê duyệt của @lethemanh và vượt quality gates.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1351">pull/1351</a> bổ sung cảnh báo khi thêm participant trùng lặp, đã được @Eriikah phê duyệt.</li>
+</ul>
+<h3>Regression test</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">pull/329</a> bổ sung regression test cho cập nhật organizer sau khi chuyển team và đã vượt ba quality gates; cần rebase trước khi tiếp tục tích hợp.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055#issuecomment-5614553307">issues/1055 comment</a></td>
+<td>Định hướng lại thiết kế xác thực domain và chặn gửi mail ở JMAP/SMTP</td>
+<td>Là quyết định liên hệ thống giữa James, TMail frontend và Calendar; sai thiết kế có thể cho phép gửi từ domain chưa xác thực hoặc gây vấn đề migration</td>
+<td>Cần chốt thiết kế / @chibenwa, @Crash--, @rezk2ll</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1360">issues/1360</a></td>
+<td>Month view hiển thị ngày bị lệch</td>
+<td>Có thể làm người dùng đọc hoặc thao tác sai ngày; chưa đủ dữ liệu để xác định phạm vi</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1359">pull/1359</a></td>
+<td>Loại bỏ vòng lặp animation của loading app component</td>
+<td>Giảm nguy cơ animation chạy không dừng và ảnh hưởng hiệu năng/trải nghiệm tải ứng dụng</td>
+<td>open, approved / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">pull/329</a></td>
+<td>Thêm regression test cho organizer update sau team move</td>
+<td>Bảo vệ luồng cập nhật organizer trước regression</td>
+<td>Cần rebase / @vttranlina</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Không có inline review comment mới để xác định disagreement hoặc blocker ở cấp mã nguồn.</li>
+<li>Phần review bị thiếu đáng kể vì GitHub API liên tục timeout/TLS handshake timeout; các PR không xuất hiện tín hiệu review trong summary này không đồng nghĩa với việc không có review.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt contract kiểm tra domain đồng bộ, thời điểm tạo domain và cách frontend xử lý <code>forbiddenToSend</code></td>
+<td>@chibenwa, @Crash--, @rezk2ll</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055#issuecomment-5614553307">issues/1055 comment</a></td>
+</tr>
+<tr>
+<td>Bổ sung bước tái hiện, timezone/browser và đánh giá regression cho lỗi lệch ngày trong month view</td>
+<td>@Eriikah / frontend team</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1360">issues/1360</a></td>
+</tr>
+<tr>
+<td>Rebase PR regression test lên <code>master</code> mới nhất và chạy lại kiểm thử</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329#issuecomment-5611908196">pull/329 comment</a></td>
+</tr>
+<tr>
+<td>Crawl lại dữ liệu review bị thiếu để tránh bỏ sót blocker</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1359">pull/1359</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các thông báo lặp về Docker image và phê duyệt tự động lặp lại từ CodeScene.</li>
+<li>Các comment/review của <code>@coderabbitai</code> đã bị crawler loại bỏ; lỗi timeout khi thu thập review được xem là giới hạn dữ liệu, không phải activity kỹ thuật.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

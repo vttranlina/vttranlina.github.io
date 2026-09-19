@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-18_23-50_to_2026-08-19_23-50">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-19 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-18 23:50 → 2026-08-19 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>4</strong></span><span class="metric"><span>Issues</span><strong>2</strong></span><span class="metric"><span>Comments</span><strong>34</strong></span><span class="metric"><span>Reviews</span><strong>25</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>65</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-18_23-50_to_2026-08-19_23-50</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li><strong>side-service</strong>: Đang phát triển tính năng Common Contact (PR #1013, #1014). Có thảo luận về phạm vi tính năng là Platform hay SaaS. Các issue mới (#1015, #1016) cần theo dõi để xác định scope implementation.</li>
+<li><strong>frontend</strong>: Đã merge các PR cải thiện UI hiển thị attendee và styling description (PR #1259, #1260). Vấn đề bảo mật thuộc tính HTML đã được xử lý bằng parser an toàn hơn trong review.</li>
+<li><strong>esn-sabre</strong>: Hệ thống hóa việc sử dụng <code>config.json</code> đã được merge thành công.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>side-service: Common Contact Feature &amp; Architecture</h3>
+<ul>
+<li>Thảo luận về phạm vi của tính năng Common Contacts trên PR <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a>. Có ý kiến cho rằng đây nên là <em>platform</em> feature để kích hoạt độc lập với SaaS extension.</li>
+<li>Mở các issue mới liên quan đến danh sách contact: #1015 <a href="https://github.com/linagora/twake-calendar-side-service/issues/1015">Contact list</a> và #1016 <a href="https://github.com/linagora/twake-calendar-side-service/issues/1016">[STORY] List of contact</a>.</li>
+<li>CodeScene báo cáo cảnh báo về <em>Code Duplication</em> trong các test file (ví dụ: <code>CommonContactNotificationConsumerTest.java</code>). Các vi phạm này hiện đang được suppress, nhưng cần theo dõi để refactor nếu trở thành blocker.</li>
+</ul>
+<h3>frontend: UI Improvements &amp; Security Review</h3>
+<ul>
+<li>PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1259">pull/1259</a> đã merge với cải thiện styling description và xử lý vấn đề bảo mật thuộc tính HTML (<code>onHoover</code>).</li>
+<li>Docker images được publish cho các branch mới: <code>twake-calendar-web-pr</code> (Private/Public).</li>
+</ul>
+<h3>esn-sabre: Configuration Systematization</h3>
+<ul>
+<li>PR <a href="https://github.com/linagora/esn-sabre/pull/461">pull/461</a> [[ENHANCEMENT] Systematize the use of config.json](https://github.com/linagora/esn-sabre/issues/457-test(team-calendar): cover event moves and attendee update partStat).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td>#1013 <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">ISSUE-989 Common contact: OUTBOUND</a></td>
+<td>Thảo luận về việc định nghĩa tính năng là Platform hay SaaS. Cần chốt scope để tránh ảnh hưởng cấu hình hệ thống không mong muốn.</td>
+<td>Tác động đến kiến trúc kích hoạt extension và quản lý domain address book.</td>
+<td>open / @chibenwa, @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td>#1015 <a href="https://github.com/linagora/twake-calendar-side-service/issues/1015">Contact list</a> &amp; #1016 <a href="https://github.com/linagora/twake-calendar-side-service/issues/1016">[STORY] List of contact</a></td>
+<td>Yêu cầu mới về danh sách contact cần được đánh giá và lên kế hoạch implement.</td>
+<td>Tác động đến scope phát triển tính năng liên lạc chung.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td>#1259 <a href="https://github.com/linagora/twake-calendar-frontend/pull/1259">#1257 support basic styling of description in event preview</a></td>
+<td>Đã merge nhưng cần theo dõi các cảnh báo bảo mật thuộc tính HTML trong tương lai.</td>
+<td>Đảm bảo an toàn khi render nội dung người dùng.</td>
+<td>merged / @lethemanh, @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><strong>CodeScene Quality Gates</strong>: Nhiều cảnh báo về <em>Code Duplication</em> và <em>Constructor Over-Injection</em> xuất hiện trên các PR mới (ví dụ: <code>CollectedContactsConsumer.java</code>). Các vi phạm này đang được suppress trong test nhưng cần xem xét refactor để giảm độ phức tạp code.</li>
+<li><strong>RabbitMQ Architecture</strong>: Thảo luận sâu về việc quản lý lifecycle của RabbitMQ consumer và xác nhận publish confirmations (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a>). Cần cân nhắc giữa tính đơn giản và độ tin cậy.</li>
+<li><strong>Security Attributes</strong>: Vấn đề thuộc tính HTML nguy hiểm (<code>onHoover</code>) đã được giải quyết bằng cách thay thế parser an toàn hơn trong PR <a href="https://github.com/linagora/twake-calendar-frontend/pull/1259">pull/1259</a>.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review và chốt scope tính năng Common Contact (Platform vs SaaS) cho PR #1013.</td>
+<td>@chibenwa, @vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a></td>
+</tr>
+<tr>
+<td>Theo dõi và đánh giá yêu cầu mới về danh sách contact (Issue #1015/#1016).</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1015">issues/1015</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/1016">issues/1016</a></td>
+</tr>
+<tr>
+<td>Refactor test cases để giảm <em>Code Duplication</em> nếu CodeScene cảnh báo trở thành blocker.</td>
+<td>@chibenwa, team QA</td>
+<td>Review comments on PR #1017/#1013</td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Các comment từ bot <code>@coderabbitai</code> và thông báo publish Docker images đã được bỏ qua vì không mang giá trị kỹ thuật cao trong window này.</li>
+<li>Cảnh báo CodeScene chất lượng code (Quality Gates) thường xuyên xuất hiện nhưng chưa gây blocker, chỉ cần theo dõi xu hướng.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-sol --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-11 08:34 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-09-06 00:00 → 2026-09-12 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>27</strong></span><span class="metric"><span>Issues</span><strong>7</strong></span><span class="metric"><span>Comments</span><strong>86</strong></span><span class="metric"><span>Reviews</span><strong>118</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>238</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-sol --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-09-06 00:00 +07 → 2026-09-12 00:00 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: English</p>
+<h2>Quick read</h2>
+<ul>
+<li>Team Calendar scheduling and reply routing received substantial work. The new database-backed approach is in open <a href="https://github.com/linagora/esn-sabre/pull/480">pull/480</a>, with complementary changes in <a href="https://github.com/linagora/esn-sabre/pull/481">pull/481</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1057">pull/1057</a>, and <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/335">pull/335</a>.</li>
+<li>The Meet integration foundation was separated into <a href="https://github.com/linagora/twake-calendar-side-service/pull/1051">pull/1051</a>, introducing an injectable token provider so host delegation and room creation can proceed while the ADR 056 identity model remains under discussion.</li>
+<li>The Google Calendar video-link regression was fixed server-side by merged <a href="https://github.com/linagora/twake-calendar-side-service/pull/1054">pull/1054</a>. Frontend compatibility in <a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a> still requires a carefully phased rollout across environments.</li>
+<li>Recurring-event correctness improved through merged Sabre fixes <a href="https://github.com/linagora/esn-sabre/pull/476">pull/476</a> and <a href="https://github.com/linagora/esn-sabre/pull/478">pull/478</a>, backed by integration tests.</li>
+<li>Organizer authorization was moved to scheduling time in merged <a href="https://github.com/linagora/esn-sabre/pull/479">pull/479</a>, while the obsolete feature-flag contract was removed by <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/334">pull/334</a>.</li>
+<li>No P0 incident or security issue was identified in the reporting window.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Team Calendar scheduling</h3>
+<ul>
+<li>The initial fallback for moved Team Calendar invitations could misclassify events created directly in a team calendar. The team selected database metadata rather than user-editable ICS metadata to retain the original invitation owner; implementation is now in <a href="https://github.com/linagora/esn-sabre/pull/480">pull/480</a>.</li>
+<li>Routing replies without Team Calendar ICS metadata is covered across Sabre <a href="https://github.com/linagora/esn-sabre/pull/481">pull/481</a>, side-service <a href="https://github.com/linagora/twake-calendar-side-service/pull/1057">pull/1057</a>, and integration tests <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/335">pull/335</a>.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/480">pull/480</a> remains open with a CodeScene quality gate failing on string-heavy arguments. Related regression test <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/329">pull/329</a> is waiting for the upstream Sabre change.</li>
+</ul>
+<h3>Meet integration</h3>
+<ul>
+<li>Shared Meet configuration, API client, token exchange, and token-provider abstraction were extracted from host delegation into <a href="https://github.com/linagora/twake-calendar-side-service/pull/1051">pull/1051</a>. This isolates the architectural identity choice from delegation and room creation.</li>
+<li>Deployment prerequisites and risks are now documented: an empty <code>ApplicationDomain</code> allow-list fails open, and provisional-user reconciliation requires global OIDC settings that permit <code>sub</code> replacement. The current decision accepts this because SSO emails are unique, but it differs semantically from ADR 056.</li>
+<li>Room lookup now follows pagination as a stopgap; the intended upstream solution is a Meet room-listing <code>slug</code> filter rather than scanning all pages (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1051#discussion_r3951599990">pull/1051 review comment</a>).</li>
+<li>Frontend room creation still has unresolved product behavior in <a href="https://github.com/linagora/twake-calendar-frontend/pull/1247">pull/1247</a>: server enablement should be explicit, Meet failures should be surfaced rather than silently falling back, and rooms created before event save may be orphaned.</li>
+</ul>
+<h3>ICS video-link compatibility</h3>
+<ul>
+<li>Google Calendar removed Twake video links because the existing separator matched Google’s own footer boundary. Merged <a href="https://github.com/linagora/twake-calendar-side-service/pull/1054">pull/1054</a> introduces a distinct separator for booking-generated ICS descriptions.</li>
+<li>Frontend <a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a> supports legacy and new separators, but review requested release sequencing to avoid requiring exact simultaneous deployment. The proposed order is frontend compatibility first, then backend activation of the new separator.</li>
+</ul>
+<h3>Scheduling and recurring events</h3>
+<ul>
+<li>Merged <a href="https://github.com/linagora/esn-sabre/pull/476">pull/476</a> preserves attendee-specific recurring overrides when the master participation changes; regression coverage was added in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/331">pull/331</a>.</li>
+<li>Merged <a href="https://github.com/linagora/esn-sabre/pull/478">pull/478</a> restores detached occurrences when attendees are invited only to selected instances, with coverage in <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/333">pull/333</a>.</li>
+<li>Organizer validation is now enforced at scheduling time, including Team Calendar behavior, through merged <a href="https://github.com/linagora/esn-sabre/pull/479">pull/479</a>. The old <code>CALDAV_ORGANIZER_VALIDATION</code> test setup was removed in merged <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/334">pull/334</a>.</li>
+</ul>
+<h3>Operations and frontend</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a> exposed that Calendar creates SaaS domains only after mail DNS validation. Manual creation remains the migration workaround; the longer-term direction is to create domains after ownership verification and enforce sending restrictions separately.</li>
+<li>Open <a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">pull/1056</a> adds <code>POST /contacts?action=republish</code>; it has human approval but a test-duplication quality gate and requires a corresponding Calendar Admin task.</li>
+<li>Merged <a href="https://github.com/linagora/twake-calendar-side-service/pull/1059">pull/1059</a> fixes booking proposal replies so they target the booker instead of the no-reply address.</li>
+<li>Open <a href="https://github.com/linagora/twake-calendar-frontend/pull/1361">pull/1361</a> addresses the month-view day offset reported in <a href="https://github.com/linagora/twake-calendar-frontend/issues/1360">issues/1360</a>.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/480">pull/480</a></td>
+<td>Persist metadata needed to route scheduling messages to invitations moved into Team Calendars.</td>
+<td>Prevents replies or updates from targeting the wrong event; blocks related regression coverage.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1051">pull/1051</a></td>
+<td>Establish Meet integration and an interchangeable authentication-token provider.</td>
+<td>Carries deployment and identity implications, including fail-open domain delegation and provisional-account reconciliation.</td>
+<td>open / @mmaudet</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a></td>
+<td>Support both ICS footer separators before adopting the new one.</td>
+<td>Incorrect rollout ordering can hide video links or break description handling across products and environments.</td>
+<td>open, changes requested / @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a></td>
+<td>Calendar domain creation currently depends on mail DNS validation.</td>
+<td>SaaS migrations can require manual intervention; the durable domain lifecycle remains unresolved.</td>
+<td>open / @Arsnael</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">pull/1056</a></td>
+<td>Add an endpoint to republish all contacts.</td>
+<td>Operational recovery also needs Calendar Admin integration; the current PR has a quality-gate warning.</td>
+<td>open, approved / @hungphan227</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1361">pull/1361</a></td>
+<td>Correct the date offset in month view.</td>
+<td>User-visible calendar dates can be displayed under the wrong day.</td>
+<td>open / @lethemanh</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>The Meet authentication model remains an explicit architectural question: application credentials let side-service assert user identity, whereas ADR 056 would carry the user’s authentication to Meet. The provider abstraction avoids blocking delivery, but the final model is not yet settled (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1001#issuecomment-5570228446">pull/1001 comment</a>).</li>
+<li>Meet <code>sub</code> rewrites during provisional-user reconciliation are reportedly not logged. This needs upstream consideration because the enabled identity transition otherwise leaves no audit trace (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1051#issuecomment-5573387193">pull/1051 comment</a>).</li>
+<li>For SaaS domains, adding an <code>activated</code> field was explicitly rejected as the direct fix. The preferred direction separates domain ownership from permission to send, but there is not yet enough signal on implementation ownership or timing (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1055#issuecomment-5614553307">issues/1055 comment</a>).</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resolve the remaining CodeScene gate on the Team Calendar metadata implementation, then unblock dependent tests.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/480#discussion_r3986019376">pull/480 review comment</a></td>
+</tr>
+<tr>
+<td>Define and execute the separator rollout order across LNG, TWP-STG, TWP-PRD, CNB-STG, and MU-STG, with frontend compatibility deployed before backend activation.</td>
+<td>@lethemanh, @vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1356#issuecomment-5598108120">pull/1356 comment</a></td>
+</tr>
+<tr>
+<td>Add the corresponding Calendar Admin operation for contact republishing and address or accept the test-duplication gate.</td>
+<td>@hungphan227 / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">pull/1056</a></td>
+</tr>
+<tr>
+<td>Decide and document cleanup behavior for Meet rooms created when an event dialog is later cancelled or the video conference is removed.</td>
+<td>@Crash--, @mmaudet / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1247#issuecomment-5574659075">pull/1247 comment</a></td>
+</tr>
+<tr>
+<td>Track the upstream Meet improvements for room lookup by slug and audit logging of identity <code>sub</code> changes.</td>
+<td>@mmaudet / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1051#issuecomment-5573747804">pull/1051 comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Repeated CodeScene approvals, Docker image publication notices, and automated review updates were omitted unless they indicated an active gate.</li>
+<li>Formatting-only comments, duplicate review events, and the ignored <code>@coderabbitai</code> activity were excluded.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

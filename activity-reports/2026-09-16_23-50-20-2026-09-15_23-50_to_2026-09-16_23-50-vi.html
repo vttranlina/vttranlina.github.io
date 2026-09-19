@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-6-astra --&gt;">
+  <title>Tóm tắt hoạt động Calendar · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-16 16:52 UTC</p>
+  <h1>Tóm tắt hoạt động Calendar</h1>
+  <p class="period">2026-09-15 23:50 → 2026-09-16 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>0</strong></span><span class="metric"><span>Issues</span><strong>2</strong></span><span class="metric"><span>Comments</span><strong>12</strong></span><span class="metric"><span>Reviews</span><strong>3</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>17</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-6-astra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Tóm tắt hoạt động Calendar</h1>
+<p>Kỳ báo cáo: 2026-09-15 23:50 +07 → 2026-09-16 23:50 +07
+Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li>helm-twake-calendar</li>
+</ul>
+<p>Ngôn ngữ: Tiếng Việt</p>
+<h2>Tổng quan nhanh</h2>
+<ul>
+<li>Lỗi quyền quản trị sổ địa chỉ bản sao đang chặn kế hoạch gắn phiên bản Sabre tiếp theo: @chibenwa yêu cầu @hungphan227 sửa ngay và kiểm thử quyền đầy đủ. <a href="https://github.com/linagora/esn-sabre/issues/486">issues/486</a></li>
+<li>PR kiểm thử lỗi ghi JSON card vào sổ địa chỉ chia sẻ đã được @chibenwa phê duyệt; các ca tạo/sửa/xóa đã có, nhưng ca quản trị phát hiện lỗi riêng nói trên. <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/338">pull/338</a></li>
+<li>Đã thống nhất API phát hành lại danh bạ: <code>scope=domain</code> chỉ xử lý danh bạ miền, <code>scope=user</code> chỉ xử lý danh bạ người dùng; không truyền <code>scope</code> thì xử lý cả hai. <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a></li>
+<li>Không có PR mới trong kỳ. Frontend không có hoạt động được ghi nhận; <code>helm-twake-calendar</code> không có commit mới trong lịch sử Git cục bộ.</li>
+</ul>
+<h2>Điểm nổi bật</h2>
+<h3>Quyền sổ địa chỉ bản sao và phát hành Sabre</h3>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/486">issues/486</a> ghi nhận người dùng có quyền admin vẫn không quản trị được sổ địa chỉ bản sao. Theo trao đổi, thao tác tương ứng với lịch hoạt động được; yêu cầu là sửa lỗi và kiểm thử đúng quyền liên quan.</li>
+<li>Bản sửa lỗi ghi JSON card nằm ở <a href="https://github.com/linagora/esn-sabre/pull/485">pull/485</a>, đã có image <code>linagora/esn-sabre-pr:485</code> để thử nghiệm. PR kiểm thử tương ứng <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/338">pull/338</a> đã được người review phê duyệt; dữ liệu chưa xác nhận hai PR đã merge.</li>
+<li>@hungphan227 thông báo đã tạo tag <a href="https://github.com/linagora/esn-sabre/releases/tag/2.4.5.11">2.4.5.11</a>. Sau đó, @chibenwa cho biết sẽ đợi xử lý xong lỗi quyền trước khi gắn phiên bản Sabre; không nên coi tag hiện có là đã bao gồm bản sửa #486. <a href="https://github.com/linagora/esn-sabre/issues/486#issuecomment-5693538327">issues/486 bình luận</a></li>
+</ul>
+<h3>API danh bạ</h3>
+<ul>
+<li>Quy ước <code>POST /contacts?action=republish&amp;scope=domain</code> đã được thống nhất cùng hai phạm vi <code>domain</code>/<code>user</code>; mặc định không có <code>scope</code> là cả hai. Đây là quyết định giao diện API, chưa đủ tín hiệu xác nhận đã triển khai hoặc kiểm thử. <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060#issuecomment-5692053801">pull/1060 đề xuất</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060#issuecomment-5692761044">pull/1060 mặc định</a></li>
+</ul>
+<h2>Các mục quan trọng</h2>
+<table>
+<thead>
+<tr>
+<th>Ưu tiên</th>
+<th>Kho mã</th>
+<th>Mục</th>
+<th>Tóm tắt</th>
+<th>Tác động / rủi ro</th>
+<th>Trạng thái / Người phụ trách</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/486">issues/486</a></td>
+<td>Sửa quyền quản trị sổ địa chỉ bản sao, kiểm thử cả trường hợp có và không có quyền.</td>
+<td>Lỗi chức năng phân quyền; đang chặn kế hoạch gắn phiên bản của @chibenwa.</td>
+<td>Đang mở / @hungphan227 được yêu cầu xử lý</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre; twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/485">pull/485</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/338">pull/338</a></td>
+<td>Bản sửa và kiểm thử lỗi ghi JSON card vào sổ địa chỉ chia sẻ bản sao.</td>
+<td>Khôi phục thao tác ghi; cần phân biệt với lỗi quyền admin chưa xử lý.</td>
+<td>Có image thử nghiệm; #338 được @chibenwa phê duyệt; chưa xác nhận merge</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a></td>
+<td>Áp dụng quy ước <code>scope</code> đã thống nhất cho API phát hành lại danh bạ.</td>
+<td>Không truyền <code>scope</code> sẽ tác động cả danh bạ miền và người dùng.</td>
+<td>Đã thống nhất / @hungphan227 đề xuất, @chibenwa xác nhận</td>
+</tr>
+</tbody>
+</table>
+<h2>Tín hiệu từ review và thảo luận</h2>
+<ul>
+<li>Issue mới <a href="https://github.com/linagora/twake-calendar-side-service/issues/1061">issues/1061</a> về tìm kiếm liên hệ do @chibenwa tạo đang mở. Báo cáo chỉ có tiêu đề, chưa đủ tín hiệu để đánh giá phạm vi, mức ưu tiên hoặc công việc tiếp theo.</li>
+</ul>
+<h2>Việc cần làm tiếp</h2>
+<p>Không có đầu việc rõ ràng ngoài các việc đã nêu trong bảng mục quan trọng.</p>
+<h2>Nội dung ít tín hiệu đã lược bỏ</h2>
+<ul>
+<li>Bỏ qua phê duyệt tự động và nội dung quảng bá của CodeScene; không xem đây là bằng chứng xác nhận chức năng hay trạng thái merge.</li>
+<li>Gộp các trao đổi lặp lại về <code>scope</code> thành quyết định API cuối cùng.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

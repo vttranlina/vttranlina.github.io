@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: qwen3.5:9b --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-25 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-24 23:50 → 2026-08-25 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>7</strong></span><span class="metric"><span>Issues</span><strong>6</strong></span><span class="metric"><span>Comments</span><strong>34</strong></span><span class="metric"><span>Reviews</span><strong>23</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>70</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: qwen3.5:9b --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-08-24_23-50_to_2026-08-25_23-50</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li><strong>Frontend:</strong> 7 PRs merged or open, focusing on UI fixes (modal margins, draggable move), freebusy status icons, and team calendar event creation logic.</li>
+<li><strong>Sabre:</strong> Active discussion on Issue #450 regarding COPY/MOVE validation logic for team calendars vs individual users.</li>
+<li><strong>Side-service:</strong> Merged PR #1029 handling declined emails from owners to bookers; PR #1017 reviewed with minor code health suppressions.</li>
+<li><strong>Code Quality:</strong> CodeScene bot reviews passed on most frontend PRs, though one critical rule violation was fixed in PR #1284 before merge.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Frontend UI &amp; Features</h3>
+<ul>
+<li><strong>Team Calendar Events:</strong> Allow creating events without an organizer by default, ensuring the creator is set as organizer if attendees exist (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1289">pull/1289</a>).</li>
+<li><strong>Draggable Move Bugfix:</strong> Fixed logic for draggable move to grow toward available space correctly on mobile (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1284">pull/1284</a>).</li>
+<li><strong>Freebusy Status:</strong> Added unknown status icon and tooltip for remote participants (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1290">pull/1290</a>).</li>
+<li><strong>Mobile Modal:</strong> Adjusted margins on full-screen modals to improve mobile experience (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1285">pull/1285</a>).</li>
+</ul>
+<h3>Sabre Logic Validation</h3>
+<ul>
+<li><strong>COPY/MOVE Edge Cases:</strong> Discussion on validating <code>SSI ORGANIZER</code> vs <code>baseId</code> for COPY/MOVE operations. Team calendar edge cases require specific validation logic to avoid 500 errors (<a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a>).</li>
+</ul>
+<h3>Side-Service Contact Handling</h3>
+<ul>
+<li><strong>Email Handling:</strong> Merged PR #1029 addressing declined emails from owner to booker scenarios (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1029">pull/1029</a>).</li>
+<li><strong>Common Contact:</strong> Reviewed inbound contact logic with minor code health suppressions for duplication and injection issues (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td>#450</td>
+<td>COPY/MOVE validation logic for team calendars</td>
+<td>Need to decide between validating <code>baseId</code> or <code>organizer</code> to handle edge cases without breaking existing flows.</td>
+<td>open / @hungphan227, @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td>#1289</td>
+<td>Team calendar events: allow creating events without organiser</td>
+<td>Feature change affecting event creation flow for team calendars.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td>#1290</td>
+<td>Freebusy : added unknown status icon and tooltip</td>
+<td>UI update for remote participant status visibility.</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td>#1284</td>
+<td>Bugfix: draggable move grows toward available space</td>
+<td>Critical fix for modal growth direction on mobile.</td>
+<td>merged / @Eriikah</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><strong>Sabre Issue #450:</strong> Disagreement on validation strategy. One approach suggests allowing COPY/MOVE if <code>SSI ORGANIZER</code> is valid on destination, while another prefers restricting to same <code>baseId</code>. Team calendar edge cases (organizer untouched but collection changed) complicate the decision.</li>
+<li><strong>Frontend Tooltip Text:</strong> Commented on PR #1290 regarding tooltip message clarity (&quot;Unknown status for remote participants&quot; suggested).</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finalize COPY/MOVE validation logic for Sabre</td>
+<td>@hungphan227, @chibenwa</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+</tr>
+<tr>
+<td>Review remaining frontend PRs for merge readiness</td>
+<td>Team Calendar</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1289">pull/1289</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1290">pull/1290</a></td>
+</tr>
+<tr>
+<td>Monitor CodeScene health on PR #1284 (resolved but noted)</td>
+<td>@Eriikah</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1284">pull/1284</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bot comments from <code>@codescene-delta-analysis</code> regarding quality gates and code health analysis.</li>
+<li>Docker image publish notifications for merged PRs.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

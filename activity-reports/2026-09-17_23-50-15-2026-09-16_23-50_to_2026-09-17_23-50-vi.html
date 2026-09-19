@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-6-astra --&gt;">
+  <title>Tổng hợp hoạt động Calendar · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-17 16:52 UTC</p>
+  <h1>Tổng hợp hoạt động Calendar</h1>
+  <p class="period">2026-09-16 23:50 → 2026-09-17 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>2</strong></span><span class="metric"><span>Issues</span><strong>0</strong></span><span class="metric"><span>Comments</span><strong>8</strong></span><span class="metric"><span>Reviews</span><strong>9</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>19</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-6-astra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Tổng hợp hoạt động Calendar</h1>
+<p>Period: 2026-09-16 23:50 +07 → 2026-09-17 23:50 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Ngôn ngữ: Tiếng Việt</p>
+<h2>Điểm nhanh</h2>
+<ul>
+<li>Bản sửa lỗi người có quyền admin không quản trị được sổ địa chỉ đã sao chép đã được hợp nhất, phát hành trong Sabre <code>2.4.5.12</code> và xác nhận cập nhật trên PROD LNG: <a href="https://github.com/linagora/esn-sabre/pull/487">pull/487</a>, <a href="https://github.com/linagora/esn-sabre/issues/486#issuecomment-5712734110">xác nhận triển khai</a>.</li>
+<li>Kiểm thử tích hợp cho cùng lỗi đã được hợp nhất: <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/339">pull/339</a>.</li>
+<li>Endpoint tái xuất bản danh bạ theo người dùng hoặc tên miền đã được @chibenwa phê duyệt, nhưng CodeScene báo một cổng chất lượng không đạt; chưa đủ tín hiệu về trạng thái hợp nhất hoặc việc cảnh báo có chặn hợp nhất hay không: <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a>.</li>
+<li>Không ghi nhận hoạt động frontend; <code>helm-twake-calendar</code> không có commit mới trong lịch sử git cục bộ được thu thập.</li>
+</ul>
+<h2>Điểm nổi bật</h2>
+<h3>Quyền quản trị sổ địa chỉ sao chép</h3>
+<ul>
+<li>@hungphan227 hoàn tất bản sửa <a href="https://github.com/linagora/esn-sabre/pull/487">pull/487</a> cùng kiểm thử tích hợp <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/339">pull/339</a>; cả hai được @chibenwa phê duyệt và đã hợp nhất.</li>
+<li>Điều kiện chờ trước khi gắn tag Sabre đã được gỡ bỏ. Bản <a href="https://github.com/linagora/esn-sabre/releases/tag/2.4.5.12">2.4.5.12</a> đã phát hành; @chibenwa xác nhận cập nhật PROD LNG. Chưa có kết quả kiểm chứng sau triển khai trong dữ liệu: <a href="https://github.com/linagora/esn-sabre/issues/486#issuecomment-5710970660">trao đổi phát hành</a>, <a href="https://github.com/linagora/esn-sabre/issues/486#issuecomment-5712734110">xác nhận triển khai</a>.</li>
+</ul>
+<h3>Tái xuất bản danh bạ chung</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a> bổ sung endpoint tái xuất bản danh bạ cho người dùng hoặc tên miền cụ thể, đã được @chibenwa phê duyệt.</li>
+<li>CodeScene báo <code>Low Cohesion</code> trong <code>ContactRoutesTest.java</code>, làm cổng quy tắc chất lượng trọng yếu không đạt; cảnh báo này cần được phân định trước khi coi PR sẵn sàng hợp nhất: <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060#discussion_r4034606787">pull/1060 review comment</a>.</li>
+</ul>
+<h2>Các mục quan trọng</h2>
+<table>
+<thead>
+<tr>
+<th>Ưu tiên</th>
+<th>Kho mã</th>
+<th>Mục</th>
+<th>Tóm tắt</th>
+<th>Tác động / rủi ro</th>
+<th>Trạng thái / Phụ trách</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/487">pull/487</a></td>
+<td>Sửa quyền quản trị sổ địa chỉ đã sao chép</td>
+<td>Khôi phục thao tác quản trị bị lỗi; bản sửa đã lên PROD LNG</td>
+<td>Đã hợp nhất, phát hành / @hungphan227; triển khai: @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/339">pull/339</a></td>
+<td>Bổ sung kiểm thử cho lỗi Sabre #486</td>
+<td>Tăng khả năng phát hiện lỗi tái diễn</td>
+<td>Đã hợp nhất / @hungphan227</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a></td>
+<td>Endpoint tái xuất bản danh bạ theo người dùng hoặc tên miền</td>
+<td>Đã được phê duyệt nhưng còn cảnh báo cổng chất lượng</td>
+<td>Chưa rõ trạng thái hợp nhất / Người phê duyệt: @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Tín hiệu từ review và thảo luận</h2>
+<ul>
+<li>@hungphan227 liên kết tác vụ phía Twake Admin với công việc danh bạ chung #1024. Chưa đủ tín hiệu về tiến độ hoặc quan hệ chặn giữa hai phía: <a href="https://github.com/linagora/twake-calendar-side-service/issues/1024#issuecomment-5712846844">issues/1024 bình luận</a>, <a href="https://github.com/linagora/twake-mail-admin/issues/67">issues/67</a>.</li>
+</ul>
+<h2>Việc cần làm tiếp</h2>
+<table>
+<thead>
+<tr>
+<th>Hành động</th>
+<th>Người phụ trách đề xuất</th>
+<th>Nguồn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xác nhận cách xử lý cảnh báo <code>Low Cohesion</code> và liệu cổng chất lượng không đạt có chặn hợp nhất PR #1060 hay không</td>
+<td>Tác giả PR và @chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060#discussion_r4034606787">pull/1060 review comment</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Nội dung ít giá trị đã lược bỏ</h2>
+<ul>
+<li>Lược bỏ thông báo xuất bản Docker image lặp lại, lời cảm ơn và các phê duyệt tự động không nêu vấn đề.</li>
+<li>Gộp cảnh báo CodeScene trùng nhau; giữ lại cổng chất lượng không đạt vì có thể ảnh hưởng quyết định hợp nhất.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

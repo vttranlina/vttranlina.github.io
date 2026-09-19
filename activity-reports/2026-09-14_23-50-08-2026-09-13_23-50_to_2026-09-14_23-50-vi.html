@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-6-astra --&gt;">
+  <title>Tổng hợp hoạt động Calendar · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-14 16:52 UTC</p>
+  <h1>Tổng hợp hoạt động Calendar</h1>
+  <p class="period">2026-09-13 23:50 → 2026-09-14 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>2</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>15</strong></span><span class="metric"><span>Reviews</span><strong>20</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>38</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-6-astra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Tổng hợp hoạt động Calendar</h1>
+<p>Kỳ báo cáo: 2026-09-13 23:50 +07 → 2026-09-14 23:50 +07
+Các kho mã:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li>helm-twake-calendar</li>
+</ul>
+<p>Ngôn ngữ: Tiếng Việt</p>
+<h2>Đọc nhanh</h2>
+<ul>
+<li>Sabre có báo cáo lỗi mới khi tạo liên hệ trong sổ địa chỉ dùng chung: endpoint yêu cầu vCard thay vì jCard. @chibenwa đề nghị @hungphan227 tái hiện, bổ sung kiểm thử tích hợp và sửa lỗi — <a href="https://github.com/linagora/esn-sabre/issues/484">issues/484</a>.</li>
+<li>Kiểm thử cập nhật lời mời đã chuyển sang Team Calendar có thể chưa đúng tình huống lỗi: người tổ chức trong test là thành viên lịch nhóm, trong khi ticket yêu cầu người ngoài nhóm — <a href="https://github.com/linagora/esn-sabre/issues/473#issuecomment-5659102472">issues/473 bình luận</a>.</li>
+<li>API phát lại liên hệ mở rộng theo người dùng/domain; còn câu hỏi về <code>scope</code> cho thao tác toàn bộ và các cổng kiểm tra chất lượng chưa đạt — <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">pull/1056</a>.</li>
+<li>Frontend: thay đổi PARTSTAT cho các lần lặp tương lai đã được @Eriikah duyệt; bản sửa chọn văn bản ngoài ý muốn khi kéo hộp thoại đã hợp nhất — <a href="https://github.com/linagora/twake-calendar-frontend/pull/1357">pull/1357</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1362">pull/1362</a>.</li>
+</ul>
+<h2>Điểm nổi bật</h2>
+<h3>Liên hệ dùng chung</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a> bổ sung phát lại liên hệ theo người dùng hoặc domain. Theo <a href="https://github.com/linagora/twake-calendar-side-service/issues/1024#issuecomment-5662641280">mô tả API</a>, thao tác theo domain mặc định gồm cả liên hệ domain và người dùng; <code>scope=domain</code> chỉ lấy liên hệ domain.</li>
+<li>CodeScene vẫn báo cổng chất lượng thất bại ở <a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">pull/1056</a> và <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a>, liên quan mã trùng lặp và lớp có nhiều trách nhiệm. Chưa đủ tín hiệu để xác nhận đây là điều kiện bắt buộc chặn hợp nhất.</li>
+</ul>
+<h3>Frontend và trải nghiệm lịch</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1357">pull/1357</a> cập nhật PARTSTAT vào các lần lặp tương lai của sự kiện; đã được @Eriikah duyệt. Báo cáo chưa xác nhận hợp nhất.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1361">pull/1361</a> sửa hiển thị sai ngày ở chế độ xem tháng; chưa đủ tín hiệu về duyệt của người review hoặc trạng thái hợp nhất.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1362">pull/1362</a> đã hợp nhất, ngăn chọn văn bản ngoài ý muốn khi kéo hộp thoại.</li>
+</ul>
+<h3>Phạm vi thu thập</h3>
+<ul>
+<li>Không ghi nhận hoạt động mới trực tiếp tại kho kiểm thử tích hợp. <code>helm-twake-calendar</code> không có commit mới trong mục <code>New Commits</code>; kho này chỉ được thu thập từ lịch sử git cục bộ, không bao gồm PR, issue hoặc bình luận.</li>
+</ul>
+<h2>Các mục quan trọng</h2>
+<table>
+<thead>
+<tr>
+<th>Ưu tiên</th>
+<th>Kho mã</th>
+<th>Mục</th>
+<th>Tóm tắt</th>
+<th>Tác động / rủi ro</th>
+<th>Trạng thái / Người phụ trách</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/484">issues/484</a></td>
+<td>Tạo liên hệ trong sổ địa chỉ dùng chung yêu cầu vCard thay vì jCard.</td>
+<td>Có thể cản trở luồng tạo liên hệ; cần tái hiện, kiểm thử tích hợp và sửa lỗi.</td>
+<td>Đang mở; @hungphan227 được đề nghị xử lý</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre / twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/473#issuecomment-5659102472">issues/473 bình luận</a></td>
+<td>Test trong PR tích hợp #329 dùng người tổ chức thuộc Team Calendar, khác tình huống ticket.</td>
+<td>Có nguy cơ chưa kiểm chứng đúng lỗi; cần đối chiếu và bổ sung tình huống người ngoài nhóm.</td>
+<td>Chưa thấy trả lời; @vttranlina được hỏi, @hungphan227 phát hiện</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a></td>
+<td>Mở rộng API phát lại liên hệ theo người dùng/domain.</td>
+<td>Cần chốt tính nhất quán của <code>scope</code> với thao tác phát lại toàn bộ.</td>
+<td>Đang mở / @hungphan227</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1357">pull/1357</a></td>
+<td>Cập nhật PARTSTAT cho các lần lặp tương lai.</td>
+<td>Ảnh hưởng trạng thái tham dự của chuỗi sự kiện.</td>
+<td>@Eriikah đã duyệt; chưa xác nhận hợp nhất</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1361">pull/1361</a></td>
+<td>Sửa ngày hiển thị sai ở chế độ xem tháng.</td>
+<td>Ảnh hưởng độ chính xác của giao diện lịch.</td>
+<td>Chưa đủ tín hiệu về trạng thái hợp nhất / Chưa rõ</td>
+</tr>
+</tbody>
+</table>
+<h2>Tín hiệu từ review và thảo luận</h2>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a> được @Eriikah duyệt nhưng kèm yêu cầu cập nhật test cho thay đổi dấu phân cách trong mô tả. Báo cáo chưa xác nhận yêu cầu đã hoàn tất.</li>
+<li>Trong <a href="https://github.com/linagora/twake-calendar-frontend/pull/1357#discussion_r4004005552">pull/1357 bình luận review</a>, @Eriikah đề nghị kiểm tra các hàm tương tự đang dùng ở nhiều nơi và cân nhắc tách tiện ích dùng chung; đây là đề xuất cải thiện, không có tín hiệu chặn hợp nhất.</li>
+</ul>
+<h2>Việc cần làm tiếp</h2>
+<table>
+<thead>
+<tr>
+<th>Hành động</th>
+<th>Người phụ trách đề xuất</th>
+<th>Nguồn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xác nhận test đã được cập nhật theo yêu cầu review về dấu phân cách trong mô tả.</td>
+<td>@lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a></td>
+</tr>
+<tr>
+<td>Xử lý hoặc thống nhất cách giải quyết các cổng chất lượng còn thất bại của API phát lại liên hệ.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1056">pull/1056</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1060">pull/1060</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Nội dung ít tín hiệu đã lược bỏ</h2>
+<ul>
+<li>Gộp các thông báo xuất bản Docker image, kết quả CodeScene lặp lại và bình luận xác nhận ngắn; chỉ giữ cảnh báo cổng chất lượng còn thất bại.</li>
+<li>Bộ thu thập đã bỏ qua 5 mục bình luận/review từ @coderabbitai.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: qwen3.5:9b --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-27 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-26 23:50 → 2026-08-27 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>9</strong></span><span class="metric"><span>Issues</span><strong>4</strong></span><span class="metric"><span>Comments</span><strong>38</strong></span><span class="metric"><span>Reviews</span><strong>43</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>94</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: qwen3.5:9b --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-08-26_23-50_to_2026-08-27_23-50</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<h2>Quick read</h2>
+<ul>
+<li><strong>Email Reliability:</strong> Retry logic implemented for mail sends to handle transient failures (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1037">pull/1037</a>). Issue regarding unsent mails is being investigated (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1036">issue/1036</a>).</li>
+<li><strong>Event Notification:</strong> Fixed issue where organizers were not notified of external replies (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1035">pull/1035</a>).</li>
+<li><strong>Frontend UI:</strong> Adjusted mobile responsive UI for booking management modal (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1305">pull/1305</a>) and added booking link placeholder (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a>).</li>
+<li><strong>Code Quality:</strong> Code health warnings detected in <code>BookingLinkOverlay.tsx</code> due to high complexity (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a>).</li>
+<li><strong>Integration:</strong> Fixed WebDAV COPY/MOVE bypassing organizer validation bug (<a href="https://github.com/linagora/esn-sabre/pull/465">pull/465</a>).</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Email Reliability &amp; Notification</h3>
+<ul>
+<li>Retry logic added for whole mail sends with configurable attempts to improve reliability (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1037">pull/1037</a>).</li>
+<li>Fix implemented so organizers are notified when external users accept event replies, addressing ITIP workflow gaps (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1035">pull/1035</a>).</li>
+<li>Discussion on standard behavior for copying to sent folder: Gmail does not do it, but Outlook does. Team leaning towards not implementing unless specific header is present (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1033">issue/1033</a>).</li>
+</ul>
+<h3>Frontend UI &amp; UX</h3>
+<ul>
+<li>Mobile responsive adjustments made for booking management modal to improve user experience on smaller screens (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1305">pull/1305</a>).</li>
+<li>Added placeholder for booking links in the frontend interface (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a>).</li>
+<li>Improved display of TDrive iframe modal on mobile devices via new issue tracking (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1307">issue/1307</a>).</li>
+</ul>
+<h3>Integration &amp; Sabre</h3>
+<ul>
+<li>Bug fix for WebDAV COPY and MOVE operations bypassing organizer validation in Sabre integration (<a href="https://github.com/linagora/esn-sabre/pull/465">pull/465</a>).</li>
+<li>Corresponding integration tests added to cover edge cases for Team Calendar moves (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/327">pull/327</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td>#1035</td>
+<td>Fix organizer notification for external replies</td>
+<td>Ensures organizers are aware of acceptance changes from external users</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td>#1037</td>
+<td>Retry logic for mail sends</td>
+<td>Improves delivery reliability under transient failures</td>
+<td>merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td>#465</td>
+<td>Fix WebDAV COPY/MOVE organizer validation bypass</td>
+<td>Prevents security/functional issues when moving events</td>
+<td>open / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td>#1308</td>
+<td>Booking link placeholder (Code Health Warning)</td>
+<td>High complexity method detected, needs refactoring or suppression</td>
+<td>open / @Eriikah</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td>#1036</td>
+<td>Manage unsent mails investigation</td>
+<td>Potential reliability issue requiring root cause analysis</td>
+<td>open / @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><strong>Standard Behavior Disagreement:</strong> Debate on implementing sent folder copy logic. Gmail does not copy, Outlook does. Team decided to avoid implementation unless a specific calendar header is present (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1033">issue/1033</a>).</li>
+<li><strong>Code Health Warning:</strong> <code>BookingLinkOverlay.tsx</code> has high cyclomatic complexity (16 vs threshold 10). Suppression requested but needs review to ensure maintainability (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a>).</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review and address code complexity in <code>BookingLinkOverlay.tsx</code></td>
+<td>@Eriikah or @lethemanh</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a></td>
+</tr>
+<tr>
+<td>Investigate root cause for unsent mails issue</td>
+<td>@chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1036">issue/1036</a></td>
+</tr>
+<tr>
+<td>Merge pending frontend UI improvements (Mobile, Booking Link)</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1305">pull/1305</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1308">pull/1308</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bot comments from <code>@coderabbitai</code> and <code>@codescene-delta-analysis[bot]</code> regarding code health gates were ignored unless they indicated a blocker.</li>
+<li>Minor formatting nitpicks and duplicated review comments were filtered out for brevity.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

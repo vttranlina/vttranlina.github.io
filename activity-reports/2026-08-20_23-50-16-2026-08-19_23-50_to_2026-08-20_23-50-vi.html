@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-19_23-50_to_2026-08-20_23-50">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-20 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-19 23:50 → 2026-08-20 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>4</strong></span><span class="metric"><span>Issues</span><strong>4</strong></span><span class="metric"><span>Comments</span><strong>25</strong></span><span class="metric"><span>Reviews</span><strong>26</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>59</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-19_23-50_to_2026-08-20_23-50</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Chuẩn bị phát hành Release 2.4.5 cho side-service và esn-sabre, đồng thời cập nhật changelog cho frontend (1.1.0).</li>
+<li>Sửa lỗi logic gửi email thông báo khi organizer từ chối sự kiện trong ItipEmailNotificationPublisher (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1019">pull/1019</a>).</li>
+<li>Frontend đang cập nhật hiển thị team organizer đồng nhất và hỗ trợ chọn team calendar cho việc tạo booking.</li>
+<li>Refactoring code health cải thiện trong side-service nhờ tái sử dụng ManagedRabbitMQConsumer (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1020">pull/1020</a>).</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Chuẩn bị phát hành (Release 2.4.5)</h3>
+<ul>
+<li>Phát hành Release 2.4.5 cho side-service và esn-sabre đang được lên kế hoạch (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1018">issues/1018</a>, <a href="https://github.com/linagora/esn-sabre/issues/462">issues/462</a>).</li>
+<li>Frontend đã merge PR changelog và hướng dẫn phát hành cho phiên bản 1.1.0 (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1262">pull/1262</a>).</li>
+</ul>
+<h3>Logic thông báo Email (ItipEmailNotificationPublisher)</h3>
+<ul>
+<li>Đã sửa logic để gửi email thông báo đến booker khi organizer từ chối sự kiện, thay vì bị chặn (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1019">pull/1019</a>).</li>
+<li>Test tích hợp đã cập nhật cho tương ứng với thay đổi này trong esn-sabre và side-service (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a>, <a href="https://github.com/linagora/esn-sabre/pull/458">pull/458</a>).</li>
+</ul>
+<h3>Cập nhật Frontend (Team Calendar &amp; UI)</h3>
+<ul>
+<li>Áp dụng hiển thị team organizer giống nhau cho tất cả loại người dùng trong preview sự kiện (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1263">issues/1263</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1264">pull/1264</a>).</li>
+<li>Thảo luận về hỗ trợ chọn team calendar trong tạo booking và vai trò của ORGANIZER (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1261">issues/1261</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1253">pull/1253</a>).</li>
+</ul>
+<h3>Refactoring &amp; Code Health</h3>
+<ul>
+<li>Tái sử dụng ManagedRabbitMQConsumer trong calendar consumers để cải thiện code health (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1020">pull/1020</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1014">pull/1014</a>).</li>
+<li>CodeScene bot xác nhận các cổng chất lượng (Quality Gates) đã vượt qua cho hầu hết PRs mới.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service, esn-sabre, integration-test</td>
+<td>Release 2.4.5 Coordination</td>
+<td>Chuẩn bị phát hành đồng bộ cho các dịch vụ backend và frontend trong window này.</td>
+<td>Đảm bảo tính nhất quán của phiên bản giữa các repo trước khi deploy vào môi trường sản xuất.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service, esn-sabre, integration-test</td>
+<td>Fix Email Notification Logic</td>
+<td>Sửa lỗi ItipEmailNotificationPublisher gửi email cho booker khi organizer decline event.</td>
+<td>Ảnh hưởng trực tiếp đến trải nghiệm người dùng và quy trình xác nhận sự kiện.</td>
+<td>merged / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td>Team Calendar Booking Support</td>
+<td>Hỗ trợ chọn team calendar trong tạo booking và hiển thị team organizer đồng nhất.</td>
+<td>Đảm bảo tính năng mới hoạt động đúng với API backend hiện có (ORGANIZER).</td>
+<td>open/closed / @lethemanh, @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Không thấy disagreement hoặc unresolved question quan trọng nào ngoài các mục Important Items ở trên. Các comment về code health và Docker image publishing đều đã được giải quyết tự động bởi bot hoặc merge vào PRs tương ứng.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Theo dõi tiến độ phát hành Release 2.4.5 cho side-service và esn-sabre trước khi deploy lên môi trường sản xuất.</td>
+<td>@vttranlina, Team Calendar Lead</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1018">issues/1018</a>, <a href="https://github.com/linagora/esn-sabre/issues/462">issues/462</a></td>
+</tr>
+<tr>
+<td>Xác nhận API backend hỗ trợ đầy đủ việc chọn ORGANIZER khi tạo booking để frontend có thể triển khai tính năng team calendar selection.</td>
+<td>@chibenwa, Backend Team</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1261">issues/1261</a></td>
+</tr>
+<tr>
+<td>Kiểm tra kết quả phát hành Frontend 1.1.0 sau khi merge PR #1262 và Docker images mới được publish.</td>
+<td>@Arsnael, DevOps Team</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1262">pull/1262</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Các comment từ bot CodeScene về chất lượng code (Code Health Gates Passed/Failed).</li>
+<li>Comment thông báo Docker image được publish cho các PR đã merge.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

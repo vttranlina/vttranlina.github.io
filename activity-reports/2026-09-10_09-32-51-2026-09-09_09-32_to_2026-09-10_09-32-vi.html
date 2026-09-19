@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-terra --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-10 02:40 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-09-09 09:32 → 2026-09-10 09:32 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>7</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>30</strong></span><span class="metric"><span>Reviews</span><strong>41</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>79</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-terra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-09-09 09:32 +07 → 2026-09-10 09:32 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Đã merge các sửa lỗi CalDAV/Scheduling quan trọng: xác thực/quyền <code>ORGANIZER</code> tại thời điểm scheduling và thiếu occurrence khi attendee chỉ được mời vào một số instance lặp lại (<a href="https://github.com/linagora/esn-sabre/pull/479">pull/479</a>, <a href="https://github.com/linagora/esn-sabre/pull/478">pull/478</a>).</li>
+<li>Thay đổi separator trong ICS để Google không loại bỏ link video đã được merge ở backend (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1054">pull/1054</a>), nhưng frontend (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a>) vẫn mở và cần chốt kế hoạch rollout theo thứ tự frontend trước backend.</li>
+<li>Đã bỏ cấu hình <code>CALDAV_ORGANIZER_VALIDATION</code> trong integration tests (<a href="https://github.com/linagora/twake-calendar-integration-tests/pull/334">pull/334</a>); phạm vi test import/scheduling đã được rà soát để tránh giữ các assertion không thuộc scheduling.</li>
+<li>Issue tạo tổ chức B2B/SaaS cho VSORA tạm được unblock bằng tạo domain thủ công; giải pháp dài hạn về activation/domain lifecycle chưa được quyết định (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a>).</li>
+<li>Frontend đã merge thông báo kết quả thao tác trên trang public event (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1358">pull/1358</a>); cập nhật PARTSTAT cho các occurrence tương lai vẫn đang mở (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1357">pull/1357</a>).</li>
+</ul>
+<h2>Highlights</h2>
+<h4>CalDAV và scheduling</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/479">pull/479</a> đã merge, bổ sung validation/authorization của <code>ORGANIZER</code> tại scheduling time.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/478">pull/478</a> đã merge, sửa <code>REPORT</code> CalDAV bị thiếu occurrence khi attendee chỉ được mời vào các instance được chọn của event lặp.</li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/334">pull/334</a> đã merge để bỏ <code>CALDAV_ORGANIZER_VALIDATION</code>. Team quyết định không khôi phục các test import không gắn chặt với scheduling; các hành vi import không kích hoạt scheduling đã có coverage.</li>
+</ul>
+<h4>ICS video link và rollout tương thích</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1054">pull/1054</a> đã merge, chuyển separator footer trong <code>DESCRIPTION</code> nhằm giữ link Twake video hiển thị/click được trên Google Calendar.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a> cần duy trì khả năng strip cả separator cũ và mới. Review nhấn mạnh không nên buộc deploy đồng thời hai sản phẩm; đề xuất frontend phát hành trước, backend mặc định separator cũ và chỉ bật separator mới qua cấu hình sau đó.</li>
+</ul>
+<h4>Frontend</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1358">pull/1358</a> đã merge, hiển thị phản hồi kết quả thao tác cho người dùng tại public event page.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1357">pull/1357</a> đang mở để cập nhật <code>PARTSTAT</code> cho các instance tương lai của event lặp; chưa thấy review thủ công trong dữ liệu crawl.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend / twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1054">pull/1054</a></td>
+<td>Migration separator ICS để bảo toàn link video trên Google; backend đã merge, frontend còn mở.</td>
+<td>Rollout sai thứ tự có thể làm frontend/backend không tương thích giữa các môi trường.</td>
+<td>Frontend open / @lethemanh; backend merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/479">pull/479</a></td>
+<td>Enforce validation và authorization của <code>ORGANIZER</code> khi scheduling.</td>
+<td>Thay đổi hành vi scheduling và kiểm soát quyền tạo/cập nhật lịch.</td>
+<td>Merged / @hungphan227</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a></td>
+<td>Tạo domain B2B bị phụ thuộc <code>mailDnsConfigurationValidated</code>; VSORA đã phải tạo thủ công để unblock migration.</td>
+<td>Chưa có domain lifecycle/activation tương đương TMail; có thể tiếp tục gây cản trở onboarding/migration SaaS.</td>
+<td>Open; workaround thủ công / TBD</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/478">pull/478</a></td>
+<td>Sửa CalDAV <code>REPORT</code> thiếu occurrence cho attendee được mời vào selected instances.</td>
+<td>Bảo đảm client nhận đúng dữ liệu event lặp.</td>
+<td>Merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/334">pull/334</a></td>
+<td>Loại bỏ <code>CALDAV_ORGANIZER_VALIDATION</code> và điều chỉnh test coverage liên quan.</td>
+<td>Đồng bộ suite test với hành vi organizer validation mới; tránh assertion import/scheduling không đúng phạm vi.</td>
+<td>Merged / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1357">pull/1357</a></td>
+<td>Cập nhật <code>PARTSTAT</code> vào các occurrence tương lai của event lặp.</td>
+<td>Ảnh hưởng trạng thái tham dự trong chuỗi recurrence.</td>
+<td>Open / @lethemanh</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Với <a href="https://github.com/linagora/twake-calendar-frontend/pull/1356">pull/1356</a>, review đã chuyển từ yêu cầu tách hai PR sang chấp nhận rollout phối hợp một lần, với điều kiện xác nhận có thể triển khai đồng bộ trên toàn bộ môi trường. Cần chốt rõ owner và thứ tự phát hành trước khi merge.</li>
+<li>Với <a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a>, giải pháp dài hạn vẫn là câu hỏi mở: override “force”, thêm trạng thái activation tương tự TMail, hoặc tiếp tục thao tác thủ công. Hiện chỉ thống nhất workaround migration.</li>
+<li>Một số PR cũ không tải được review do lỗi kết nối GitHub; chưa đủ tín hiệu để đánh giá trạng thái review của chúng.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chốt và thực hiện rollout separator: phát hành frontend có hỗ trợ cả hai separator trước, sau đó cấu hình backend chuyển sang separator mới; xác nhận trên toàn bộ môi trường.</td>
+<td>@lethemanh, @vttranlina, @hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1356#issuecomment-5598215186">pull/1356 discussion</a></td>
+</tr>
+<tr>
+<td>Đề xuất giải pháp dài hạn cho domain activation/creation thay cho tạo thủ công khi migration SaaS.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1055">issues/1055</a></td>
+</tr>
+<tr>
+<td>Hoàn tất review chức năng và quyết định merge cho cập nhật PARTSTAT của recurrence.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1357">pull/1357</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các approval/quality-gate lặp lại từ bot và các comment chỉ thông báo Docker image.</li>
+<li>Đã bỏ qua 7 comment/review từ CodeRabbit trong frontend theo cấu hình crawl.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

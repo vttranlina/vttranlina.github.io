@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: qwen3.5:9b --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-07 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-09-06 23:50 → 2026-09-07 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>3</strong></span><span class="metric"><span>Issues</span><strong>1</strong></span><span class="metric"><span>Comments</span><strong>14</strong></span><span class="metric"><span>Reviews</span><strong>22</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>40</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: qwen3.5:9b --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-09-06_23-50_to_2026-09-07_23-50</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<h2>Quick read</h2>
+<ul>
+<li>Nền tảng tích hợp Meet được tách thành PR riêng (#1051) để xử lý vấn đề token provider và kiến trúc identity.</li>
+<li>Sabre fix cho việc gửi lời mời team calendar đã di chuyển (#474) có cảnh báo chất lượng code nhưng đã được duyệt.</li>
+<li>Các test mới cho organizer validation và regression đã được approve trong integration-test.</li>
+<li>Discussion về logic PARTSTAT cho recurring events đang diễn ra trên issue #1050.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Meet Integration</h3>
+<ul>
+<li>PR #1051 tách phần foundation (config, client, token provider) khỏi PR #1001 để xử lý riêng vấn đề host delegation.</li>
+<li>Token acquisition giờ nằm sau <code>MeetTokenProvider</code> interface, giúp linh hoạt thay đổi implementation sau này.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1051">pull/1051</a></li>
+</ul>
+<h3>Sabre Schedule Fix</h3>
+<ul>
+<li>PR #474 fix logic gửi invitation cho team calendar đã di chuyển.</li>
+<li>Có cảnh báo CodeScene (Complex Conditional, Bumpy Road Ahead) nhưng đã được suppress và approve.</li>
+<li><a href="https://github.com/linagora/esn-sabre/pull/474">pull/474</a></li>
+</ul>
+<h3>Integration Tests</h3>
+<ul>
+<li>PR #330 thêm test validation organizer trong SchedulingContract.</li>
+<li>PR #329 thêm regression test cho organizer update sau team move.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td>#1051</td>
+<td>Meet integration foundation split</td>
+<td>Thay đổi kiến trúc token provider, ảnh hưởng đến identity flow (provisional users).</td>
+<td>open / @mmaudet</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>esn-sabre</td>
+<td>#474</td>
+<td>Fix schedule delivery for moved invitations</td>
+<td>Có cảnh báo chất lượng code cần suppress.</td>
+<td>approved / @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><strong>Identity Trade-off</strong>: Meet tạo user provisional nếu chưa biết email, reconcile khi SSO login đầu tiên. Cần lưu ý về <code>sub</code> field immutability. <a href="https://github.com/linagora/twake-calendar-side-service/pull/1001#issuecomment-5570228446">comment</a></li>
+<li><strong>Pagination Concern</strong>: Meet rooms API trả về 20 items, cần xử lý pagination hoặc lưu UUID để fetch trực tiếp. <a href="https://github.com/linagora/twake-calendar-side-service/pull/1001#discussion_r3949572366">comment</a></li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review deployment notes cho Meet integration (prerequisites, identity settings).</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1051">pull/1051</a></td>
+</tr>
+<tr>
+<td>Monitor CodeScene suppressions nếu cần điều chỉnh.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/474">pull/474</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bot comments từ @codescene-delta-analysis[bot] và @coderabbitai đã được bỏ qua.</li>
+<li>Các comment thông thường về approval PR không cần thiết liệt kê chi tiết.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

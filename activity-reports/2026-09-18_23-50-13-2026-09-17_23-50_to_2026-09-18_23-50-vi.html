@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-6-astra --&gt;">
+  <title>Tổng hợp hoạt động Calendar · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-09-18 16:51 UTC</p>
+  <h1>Tổng hợp hoạt động Calendar</h1>
+  <p class="period">2026-09-17 23:50 → 2026-09-18 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>4</strong></span><span class="metric"><span>Issues</span><strong>3</strong></span><span class="metric"><span>Comments</span><strong>16</strong></span><span class="metric"><span>Reviews</span><strong>10</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>33</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-6-astra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Tổng hợp hoạt động Calendar</h1>
+<p>Kỳ báo cáo: 2026-09-17 23:50 +07 → 2026-09-18 23:50 +07
+Danh sách kho mã:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li>helm-twake-calendar</li>
+</ul>
+<p>Ngôn ngữ: Tiếng Việt</p>
+<h2>Đọc nhanh</h2>
+<ul>
+<li>Tối ưu đọc sự kiện ở frontend phát sinh regression múi giờ, được phát hiện qua E2E. Đã có bản sửa nhưng <strong>chưa đủ tín hiệu xác nhận CI thành công sau sửa</strong>; cần kiểm chứng trước khi hợp nhất <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365">pull/1365</a>.</li>
+<li>Lỗi bị kẹt ở <code>/error</code> khi tải danh sách lịch thất bại đã có PR, được @Eriikah phê duyệt và vẫn đang mở: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1367">pull/1367</a>.</li>
+<li>Luồng xóa dữ liệu người dùng chưa thu hồi chia sẻ lịch; bản sửa bổ sung thu hồi cả chia sẻ và đăng ký công khai đang mở: <a href="https://github.com/linagora/twake-calendar-side-service/issues/1062">issues/1062</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1063">pull/1063</a>.</li>
+<li>Kiểm thử tích hợp đã hợp nhất thay đổi <code>sharedPublicSubscription</code> từ <code>2</code> sang <code>true</code>: <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/340">pull/340</a>.</li>
+<li>Không ghi nhận hoạt động ở esn-sabre; helm-twake-calendar không có commit mới trong lịch sử git cục bộ được thu thập.</li>
+</ul>
+<h2>Điểm nổi bật</h2>
+<h3>Đọc sự kiện và bảo toàn múi giờ</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1365">pull/1365</a> giảm các lượt GET khi mở sự kiện, chuyển <code>fetchEvent</code> sang nhận jCal qua <code>Accept: application/calendar+json</code>. Các kiểm thử <code>ROBUST-19</code>/<code>ROBUST-20</code> được bổ sung để kiểm tra số lượt đọc và định dạng phản hồi.</li>
+<li>Giả định ban đầu rằng dữ liệu trên lưới đã đủ múi giờ là sai: expanded REPORT chuẩn hóa thời gian sang UTC, khiến hộp thoại sửa sự kiện Tokyo rơi về múi giờ trình duyệt Paris. Bản sửa lấy TZID từ VTIMEZONE đi kèm và giữ lượt đọc bổ sung khi thiếu quy tắc lặp hoặc múi giờ: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365#issuecomment-5731123647">pull/1365 bình luận sửa lỗi</a>.</li>
+<li>Bản sửa tiếp theo đưa việc xác định múi giờ vào trước bước tạo quy tắc lặp, tránh ghi lại <code>UNTIL</code> sai đến mức lệch ranh giới ngày. Đã thêm kiểm thử regression, nhưng tác giả chưa chạy được Jest/E2E tại máy do thiếu <code>node_modules</code>: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365#issuecomment-5731391753">pull/1365 bình luận về UNTIL</a>.</li>
+</ul>
+<h3>Khôi phục giao diện khi tải lịch lỗi</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/issues/1366">issues/1366</a> ghi nhận trang <code>/error</code> tồn tại dai dẳng. <a href="https://github.com/linagora/twake-calendar-frontend/pull/1367">pull/1367</a> nhằm tránh bị kẹt khi tải danh sách lịch thất bại; đã có phê duyệt của @Eriikah và ảnh Docker phục vụ kiểm tra, nhưng chưa hợp nhất.</li>
+</ul>
+<h3>Chia sẻ lịch và xóa dữ liệu</h3>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1063">pull/1063</a> bổ sung thu hồi chia sẻ lịch và đăng ký công khai <strong>trước khi xóa dữ liệu người dùng</strong>, xử lý <a href="https://github.com/linagora/twake-calendar-side-service/issues/1062">issues/1062</a>. Đây là điểm cần ưu tiên về tính đầy đủ của luồng xóa dữ liệu; báo cáo chưa đủ tín hiệu để kết luận có truy cập trái phép thực tế.</li>
+<li>Phía kiểm thử tích hợp đã sửa giá trị kỳ vọng <code>sharedPublicSubscription</code> thành boolean <code>true</code>: <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/340">pull/340</a>.</li>
+</ul>
+<h2>Các mục quan trọng</h2>
+<table>
+<thead>
+<tr>
+<th>Ưu tiên</th>
+<th>Kho mã</th>
+<th>Mục</th>
+<th>Tóm tắt</th>
+<th>Tác động / rủi ro</th>
+<th>Trạng thái / Phụ trách</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1365">pull/1365</a></td>
+<td>Tối ưu GET sự kiện, kèm sửa hồi quy múi giờ và <code>UNTIL</code></td>
+<td>Có thể làm sai múi giờ hoặc giới hạn chuỗi lặp khi sửa/lưu; cần xác nhận CI sau bản sửa</td>
+<td>Đang mở / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1367">pull/1367</a></td>
+<td>Tránh kẹt ở <code>/error</code> khi danh sách lịch tải lỗi</td>
+<td>Ảnh hưởng khả năng tiếp tục sử dụng giao diện; nên xem xét hợp nhất sớm</td>
+<td>Đang mở; @Eriikah đã phê duyệt / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1063">pull/1063</a></td>
+<td>Thu hồi chia sẻ và đăng ký công khai trước khi xóa dữ liệu</td>
+<td>Tránh để sót trạng thái chia sẻ sau xóa; cần rà soát trước hợp nhất</td>
+<td>Đang mở; có phản hồi <code>+1</code> / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/340">pull/340</a></td>
+<td>Sửa <code>sharedPublicSubscription</code> từ <code>2</code> thành <code>true</code></td>
+<td>Đồng bộ kiểm thử với giá trị boolean kỳ vọng</td>
+<td>Đã hợp nhất / @hungphan227</td>
+</tr>
+</tbody>
+</table>
+<h2>Tín hiệu từ rà soát và thảo luận</h2>
+<ul>
+<li>GET khi mở sự kiện và thao tác tải ICS là hai luồng khác nhau. Việc nút tải ICS bị giới hạn bởi <code>window.DEBUG</code> được xác nhận là có chủ ý, không phải lỗi cần mở thêm ticket: <a href="https://github.com/linagora/twake-calendar-frontend/issues/1364#issuecomment-5729892530">issues/1364 bình luận</a>.</li>
+<li><code>fetchEventJCal</code> và <code>fetchAllRecurrentVevents</code> vẫn cố ý đọc ICS thô cho các luồng cập nhật tại chỗ. Chuyển hai hàm này sang jCal mới chỉ là đề xuất tách riêng, chưa phải quyết định triển khai: <a href="https://github.com/linagora/twake-calendar-frontend/pull/1365#issuecomment-5730321309">pull/1365 bình luận</a>.</li>
+</ul>
+<h2>Việc cần làm tiếp</h2>
+<p>Không có hành động riêng rõ ràng ngoài các yêu cầu kiểm chứng CI, rà soát và xem xét hợp nhất đã nêu trong bảng trên.</p>
+<h2>Nội dung ít tín hiệu đã lược bỏ</h2>
+<ul>
+<li>Các thông báo CodeScene đạt ngưỡng chất lượng, xuất bản ảnh Docker và bình luận lặp lại “không cần thay đổi mã”; không xem chúng là bằng chứng kiểm thử chức năng đã thành công.</li>
+<li>Các thông báo trạng thái/hạn mức của bot; dữ liệu crawl cũng đã bỏ qua 4 mục bình luận/rà soát từ @coderabbitai.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-sol --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-24 02:04 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-17 00:00 → 2026-08-24 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>21</strong></span><span class="metric"><span>Issues</span><strong>16</strong></span><span class="metric"><span>Comments</span><strong>115</strong></span><span class="metric"><span>Reviews</span><strong>109</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>261</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-sol --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-08-17 00:00 +07 to 2026-08-24 00:00 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: English</p>
+<h2>Quick read</h2>
+<ul>
+<li>Version 2.4.5.1 was deployed to LNG production for side-service and Sabre. The calendar-event reindex processed 153,325 events but ended as failed with four failures, requiring verification and remediation (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1018#issuecomment-5365410490">issues/1018 comment</a>).</li>
+<li>A team-calendar participation bug remains open: external attendees following action links receive 404 because the side service uses user impersonation instead of a resource-domain technical token (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1023#issuecomment-5368944930">issues/1023 analysis</a>).</li>
+<li>Common Contacts outbound support was merged, while inbound collection remains open and requires read-before-write vCard merging plus code-complexity cleanup (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a>).</li>
+<li>Booking work advanced across backend and frontend: extra attendees and expanded fields are now exposed and displayed, and organizer-decline notifications to bookers were fixed (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1012">pull/1012</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1260">pull/1260</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1019">pull/1019</a>).</li>
+<li>Team-calendar event moves now preserve <code>X-OPENPAAS-TEAM-CALENDAR-ID</code>, backed by merged integration coverage (<a href="https://github.com/linagora/esn-sabre/pull/460">pull/460</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/325">pull/325</a>).</li>
+<li>A production frontend hotfix for the inaccessible user menu was merged, but the report does not confirm its release (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1271">pull/1271</a>).</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Production and reliability</h3>
+<ul>
+<li>Side-service and Sabre 2.4.5.1 were deployed to LNG production (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1018#issuecomment-5364639620">side-service release comment</a>, <a href="https://github.com/linagora/esn-sabre/issues/462#issuecomment-5364641073">Sabre release comment</a>).</li>
+<li>The post-deployment OpenSearch reindex failed after processing 153,325 events, with four failed events. The report does not show whether those failures were retried or resolved (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1018#issuecomment-5365410490">issues/1018 result</a>).</li>
+<li>Distinct DAV client <code>User-Agent</code> headers were introduced to improve traffic identification and diagnostics (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1022">pull/1022</a>).</li>
+</ul>
+<h3>Common Contacts</h3>
+<ul>
+<li>Outbound Common Contacts publishing was merged. Review established that this should be a platform capability rather than requiring the full SaaS extension, and prompted extraction of reusable RabbitMQ consumer lifecycle support (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3809490392">pull/1013 review comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1020">pull/1020</a>).</li>
+<li>Inbound collection remains open. Because neither Sabre nor current side-service libraries provide vCard merge support, the accepted direction is to retrieve an existing contact, merge it, and PUT the result back (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1017#discussion_r3828104338">pull/1017 merge discussion</a>).</li>
+<li>Follow-up work was opened for documentation and bulk contact republishing (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1021">issues/1021</a>, <a href="https://github.com/linagora/twake-calendar-side-service/issues/1024">issues/1024</a>).</li>
+</ul>
+<h3>Team Calendar</h3>
+<ul>
+<li>Sabre now preserves team-calendar metadata when an event is moved from a personal calendar, with integration tests covering event moves and attendee participation updates (<a href="https://github.com/linagora/esn-sabre/pull/460">pull/460</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/325">pull/325</a>).</li>
+<li>Frontend event previews now display team organizers consistently for team members and non-members (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1264">pull/1264</a>).</li>
+<li>The open participation-link defect requires resource-calendar detection and technical-token access; implementation still needs a way to locate the resource event by UID or carry its href in the JWT (<a href="https://github.com/linagora/twake-calendar-side-service/issues/1023#issuecomment-5368944930">issues/1023 analysis</a>).</li>
+</ul>
+<h3>Booking and event presentation</h3>
+<ul>
+<li>Public booking creation and display gained expanded fields and extra-attendee support across frontend and side-service (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1254">pull/1254</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1255">pull/1255</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1012">pull/1012</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1260">pull/1260</a>).</li>
+<li>Organizer-decline notifications to bookers were fixed in side-service. Related integration coverage is approved, but <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a> was not reported as merged (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1019">pull/1019</a>).</li>
+<li>Basic rich-text rendering was merged with a restrictive allowlist and safer parser. Rich-text event creation remains open and intentionally separate (<a href="https://github.com/linagora/twake-calendar-frontend/pull/1259">pull/1259</a>, <a href="https://github.com/linagora/twake-calendar-frontend/issues/1256">issues/1256</a>).</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1023">issues/1023</a></td>
+<td>Participation links fail with 404 for external attendees on team-calendar events.</td>
+<td>Blocks RSVP updates for a valid team-calendar flow; the fix crosses JWT/event lookup and resource authorization.</td>
+<td>open / @lethemanh, implementation owner TBD</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1018#issuecomment-5365410490">issues/1018 result</a></td>
+<td>Production reindex ended in failed state with four failed events out of 153,325 processed.</td>
+<td>Failed records may remain missing or stale in OpenSearch after deployment.</td>
+<td>release issue closed; follow-up status unclear / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a></td>
+<td>Common Contacts inbound collection is still under review, with vCard merge behavior and readability concerns.</td>
+<td>It is the remaining half of Common Contacts synchronization and can overwrite or fragment contact data if merging is incorrect.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1271">pull/1271</a></td>
+<td>Production hotfix for the user menu was merged.</td>
+<td>Restores a core navigation path; release confirmation is absent from the report.</td>
+<td>merged, release unconfirmed / @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1267">pull/1267</a></td>
+<td>TDrive file-picker header change is waiting on a TDrive theme fix.</td>
+<td>Merging now would leave an incorrect close-button appearance in Calendar’s light theme.</td>
+<td>open, externally blocked / @lethemanh and TDrive team</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-integration-tests</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a></td>
+<td>Booker-only notification tests were approved but not reported merged.</td>
+<td>Regression coverage should land alongside the merged notification behavior.</td>
+<td>open / @hungphan227</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Common Contacts inbound should merge equivalent email and Matrix identities into one collected contact. The agreed implementation requires fetching the existing vCard before each upsert (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1017#discussion_r3827801316">pull/1017 review comment</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1017#discussion_r3828104338">pull/1017 response</a>).</li>
+<li>Review still flags an overly complex condition in the inbound contact converter; it should be decomposed before merge (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1017#discussion_r3829724741">pull/1017 review comment</a>).</li>
+<li>Common Contacts needs Helm chart follow-up after the outbound implementation; no corresponding ticket is visible in the report (<a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3820778798">pull/1013 review comment</a>).</li>
+<li>The location model discussion favors RFC 6350 <code>KIND:location</code> vCards in Sabre DAV, with side-service JSON search endpoints and a possible future OpenSearch projection. This remains a proposal rather than a finalized implementation plan (<a href="https://github.com/linagora/twake-calendar-side-service/issues/957#issuecomment-5337182308">issues/957 comment</a>).</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verify the four failed production reindex records, retry or repair them, and record the final index state.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1018#issuecomment-5365410490">issues/1018 result</a></td>
+</tr>
+<tr>
+<td>Design and implement resource-calendar participation updates using a domain technical token, deciding between UID lookup and carrying the event href in the JWT.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1023#issuecomment-5368944930">issues/1023 analysis</a></td>
+</tr>
+<tr>
+<td>Complete inbound contact merge semantics and simplify the flagged converter condition before merging.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a></td>
+</tr>
+<tr>
+<td>Create or link the requested Helm chart follow-up for Common Contacts configuration.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3820778798">pull/1013 review comment</a></td>
+</tr>
+<tr>
+<td>Confirm that the user-menu hotfix was released to production.</td>
+<td>@chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1271#issuecomment-5367831183">pull/1271 release request</a></td>
+</tr>
+<tr>
+<td>Merge the approved booking-notification integration coverage after confirming the diff is focused and duplicate-email behavior is covered.</td>
+<td>@hungphan227</td>
+<td><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/307">pull/307</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Repeated Docker image publication comments, bot approvals, and duplicate CodeScene reports were omitted unless they indicated an active quality concern.</li>
+<li>Formatting-only suggestions, minor UI nits, and the 28 ignored CodeRabbit items were not included.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

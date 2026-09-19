@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-16 to 2026-08-23">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-23 14:56 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-16 00:00 → 2026-08-23 00:00 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>21</strong></span><span class="metric"><span>Issues</span><strong>16</strong></span><span class="metric"><span>Comments</span><strong>115</strong></span><span class="metric"><span>Reviews</span><strong>109</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>261</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-16 to 2026-08-23</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Bản phát hành LNG production 2.4.5.1 đã được triển khai cho side-service và Sabre, nhưng tác vụ reindex calendar events thất bại sau khi xử lý 153.325 sự kiện, với 4 lỗi cần điều tra.</li>
+<li>Lỗi participation từ email cho sự kiện thuộc team calendar đã được phân tích rõ: luồng hiện tại impersonate user nên không truy cập được resource calendar; chưa có bản sửa.</li>
+<li>Chuỗi tính năng Common Contacts đã có outbound được merge và inbound đang review, nhưng cần chốt cơ chế merge vCard, xử lý các phản hồi code quality, và tạo follow-up cho Helm.</li>
+<li>Team Calendar được củng cố xuyên suốt Sabre, integration tests và frontend: sửa metadata khi MOVE event, bổ sung test, và cải thiện hiển thị organizer/team calendar.</li>
+<li>Public booking đã hoàn thiện expanded fields và hiển thị extra attendees ở cả backend/frontend; frontend 1.1.0 đã có changelog và hướng dẫn release.</li>
+<li>Frontend có hotfix mobile user menu đã merge; PR chỉnh file picker vẫn bị chặn do lỗi theme từ TDrive.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Production và độ tin cậy</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1018">issues/1018</a> và <a href="https://github.com/linagora/esn-sabre/issues/462">issues/462</a>: đã deploy bản 2.4.5.1 lên LNG production. Reindex sau cập nhật OpenSearch mapping thất bại với 4/153.325 event lỗi; chưa thấy nguyên nhân hay kế hoạch rerun được xác nhận.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1023">issues/1023</a>: xác định lỗi 404 khi external attendee phản hồi event của team calendar. Cần hỗ trợ truy vấn event theo UID bằng domain technical token, hoặc đưa event href vào JWT.</li>
+</ul>
+<h4>Team Calendar và booking</h4>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/460">pull/460</a> và <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/325">pull/325</a> đã merge: giữ <code>X-OPENPAAS-TEAM-CALENDAR-ID</code> khi MOVE event từ personal sang team calendar và bổ sung coverage cho event move/cập nhật attendee partStat.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1264">pull/1264</a> đã merge để thống nhất hiển thị team organizer trong event preview, bao gồm người dùng ngoài team.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1012">pull/1012</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1254">pull/1254</a>, <a href="https://github.com/linagora/twake-calendar-frontend/pull/1255">pull/1255</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1260">pull/1260</a> đã merge, hoàn thiện expanded fields và extra attendees cho public booking.</li>
+</ul>
+<h4>Common Contacts</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1013">pull/1013</a> đã merge phần outbound; cấu hình được định hướng là platform feature, có thể bật cùng common settings mà không phụ thuộc toàn bộ SaaS extension.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a> vẫn mở cho inbound. Quyết định kỹ thuật là phải đọc contact hiện có, merge vCard rồi PUT lại vì Sabre và các thư viện hiện dùng không hỗ trợ merge vCard sẵn.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1020">pull/1020</a> đã merge refactor tái sử dụng <code>ManagedRabbitMQConsumer</code>, thay thế POC <a href="https://github.com/linagora/twake-calendar-side-service/pull/1014">pull/1014</a>.</li>
+</ul>
+<h4>Frontend</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1271">pull/1271</a> đã merge hotfix lỗi không mở được user menu trên mobile; tác giả yêu cầu release production sau merge.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1259">pull/1259</a> đã merge hỗ trợ hiển thị basic rich-text trong event preview, với parser an toàn và allowlist tag/attribute.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1267">pull/1267</a> còn mở vì theme của TDrive file picker không khớp light theme Calendar; team đang chờ TDrive sửa.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1018">issues/1018</a></td>
+<td>Reindex production thất bại với 4 event lỗi sau cập nhật mapping OpenSearch.</td>
+<td>Có thể để lại dữ liệu tìm kiếm không nhất quán sau release.</td>
+<td>closed / @vttranlina; cần follow-up</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1023">issues/1023</a></td>
+<td>External attendee không thể cập nhật participation cho event team calendar do sai cơ chế truy cập resource calendar.</td>
+<td>Chức năng RSVP từ email cho team calendar đang lỗi 404.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a></td>
+<td>Common Contacts inbound cần hoàn thiện vCard merge và giảm độ phức tạp/duplication được review nêu ra.</td>
+<td>Đây là nửa còn lại của luồng đồng bộ Common Contacts; hiện chưa sẵn sàng merge.</td>
+<td>open / @vttranlina</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1271">pull/1271</a></td>
+<td>Hotfix mobile user menu đã merge, có yêu cầu phát hành production.</td>
+<td>Khắc phục lỗi thao tác trực tiếp trên mobile.</td>
+<td>merged / @chibenwa release</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1267">pull/1267</a></td>
+<td>Bỏ header TDrive picker đang chờ TDrive sửa lỗi màu close button ở light theme.</td>
+<td>Thay đổi UI phụ thuộc đội ngoài, chưa nên merge khi còn lỗi hiển thị.</td>
+<td>open / TDrive + @lethemanh</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>twake-calendar-frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/issues/1256">issues/1256</a></td>
+<td>Rich-text editor được giới hạn scope ở event creation; cần thống nhất mức hỗ trợ nhập liệu.</td>
+<td>Cần đảm bảo sanitization chặt và tránh mở rộng scope không kiểm soát.</td>
+<td>open / TBD</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>Common Contacts đã chốt dùng cấu hình RabbitMQ hiện hữu và bật inbound/outbound cùng <code>TWPCalendarSubscriptionModule</code>; tuy nhiên yêu cầu platform hóa thay vì gắn chặt vào SaaS extension vẫn là nguyên tắc cần bảo toàn trong các thay đổi tiếp theo (<a href="https://github.com/linagora/twake-calendar-side-service/issues/989">issues/989</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3809490392">pull/1013 review comment</a>).</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017#discussion_r3827801316">pull/1017 review comment</a> yêu cầu kiểm thử merge contact khi thông điệp lần lượt chỉ có email và Matrix ID; đây là case thiết yếu để tránh mất dữ liệu contact.</li>
+<li>Cần tạo ticket riêng cho thay đổi Helm của Common Contacts theo <a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3820778798">pull/1013 review comment</a>.</li>
+<li>Với rich-text, hướng xử lý là hiển thị bắt buộc nhưng editor cần defensive: chỉ cho basic styling, loại CSS, heading và nội dung không an toàn (<a href="https://github.com/linagora/twake-calendar-frontend/issues/1256">issues/1256</a>).</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phân tích 4 event reindex thất bại, xác định cách xử lý và rerun an toàn.</td>
+<td>@vttranlina / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1018">issues/1018</a></td>
+</tr>
+<tr>
+<td>Thiết kế và triển khai luồng cập nhật participation cho resource calendar bằng technical token, đồng thời giải quyết cách tìm event theo UID/href.</td>
+<td>TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1023">issues/1023</a></td>
+</tr>
+<tr>
+<td>Hoàn thiện merge vCard, test email/Matrix ID và xử lý các điểm readability trước khi merge inbound Common Contacts.</td>
+<td>@vttranlina</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1017">pull/1017</a></td>
+</tr>
+<tr>
+<td>Tạo follow-up ticket cho Helm chart/Common Contacts deployment.</td>
+<td>@vttranlina / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1013#discussion_r3820778798">pull/1013 review comment</a></td>
+</tr>
+<tr>
+<td>Phát hành hotfix mobile user menu lên production và xác nhận sau release.</td>
+<td>@chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1271">pull/1271</a></td>
+</tr>
+<tr>
+<td>Theo dõi bản sửa theme từ TDrive trước khi merge thay đổi file picker.</td>
+<td>@lethemanh / TDrive</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1267">pull/1267</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Bỏ qua các thông báo Docker image, approval lặp lại và phần lớn nhận xét tự động từ CodeScene/CodeRabbit không tạo blocker trực tiếp.</li>
+<li>Bỏ qua các chỉnh sửa UI nhỏ đã merge, trừ các thay đổi liên quan Team Calendar, booking, mobile hotfix và dependency TDrive.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

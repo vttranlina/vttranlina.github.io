@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Period: 2026-08-13_23-50_to_2026-08-14_23-50">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-14 16:52 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-13 23:50 → 2026-08-14 23:50 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>2</strong></span><span class="metric"><span>Issues</span><strong>2</strong></span><span class="metric"><span>Comments</span><strong>23</strong></span><span class="metric"><span>Reviews</span><strong>14</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>41</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <h1>Activity Summary</h1>
+<p>Period: 2026-08-13_23-50_to_2026-08-14_23-50</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+<li><a>helm-twake-calendar</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li><strong>Security:</strong> Fixes for private event disclosure and authorization isolation merged in <code>esn-sabre</code>.</li>
+<li><strong>Sync Token:</strong> Implementation of sync-token REPORT support for address books via JSON API is progressing; contract tests added.</li>
+<li><strong>Scheduling Logic:</strong> New logic allowing booker-only scheduling when events are unaccepted introduced, but flagged with code complexity warnings.</li>
+<li><strong>Deployment:</strong> T-drive integration changes planned to deploy on Monday after testing in production environment.</li>
+</ul>
+<h2>Highlights</h2>
+<h3>Security Fixes &amp; Authorization</h3>
+<p>Two critical security PRs were approved and merged in <code>esn-sabre</code> during this window:</p>
+<ul>
+<li>
+<p><strong><a href="https://github.com/linagora/esn-sabre/pull/454">PR #454</a></strong> prevents private event detail disclosure. Approved by @chibenwa and bot.</p>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/454#discussion_r...">pull/454 review comment</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://github.com/linagora/esn-sabre/pull/455">PR #455</a></strong> adds authorization and data isolation review guide. Approved by @chibenwa and bot.</p>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/455#discussion_r...">pull/455 review comment</a></li>
+</ul>
+</li>
+</ul>
+<h3>Sync Token Implementation for Contacts</h3>
+<p>Work continues on supporting sync-token REPORT via JSON API in <code>esn-sabre</code> to enable proper contact synchronization tracking.</p>
+<ul>
+<li><strong><a href="https://github.com/linagora/esn-sabre/issues/456">Issue #456</a></strong> tracks support for address book sync tokens through the new JSON API.
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/456#issuecomment-...">issues/456 comment</a></li>
+</ul>
+</li>
+</ul>
+<p>Integration tests were updated to cover this contract:</p>
+<ul>
+<li><strong><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/324">PR #324</a></strong> adds sync token report contract for CardDAV. Approved by @chibenwa after CodeScene health check suppression was applied.
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests/pull/324#discussion_r...">pull/324 review comment</a></li>
+</ul>
+</li>
+</ul>
+<h3>Booking Links API Enhancement</h3>
+<p>Discussion on enriching the response for <code>GET /api/booking-links/{id}</code> in <code>side-service</code>. The goal is to reduce frontend requests by resolving extra attendee/resource names server-side.</p>
+<ul>
+<li><strong><a href="https://github.com/linagora/twake-calendar-side-service/pull/1000">PR #1000</a></strong> adds name of extra attendees and resources to the response for calendar owners.
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1000#issuecomment-...">pull/1000 comment</a></li>
+</ul>
+</li>
+</ul>
+<p>There is a debate regarding exposing attendee info to bookers (unauthed users) vs keeping it simple for owner APIs:</p>
+<blockquote>
+<p>For owner this rather useless. Extra request are possible and api simplicity should likely be favored
+I wish we expose extraAttendee to booker with sufficient info to display a meaningful info to the booker. — @chibenwa on <a href="https://github.com/linagora/twake-calendar-side-service/pull/1000">pull/1000</a></p>
+</blockquote>
+<h3>Scheduling Logic Change (Issue #436 / PR #458)</h3>
+<p>A significant change is being introduced in <code>esn-sabre</code> to allow scheduling for only the booker when PUT and DELETE unaccepted booking events occur, rather than stopping all attendees' scheduling.</p>
+<ul>
+<li><strong><a href="https://github.com/linagora/esn-sabre/pull/458">PR #458</a></strong> implements this logic change. Approved by @Arsnael with Docker image published.
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/458#issuecomment-...">pull/458 comment</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Code Health Warning:</strong> The implementation in <code>PublicAgendaScheduleUtils.php</code> triggered CodeScene alerts for &quot;Bumpy Road Ahead&quot; and &quot;Deep, Nested Complexity&quot;. These were suppressed but require attention to maintain code quality.</p>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/pull/458#discussion_r...">pull/458 inline comment</a></li>
+</ul>
+<h3>Deployment Plan (T-drive Integration)</h3>
+<p>Frontend team discussed merging and deploying T-drive integration changes (<code>PR #1228</code>) on Monday to test while Feature Flag is off.</p>
+<ul>
+<li><strong><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228#issuecomment-...">comment</a></strong> — @lethemanh proposes deployment plan for PR #1228.
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228#issuecomment-...">pull/1228 comment</a></li>
+</ul>
+</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td>#456</td>
+<td>Support sync-token REPORT for address books via JSON API. Need to verify contact coverage in initial response.</td>
+<td>Ensures frontend can track synchronization state correctly for contacts too.</td>
+<td>open / @vttranlina, @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td>#436 (PR 458)</td>
+<td>Change scheduling logic: allow booker-only scheduling on unaccepted events. Code complexity warnings flagged in implementation file.</td>
+<td>Improves booking flow efficiency but introduces code quality risk requiring review before merge or suppression removal.</td>
+<td>open / @hungphan227, @Arsnael</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td>#454 (PR 454)</td>
+<td>Security fix: prevent private event detail disclosure. Merged/Approved.</td>
+<td>Critical security hardening for tenant isolation and privacy compliance.</td>
+<td>merged / bot, @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td>#1000</td>
+<td>Enrich booking link response with attendee/resource names to reduce frontend requests. Debate on exposing data to bookers vs owner API simplicity.</td>
+<td>Impacts API design direction; needs decision on whether to expose extraAttendee info for better UX or keep simple.</td>
+<td>open / @hungphan227, @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>integration-test</td>
+<td>#324 (PR 324)</td>
+<td>Add contract tests for sync token report in CardDAV flow. Code duplication warning suppressed but noted.</td>
+<td>Ensures new API contracts are validated; code health needs monitoring to avoid debt accumulation.</td>
+<td>open / @vttranlina, @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>frontend</td>
+<td>#1228 (PR 1228)</td>
+<td>T-drive integration communication changes ready for deployment on Monday after testing with FR off.</td>
+<td>Deployment decision impacts production availability; requires coordination between dev and ops teams.</td>
+<td>open / @lethemanh, @chibenwa</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li>
+<p><strong>Sync Token Coverage:</strong> Uncertainty remains whether the initial JSON report response includes sync tokens for contacts as well as calendars (Issue #456 discussion). This needs confirmation before considering feature complete.</p>
+<ul>
+<li><a href="https://github.com/linagora/esn-sabre/issues/456#issuecomment-...">issues/456 comment</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Booking Link API Design:</strong> Disagreement on whether to expose extra attendee info to unauthed bookers or keep the owner API simple. This affects frontend implementation strategy and potential user experience for non-authenticated users.</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1000#issuecomment-...">pull/1000 comment</a></li>
+</ul>
+</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verify sync token coverage for contacts in initial JSON report response.</td>
+<td>@vttranlina, @chibenwa</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/456">issues/456</a></td>
+</tr>
+<tr>
+<td>Review and address CodeScene complexity warnings (Bumpy Road Ahead / Deep Nested Complexity) in PR #458 before final merge or apply permanent suppression.</td>
+<td>@hungphan227, @Arsnael</td>
+<td><a href="https://github.com/linagora/esn-sabre/pull/458#discussion_r...">pull/458</a></td>
+</tr>
+<tr>
+<td>Confirm deployment schedule for T-drive integration (PR #1228) on Monday and ensure Feature Flag is configured correctly.</td>
+<td>@lethemanh, @chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1228#issuecomment-...">pull/1228</a></td>
+</tr>
+<tr>
+<td>Decide on API design for booking links: expose extraAttendee to bookers or keep owner-only simplicity.</td>
+<td>Team Lead, @chibenwa</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1000#issuecomment-...">pull/1000</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>CodeScene bot comments regarding code health gates (Code Duplication in tests) were suppressed and do not block progress.</li>
+<li>Minor formatting nitpicks or standard CI notifications from bots like @codescene-delta-analysis[bot].</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>

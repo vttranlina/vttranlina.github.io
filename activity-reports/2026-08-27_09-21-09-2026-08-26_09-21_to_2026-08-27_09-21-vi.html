@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="&lt;!-- summary_model: gpt-5.6-terra --&gt;">
+  <title>Activity Summary · GitHub Activity Reports</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../github-activity-assets/style.css">
+</head>
+<body>
+<header class="report-header">
+  <a class="back-link" href="../index.html">← Reports</a>
+  <p class="eyebrow">2026-08-27 02:27 UTC</p>
+  <h1>Activity Summary</h1>
+  <p class="period">2026-08-26 09:21 → 2026-08-27 09:21 Asia/Ho_Chi_Minh</p>
+  <div class="metrics"><span class="metric"><span>New PRs</span><strong>9</strong></span><span class="metric"><span>Issues</span><strong>10</strong></span><span class="metric"><span>Comments</span><strong>35</strong></span><span class="metric"><span>Reviews</span><strong>34</strong></span><span class="metric"><span>Commits</span><strong>0</strong></span><span class="metric"><span>Total</span><strong>88</strong></span></div>
+</header>
+<main class="report-layout">
+  <article class="markdown-body">
+    <p>&lt;!-- summary_model: gpt-5.6-terra --&gt;
+&lt;!-- summary_route: 9router --&gt;</p>
+<h1>Activity Summary</h1>
+<p>Period: 2026-08-26 09:21 +07 → 2026-08-27 09:21 +07</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service">twake-calendar-side-service</a></li>
+<li><a href="https://github.com/linagora/esn-sabre">esn-sabre</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-integration-tests">twake-calendar-integration-tests</a></li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend">twake-calendar-frontend</a></li>
+</ul>
+<p>Language: Vietnamese</p>
+<h2>Quick read</h2>
+<ul>
+<li>Frontend có hai bản sửa lỗi từ phản hồi production đang mở: bảo vệ dữ liệu chưa lưu trong event modal và hiển thị popover email của attendee; cả hai đã được E2E kiểm tra cục bộ và dự kiến review/polish để phát hành sớm.</li>
+<li>Luồng RSVP hiện cập nhật event nhưng không gửi iTIP REPLY cho organizer; side-service đã có PR bổ sung email thông báo cho các hành động từ public event page.</li>
+<li>Cần quyết định sản phẩm cho việc lưu bản sao calendar invite vào Sent: Gmail không làm, Outlook có làm; nếu chọn triển khai, cần phối hợp Calendar, base Helm chart và rollout môi trường.</li>
+<li>Đã merge các tối ưu inbound/outbound cho Common Contacts và hai cải tiến frontend về attachment external app/folder icon.</li>
+<li>Có rủi ro regression chưa chốt ở Sabre: trả 403 khi COPY/MOVE event của attendee có thể làm tái xuất hiện lỗi frontend đã từng sửa.</li>
+</ul>
+<h2>Highlights</h2>
+<h4>Event modal và bảo vệ dữ liệu chưa lưu</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1302">pull/1302</a> thêm xác nhận trước khi bỏ thay đổi chưa lưu. Bản đầu dùng <code>useBlocker</code> không tương thích <code>HistoryRouter</code>, đã thay bằng cơ chế chặn điều hướng thủ công; các luồng Escape, backdrop và discard đã được E2E xác minh.</li>
+<li>E2E của <a href="https://github.com/linagora/twake-calendar-frontend/pull/1302">pull/1302</a> chưa bao phủ hoàn toàn click điều hướng nội bộ thực sự và <code>beforeunload</code>; cần kiểm tra trước khi phát hành.</li>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1301">pull/1301</a> khôi phục popover email khi hover attendee trong form tạo/sửa event; đã E2E xác nhận với email nhập tự do.</li>
+<li>Kế hoạch được đề xuất: @lethemanh review/polish, thảo luận trong daily, tag release chiều thứ Năm và deploy sáng thứ Sáu cho <a href="https://github.com/linagora/twake-calendar-frontend/pull/1301">pull/1301</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1302">pull/1302</a>.</li>
+</ul>
+<h4>RSVP và email calendar</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1034">issues/1034</a> xác nhận RSVP “Yes” cập nhật event nhưng organizer không nhận REPLY; <a href="https://github.com/linagora/twake-calendar-side-service/pull/1035">pull/1035</a> đang bổ sung gửi mail cho organizer từ public event page.</li>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/issues/1033">issues/1033</a> mở câu hỏi về bản sao invitation vào Sent. Hành vi chưa phải chuẩn thống nhất; nếu làm sẽ mất khoảng một tuần và cần thay đổi ở Calendar lẫn hạ tầng Helm.</li>
+</ul>
+<h4>Common Contacts và các thay đổi đã merge</h4>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-side-service/pull/1030">pull/1030</a> tối ưu xử lý inbound collected contacts, và <a href="https://github.com/linagora/twake-calendar-side-service/pull/1032">pull/1032</a> hợp nhất các notification consumer queue outbound đã được merge cho ISSUE-989.</li>
+<li>Frontend đã merge <a href="https://github.com/linagora/twake-calendar-frontend/pull/1292">pull/1292</a> cải thiện attachment cho external application và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1293">pull/1293</a> hiển thị folder icon từ Calendar.</li>
+</ul>
+<h2>Important Items</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Repo</th>
+<th>Item</th>
+<th>Summary</th>
+<th>Why it matters</th>
+<th>Status / Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1302">pull/1302</a></td>
+<td>Xác nhận trước khi bỏ thay đổi event chưa lưu; đã sửa lỗi tương thích router phát hiện trong E2E.</td>
+<td>Tránh mất dữ liệu người dùng; vẫn còn hai đường điều hướng chưa được E2E đầy đủ.</td>
+<td>open / @mmaudet, review @lethemanh</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>frontend</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1301">pull/1301</a></td>
+<td>Hiển thị lại email popover khi hover attendee trong form edit/create.</td>
+<td>Sửa regression UX từ phản hồi production; E2E cục bộ đã pass.</td>
+<td>open / @mmaudet, review @lethemanh</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1035">pull/1035</a></td>
+<td>Gửi email tới organizer cho hành động từ public event page.</td>
+<td>Khắc phục thiếu thông báo cho organizer khi attendee RSVP.</td>
+<td>open / @chibenwa</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1033">issues/1033</a></td>
+<td>Cần quyết định có lưu calendar invite vào Sent hay không.</td>
+<td>Nếu chọn làm, cần thay đổi đa thành phần và rollout Helm, ước tính khoảng một tuần.</td>
+<td>open / TBD</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>esn-sabre</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+<td>Đề xuất trả 403 khi COPY/MOVE event không hợp lệ theo organizer/attendee.</td>
+<td>Có thể tái xuất hiện lỗi frontend đã được giải quyết trước đó; cần xác nhận hành vi end-to-end.</td>
+<td>open / @hungphan227, @chibenwa</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>side-service</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/pull/1030">pull/1030</a>, <a href="https://github.com/linagora/twake-calendar-side-service/pull/1032">pull/1032</a></td>
+<td>Tối ưu luồng inbound và hợp nhất queue outbound Common Contacts.</td>
+<td>Củng cố xử lý đồng bộ Contacts qua RabbitMQ.</td>
+<td>merged / @vttranlina</td>
+</tr>
+</tbody>
+</table>
+<h2>Review &amp; Discussion Signals</h2>
+<ul>
+<li><a href="https://github.com/linagora/twake-calendar-frontend/pull/1302">pull/1302</a> từng bị CodeScene đánh dấu độ phức tạp, nhưng lượt kiểm tra cuối đã đạt quality gates; không thấy blocker review thủ công trong dữ liệu.</li>
+<li>Phản hồi post-merge trên <a href="https://github.com/linagora/twake-calendar-frontend/pull/1284">pull/1284</a> nêu khoảng trống khi chiều cao viewport nhỏ hơn modal: modal có thể vẫn che nút Save vì không có vùng nội dung scroll. Đây là follow-up UX nên được cân nhắc.</li>
+<li>Dữ liệu review không đầy đủ cho một số PR do timeout API, gồm <a href="https://github.com/linagora/twake-calendar-side-service/pull/1020">pull/1020</a>, <a href="https://github.com/linagora/esn-sabre/pull/447">pull/447</a>, <a href="https://github.com/linagora/twake-calendar-integration-tests/pull/316">pull/316</a> và <a href="https://github.com/linagora/twake-calendar-frontend/pull/1283">pull/1283</a>.</li>
+</ul>
+<h2>Action Items</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Suggested owner</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Xác minh Outlook và chốt quyết định sản phẩm về bản sao invitation trong Sent trước khi đầu tư thay đổi đa thành phần.</td>
+<td>@Bobpodvalnyi / TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-side-service/issues/1033">issues/1033</a></td>
+</tr>
+<tr>
+<td>Kiểm tra end-to-end COPY/MOVE event attendee trước khi đổi mã lỗi sang 403 để tránh tái phát regression frontend.</td>
+<td>@hungphan227, frontend TBD</td>
+<td><a href="https://github.com/linagora/esn-sabre/issues/450">issues/450</a></td>
+</tr>
+<tr>
+<td>Cân nhắc PR follow-up bổ sung giới hạn chiều cao và vùng scroll cho event modal ở viewport nhỏ.</td>
+<td>@mmaudet / frontend TBD</td>
+<td><a href="https://github.com/linagora/twake-calendar-frontend/pull/1284">pull/1284</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Low-signal / Ignored</h2>
+<ul>
+<li>Đã bỏ qua các comment bot về Docker image, CodeScene lặp lại và 20 mục từ CodeRabbitAI.</li>
+<li>Không đưa các review formatting/cosmetic không tạo blocker vào summary.</li>
+</ul>
+
+  </article>
+</main>
+</body>
+</html>
